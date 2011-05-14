@@ -1,0 +1,5 @@
+:benchmark: false
+:update_sources: true
+:backtrace: false
+:bulk_threshold: 1000
+:verbose: true

@@ -1,0 +1,35 @@
+-- Call this .psqlrc file, and put in your home directory
+-- See http://www.postgresql.org/docs/8.3/static/app-psql.html for the list of other useful variables
+-- Be quiet during loading of this file
+\set ECHO none
+-- set client_min_messages = fatal;
+
+-- From psql, you can:
+-- \echo :<VAR>		to see what it's set to
+-- \unset <VAR>		to delete the variable
+
+-- When running scripts, this makes it stop on the 1st error
+-- \set ON_ERROR_STOP 1
+
+
+-- When recalling history, condense duplicate commands into a single instance
+\set HISTCONTROL ignoredups
+
+-- When showing null values, displays NULL instead of blank, which is indistinguishable
+-- from an empty string in char fields
+\pset null NULL
+
+-- display timing info after each command
+\timing
+
+-- The default prompt is %/%R%# which is e.g. mcore=>
+-- This is, e.g. [admin@db7] 13:20:51>o
+\set PROMPT1 '%[%033[31;5m%]%x%[%033[0m%]%[%033[31;1m%]%n%[%033[33;1m%]@%[%033[32;1m%m%[%033[0m%] %[%033[37;1m%]%/%[%033[0m%] %`date +"%H:%M:%S"` %#'
+\set PROMPT2 '> '
+
+-- set search_path = public,_slony_cluster
+
+-- Okay, be noisy again
+-- set client_min_messages = warning;
+-- When running scripts, echos all commmands to stdout.
+\set ECHO all
