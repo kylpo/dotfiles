@@ -6,6 +6,7 @@ alias servernfs='sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.1.106:/ /Volu
 alias desktop="cd ~/Desktop"
 alias dropbox="cd ~/Dropbox"
 alias spider="cd ~/spideroak"
+alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
