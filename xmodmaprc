@@ -1,0 +1,6 @@
+remove Control = Control_R
+remove Lock = Caps_Lock
+keycode 66 = Super_L NoSymbol Super_L
+keycode 49 = Control_R NoSymbol Control_R
+keycode 133 = grave asciitilde grave asciitilde
+add Control = Control_R
