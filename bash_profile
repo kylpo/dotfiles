@@ -1,22 +1,18 @@
-export PATH=/usr/local/bin:$PATH:~/work/git_support/bin
-export CI_EMAIL=kyle@collectiveintellect.com
+#mostly taken from http://pastebin.com/sVw8guUE
+#and https://github.com/aniero/dotfiles/blob/master/bash_profile
+
+####PATHS
+export PATH=/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/
 export PGDATA=/usr/local/var/postgres/
 # colorized grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 
+. ~/.dotfiles/secrets # api keys etc
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-  source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
-fi
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+####ALIASES
 if [ -f ~/.dotfiles/bash_aliases ]; then
   . ~/.dotfiles/bash_aliases
 fi
@@ -25,6 +21,7 @@ if [ -f ~/.dotfiles/bash_aliases_secret ]; then
   . ~/.dotfiles/bash_aliases_secret
 fi
 
+####CONFIG
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -49,8 +46,17 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+####SCRIPTS
+mk() { eval ${1:-MKPWD}=\"`pwd`\"; }
+rt() { eval cd \"\$${1:-MKPWD}\";pwd; }
+str2hex() { echo -n "str: " && read x && echo -n "$x" |xxd -c 256 -p |sed 's/0a//1'|awk '{print $1}';}
+maxcrypt() { echo -n "str: " && read x && echo -n "$x"|openssl dgst -sha512 |openssl dgst -ripemd160;}
+netinfo() { /sbin/ifconfig|grep "inet"|grep -v "inet6"|awk '{print $1" "$2" "$3" "$4}'|grep -v "127.0.0.1";}
+
+####FUNCTIONS
 function gemdir() {
-cd `rvm gemdir`/gems
+  cd `rvm gemdir`/gems
 }
 
 function d() {
@@ -101,14 +107,14 @@ p() {
 
 # via mojombo http://gist.github.com/180587
 function psg {
-ps wwwaux | egrep "($1|%CPU)" | grep -v grep
+  ps wwwaux | egrep "($1|%CPU)" | grep -v grep
 }
 
 function ssh-setup {
-cat ~/.ssh/id_rsa.pub | ssh $1 'cat - >> ~/.ssh/authorized_keys'
+  cat ~/.ssh/id_rsa.pub | ssh $1 'cat - >> ~/.ssh/authorized_keys'
 }
 
-#for the prompt colors
+####PROMPT
 TEXT_BLACK='\[\e[0;30m\]' # Black - Regular
 TEXT_RED='\[\e[0;31m\]' # Red
 TEXT_GREEN='\[\e[0;32m\]' # Green
@@ -118,6 +124,13 @@ TEXT_PURPLE='\[\e[0;35m\]' # Purple
 TEXT_CYAN='\[\e[0;36m\]' # Cyan
 TEXT_WHITE='\[\e[0;37m\]' # White
 TEXT_RESET='\[\e[0m\]' # Text Reset
+NORMAL="\[\033[0m\]"
+WHITE="\[\033[0;37;40m\]"
+MAGENTA="\[\033[0;43;40m\]"
+BRIGHTBLUE="\[\033[0;31;40m\]"
+BRIGHTWHITE="\[\033[1;37;40m\]"
+BRIGHTMAGENTA="\[\033[0;33;40m\]"
+
 
 previous_exit_status() {
   if [ $1 -eq 0 ]; then
@@ -163,7 +176,7 @@ git_dirty_flag() {
   fi
 }
 
-if [[ $TERM_PROGRAM == 'iTerm.app' ]]; then
+if [[ $TERM_PROGRAM == 'iTerm.app' || $TERM == 'xterm' ]]; then
   # 0 means both tab and window, 1 is tab, 2 is window
   # see:
   # http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss4.3
@@ -178,7 +191,16 @@ fi
 
 set_prompt(){
   previous=$?;
-  PS1="${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) ${TEXT_GREEN}\w${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) "
+  #check if root user
+  if [ $UID -eq 0 ] ; then
+    SYM='ROOT'
+  else
+    SYM=''
+  fi
+
+   P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
+   P2="${TEXT_GREEN}\w${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) "
+   PS1="${P1}${P2}"
 }
 PROMPT_COMMAND=set_prompt
 
@@ -211,31 +233,57 @@ PROMPT_COMMAND=set_prompt
   # write+sticky/  +-+-+-+-+-+-+-+-+-\
   # write-sticky/  +-+-+-+-+-+-+-+-+-+-\
   #                v v v v v v v v v v v
+
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 # default: "exfxcxdxbxegedabagacad"
 
-# export TERM_BLACK="\[\e[30;1m\]"
-# export TERM_RED="\[\e[31;1m\]"
-# export TERM_GREEN="\[\e[32;1m\]"
-# export TERM_YELLOW="\[\e[33;1m\]"
-# export TERM_BLUE="\[\e[34;1m\]"
-# export TERM_MAGENTA="\[\e[35;1m\]"
-# export TERM_CYAN="\[\e[36;1m\]"
-# export TERM_WHITE="\[\e[37;1m\]"
-# export TERM_RESET="\[\e[0m\]"
+#export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:"
 
-# export PS1="${TERM_RED}\u${TERM_WHITE}@${TERM_YELLOW}\h${TERM_WHITE}:${TERM_GREEN}\w ${TERM_WHITE}%${TERM_RESET} "
-# export PS2="> "
-# export PS3="#? "
-# export PS4="+"
+################COLORS
+#BLACK='\e[0;30m'
+#BLUE='\e[0;34m'
+#GREEN='\e[0;32m'
+#CYAN='\e[0;36m'
+RED='\e[0;31m'
+#PURPLE='\e[0;35m'
+#BROWN='\e[0;33m'
+LIGHTGRAY='\e[0;37m'
+DARKGRAY='\e[1;30m'
+#LIGHTBLUE='\e[1;34m'
+#LIGHTGREEN='\e[1;32m'
+#LIGHTCYAN='\e[1;36m'
+#LIGHTRED='\e[1;31m'
+#LIGHTPURPLE='\e[1;35m'
+#YELLOW='\e[1;33m'
+#WHITE='\e[1;37m'
+#NC='\e[0m'
 
-# export LSCOLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:"
+#### OS SPECIFIC
+OSNAME=`uname`
+if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
+  echo -n "Today: " && date +'%A %B %e'
+  echo -n "Networks: "; netinfo
+  echo -n "Kernel: " `uname -smr`; echo ""
+  echo  ""; df -lh
 
-##
-# Your previous /Users/kp/.bash_profile file was backed up as /Users/kp/.bash_profile.macports-saved_2011-05-16_at_08:17:56
-##
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+    source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
+  fi
 
-# MacPorts Installer addition on 2011-05-16_at_08:17:56: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
+  # MacPorts Installer addition on 2011-05-16_at_08:17:56: adding an appropriate PATH variable for use with MacPorts.
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  # Finished adapting your PATH environment variable for use with MacPorts.
+
+elif [ "$OSNAME" = "Linux" ]; then
+  echo -ne "${RED}Today: ${LIGHTGRAY}" && date +'%A %B %e'
+  echo -ne "${RED}Load: ${LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
+  echo -ne "${RED}Uptime: ${LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
+  echo -ne "${RED}Networks: ${LIGHTGRAY}"; netinfo
+  echo -ne "${RED}Kernel: ${LIGHTGRAY}" `uname -smr`; echo ""
+  echo -e "${DARKGRAY}"; df -lhT
+
+  # Added by autojump install.sh
+  source /etc/profile.d/autojump.bash
+fi
 

@@ -65,34 +65,17 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.dotfiles/bash_aliases ]; then
+    . ~/.dotfiles/bash_aliases
+fi
+
+if [ -f ~/.dotfiles/bash_aliases_secret ]; then
+    . ~/.dotfiles/bash_aliases_secret
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -101,73 +84,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-######
-alias syn='synergyc 192.168.1.107'
-alias synwork='synergyc 10.1.90.176'
-alias whoville='https://venture1.projectlocker.com/WhozThat/whoville/svn'
-alias synschool='synergys --config ~/etc/synergySchool.conf'
-alias synswork='synergys --config ~/etc/synergyWork.conf'
-alias synshome='synergys --config ~/etc/synergyHome.conf'
-alias invert='xcalib -invert -alter'
-alias o='xdg-open'
-#alias x2m='killall xmonad-i386-linux && metacity &'
-#alias m2x='killall metacity && xmonad &'
-alias ec='emacsclient -n'
-alias dropb='~/.dropbox-dist/dropboxd'
-alias lock='xscreensaver-command -lock'
-alias btm='google calendar add "btm today"'
-alias c='clear'
-alias journal='vim ~/journal/`date +%y%m%d.txt`'
-alias bak='rsync -arz --max-size='100k' ~/ /mnt/kp/bak/nb'
-alias rrtags='ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor'
-alias TAGS='find . | xargs ctags -a -e -f TAGS'
-#from http://gotbletu.blogspot.com/2011/04/auto-get-missing-launchpad-gpg-ppa-keys.html
-alias autokey='sudo apt-get update 2> /tmp/keymissing; for key in $(grep "NO_PUBKEY" /tmp/keymissing |sed "s/.*NO_PUBKEY //"); do echo -e "\nProcessing key: $key"; gpg --keyserver pool.sks-keyservers.net --recv $key && gpg --export --armor $key | sudo apt-key add -; done'
-
-#Info
-alias gcl='
-echo #
-echo btm = Brush Teeth Morning
-echo btn  = Brush Teeth Night
-echo Anki = 2h Anki or adding to anki
-echo Journal = Journal
-echo bboa = Big Book of Answers
-echo wfm = Wash Face Morning
-echo wfn = Wash Face Night
-echo 1aday = 1ADay
-echo #
-'
-alias ankiorder='
-echo Pullups
-echo 25 min anki
-echo Situps (5m)
-echo 25 min anki
-echo Pushups (5m)
-echo 25 min anki
-echo Pullups (5m)
-echo 25 min anki
-echo Situps (5m)
-echo 25 min anki
-echo Pushups (5m)
-'
-#Navigation
-alias proj='cd ~/Dropbox/school/netsys/hw\ \&\ projects/poolek_pa4_csci4273/'
-alias mvn='~/.apache-maven-2.2.1/bin/mvn'
-alias pl='cd ~/Dropbox/school/prin_pro_lang/'
-alias hack='cd ~/Dropbox/school/hack/'
-alias pl='cd ~/Dropbox/school/prog_lang/'
-alias unix='cd ~/Dropbox/school/unix/'
-alias awm='cd ~/.config/awesome/'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-#Networks
-alias unixssh='ssh kp@128.138.202.105'
-alias elra-01='ssh poolek@elra-01.cs.colorado.edu'
-alias server_ssh='ssh 192.168.1.106'
-alias servernfs='sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.1.106:/ /mnt'
-alias moxie='ssh poolek@moxie.cs.colorado.edu'
 
 PATH=$PATH:/home/kp/Dropbox/scripts/
 export PATH
