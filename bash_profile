@@ -271,10 +271,6 @@ if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
     source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
   fi
 
-  # MacPorts Installer addition on 2011-05-16_at_08:17:56: adding an appropriate PATH variable for use with MacPorts.
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-  # Finished adapting your PATH environment variable for use with MacPorts.
-
 elif [ "$OSNAME" = "Linux" ]; then
   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
   echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
