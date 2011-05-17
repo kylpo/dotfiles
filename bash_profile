@@ -116,21 +116,36 @@ function ssh-setup {
 
 ####PROMPT
 TEXT_BLACK='\[\e[0;30m\]' # Black - Regular
-TEXT_RED='\[\e[0;31m\]' # Red
-TEXT_GREEN='\[\e[0;32m\]' # Green
+TEXT_RED='\e[0;31m' # Red
+TEXT_GREEN='\e[0;32m' # Green
 TEXT_YELLOW='\[\e[0;33m\]' # Yellow
 TEXT_BLUE='\[\e[0;34m\]' # Blue
 TEXT_PURPLE='\[\e[0;35m\]' # Purple
 TEXT_CYAN='\[\e[0;36m\]' # Cyan
 TEXT_WHITE='\[\e[0;37m\]' # White
 TEXT_RESET='\[\e[0m\]' # Text Reset
+#BLACK='\e[0;30m'
+#BLUE='\e[0;34m'
+#GREEN='\e[0;32m'
+#CYAN='\e[0;36m'
+#PURPLE='\e[0;35m'
+#BROWN='\e[0;33m'
+TEXT_LIGHTGRAY='\e[0;37m'
+#TEXT_DARKGRAY='\e[1;30m'
+#LIGHTBLUE='\e[1;34m'
+#LIGHTGREEN='\e[1;32m'
+#LIGHTCYAN='\e[1;36m'
+#LIGHTRED='\e[1;31m'
+#LIGHTPURPLE='\e[1;35m'
+#YELLOW='\e[1;33m'
+#WHITE='\e[1;37m'
+#NC='\e[0m'
 NORMAL="\[\033[0m\]"
 WHITE="\[\033[0;37;40m\]"
 MAGENTA="\[\033[0;43;40m\]"
 BRIGHTBLUE="\[\033[0;31;40m\]"
 BRIGHTWHITE="\[\033[1;37;40m\]"
 BRIGHTMAGENTA="\[\033[0;33;40m\]"
-
 
 previous_exit_status() {
   if [ $1 -eq 0 ]; then
@@ -237,26 +252,11 @@ PROMPT_COMMAND=set_prompt
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 # default: "exfxcxdxbxegedabagacad"
 
-#export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:"
+export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:"
+#LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+
 
 ################COLORS
-#BLACK='\e[0;30m'
-#BLUE='\e[0;34m'
-#GREEN='\e[0;32m'
-#CYAN='\e[0;36m'
-RED='\e[0;31m'
-#PURPLE='\e[0;35m'
-#BROWN='\e[0;33m'
-LIGHTGRAY='\e[0;37m'
-DARKGRAY='\e[1;30m'
-#LIGHTBLUE='\e[1;34m'
-#LIGHTGREEN='\e[1;32m'
-#LIGHTCYAN='\e[1;36m'
-#LIGHTRED='\e[1;31m'
-#LIGHTPURPLE='\e[1;35m'
-#YELLOW='\e[1;33m'
-#WHITE='\e[1;37m'
-#NC='\e[0m'
 
 #### OS SPECIFIC
 OSNAME=`uname`
@@ -276,12 +276,12 @@ if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   # Finished adapting your PATH environment variable for use with MacPorts.
 
 elif [ "$OSNAME" = "Linux" ]; then
-  echo -ne "${RED}Today: ${LIGHTGRAY}" && date +'%A %B %e'
-  echo -ne "${RED}Load: ${LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
-  echo -ne "${RED}Uptime: ${LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
-  echo -ne "${RED}Networks: ${LIGHTGRAY}"; netinfo
-  echo -ne "${RED}Kernel: ${LIGHTGRAY}" `uname -smr`; echo ""
-  echo -e "${DARKGRAY}"; df -lhT
+  echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
+  echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
+  echo -ne "${TEXT_RED}Uptime: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
+  echo -ne "${TEXT_RED}Networks: ${TEXT_LIGHTGRAY}"; netinfo
+  echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
+  echo -e "${TEXT_LIGHTGRAY}"; df -lhT
 
   # Added by autojump install.sh
   source /etc/profile.d/autojump.bash
