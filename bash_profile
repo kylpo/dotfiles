@@ -150,13 +150,15 @@ BRIGHTMAGENTA="\[\033[0;33;40m\]"
 previous_exit_status() {
   if [ $1 -eq 0 ]; then
     # HEAVY ROUND-TIPPED RIGHTWARDS ARROW
-    echo -n "▸"
+#    echo -n "▸"
     # echo -n "➜"
     #echo -n "•"
     # echo -n "⧫"
+    echo -n "\$"
   else
     # HEAVY BALLOT X
-    echo -n "${TEXT_RED}✘${TEXT_RESET}"
+#    echo -n "${TEXT_RED}✘${TEXT_RESET}"
+    echo -n "${TEXT_RED}\$${TEXT_RESET}"
   fi
 }
 
@@ -259,27 +261,27 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 ################COLORS
 
 #### OS SPECIFIC
-OSNAME=`uname`
-if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
-  echo -n "Today: " && date +'%A %B %e'
-  echo -n "Networks: "; netinfo
-  echo -n "Kernel: " `uname -smr`; echo ""
-  echo  ""; df -lh
+ OSNAME=`uname`
+ if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
+#   echo -n "Today: " && date +'%A %B %e'
+#   echo -n "Networks: "; netinfo
+#   echo -n "Kernel: " `uname -smr`; echo ""
+#   echo  ""; df -lh
 
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-    source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
-  fi
+   if [ -f `brew --prefix`/etc/bash_completion ]; then
+     . `brew --prefix`/etc/bash_completion
+     source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
+   fi
 
-elif [ "$OSNAME" = "Linux" ]; then
-  echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
-  echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
-  echo -ne "${TEXT_RED}Uptime: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
-  echo -ne "${TEXT_RED}Networks: ${TEXT_LIGHTGRAY}"; netinfo
-  echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
-  echo -e "${TEXT_LIGHTGRAY}"; df -lhT
+ elif [ "$OSNAME" = "Linux" ]; then
+#   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
+#   echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
+#   echo -ne "${TEXT_RED}Uptime: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
+#   echo -ne "${TEXT_RED}Networks: ${TEXT_LIGHTGRAY}"; netinfo
+#   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
+#   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
 
-  # Added by autojump install.sh
-  source /etc/profile.d/autojump.bash
-fi
+   # Added by autojump install.sh
+   source /etc/profile.d/autojump.bash
+ fi
 
