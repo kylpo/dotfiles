@@ -2,11 +2,12 @@
 #and https://github.com/aniero/dotfiles/blob/master/bash_profile
 
 ####PATHS
-export PATH=/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/
-export PGDATA=/usr/local/var/postgres/
+export PATH=/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/:~/spideroak/scripts/:/usr/lib/postgresql/9.0/bin:
+export PGDATA=/usr/local/var/postgres
+export CI_TSDIR=$PGDATA
 # colorized grep
 export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;33'
+#export GREP_COLOR='1;33'
 
 . ~/.dotfiles/secrets # api keys etc
 
@@ -216,7 +217,8 @@ set_prompt(){
   fi
 
    P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
-   P2="${TEXT_GREEN}\w${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) "
+#   P2="${TEXT_GREEN}\w${TEXT_RESET}$"
+   P2="\w$(__git_ps1) $(git_dirty_flag) $(previous_exit_status $previous) "
    PS1="${P1}${P2}"
 }
 PROMPT_COMMAND=set_prompt
