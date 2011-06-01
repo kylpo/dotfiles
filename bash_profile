@@ -218,7 +218,7 @@ set_prompt(){
 
    P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
 #   P2="${TEXT_GREEN}\w${TEXT_RESET}$"
-   P2="\w$(__git_ps1) $(git_dirty_flag) $(previous_exit_status $previous) "
+   P2="$(__git_ps1) $(git_dirty_flag) $(previous_exit_status $previous) "
    PS1="${P1}${P2}"
 }
 PROMPT_COMMAND=set_prompt

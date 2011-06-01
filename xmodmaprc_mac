@@ -1,9 +1,9 @@
-# From Kylpo
-# changes keyboard to:
-# Capslock = Super
-# L_Command = Control
-# R_Command = Alt
-# = crazy good emacs config
+!! From Kylpo
+!! changes keyboard to:
+!! Capslock = Super
+!! L_Command = Control
+!! R_Command = Alt
+!! = crazy good emacs config
 
 remove Lock = Caps_Lock
 remove Control = Control_R
