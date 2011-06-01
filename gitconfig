@@ -1,0 +1,41 @@
+[user]
+	name = kylpo
+	email = 2kylepoole@gmail.com
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  br = branch
+  pom = push origin master
+  w = whatchanged
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+[core]
+  excludesfile = /Users/kp/.gitignore
+  editor = emacsclient -n
+  #editor = mvim
+  autocrlf = input
+[apply]
+  whitespace = fix
+[format]
+  pretty = %C(yellow)%h%Creset%C(green)%d%Creset %s %C(red)[%an]%Creset %C(cyan)[%cr]%Creset
+[rerere]
+  enabled = 1
+[push]
+  default = tracking
+[branch]
+  autosetuprebase = always
+[mergetool "ediff"]
+  cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
+  trustExitCode = true
+[mergetool]
+  prompt = false
+[merge]
+  tool = ediff
+ # tool = vimdiff
+[diff]
+  #tool = vimdiff
+  tool = ediff
