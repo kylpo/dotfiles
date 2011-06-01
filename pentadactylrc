@@ -1,0 +1,117 @@
+" Turn off auto-autocompletion (press tab to see autocompletions)
+set autocomplete=
+
+"colorscheme desert
+
+" determine which tabs open with focus
+"set activate=addons,bookmarks,diverted,extoptions,help,homepage,quickmark
+
+" pentadactyl gui options
+ set go=rbCs
+
+" Editor, C-e invokes it in text fields
+"set editor="emacsclient -c"
+
+" Show destination links in 1=status line, 2=command line
+" set showstatuslinks=2
+
+" Show the tab bar only if more then one tab is open
+"set showtabline=never
+
+" Focus content after a page has loaded
+"set focuscontent
+
+"set hintkeys='asdfjlk;qwertyuiopzxcvbnm'
+
+" Disable some Pentadactyl default mappings
+nmap d <Nop>
+
+nmap x :tabclose<CR>
+vmap x :tabclose<CR>
+map x :tabclose<CR>
+map <A-Down> :set go+=B<CR>
+map <A-Up> :set go-=B<CR>
+map <C-Right> :sidebar Bookmarks<CR>
+map <C-Left> :sbclose<CR>
+" nmap <A-h> <C-p>
+" vmap <A-h> <C-p>
+" map <A-h> <C-p>
+
+" nmap <A-l> :tabnext<CR>
+" vmap <A-l> :tabnext<CR>
+" map <A-l> :tabnext<CR>
+" nmap <M-h> <C-p>
+" vmap <M-h> <C-p>
+" map <M-h> <C-p>
+" nmap <M-l> :tabnext<CR>
+" vmap <M-l> :tabnext<CR>
+" map <M-l> :tabnext<CR>
+
+" map <A-h> <Nop>
+" nmap <A-l> <Nop>
+" map <A-h> :echo Hello<CR>
+" nmap <A-l> :echo Hello<CR>
+" map <A-H> :echo Hello<CR>
+" map <A-L> :echo Hello<CR>
+" map <A-Left> :echo Hello<CR>
+
+noremap <A-h> gT
+noremap <A-l> gt
+noremap <A-j> gT
+noremap <A-k> gt
+"noremap <J> gT
+"noremap <K> gt
+nmap <S-J> gT
+nmap <S-K> gt
+nmap <M-n> gt
+nmap <M-p> gT
+
+set newtab=all
+
+" Bookmarks search, and search by tag
+map <C-c>q :bmarks<SPACE>
+map <C-c>w :bmarks -tags=
+
+" {{{ Wikipedia look-up macro
+"
+:command -nargs=* wiki tabopen wikipedia <args>
+"
+" }}}
+
+" {{{ Javascript functions
+"
+" Show the Feed and Bookmark buttons on the statusbar
+javascript <<EOF
+(function(){
+    var statusPanel = document.createElement("statusbarpanel");
+    statusPanel.setAttribute("id", "buttons-panel-clone");
+    statusPanel.appendChild(document.getElementById("star-button"));
+    statusPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
+    document.getElementById("status-bar")
+            .insertBefore(statusPanel, document.getElementById("security-button"));
+})();
+EOF
+" }}}
+
+
+
+" {{{ Enable gmail-specific keybindings (disabled because this can bypassed with <C-Z>)
+"
+" autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+"
+" }}}
+
+" {{{ Plugin bindings
+"
+
+" Noscript
+map <C-c>s :noscript toggletemp<CR>
+map <C-c>S :noscript popup<CR>
+
+" TinyURL
+" map <C-c>t :exe ":tinyurl "+getBrowser().contentWindow.location.href<CR>
+" }}}
+" }}}
+
+:hi Hint font-family: Verdana; font-size: 12px; font-weight: bold; color:white; background-color: red;
+"border-color: ButtonShadow; border-width: 0px;border-style: solid; padding: 0px 1px 0px 1px;
