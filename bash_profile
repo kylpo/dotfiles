@@ -116,32 +116,16 @@ function ssh-setup {
 }
 
 ####PROMPT
-TEXT_BLACK='\[\e[0;30m\]' # Black - Regular
-TEXT_RED='\e[0;31m' # Red
-TEXT_GREEN='\e[0;32m' # Green
-TEXT_YELLOW='\[\e[0;33m\]' # Yellow
-TEXT_BLUE='\[\e[0;34m\]' # Blue
-TEXT_PURPLE='\[\e[0;35m\]' # Purple
-TEXT_CYAN='\[\e[0;36m\]' # Cyan
-TEXT_WHITE='\[\e[0;37m\]' # White
-TEXT_RESET='\[\e[0m\]' # Text Reset
-#BLACK='\e[0;30m'
-#BLUE='\e[0;34m'
-#GREEN='\e[0;32m'
-#CYAN='\e[0;36m'
-#PURPLE='\e[0;35m'
-#BROWN='\e[0;33m'
-TEXT_LIGHTGRAY='\e[0;37m'
-#TEXT_DARKGRAY='\e[1;30m'
-#LIGHTBLUE='\e[1;34m'
-#LIGHTGREEN='\e[1;32m'
-#LIGHTCYAN='\e[1;36m'
-#LIGHTRED='\e[1;31m'
-#LIGHTPURPLE='\e[1;35m'
-#YELLOW='\e[1;33m'
-#WHITE='\e[1;37m'
-#NC='\e[0m'
-NORMAL="\[\033[0m\]"
+#Help with colors https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Example_bashrc_from_Gentoo
+BLACK='\[\033[0;30m\]' # Black - Regular
+RED='\[\033[0;31m\]' # Red
+GREEN='\[\033[0;32m\]' # Green
+YELLOW='\[\033[0;33m\]' # Yellow
+BLUE='\[\033[0;34m\]' # Blue
+PURPLE='\[\033[0;35m\]' # Purple
+CYAN='\[\033[0;36m\]' # Cyan
+WHITE='\[\033[0;37m\]' # White
+NORMAL="\[\033[0m\]" # Text Reset
 WHITE="\[\033[0;37;40m\]"
 MAGENTA="\[\033[0;43;40m\]"
 BRIGHTBLUE="\[\033[0;31;40m\]"
@@ -159,7 +143,7 @@ previous_exit_status() {
   else
     # HEAVY BALLOT X
 #    echo -n "${TEXT_RED}✘${TEXT_RESET}"
-    echo -n "${TEXT_RED}\$${TEXT_RESET}"
+    echo -n "${RED}\$${NORMAL}"
   fi
 }
 
@@ -176,21 +160,21 @@ git_dirty_flag() {
     # git diff-files --no-ext-diff --ignore-submodules --exit-code --quiet \
       # now, from __git_ps1:
     git diff --no-ext-diff --ignore-submodules --quiet --exit-code \
-      || echo -n "${TEXT_YELLOW}*${TEXT_RESET}"
+      || echo -n "${YELLOW}*${NORMAL}"
 
     # staged hunks
     if git rev-parse --quiet --verify HEAD >/dev/null; then
       git diff-index --no-ext-diff --ignore-submodules --cached --exit-code HEAD --quiet \
-        || echo -n "${TEXT_GREEN}+${TEXT_RESET}"
+        || echo -n "${GREEN}+${NORMAL}"
     fi
 
     # untracked files
     if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-      echo -n "${TEXT_CYAN}?${TEXT_RESET}"
+      echo -n "${CYAN}?${NORMAL}"
     fi
 
     # stashed changes
-    git rev-parse --verify refs/stash >/dev/null 2>&1 && echo -n "${TEXT_PURPLE}\$${TEXT_RESET}"
+    git rev-parse --verify refs/stash >/dev/null 2>&1 && echo -n "${PURPLE}\$${NORMAL}"
   fi
 }
 
@@ -216,10 +200,12 @@ set_prompt(){
     SYM=''
   fi
 
-   P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
-#   P2="${TEXT_GREEN}\w${TEXT_RESET}$"
-   P2="$(__git_ps1) $(git_dirty_flag) $(previous_exit_status $previous) "
-   PS1="${P1}${P2}"
+   # P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
+   # P2="${TEXT_GREEN}\w ${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous)${TEXT_RESET} "
+   # PS1="${P1}${P2}"
+
+   PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL} $(__git_ps1)$(git_dirty_flag)$(previous_exit_status $previous) ${NORMAL} "
+
 }
 PROMPT_COMMAND=set_prompt
 
