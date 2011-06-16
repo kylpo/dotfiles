@@ -30,7 +30,7 @@ alias 9='rvm use 1.9.2'
 
 #from jtxx000 http://www.reddit.com/r/emacs/comments/hd3jm/from_my_bashrc_jump_to_emacss_current_directory/
 #cd to dir of current emacs buffer; SO cool!
-alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+#alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 #alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) default-directory)" | '"sed -E 's/(^\")|(\"$)//g')"
 
 
@@ -87,7 +87,7 @@ if [ "$OSNAME" = "Linux" ]; then
   alias o='xdg-open'
   #alias x2m='killall xmonad-i386-linux && metacity &'
   #alias m2x='killall metacity && xmonad &'
-  alias ec='emacsclient -n'
+  alias ec='emacsclient -c -nw'
   alias dropb='~/.dropbox-dist/dropboxd'
   alias lock='xscreensaver-command -lock'
   alias bak='rsync -arz --max-size='100k' ~/ /mnt/kp/bak/nb'
