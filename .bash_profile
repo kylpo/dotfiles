@@ -15,11 +15,11 @@ export GREP_OPTIONS='--color=auto'
 
 ####ALIASES
 if [ -f ~/.dotfiles/bash_aliases ]; then
-  . ~/.dotfiles/bash_aliases
+  . ~/.dotfiles/.bash_aliases
 fi
 
 if [ -f ~/.dotfiles/bash_aliases_secret ]; then
-  . ~/.dotfiles/bash_aliases_secret
+  . ~/.dotfiles/.bash_aliases_secret
 fi
 
 ####CONFIG
