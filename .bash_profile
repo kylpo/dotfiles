@@ -14,11 +14,11 @@ export GREP_OPTIONS='--color=auto'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 ####ALIASES
-if [ -f ~/.dotfiles/bash_aliases ]; then
+if [ -f ~/.dotfiles/.bash_aliases ]; then
   . ~/.dotfiles/.bash_aliases
 fi
 
-if [ -f ~/.dotfiles/bash_aliases_secret ]; then
+if [ -f ~/.dotfiles/.bash_aliases_secret ]; then
   . ~/.dotfiles/.bash_aliases_secret
 fi
 
@@ -274,8 +274,8 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -ne "${TEXT_RED}Networks: ${TEXT_LIGHTGRAY}"; netinfo
 #   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
 #   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
-   export TERM=xterm-256color
-    alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+  export TERM=xterm-256color
+  alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
    # Added by autojump install.sh
 #   source /etc/profile.d/autojump.bash
  fi
