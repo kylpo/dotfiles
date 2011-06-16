@@ -2,6 +2,7 @@
 set autocomplete=
 
 "colorscheme desert
+colorscheme zenburn
 
 " determine which tabs open with focus
 "set activate=addons,bookmarks,diverted,extoptions,help,homepage,quickmark
@@ -25,6 +26,13 @@ set autocomplete=
 
 " Disable some Pentadactyl default mappings
 nmap d <Nop>
+
+" C-g as cancel (C-q is stop) (except QuickHint mode, see below)
+cnoremap <C-g> <Esc>
+inoremap <C-g> <Esc>
+noremap <C-g> <Esc>
+vnoremap <C-g> <Esc>
+
 
 nmap x :tabclose<CR>
 vmap x :tabclose<CR>
