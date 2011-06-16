@@ -261,14 +261,14 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
      source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
    fi
 
-# elif [ "$OSNAME" = "Linux" ]; then
+elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
 #   echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
 #   echo -ne "${TEXT_RED}Uptime: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
 #   echo -ne "${TEXT_RED}Networks: ${TEXT_LIGHTGRAY}"; netinfo
 #   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
 #   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
-
+   export TERM=xterm-256color
    # Added by autojump install.sh
 #   source /etc/profile.d/autojump.bash
  fi
