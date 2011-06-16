@@ -30,6 +30,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -204,7 +209,7 @@ set_prompt(){
    # P2="${TEXT_GREEN}\w ${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous)${TEXT_RESET} "
    # PS1="${P1}${P2}"
 
-   PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL} $(__git_ps1)$(git_dirty_flag)$(previous_exit_status $previous) ${NORMAL} "
+   PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
 
 }
 PROMPT_COMMAND=set_prompt
@@ -255,13 +260,14 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -n "Networks: "; netinfo
 #   echo -n "Kernel: " `uname -smr`; echo ""
 #   echo  ""; df -lh
+    alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 
    if [ -f `brew --prefix`/etc/bash_completion ]; then
      . `brew --prefix`/etc/bash_completion
      source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
    fi
 
-elif [ "$OSNAME" = "Linux" ]; then
+ elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
 #   echo -ne "${TEXT_RED}Load: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $4" "$5" "$6}'|awk -F: '{print $2}'
 #   echo -ne "${TEXT_RED}Uptime: ${TEXT_LIGHTGRAY}"; uptime|awk -F, '{print $1}'|awk '{print $3" "$4}'
@@ -269,6 +275,7 @@ elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
 #   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
    export TERM=xterm-256color
+    alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
    # Added by autojump install.sh
 #   source /etc/profile.d/autojump.bash
  fi
