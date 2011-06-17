@@ -30,7 +30,7 @@ alias 9='rvm use 1.9.2'
 
 #from jtxx000 http://www.reddit.com/r/emacs/comments/hd3jm/from_my_bashrc_jump_to_emacss_current_directory/
 #cd to dir of current emacs buffer; SO cool!
-#alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 #alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) default-directory)" | '"sed -E 's/(^\")|(\"$)//g')"
 
 
@@ -106,7 +106,7 @@ elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   #mine
   alias mv='mv -nv'
   alias gs='growlnotify -s -m'
-  alias e='mvim'
+  # alias e='mvim'
   alias et='mvim --remote-tab'
   alias gx="gitx --all"
   alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'

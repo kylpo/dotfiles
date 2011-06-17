@@ -260,8 +260,8 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -n "Networks: "; netinfo
 #   echo -n "Kernel: " `uname -smr`; echo ""
 #   echo  ""; df -lh
-    alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
-    alias je='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+    #alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+    #alias je='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 
    if [ -f `brew --prefix`/etc/bash_completion ]; then
      . `brew --prefix`/etc/bash_completion
@@ -276,7 +276,7 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
 #   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
   export TERM=xterm-256color
-  alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+  #alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
    # Added by autojump install.sh
 #   source /etc/profile.d/autojump.bash
  fi
