@@ -13,6 +13,15 @@ alias proj='cd ~/Dropbox/school/netsys/hw\ \&\ projects/poolek_pa4_csci4273/'
 alias hack='cd ~/Dropbox/school/hack/'
 alias pl='cd ~/Dropbox/school/prog_lang/'
 alias unix='cd ~/Dropbox/school/unix/'
+alias 'up'='cd ..'
+alias 'up2'='cd ../..'
+alias 'up3'='cd ../../..'
+alias 'up4'='cd ../../../..'
+alias 'up5'='cd ../../../../..'
+alias 'up6'='cd ../../../../../..'
+alias 'up7'='cd ../../../../../../..'
+alias 'up8'='cd ../../../../../../../..'
+alias 'up9'='cd ../../../../../../../../..'
 
 alias mvn='~/.apache-maven-2.2.1/bin/mvn'
 
@@ -52,6 +61,8 @@ alias rrtags='ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor'
 alias g='grep -in'
 alias sp='spec -cfs -Du'
 alias spb='spec -bcfs -Du'
+alias ec='emacsclient -c -nw'
+
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -87,7 +98,6 @@ if [ "$OSNAME" = "Linux" ]; then
   alias o='xdg-open'
   #alias x2m='killall xmonad-i386-linux && metacity &'
   #alias m2x='killall metacity && xmonad &'
-  alias ec='emacsclient -c -nw'
   alias dropb='~/.dropbox-dist/dropboxd'
   alias lock='xscreensaver-command -lock'
   alias bak='rsync -arz --max-size='100k' ~/ /mnt/kp/bak/nb'
@@ -109,7 +119,7 @@ elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   # alias e='mvim'
   alias et='mvim --remote-tab'
   alias gx="gitx --all"
-  alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
+  # alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
 fi
 
 alias syn='synergyc 192.168.1.107'
