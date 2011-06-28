@@ -61,7 +61,7 @@ alias rrtags='ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor'
 alias g='grep -in'
 alias sp='spec -cfs -Du'
 alias spb='spec -bcfs -Du'
-alias ec='emacsclient -c -nw'
+alias ec='emacsclient'
 
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -119,7 +119,7 @@ elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   # alias e='mvim'
   alias et='mvim --remote-tab'
   alias gx="gitx --all"
-  # alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'
+  # alias ec='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient '
 fi
 
 alias syn='synergyc 192.168.1.107'
