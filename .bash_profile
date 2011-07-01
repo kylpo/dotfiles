@@ -7,6 +7,7 @@ export PGDATA=/usr/local/var/postgres
 export CI_TSDIR=$PGDATA
 # colorized grep
 export GREP_OPTIONS='--color=auto'
+
 #export GREP_COLOR='1;33'
 
 . ~/.dotfiles/secrets # api keys etc
@@ -269,6 +270,8 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
    fi
 
    alias updatebrew="brew install `brew outdated` && brew cleanup"
+   JAVA_HOME=/Library/Java/Home
+   export JAVA_HOME;
 
  elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
