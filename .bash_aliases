@@ -1,6 +1,6 @@
 #Networks
 alias server_ssh='ssh 192.168.1.106'
-alias servernfs='sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.1.106:/ /Volumes/'
+alias servernfs='sudo mount -t nfs4 -o proto=tcp,port=2049 192.168.1.110:/ /mnt/'
 
 #Navigation
 alias desktop="cd ~/Desktop"
