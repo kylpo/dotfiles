@@ -62,6 +62,7 @@ alias g='grep -in'
 alias sp='spec -cfs -Du'
 alias spb='spec -bcfs -Du'
 alias ec='emacsclient'
+alias ackr='ack --ruby'
 
 # Add an "alert" alias for long running commands.  Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
