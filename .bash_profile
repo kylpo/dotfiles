@@ -7,6 +7,7 @@ export PGDATA=/usr/local/var/postgres
 export CI_TSDIR=$PGDATA
 # colorized grep
 export GREP_OPTIONS='--color=auto'
+
 #export GREP_COLOR='1;33'
 
 . ~/.dotfiles/secrets # api keys etc
@@ -260,13 +261,17 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -n "Networks: "; netinfo
 #   echo -n "Kernel: " `uname -smr`; echo ""
 #   echo  ""; df -lh
-    alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
-    alias je='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+    #alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+    #alias je='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 
    if [ -f `brew --prefix`/etc/bash_completion ]; then
      . `brew --prefix`/etc/bash_completion
      source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
    fi
+
+   alias updatebrew="brew install `brew outdated` && brew cleanup"
+   JAVA_HOME=/Library/Java/Home
+   export JAVA_HOME;
 
  elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
@@ -276,7 +281,7 @@ export LS_COLORS="no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   echo -ne "${TEXT_RED}Kernel: ${TEXT_LIGHTGRAY}" `uname -smr`; echo ""
 #   echo -e "${TEXT_LIGHTGRAY}"; df -lhT
   export TERM=xterm-256color
-  alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
+  #alias jm='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
    # Added by autojump install.sh
 #   source /etc/profile.d/autojump.bash
  fi
