@@ -121,6 +121,15 @@ function ssh-setup {
   cat ~/.ssh/id_rsa.pub | ssh $1 'cat - >> ~/.ssh/authorized_keys'
 }
 
+function ranger-cd {
+  ranger --choosedir=/tmp/chosen
+  if [ -f /tmp/chosen -a "$(cat /tmp/chosen)" != "$(pwd | tr -d "\n")" ]; then
+    cd "$(cat /tmp/chosen)"
+  fi
+  rm -f /tmp/chosen
+}
+bind '"\C-o":"ranger-cd\C-m"'
+
 ####PROMPT
 #Help with colors https://wiki.archlinux.org/index.php/Color_Bash_Prompt#Example_bashrc_from_Gentoo
 BLACK='\[\033[0;30m\]' # Black - Regular
@@ -140,15 +149,8 @@ BRIGHTMAGENTA="\[\033[0;33;40m\]"
 
 previous_exit_status() {
   if [ $1 -eq 0 ]; then
-    # HEAVY ROUND-TIPPED RIGHTWARDS ARROW
-#    echo -n "▸"
-    # echo -n "➜"
-    #echo -n "•"
-    # echo -n "⧫"
     echo -n "\$"
   else
-    # HEAVY BALLOT X
-#    echo -n "${TEXT_RED}✘${TEXT_RESET}"
     echo -n "${RED}\$${NORMAL}"
   fi
 }
@@ -206,11 +208,7 @@ set_prompt(){
     SYM=''
   fi
 
-   # P1="${MAGENTA}${SYM}${TEXT_RESET}${TAB_NAME}${WINDOW_NAME}$(rvm-prompt v s g) "
-   # P2="${TEXT_GREEN}\w ${TEXT_RESET}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous)${TEXT_RESET} "
-   # PS1="${P1}${P2}"
-
-   PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
+  PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
 
 }
 PROMPT_COMMAND=set_prompt
