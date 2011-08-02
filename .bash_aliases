@@ -111,7 +111,7 @@ if [ "$OSNAME" = "Linux" ]; then
 elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   alias df='df -lh'
   alias ls='ls -G'
-  alias d='du -d 1'
+  #alias d='du -d 1'
   alias socksoff='networksetup -setsocksfirewallproxystate Airport off'
   alias sockson='networksetup -setsocksfirewallproxystate Airport on'
   alias bootmode_64bit='sudo systemsetup -setkernelbootarchitecture x86_64'
