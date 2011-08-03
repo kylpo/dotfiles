@@ -36,38 +36,10 @@ map <A-Down> :set go+=B<CR>
 map <A-Up> :set go-=B<CR>
 map <C-Right> :sidebar Bookmarks<CR>
 map <C-Left> :sbclose<CR>
-" nmap <A-h> <C-p>
-" vmap <A-h> <C-p>
-" map <A-h> <C-p>
-
-" nmap <A-l> :tabnext<CR>
-" vmap <A-l> :tabnext<CR>
-" map <A-l> :tabnext<CR>
-" nmap <M-h> <C-p>
-" vmap <M-h> <C-p>
-" map <M-h> <C-p>
-" nmap <M-l> :tabnext<CR>
-" vmap <M-l> :tabnext<CR>
-" map <M-l> :tabnext<CR>
-
-" map <A-h> <Nop>
-" nmap <A-l> <Nop>
-" map <A-h> :echo Hello<CR>
-" nmap <A-l> :echo Hello<CR>
-" map <A-H> :echo Hello<CR>
-" map <A-L> :echo Hello<CR>
-" map <A-Left> :echo Hello<CR>
-
-noremap <A-h> gT
-noremap <A-l> gt
-noremap <A-j> gT
-noremap <A-k> gt
-"noremap <J> gT
-"noremap <K> gt
-nmap <S-J> gT
-nmap <S-K> gt
 nmap <M-n> gt
 nmap <M-p> gT
+nmap <M-j> gT
+nmap <M-k> gt
 
 set newtab=all
 
@@ -96,10 +68,25 @@ javascript <<EOF
 EOF
 " }}}
 
-
-
 " Enable gmail-specific keybindings (disabled because this can bypassed with <C-Z>)
 "autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
+
+" @section Passkeys {{{
+" ******************************************************************************
+set passkeys=
+
+" DuckDuckGo
+set passkeys+="https://duckduckgo\.com/":jkv
+
+" Gmail
+set passkeys+="https://mail\.google\.com/":jkg
+
+" Google Calendar
+set passkeys+="https://www\.google\.com/calendar":jkgt12345qrcnp
+
+" Twitter
+set passkeys+="https://twitter\.com/":jkg/?.nrm
+" }}}
 
 " Noscript
 map <C-c>s :noscript toggletemp<CR>
