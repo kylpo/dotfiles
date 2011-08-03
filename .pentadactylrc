@@ -1,7 +1,6 @@
 " Turn off auto-autocompletion (press tab to see autocompletions)
 set autocomplete=
 
-"colorscheme desert
 colorscheme zenburn
 
 " determine which tabs open with focus
@@ -9,9 +8,6 @@ colorscheme zenburn
 
 " pentadactyl gui options
  set go=rbCs
-
-" Editor, C-e invokes it in text fields
-"set editor="emacsclient -c"
 
 " Show destination links in 1=status line, 2=command line
 " set showstatuslinks=2
@@ -32,7 +28,6 @@ cnoremap <C-g> <Esc>
 inoremap <C-g> <Esc>
 noremap <C-g> <Esc>
 vnoremap <C-g> <Esc>
-
 
 nmap x :tabclose<CR>
 vmap x :tabclose<CR>
@@ -103,14 +98,8 @@ EOF
 
 
 
-" {{{ Enable gmail-specific keybindings (disabled because this can bypassed with <C-Z>)
-"
-" autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
-"
-" }}}
-
-" {{{ Plugin bindings
-"
+" Enable gmail-specific keybindings (disabled because this can bypassed with <C-Z>)
+"autocmd LocationChange .* :js modes.passAllKeys = /mail\.google\.com|www\.google\.com\/reader\/view/.test(buffer.URL)
 
 " Noscript
 map <C-c>s :noscript toggletemp<CR>
@@ -118,8 +107,17 @@ map <C-c>S :noscript popup<CR>
 
 " TinyURL
 " map <C-c>t :exe ":tinyurl "+getBrowser().contentWindow.location.href<CR>
-" }}}
-" }}}
 
 :hi Hint font-family: Verdana; font-size: 12px; font-weight: bold; color:white; background-color: red;
 "border-color: ButtonShadow; border-width: 0px;border-style: solid; padding: 0px 1px 0px 1px;
+
+" @section Custom commands {{{
+" ******************************************************************************
+command! jstoggle :js (function() { var p = "javascript.enabled"; prefs.set(p, !prefs.get(p)); dactyl.echo(p+" is now set to "+prefs.get(p)+"\n") })()
+command! read :open javascript:function%20iptxt(){var%20d=document;try{if(!d.body)throw(0);window.location='http://www.instapaper.com/text?u='+encodeURIComponent(d.location.href);}catch(e){alert('Please%20wait%20until%20the%20page%20has%20loaded.');}}iptxt();void(0)
+command! delicious :open javascript:(function(){f='http://www.delicious.com/save?url='+encodeURIComponent(window.location.href)+'&title='+encodeURIComponent(document.title)+'&v=5&';a=function(){if(!window.open(f+'noui=1&jump=doclose','deliciousuiv5','location=yes,links=no,scrollbars=no,toolbar=no,width=550,height=550'))location.href=f+'jump=yes'};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})()
+command! valid :open javascript:void(location='http://validator.w3.org/check?uri='+escape(location))
+command! firebug :open javascript:(function(F,i,r,e,b,u,g,L,I,T,E){if(F.getElementById(b))return;E=F[i+'NS']&&F.documentElement.namespaceURI;E=E?F[i+'NS'](E,'script'):F[i]('script');E[r]('id',b);E[r]('src',I+g+T);E[r](b,u);(F[e]('head')[0]||F[e]('body')[0]).appendChild(E);E=new%20Image;E[r]('src',I+L);})(document,'createElement','setAttribute','getElementsByTagName','FirebugLite','4','firebug-lite.js','releases/lite/latest/skin/xp/sprite.png','https://getfirebug.com/','#startOpened');
+command! ghfinder :open javascript:(function(){var%20a=(new%20RegExp("github.com/(.+)","i")).exec(window.location.href);var%20f=a?a[1].split("/"):[];var%20b=f[0];var%20d=f[1];var%20e=f[3];var%20c="http://sr3d.github.com/GithubFinder/?utm_source=bml"+(a?"&user_id="+b+"&repo="+d+(e?"&branch="+e:""):"");if(!c){alert("Invalid%20Github%20URL");return}window.open(c)})()
+command! wirify :open javascript:(function(){wf_bookmarklet='1.1';if(typeof%20wfInit=='undefined'){document.body.appendChild(document.createElement('script')).src=(document.location.protocol=='https:'?'https:':'http:')+'//www.volkside.com/tools/wirify/wirify.min.js?'+parseInt(new%20Date().getTime()/43200000);}else{wfInit();}})();
+" }}}
