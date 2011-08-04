@@ -40,6 +40,10 @@ nmap <M-n> gt
 nmap <M-p> gT
 nmap <M-j> gT
 nmap <M-k> gt
+nmap <A-n> gt
+nmap <A-p> gT
+nmap <A-Right> gt
+nmap <A-Left> gT
 
 set newtab=all
 
