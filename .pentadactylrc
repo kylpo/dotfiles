@@ -44,6 +44,8 @@ nmap <A-n> gt
 nmap <A-p> gT
 nmap <A-Right> gt
 nmap <A-Left> gT
+nmap <C-S-t> :tabnew<CR>
+nmap <C-w> :tabclose<CR>
 
 set newtab=all
 
