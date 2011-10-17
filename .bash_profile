@@ -5,8 +5,13 @@
 export PATH=/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/:~/spideroak/scripts/:/usr/lib/postgresql/9.0/bin:
 export PGDATA=/usr/local/var/postgres
 export CI_TSDIR=$PGDATA
+export M2_HOME=~/.apache-maven-2.2.1/
+export M2=$M2_HOME/bin
 # colorized grep
 export GREP_OPTIONS='--color=auto'
+# enable rubygems by default
+RUBYOPT="rubygems"
+export RUBYOPT
 
 #export GREP_COLOR='1;33'
 
@@ -270,6 +275,10 @@ export LS_COLORS="no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
    alias updatebrew="brew install `brew outdated` && brew cleanup"
    JAVA_HOME=/Library/Java/Home
    export JAVA_HOME;
+   export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
+   export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
+   export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
+   export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.4.2.2/jars"
 
  elif [ "$OSNAME" = "Linux" ]; then
 #   echo -ne "${TEXT_RED}Today: ${TEXT_LIGHTGRAY}" && date +'%A %B %e'
