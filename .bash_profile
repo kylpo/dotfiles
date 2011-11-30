@@ -17,24 +17,35 @@ export RUBYOPT
 
 . ~/.dotfiles/secrets # api keys etc
 
+# osx has which -s, but centos doesn't
+which brew >/dev/null 2>&1 && test -f `brew --prefix`/etc/bash_completion && {
+. `brew --prefix`/etc/bash_completion
+   }
+
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 ####ALIASES
 if [ -f ~/.dotfiles/.bash_aliases ]; then
-  . ~/.dotfiles/.bash_aliases
+    . ~/.dotfiles/.bash_aliases
 fi
 
 if [ -f ~/.dotfiles/.bash_aliases_secret ]; then
-  . ~/.dotfiles/.bash_aliases_secret
+    . ~/.dotfiles/.bash_aliases_secret
+fi
+
+#### NVM node.js
+if [ -f ~/.nvm/nvm.sh ]; then
+    . ~/.nvm/nvm.sh
 fi
 
 ####CONFIG
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
-fi
+# if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  # . /etc/bash_completion
+# fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -267,12 +278,14 @@ export LS_COLORS="no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
     #alias jm='cd $(/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
     #alias je='cd $(emacsclient -e "(with-current-buffer (window-buffer (frame-selected-window)) (expand-file-name default-directory))" | '"sed -E 's/(^\")|(\"$)//g')"
 
-   if [ -f `brew --prefix`/etc/bash_completion ]; then
-     . `brew --prefix`/etc/bash_completion
-     source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
-   fi
+   # if [ -f `brew --prefix`/etc/bash_completion ]; then
+     # . `brew --prefix`/etc/bash_completion
+     # source `brew --prefix git`/etc/bash_completion.d/git-completion.bash #git tab-completion
+   # fi
 
-   alias updatebrew="brew install `brew outdated` && brew cleanup"
+
+
+   alias updatebrew='brew install `brew outdated` && brew cleanup'
    JAVA_HOME=/Library/Java/Home
    export JAVA_HOME;
    export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home"
@@ -293,3 +306,9 @@ export LS_COLORS="no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 #   source /etc/profile.d/autojump.bash
  fi
 
+# ----- load up work script / bash functions ----- #
+test -f ~/work/ci_environment.sh && {
+  . ~/work/ci_environment.sh
+}
+
+# true # last command should have a zero exit code!
