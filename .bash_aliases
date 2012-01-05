@@ -56,7 +56,7 @@ alias rrtags='ctags-exuberant -a -e -f TAGS --tag-relative -R app lib vendor'
 alias g='grep -in'
 #alias sp='spec -cfs -Du'
 #alias spb='spec -bcfs -Du'
-alias ec='emacsclient'
+alias ec='emacsclient -n'
 alias ackr='ack --ruby'
 alias gst='git status'
 alias gco='git checkout'
@@ -119,7 +119,7 @@ elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   #mine
   alias mv='mv -nv'
   #alias gs='growlnotify -s -m'
-  alias e='mvim'
+  # alias e='mvim'
   alias et='mvim --remote-tab'
   alias gx="gitx --all"
 fi
@@ -159,3 +159,13 @@ fi
   # echo Pushups \(5m\)
   # echo #
 # '
+#
+# taken from https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+alias whois="whois -h whois-servers.net"

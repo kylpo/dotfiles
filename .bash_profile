@@ -2,18 +2,17 @@
 #and https://github.com/aniero/dotfiles/blob/master/bash_profile
 
 ####PATHS
-export PATH=/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/:~/spideroak/scripts/:/usr/lib/postgresql/9.0/bin:
+export PATH=~/doctorjs/bin:/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/:~/spideroak/scripts/:/usr/lib/postgresql/9.0/bin:
 export PGDATA=/usr/local/var/postgres
 export CI_TSDIR=$PGDATA
 export M2_HOME=~/.apache-maven-2.2.1/
 export M2=$M2_HOME/bin
 # colorized grep
 export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;33'
 # enable rubygems by default
 RUBYOPT="rubygems"
 export RUBYOPT
-
-#export GREP_COLOR='1;33'
 
 . ~/.dotfiles/secrets # api keys etc
 
@@ -38,6 +37,7 @@ fi
 if [ -f ~/.nvm/nvm.sh ]; then
     . ~/.nvm/nvm.sh
 fi
+export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
 
 ####CONFIG
 # enable programmable completion features (you don't need to enable
@@ -99,6 +99,11 @@ else
   mvim .
   # echo "specify a directory to edit"
 fi
+}
+
+# edit file with root privs
+function E() {
+  emacsclient -c -a emacs "/sudo:root@localhost:$1"
 }
 
 pkill() {
@@ -202,18 +207,18 @@ git_dirty_flag() {
   fi
 }
 
-if [[ $TERM_PROGRAM == 'iTerm.app' || $TERM == 'xterm' ]]; then
-  # 0 means both tab and window, 1 is tab, 2 is window
-  # see:
-  # http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss4.3
-  # http://www.mit.edu/afs/athena/system/x11r4/src/mit/clients/xterm/ctlseq2.txt via
-  # http://ubuntuforums.org/archive/index.php/t-448614.html
-  TAB_NAME='\[\e]1;\w\a\]'
-  WINDOW_NAME='\[\e]2;\u@\h:\w\a\]'
-else
-  TAB_NAME=''
-  WINDOW_NAME=''
-fi
+# if [[ $TERM_PROGRAM == 'iTerm.app' || $TERM == 'xterm' ]]; then
+  # # 0 means both tab and window, 1 is tab, 2 is window
+  # # see:
+  # # http://www.faqs.org/docs/Linux-mini/Xterm-Title.html#ss4.3
+  # # http://www.mit.edu/afs/athena/system/x11r4/src/mit/clients/xterm/ctlseq2.txt via
+  # # http://ubuntuforums.org/archive/index.php/t-448614.html
+  # TAB_NAME='\[\e]1;\w\a\]'
+  # WINDOW_NAME='\[\e]2;\u@\h:\w\a\]'
+# else
+  # TAB_NAME=''
+  # WINDOW_NAME=''
+# fi
 
 set_prompt(){
   previous=$?;
@@ -223,10 +228,12 @@ set_prompt(){
   else
     SYM=''
   fi
+  #\\033]0;${PWD/#$HOME/~}\\007 ----- Label tab
 
-  PS1="$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
+  PS1="\\033]0;${PWD/#$HOME/~}\\007$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
 
 }
+
 PROMPT_COMMAND=set_prompt
 
 # a     black
@@ -267,6 +274,9 @@ export LS_COLORS="no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd
 
 
 ################COLORS
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
 
 #### OS SPECIFIC
  OSNAME=`uname`
@@ -311,4 +321,7 @@ test -f ~/work/ci_environment.sh && {
   . ~/work/ci_environment.sh
 }
 
+wo() { cd ~/work/$1; }
+pr() { cd ~/proj/$1; }
 # true # last command should have a zero exit code!
+

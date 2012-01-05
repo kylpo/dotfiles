@@ -1,5 +1,5 @@
 # anrxc's screen init file on Arch GNU/Linux
-
+termcapinfo xterm ti@:te@ #page-up/down
 vbell off                         # no bell
 autodetach on                     # detach on hangup
 startup_message off               # don't display the copyright page
