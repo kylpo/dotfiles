@@ -17,9 +17,9 @@ export RUBYOPT
 . ~/.dotfiles/secrets # api keys etc
 
 # osx has which -s, but centos doesn't
-which brew >/dev/null 2>&1 && test -f `brew --prefix`/etc/bash_completion && {
-. `brew --prefix`/etc/bash_completion
-   }
+which brew >/dev/null 2>&1 && test -d `brew --prefix`/etc/bash_completion.d && {
+  . `brew --prefix`/etc/bash_completion.d/*
+}
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
@@ -230,7 +230,8 @@ set_prompt(){
   fi
   #\\033]0;${PWD/#$HOME/~}\\007 ----- Label tab
 
-  PS1="\\033]0;${PWD/#$HOME/~}\\007$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
+  # PS1="\\033]0;${PWD/#$HOME/~}\\007$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
+  PS1="\\007$(rvm-prompt v s g) ${GREEN}\w${NORMAL}$(__git_ps1)$(git_dirty_flag) $(previous_exit_status $previous) ${NORMAL}"
 
 }
 
@@ -278,6 +279,19 @@ if [ -f `brew --prefix`/etc/autojump ]; then
   . `brew --prefix`/etc/autojump
 fi
 
+#------------------------------------------////
+#       Color Manpages
+#------------------------------------------////
+
+export LESS_TERMCAP_mb=$'\E[01;31m'             # begin blinking
+export LESS_TERMCAP_md=$'\E[01;31m'             # begin bold
+export LESS_TERMCAP_me=$'\E[0m'                 # end mode
+export LESS_TERMCAP_se=$'\E[0m'                 # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44;33m'          # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'                 # end underline
+export LESS_TERMCAP_us=$'\E[01;32m'             # begin underline
+#export MANPAGER="/usr/bin/most -s"             # color using most
+
 #### OS SPECIFIC
  OSNAME=`uname`
  if [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
@@ -324,4 +338,3 @@ test -f ~/work/ci_environment.sh && {
 wo() { cd ~/work/$1; }
 pr() { cd ~/proj/$1; }
 # true # last command should have a zero exit code!
-
