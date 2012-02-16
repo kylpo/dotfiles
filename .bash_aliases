@@ -20,7 +20,7 @@ alias 'up7'='cd ../../../../../../..'
 alias 'up8'='cd ../../../../../../../..'
 alias 'up9'='cd ../../../../../../../../..'
 
-alias mvn='~/.apache-maven-2.2.1/bin/mvn'
+# alias mvn='~/.apache-maven-2.2.1/bin/mvn'
 
 # some ls aliases
 alias l='ls -l'
@@ -64,7 +64,8 @@ alias gP='git push'
 alias gF='git pull'
 alias vt='vim --remote-tab'
 alias vie='vim -u NONE'
-#alias e='vim'
+alias e='emacs -nw'
+alias em="emacs -Q -nw -l ~/.emacs.d/minimal-init.el"
 
 ####OS Specific
 OSNAME=`uname`

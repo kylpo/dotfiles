@@ -5,7 +5,7 @@
 export PATH=~/doctorjs/bin:/usr/local/bin:$PATH:~/work/git_support/bin:~/Dropbox/scripts/:~/spideroak/scripts/:/usr/lib/postgresql/9.0/bin:
 export PGDATA=/usr/local/var/postgres
 export CI_TSDIR=$PGDATA
-export M2_HOME=~/.apache-maven-2.2.1/
+export M2_HOME=/usr/local/Cellar/maven/3.0.4/libexec
 export M2=$M2_HOME/bin
 # colorized grep
 export GREP_OPTIONS='--color=auto'
@@ -17,9 +17,13 @@ export RUBYOPT
 . ~/.dotfiles/secrets # api keys etc
 
 # osx has which -s, but centos doesn't
-which brew >/dev/null 2>&1 && test -d `brew --prefix`/etc/bash_completion.d && {
-  . `brew --prefix`/etc/bash_completion.d/*
-}
+# which brew >/dev/null 2>&1 && test -d `brew --prefix`/etc/bash_completion.d && {
+  # . `brew --prefix`/etc/bash_completion.d/*
+# }
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
@@ -56,12 +60,16 @@ esac
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=10000
+#from Erik
+# HISTTIMEFORMAT=%Y%m%d %H:%M:%S #add timestamp
+# shopt -s cmdhist
+# shopt -s lithist
+# shopt -s histappend histreedit histverify
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+# shopt -s histappend
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -338,3 +346,7 @@ test -f ~/work/ci_environment.sh && {
 wo() { cd ~/work/$1; }
 pr() { cd ~/proj/$1; }
 # true # last command should have a zero exit code!
+
+# if [ -f /etc/profile ]; then
+  # . /etc/profile
+# fi
