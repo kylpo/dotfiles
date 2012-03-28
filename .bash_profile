@@ -29,12 +29,12 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
 ####ALIASES
-if [ -f ~/.dotfiles/.bash_aliases ]; then
-    . ~/.dotfiles/.bash_aliases
+if [ -f ~/.aliasrc ]; then
+    . ~/.aliasrc
 fi
 
-if [ -f ~/.dotfiles/.bash_aliases_secret ]; then
-    . ~/.dotfiles/.bash_aliases_secret
+if [ -f ~/.aliasrc_secret ]; then
+    . ~/.aliasrc_secret
 fi
 
 #### NVM node.js
@@ -350,3 +350,50 @@ pr() { cd ~/proj/$1; }
 # if [ -f /etc/profile ]; then
   # . /etc/profile
 # fi
+
+#=keybinds
+set -o vi
+
+# from http://limestone.truman.edu/~dbindner/mirror/bash_bindings.txt
+# For those who want to use Vi bindings in bash, this corrects a
+# few annoyances:
+#
+# 1) up and down arrows retrieve history lines even in insert mode
+# 2) left and right arrows work in insert mode
+# 3) Ctrl-A and Ctrl-E work how you expect if you have had to
+#    live in Emacs mode in the past.
+# 4) So does Ctrl-D.
+
+## Command-mode bindings
+# up arrow or PgUp: append to previous history line
+ bind -m vi-command '"[A": "kA"'
+ bind -m vi-command '"[5~": "kA"'
+# dn arrow or PgDn: append to next history line
+ bind -m vi-command '"[B": "jA"'
+ bind -m vi-command '"[6~": "jA"'
+# rt arrow: space then append (doesn't work right at column 1)
+ bind -m vi-command '"[C": "\ a"'
+# lt arrow: insert before this char
+ bind -m vi-command '"[D": vi-insertion-mode'
+# Ctrl-A or Home: insert at line beginning like in emacs mode
+ bind -m vi-command 'Control-a: vi-insert-beg'
+ bind -m vi-command '"[7~": vi-insert-beg'
+# Ctrl-E or End: append at line end like in emacs mode
+ bind -m vi-command 'Control-e: vi-append-eol'
+ bind -m vi-command '"[8~": vi-append-eol'
+# to switch to emacs editing mode
+ bind -m vi-command '"ZZ": emacs-editing-mode'
+
+## Insert-mode bindings
+# Ctrl-A: insert at line start like in emacs mode
+ bind -m vi-insert 'Control-a: beginning-of-line'
+# Ctrl-E: append at line end like in emacs mode
+ bind -m vi-insert 'Control-e: end-of-line'
+# Ctrl-D: delete character
+ bind -m vi-insert 'Control-d: delete-char'
+# Ctrl-L: clear screen
+ bind -m vi-insert 'Control-l: clear-screen'
+
+## Emacs bindings
+# Meta-V: go back to vi editing
+ # bind -m emacs '"\ev": vi-editing-mode'i
