@@ -127,6 +127,9 @@ elif [ "$OSNAME" = "Darwin" ] || [ "$OSNAME" = "FreeBSD" ]; then
   # alias e='mvim'
   alias et='mvim --remote-tab'
   alias gx="gitx --all"
+  alias t='todo.sh'
+  alias r='ranger-cd'
+  alias v='vifm'
 fi
 
 # alias syn='synergyc 192.168.1.107'

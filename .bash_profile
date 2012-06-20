@@ -352,7 +352,7 @@ pr() { cd ~/proj/$1; }
 # fi
 
 #=keybinds
-set -o vi
+# set -o vi
 
 # from http://limestone.truman.edu/~dbindner/mirror/bash_bindings.txt
 # For those who want to use Vi bindings in bash, this corrects a
@@ -364,36 +364,46 @@ set -o vi
 #    live in Emacs mode in the past.
 # 4) So does Ctrl-D.
 
-## Command-mode bindings
-# up arrow or PgUp: append to previous history line
- bind -m vi-command '"[A": "kA"'
- bind -m vi-command '"[5~": "kA"'
-# dn arrow or PgDn: append to next history line
- bind -m vi-command '"[B": "jA"'
- bind -m vi-command '"[6~": "jA"'
-# rt arrow: space then append (doesn't work right at column 1)
- bind -m vi-command '"[C": "\ a"'
-# lt arrow: insert before this char
- bind -m vi-command '"[D": vi-insertion-mode'
-# Ctrl-A or Home: insert at line beginning like in emacs mode
- bind -m vi-command 'Control-a: vi-insert-beg'
- bind -m vi-command '"[7~": vi-insert-beg'
-# Ctrl-E or End: append at line end like in emacs mode
- bind -m vi-command 'Control-e: vi-append-eol'
- bind -m vi-command '"[8~": vi-append-eol'
-# to switch to emacs editing mode
- bind -m vi-command '"ZZ": emacs-editing-mode'
+# ## Command-mode bindings
+# # up arrow or PgUp: append to previous history line
+#  bind -m vi-command '"[A": "kA"'
+#  bind -m vi-command '"[5~": "kA"'
+# # dn arrow or PgDn: append to next history line
+#  bind -m vi-command '"[B": "jA"'
+#  bind -m vi-command '"[6~": "jA"'
+# # rt arrow: space then append (doesn't work right at column 1)
+#  bind -m vi-command '"[C": "\ a"'
+# # lt arrow: insert before this char
+#  bind -m vi-command '"[D": vi-insertion-mode'
+# # Ctrl-A or Home: insert at line beginning like in emacs mode
+#  bind -m vi-command 'Control-a: vi-insert-beg'
+#  bind -m vi-command '"[7~": vi-insert-beg'
+# # Ctrl-E or End: append at line end like in emacs mode
+#  bind -m vi-command 'Control-e: vi-append-eol'
+#  bind -m vi-command '"[8~": vi-append-eol'
+# # to switch to emacs editing mode
+#  bind -m vi-command '"ZZ": emacs-editing-mode'
 
-## Insert-mode bindings
-# Ctrl-A: insert at line start like in emacs mode
- bind -m vi-insert 'Control-a: beginning-of-line'
-# Ctrl-E: append at line end like in emacs mode
- bind -m vi-insert 'Control-e: end-of-line'
-# Ctrl-D: delete character
- bind -m vi-insert 'Control-d: delete-char'
-# Ctrl-L: clear screen
- bind -m vi-insert 'Control-l: clear-screen'
+# ## Insert-mode bindings
+# # Ctrl-A: insert at line start like in emacs mode
+#  bind -m vi-insert 'Control-a: beginning-of-line'
+# # Ctrl-E: append at line end like in emacs mode
+#  bind -m vi-insert 'Control-e: end-of-line'
+# # Ctrl-D: delete character
+#  bind -m vi-insert 'Control-d: delete-char'
+# # Ctrl-L: clear screen
+#  bind -m vi-insert 'Control-l: clear-screen'
 
-## Emacs bindings
-# Meta-V: go back to vi editing
- # bind -m emacs '"\ev": vi-editing-mode'i
+# # Ctrl-p: search in previous history
+# bind 'Control-p: history-search-backward'
+# bind -m vi-insert 'Control-p: history-search-backward'
+# bind -m vi-command 'Control-p: history-search-backward'
+
+# # Ctrl-n: search in next history
+# bind 'Control-n: history-search-forward'
+# bind -m vi-insert 'Control-n: history-search-forward'
+# bind -m vi-command 'Control-n: history-search-forward'
+
+# ## Emacs bindings
+# # Meta-V: go back to vi editing
+#  # bind -m emacs '"\ev": vi-editing-mode'i
