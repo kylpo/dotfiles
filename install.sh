@@ -1,0 +1,22 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+echo $DIR
+
+cd ~
+
+[[ ! -s ~/.agignore ]] && ln -s $DIR/agignore ~/.agignore
+[[ ! -s ~/.zprofile ]] && ln -s $DIR/zprofile ~/.zprofile
+[[ ! -s ~/.gitconfig ]] && ln -s $DIR/gitconfig ~/.gitconfig
+[[ ! -s ~/.hyperterm.js ]] && ln -s $DIR/hyperterm.js ~/.hyperterm.js
+
+[[ ! -s ~/.vim ]] && ln -s $DIR/vim ~/.vim
+# [[ ! -s ~/.vimrc ]] && ln -s $DIR/vimrc ~/.vimrc
+# [[ ! -s ~/.tmux.conf ]] && ln -s $DIR/tmux.conf ~/.tmux.conf
+# [[ ! -s ~/.oh-my-zsh ]] && ln -s $DIR/oh-my-zsh ~/.oh-my-zsh
+# [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
+# [[ ! -s ~/.bin ]] && ln -s $DIR/bin ~/.bin
+
+[[ ! -s ~/.config ]] && mkdir ~/.config
+[[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
+#[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline

@@ -1,6 +1,6 @@
 [user]
-	name = kylpo
-	email = 2kylepoole@gmail.com
+  name = Kyle Poole
+  email = 2kylepoole@gmail.com
 [alias]
   co = checkout
   st = status
@@ -8,6 +8,10 @@
   br = branch
   pom = push origin master
   w = whatchanged
+  lgd = log --graph --decorate
+  undo = reset --soft HEAD^
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	clean-branches = !git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs -n 1 git branch -d
 [color]
   diff = auto
   status = auto
@@ -15,8 +19,8 @@
   ui = auto
 [core]
   excludesfile = /Users/kp/.gitignore
-  editor = emacsclient -n
-  #editor = mvim
+  #editor = emacsclient
+  editor = vim
   autocrlf = input
 [apply]
   whitespace = fix
@@ -28,14 +32,17 @@
   default = tracking
 [branch]
   autosetuprebase = always
-[mergetool "ediff"]
-  cmd = emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
-  trustExitCode = true
-[mergetool]
-  prompt = false
+#[mergetool "ediff"]
+  #cmd = /Applications/Emacs.app/Contents/MacOS/bin/emacsclient --eval \"(git-mergetool-emacsclient-ediff \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\")\"
+  #trustExitCode = true
+#[mergetool]
+  #prompt = false
 [merge]
-  tool = ediff
- # tool = vimdiff
+  #tool = ediff
+  tool = vimdiff
 [diff]
-  #tool = vimdiff
-  tool = ediff
+  tool = vimdiff
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
