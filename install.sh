@@ -1,8 +1,8 @@
 #!/bin/bash
+set -e
+
 DIR="$( cd "$( dirname "$0" )" && pwd )"
-
 echo $DIR
-
 cd ~
 
 [[ ! -s ~/.agignore ]] && ln -s $DIR/agignore ~/.agignore
@@ -17,6 +17,13 @@ cd ~
 # [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
 # [[ ! -s ~/.bin ]] && ln -s $DIR/bin ~/.bin
 
+echo -n "Linking nvim "
 [[ ! -s ~/.config ]] && mkdir ~/.config
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
+echo "done."
+
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
+
+echo -n "Installing plugins... "
+command nvim +PlugInstall +qall
+echo "done."
