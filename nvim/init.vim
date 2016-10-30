@@ -419,6 +419,8 @@ set t_Co=256
 
 
 
+" Auto-source vimrc on save
+autocmd bufwritepost init.vim source $MYVIMRC
 
 
 
