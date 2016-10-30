@@ -24,7 +24,7 @@ call plug#begin()
 " ==============================================================================
 " Editor
 " ==============================================================================
-Plug 'tpope/vim-sensible'             " Sensible defaults
+"Plug 'tpope/vim-sensible'             " Sensible defaults
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
 Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
@@ -262,7 +262,7 @@ if v:version > 703 || v:version == 703 && has('patch541')
 endif
 
 set formatoptions+=n                  " smart auto-indenting inside numbered lists
-set guifont=Source\ Code\ Pro\ Light:h13
+" set guifont=Source\ Code\ Pro\ Light:h13
 set guioptions-=T                     " don't show toolbar
 set hidden                            " allows you to hide buffers with unsaved changes without being prompted
 set highlight+=@:ColorColumn          " ~/@ at end of window, 'showbreak'
@@ -290,6 +290,7 @@ if exists('+relativenumber')
 endif
 
 set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+set sidescrolloff=3                   " same as scrolloff, but for columns
 set shiftround                        " always indent by multiple of shiftwidth
 set shiftwidth=2                      " spaces per tab (when shifting)
 set shortmess+=A                      " ignore annoying swapfile messages
@@ -309,8 +310,8 @@ if has('showcmd')
   set showcmd                         " extra info at end of command line
 endif
 
-set sidescrolloff=3                   " same as scrolloff, but for columns
 set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
+set tabstop=2                         " spaces per tab
 
 if v:progname !=# 'vi'
   set softtabstop=-1                  " use 'shiftwidth' for tab/bs at end of line
@@ -330,7 +331,6 @@ endif
 
 "set swapsync=                         " let OS sync swapfiles lazily
 set switchbuf=usetab                  " try to reuse windows/tabs when switching buffers
-set tabstop=2                         " spaces per tab
 
 if has('termguicolors')
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
@@ -680,10 +680,11 @@ nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 
 " Window and split navigation
-map <C-j> <c-w>j
-map <C-k> <c-w>k
-map <C-l> <c-w>l
-map <C-h> <c-w>h
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nmap <c-Tab> :tabnext<Cr>
 nmap <c-S-Tab> :tabprev<Cr>
 nmap <D->> :vertical resize +10<CR>
