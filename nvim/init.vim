@@ -33,12 +33,8 @@ Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer wit
 Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
 Plug 'milkypostman/vim-togglelist'    " Allows binding key to toggle location and quickfix lists
 Plug 'scrooloose/nerdtree'
-" Plug 'jordwalke/vim-airline'
 Plug 'itchyny/lightline.vim'
 Plug 'jordwalke/VimSplitBalancer'     " window manager
-
-" Make sure to have `set guioptions+=e` in your `.gvimrc`.
-"Plug 'jordwalke/MacVimSmartGUITabs'
 
 
 " ==============================================================================
@@ -48,31 +44,6 @@ Plug 'jordwalke/VimCleanColors'       " Colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'quanganhdo/grb256'
 Plug 'chriskempson/base16-vim'
-
-" Plug 'mhartington/oceanic-next'
-" syntax enable
-" set t_Co=256
-" colorscheme OceanicNext
-" set background=dark
-"
-" let g:airline_theme='oceanicnext'
-" " enable italics, disabled by default
-" let g:oceanic_next_terminal_italic = 1
-"
-" " enable bold, disabled by default
-" let g:oceanic_next_terminal_bold = 1
-
-" Plug 'bcicen/vim-vice'
-" colorscheme vice
-
-" Plug 'jnurmine/Zenburn'
-
-" Plug 'w0ng/vim-hybrid'
-" let g:hybrid_custom_term_colors = 1
-" let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-
-
-" Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
 
 
 " ==============================================================================
@@ -128,6 +99,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'haya14busa/incsearch.vim'
 Plug 'wincent/loupe'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Plug 'gabesoft/vim-ags'
 " Plug 'rking/ag.vim'
 Plug 'wincent/ferret' " Search and Replace in project
@@ -337,6 +309,7 @@ if has('termguicolors')
 endif
 
 set textwidth=80                      " automatically hard wrap at 80 columns
+" set cc=+1
 
 " if has('persistent_undo')
 "   if exists('$SUDO_USER')
@@ -890,7 +863,12 @@ nmap <Leader>a <Plug>(EasyAlign)
 " nnoremap <Leader>/ :LustyBufferGrep<CR>
 
 " open file under cursor
-nmap <Leader>f :CtrlP<CR><C-\>w
+" nmap <Leader>f :CtrlP<CR><C-\>w
+nmap <Leader>f :FZF<CR>
+nmap <Leader>F :FZF<CR><C-\>w
+nmap <Leader>b :Buffers<CR>
+
+nmap <Leader>/ gcc
 
 " <Leader>p -- Show the path of the current file (mnemonic: path; useful when
 " you have a lot of splits and the status line gets truncated).
