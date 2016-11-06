@@ -16,8 +16,6 @@ alias weather="curl -4 wttr.in"
 
 alias rm=trash
 
-alias vi=nvim
-
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7
 function fg-bg() {
@@ -33,6 +31,18 @@ bindkey '^Z' fg-bg
 
 cd () {
   builtin cd $@ && ls -aG
+}
+
+# open nvim
+v () {
+  if [ $# -eq 0 ]
+  then
+    # open current directory
+    nvim .
+  else
+    # open argument
+    nvim $1
+  fi
 }
 
 
@@ -60,6 +70,7 @@ export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export MYVIMRC='~/.config/nvim/init.vim'
+export EDITOR=nvim
 
 export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
 

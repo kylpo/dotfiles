@@ -44,6 +44,7 @@ Plug 'jordwalke/VimCleanColors'       " Colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'quanganhdo/grb256'
 Plug 'chriskempson/base16-vim'
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 
 
 " ==============================================================================
@@ -553,11 +554,11 @@ let g:Gitv_DoNotMapCtrlKey = 1
 
 
 " ==============================================================================
-" Syntaxes
-" ==============================================================================
+" Syntaxes ==============================================================================
 let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.json set filetype=json
 let g:syntastic_json_checkers=['jsonlint']
+let g:javascript_plugin_flow = 1
 
 
 " ==============================================================================
@@ -619,6 +620,12 @@ endif
 " ==============================================================================
 " KEYBINDINGS
 " ==============================================================================
+" - Normal
+" - Visual
+" - Insert
+" - CommandLine
+" - Leader
+" ==============================================================================
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -651,6 +658,8 @@ nnoremap <silent> <esc>  :nohlsearch<return><esc>
 " Repeat last macro if in a normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
 
 " Window and split navigation
 
@@ -760,6 +769,10 @@ map <D-T> <Esc>:Undoquit<CR>
 " ==============================================================================
 " Visual
 " ==============================================================================
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
 "Tcomment
 vmap <D-/> <c-_><c-_>
 " vmap <D-s-/> <c-_>b
@@ -828,7 +841,7 @@ imap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
 
 
 " ==============================================================================
-" Command Line
+" CommandLine
 " ==============================================================================
 " Need to map these once more for inc-search to work
 cmap <c-a> <Home>
