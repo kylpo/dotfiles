@@ -1,5 +1,25 @@
 # dotfiles for Kylpo
 
+Terminal Setup
+======
+```sh
+brew install z
+brew install trash
+
+brew install zsh
+chsh -s `which zsh`
+
+curl -L http://install.ohmyz.sh | sh
+```
+
+Install oh-my-zsh themes and plugins:
+```sh
+cd ~/.oh-my-zsh && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
+
+cd /tmp && git clone https://github.com/tylerreckart/hyperzsh
+cd hyperzsh && cp -R hyperzsh.zsh-theme ~/.oh-my-zsh/themes/hyperzsh.zsh-theme
+```
+
 NVIM Setup
 =======
 
