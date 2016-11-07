@@ -23,6 +23,7 @@ source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://twitter.com/ariabuckles/status/772209060506587136
 export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
+export PATH=$PATH:$HOME/.yarn/bin
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 

@@ -115,6 +115,7 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 Plug 'samuelsimoes/vim-jsx-utils'
 Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'flowtype/vim-flow'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
@@ -138,17 +139,10 @@ Plug 'embear/vim-localvimrc'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 
-if has('nvim')
-  Plug 'neomake/neomake'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'steelsojka/deoplete-flow'
-else
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-  Plug 'scrooloose/syntastic'
-  Plug 'mtscout6/syntastic-local-eslint.vim'
-  Plug 'flowtype/vim-flow'
-endif
+Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'steelsojka/deoplete-flow'
 
 call plug#end()
 
@@ -168,7 +162,12 @@ call plug#end()
 " ==============================================================================
 " SETTINGS
 " ==============================================================================
-syntax enable
+filetype on
+filetype plugin on
+filetype plugin indent on
+syntax on
+
+au Filetype javascript setl sw=2 sts=2 et
 
 function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
@@ -537,12 +536,13 @@ endif
 " ==============================================================================
 " Editing
 " ==============================================================================
-autocmd FileType javascript let g:pairtools_javascript_tagwrenchhook = 'tagwrench#BuiltinHTML5Hook'
-autocmd FileType javascript let g:pairtools_javascript_twexpander = 1
-autocmd FileType javascript let g:pairtools_javascript_tweraser   = 1
-autocmd FileType javascript let g:pairtools_javascript_tagwrench = 1
-autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
-autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
+" TODO figure out why these autocmd settings break omnicomplete
+" autocmd FileType javascript let g:pairtools_javascript_tagwrenchhook = 'tagwrench#BuiltinHTML5Hook'
+" autocmd FileType javascript let g:pairtools_javascript_twexpander = 1
+" autocmd FileType javascript let g:pairtools_javascript_tweraser   = 1
+" autocmd FileType javascript let g:pairtools_javascript_tagwrench = 1
+" autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
+" autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
 
 
 " ==============================================================================
@@ -557,7 +557,6 @@ let g:Gitv_DoNotMapCtrlKey = 1
 " Syntaxes ==============================================================================
 let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.json set filetype=json
-let g:syntastic_json_checkers=['jsonlint']
 let g:javascript_plugin_flow = 1
 
 
@@ -571,32 +570,154 @@ let g:localvimrc_ask = 0
 " Tools
 " ==============================================================================
 "
+" Omnicomplete on CTRL space
+" Since iterm will inevitably send a <Nul> on CTRL-Space (because it's not a
+" GUI app), we need to make sure that those <Nul> will be mapped to <C-Space>
+" instead
+inoremap <C-Space> <C-x><C-o>
+imap <buffer> <Nul> <C-Space>
+smap <buffer> <Nul> <C-Space>
+
+" " Enable auto-completion by default
+" let g:deoplete#enable_at_startup = 1
+"
+" if !exists('g:deoplete#omni#input_patterns')
+"   let g:deoplete#omni#input_patterns = {}
+" endif
+"
+" " let g:deoplete#disable_auto_complete = 1
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"
+" " deoplete tab-complete
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"
+" """""""""""""""""""""""""
+" " 	NEOMAKE CONFIG
+" """""""""""""""""""""""""
+"
+" let g:neomake_open_list = 2
+" let g:neomake_place_signs = 1
+"
+" let g:neomake_javascript_enabled_makers = []
+"
+" if findfile('.eslintrc', '.;') !=# ''
+"   let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
+"   if g:eslint_path != 'eslint not found'
+"     let g:neomake_javascript_eslint_exe = g:eslint_path
+"     let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
+"   endif
+" endif
+"
+"   let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+"
+"   if g:flow_path != 'flow not found'
+"     let g:neomake_javascript_flow_maker = {
+"           \ 'exe': 'sh',
+"           \ 'args': ['-c', g:flow_path.' --json 2>/dev/null | ~/Projects/flow-vim-quickfix/bin/flow-vim-quickfix'],
+"           \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+"           \ 'cwd': '%:p:h' 
+"           \ }
+"     let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
+"     let g:deoplete#sources#flow#flow_bin = g:flow_path
+"     
+"     let g:flow#flowpath = g:flow_path 
+"   endif
+"
+" if !empty(g:neomake_javascript_enabled_makers)
+"   autocmd! BufWritePost * Neomake
+"   "autocmd! BufWritePost * Neomake
+"   autocmd! QuitPre * let g:neomake_verbose = 0
+" endif
+"
+" " vim-flow (for CTRL-Space suggestion only)
+" " For flow check we use neomake 
+" let g:flow#enable = 0
+" let g:flow#omnifunc = 1
+"
+
+" Ultisnip 
+" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsSnippetDirectories=['myUltiSnippets']
+let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsJumpForwardTrigger='<c-b>'
+" let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+let g:UltiSnipsEditSplit='vertical' " If you want :UltiSnipsEdit to split your window.
+
+
 if has('nvim')
   " == Shougo/deoplete.nvim ==
-  " == carlitux/deoplete-ternjs ==
   let g:deoplete#enable_at_startup = 1
   let g:SuperTabDefaultCompletionType = "<c-n>"
-  let g:deoplete#sources#flow#flow_bin = g:flow_path
+  " == carlitux/deoplete-ternjs ==
   let g:tern_request_timeout = 1
   let g:tern_show_signature_in_pum = 0
-  set completeopt-=preview
+  " set completeopt-=preview
+
+  " " let g:deoplete#disable_auto_complete = 1
+  " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  "
+  " " deoplete tab-complete
+  " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  "
+  " if !exists('g:deoplete#omni#input_patterns')
+  "   let g:deoplete#omni#input_patterns = {}
+  " endi
 
   " == neomake/neomake ==
+  " let g:neomake_open_list = 2
+  " let g:neomake_place_signs = 1
+
+  let g:neomake_javascript_enabled_makers = []
+
+  if findfile('.eslintrc', '.;') !=# ''
+    let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
+    if g:eslint_path != 'eslint not found'
+      let g:neomake_javascript_eslint_exe = g:eslint_path
+      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
+    endif
+  endif
+
+
   let g:neomake_warning_sign = {
-  \ 'text': 'W',
-  \ 'texthl': 'WarningMsg',
-  \ }
+        \ 'text': 'W',
+        \ 'texthl': 'WarningMsg',
+        \ }
   let g:neomake_error_sign = {
-  \ 'text': 'E',
-  \ 'texthl': 'ErrorMsg',
-  \ }
-  let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
-  let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+        \ 'text': 'E',
+        \ 'texthl': 'ErrorMsg',
+        \ }
 
-  let g:neomake_javascript_flow_exe = g:flow_path
-  let g:neomake_jsx_flow_exe = g:flow_path
+  if findfile('.flowconfig', '.;') !=# ''
+    let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
-  autocmd! BufWritePost * Neomake
+    if g:flow_path != 'flow not found'
+      let g:deoplete#sources#flow#flow_bin = g:flow_path
+      " let g:neomake_javascript_flow_maker = {
+      "     \ 'exe': 'sh',
+      "     \ 'args': ['-c', g:flow_path.' --json 2>/dev/null | ~/Projects/flow-vim-quickfix/bin/flow-vim-quickfix'],
+      "     \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+      "     \ 'cwd': '%:p:h' 
+      "     \ }
+      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
+      let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
+
+      let g:neomake_javascript_flow_exe = g:flow_path
+      let g:neomake_jsx_flow_exe = g:flow_path
+
+      let g:flow#flowpath = g:flow_path 
+
+      " vim-flow (for CTRL-Space suggestion only)
+      " For flow check we use neomake 
+      let g:flow#enable = 0
+      let g:flow#omnifunc = 1
+
+    endif
+  endif
+
+  if !empty(g:neomake_javascript_enabled_makers)
+    autocmd! BufWritePost * Neomake
+    autocmd! QuitPre * let g:neomake_verbose = 0
+  endif
 else
   " == scrooloose/syntastic ==
   " set statusline+=%#warningmsg#
@@ -611,10 +732,12 @@ else
   let g:syntastic_enable_signs=1
   let g:syntastic_always_populate_loc_list=1
   let g:syntastic_loc_list_height=15
+  let g:syntastic_json_checkers=['jsonlint']
   let g:syntastic_javascript_checkers=['eslint']
   " let g:syntastic_javascript_checkers = ['flow', 'eslint']
   let g:syntastic_javascript_eslint_exec = 'eslint_d'
 endif
+
 
 
 " ==============================================================================
