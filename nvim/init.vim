@@ -1,7 +1,9 @@
+" ==============================================================================
 " PLUGINS
 " SETTINGS
 " PLUGIN_SETTINGS
 " KEYBINDINGS
+" ==============================================================================
 
 set nocompatible
 
@@ -651,7 +653,7 @@ if has('nvim')
   " == carlitux/deoplete-ternjs ==
   let g:tern_request_timeout = 1
   let g:tern_show_signature_in_pum = 0
-  " set completeopt-=preview
+  set completeopt-=preview
 
   " " let g:deoplete#disable_auto_complete = 1
   " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -664,18 +666,18 @@ if has('nvim')
   " endi
 
   " == neomake/neomake ==
-  " let g:neomake_open_list = 2
-  " let g:neomake_place_signs = 1
+  let g:neomake_open_list = 2
+  let g:neomake_place_signs = 1
 
   let g:neomake_javascript_enabled_makers = []
 
-  if findfile('.eslintrc', '.;') !=# ''
+  " if findfile('.eslintrc', '.;') !=# ''
     let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
     if g:eslint_path != 'eslint not found'
       let g:neomake_javascript_eslint_exe = g:eslint_path
       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
     endif
-  endif
+  " endif
 
 
   let g:neomake_warning_sign = {
@@ -687,14 +689,14 @@ if has('nvim')
         \ 'texthl': 'ErrorMsg',
         \ }
 
-  if findfile('.flowconfig', '.;') !=# ''
+  " if findfile('.flowconfig', '.;') !=# ''
     let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
     if g:flow_path != 'flow not found'
       let g:deoplete#sources#flow#flow_bin = g:flow_path
       " let g:neomake_javascript_flow_maker = {
       "     \ 'exe': 'sh',
-      "     \ 'args': ['-c', g:flow_path.' --json 2>/dev/null | ~/Projects/flow-vim-quickfix/bin/flow-vim-quickfix'],
+      "     \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
       "     \ 'errorformat': '%E%f:%l:%c\,%n: %m',
       "     \ 'cwd': '%:p:h' 
       "     \ }
@@ -712,7 +714,7 @@ if has('nvim')
       let g:flow#omnifunc = 1
 
     endif
-  endif
+  " endif
 
   if !empty(g:neomake_javascript_enabled_makers)
     autocmd! BufWritePost * Neomake
