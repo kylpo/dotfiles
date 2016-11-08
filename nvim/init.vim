@@ -666,8 +666,8 @@ if has('nvim')
   " endi
 
   " == neomake/neomake ==
-  let g:neomake_open_list = 2
-  let g:neomake_place_signs = 1
+  " let g:neomake_open_list = 2
+  " let g:neomake_place_signs = 1
 
   let g:neomake_javascript_enabled_makers = []
 
@@ -682,18 +682,32 @@ if has('nvim')
 
   let g:neomake_warning_sign = {
         \ 'text': 'W',
-        \ 'texthl': 'WarningMsg',
+        \ 'texthl': 'Type',
         \ }
   let g:neomake_error_sign = {
         \ 'text': 'E',
         \ 'texthl': 'ErrorMsg',
         \ }
+"   let g:neomake_error_sign = {
+"     \ 'text': '->',
+"     \ 'texthl': 'Error',
+"     \ }
+" let g:neomake_warning_sign = {
+"     \ 'text': '->',
+"     \ 'texthl': 'Type',
+"     \ }
 
   " if findfile('.flowconfig', '.;') !=# ''
     let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
     if g:flow_path != 'flow not found'
       let g:deoplete#sources#flow#flow_bin = g:flow_path
+      " let g:neomake_javascript_flow_maker = {
+      "   \ 'args': ['--from vim --strip-root'],
+      "   \ 'errorformat': '%E%f:%l:%c\,%n: %m,%Z%m',
+      "   \ }
+      " \ 'buffer_output': 1,
+      " \ 'mapexpr': 'substitute(v:val, "\\\\n", " ", "g")',
       " let g:neomake_javascript_flow_maker = {
       "     \ 'exe': 'sh',
       "     \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
