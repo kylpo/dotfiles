@@ -25,11 +25,14 @@ source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
 export PATH=$PATH:$HOME/.yarn/bin
 
-export ANDROID_HOME=/usr/local/opt/android-sdk
+#export ANDROID_HOME=/usr/local/opt/android-sdk
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
 
 export MYVIMRC='~/.config/nvim/init.vim'
 export EDITOR=nvim
-export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
+# export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as the default source for fzf
 
 export NVM_DIR=~/.nvm
 
