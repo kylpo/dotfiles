@@ -3,6 +3,9 @@ set -e
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 echo $DIR
+
+brew bundle
+
 cd ~
 
 # silence terminal's 'last login' message
@@ -27,6 +30,6 @@ echo "done."
 
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
-echo -n "Installing plugins... "
+echo -n "Installing nvim plugins... "
 command nvim +PlugInstall +qall
 echo "done."

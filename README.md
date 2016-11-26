@@ -1,12 +1,17 @@
 # dotfiles for Kylpo
 
+- First, homebrew packages are installed (from BrewFile)
+- Then dotfiles are linked
+- Last, nvim opens and installs plugins
+- Be sure to follow steps below to finish setup
+
 Terminal Setup
 ======
 ```sh
-brew install z
-brew install trash
+#brew install z
+#brew install trash
 
-brew install zsh
+#brew install zsh
 chsh -s `which zsh`
 
 curl -L http://install.ohmyz.sh | sh
@@ -24,8 +29,8 @@ NVIM Setup
 =======
 
 ```
-brew install neovim/neovim/neovim
-brew install python3
+#brew install neovim/neovim/neovim
+#brew install python3
 
 # Install python nvim stuff (for remote plugins etc)
 pip3 install neovim

@@ -38,6 +38,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'jordwalke/VimSplitBalancer'     " window manager
 
+Plug 'junegunn/goyo.vim'              " Zen mode
+Plug 'junegunn/limelight.vim'         " Highlight code around cursor. Rest is grey
+Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuote> or @ key
+
+
 
 " ==============================================================================
 " Themes
@@ -47,6 +52,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'quanganhdo/grb256'
 Plug 'chriskempson/base16-vim'
 Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plug 'rakr/vim-one'
 
 
 " ==============================================================================
@@ -72,13 +78,18 @@ Plug 'mtth/scratch.vim' " :Scratch
 " leader<e> in Normal mode to 'edit' word, and replace it throughout file
 Plug 'wincent/scalpel'
 
+" Repeat last macro with Enter if in normal buffer
+Plug 'wincent/replay'
+
 
 " ==============================================================================
 " Git
 " ==============================================================================
 Plug 'airblade/vim-gitgutter'             " Show git changes in gutter.
 Plug 'tpope/vim-fugitive'                 " Git command helpers (:G*)
-Plug 'gregsexton/gitv'
+
+" Really good diff viewer. Select lines and press enter to see diff.
+Plug 'junegunn/gv.vim'
 
 
 " ==============================================================================
@@ -121,6 +132,9 @@ Plug 'flowtype/vim-flow'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
+
+" Markdown preview for OS X via :Xmark
+Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 " Plug 'othree/yajs.vim'
 " Plug 'othree/es.next.syntax.vim'
@@ -793,9 +807,6 @@ nmap Q q
 
 " clear search highlights on esc
 nnoremap <silent> <esc>  :nohlsearch<return><esc>
-
-" Repeat last macro if in a normal buffer.
-nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
