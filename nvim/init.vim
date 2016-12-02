@@ -136,6 +136,12 @@ Plug 'elzr/vim-json'
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Quramy/tsuquyomi'
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'ianks/vim-tsx'
+
+
 " Plug 'othree/yajs.vim'
 " Plug 'othree/es.next.syntax.vim'
 " Plug 'othree/javascript-libraries-syntax.vim'
@@ -159,6 +165,7 @@ Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'steelsojka/deoplete-flow'
+" Plug 'mhartington/deoplete-typescript'
 
 call plug#end()
 
@@ -571,8 +578,10 @@ let g:Gitv_DoNotMapCtrlKey = 1
 
 " ==============================================================================
 " Syntaxes ==============================================================================
-let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.json set filetype=json
+
+let g:jsx_ext_required = 0
+au BufRead,BufNewFile *.flow set filetype=javascript
 let g:javascript_plugin_flow = 1
 
 
@@ -610,6 +619,7 @@ smap <buffer> <Nul> <C-Space>
 " """""""""""""""""""""""""
 " " 	NEOMAKE CONFIG
 " """""""""""""""""""""""""
+" let g:neomake_logfile=$HOME.'/.log/neomake.log'
 "
 " let g:neomake_open_list = 2
 " let g:neomake_place_signs = 1
@@ -716,23 +726,17 @@ if has('nvim')
 
     if g:flow_path != 'flow not found'
       let g:deoplete#sources#flow#flow_bin = g:flow_path
-      " let g:neomake_javascript_flow_maker = {
-      "   \ 'args': ['--from vim --strip-root'],
-      "   \ 'errorformat': '%E%f:%l:%c\,%n: %m,%Z%m',
-      "   \ }
-      " \ 'buffer_output': 1,
-      " \ 'mapexpr': 'substitute(v:val, "\\\\n", " ", "g")',
-      " let g:neomake_javascript_flow_maker = {
-      "     \ 'exe': 'sh',
-      "     \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
-      "     \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-      "     \ 'cwd': '%:p:h' 
-      "     \ }
+      let g:neomake_javascript_flow_maker = {
+          \ 'exe': 'sh',
+          \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
+          \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+          \ 'cwd': '%:p:h' 
+          \ }
       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
       let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
 
-      let g:neomake_javascript_flow_exe = g:flow_path
-      let g:neomake_jsx_flow_exe = g:flow_path
+      " let g:neomake_javascript_flow_exe = g:flow_path
+      " let g:neomake_jsx_flow_exe = g:flow_path
 
       let g:flow#flowpath = g:flow_path 
 
@@ -922,6 +926,9 @@ map <D-T> <Esc>:Undoquit<CR>
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
+
+" Don't copy the contents of an overwritten selection.
+vnoremap p "_dP
 
 "Tcomment
 vmap <D-/> <c-_><c-_>

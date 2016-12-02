@@ -54,7 +54,10 @@ alias gps='git push'
 alias gpl='git pull'
 alias gco='git checkout '
 
-alias start='npm start'
+alias start='yarn start'
+alias run='yarn run'
+alias build='yarn run build'
+alias clean='yarn run clean'
 
 alias up='cd ..'
 alias up2='cd ../..'
