@@ -1071,6 +1071,7 @@ map <leader>n <Plug>(miniyank-cycle)
 " Git
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gpu :Gpush<CR>
+nnoremap <Leader>gpl :Gpull<CR>
 nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
