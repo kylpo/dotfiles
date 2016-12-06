@@ -62,9 +62,10 @@ Plug 'tpope/vim-repeat'                   " Dot operator for extensions
 Plug 'tpope/vim-surround'                 " Edit surround
 Plug 'tomtom/tcomment_vim'                " Commenter
 Plug 'junegunn/vim-easy-align'            " Align lines based on a character
-Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
+" Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
+Plug 'bfredl/nvim-miniyank'               " yankring for neovim
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
-Plug 'sickill/vim-pasta'                  " Paste with indentation
+" Plug 'sickill/vim-pasta'                  " Paste with indentation
 " Plug 'tpope/vim-commentary'               " Commenting with motion commands
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
@@ -389,7 +390,11 @@ endif
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
 
 
+if has('inccommand')
+  set inccommand=split                  " Incremental, live substite in neovim (v0.1.7+)
+endif
 
+set clipboard=unnamed,unnamedplus
 
 set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
@@ -916,6 +921,9 @@ nmap guu <Plug>TComment_Uncommentc
 map <D-T> <Esc>:Undoquit<CR>
 
 
+" Yank overrides default 'p'
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
 
 
 
@@ -1053,6 +1061,9 @@ nnoremap <Leader>p :echo expand('%')<CR>
 nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 
 nmap <Leader>s <Plug>(Scalpel)
+
+" Yank -- use cycle to go back in history
+map <leader>n <Plug>(miniyank-cycle)
 
 " <LocalLeader>e -- Edit file, starting in same directory as current file.
 " nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
