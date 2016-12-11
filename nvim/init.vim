@@ -29,10 +29,10 @@ call plug#begin()
 "Plug 'tpope/vim-sensible'             " Sensible defaults
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
-Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
+" Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
-Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
-Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
+" Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
+" Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
 Plug 'milkypostman/vim-togglelist'    " Allows binding key to toggle location and quickfix lists
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
@@ -47,12 +47,12 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
-Plug 'jordwalke/VimCleanColors'       " Colorschemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'quanganhdo/grb256'
-Plug 'chriskempson/base16-vim'
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Plug 'rakr/vim-one'
+" Plug 'jordwalke/VimCleanColors'       " Colorschemes
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'quanganhdo/grb256'
+" Plug 'chriskempson/base16-vim'
+" Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+" Plug 'rakr/vim-one'
 
 
 " ==============================================================================
@@ -63,11 +63,13 @@ Plug 'tpope/vim-surround'                 " Edit surround
 Plug 'tomtom/tcomment_vim'                " Commenter
 Plug 'junegunn/vim-easy-align'            " Align lines based on a character
 " Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
-Plug 'bfredl/nvim-miniyank'               " yankring for neovim
+" Plug 'bfredl/nvim-miniyank'               " yankring for neovim
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
-" Plug 'sickill/vim-pasta'                  " Paste with indentation
+Plug 'wellle/targets.vim'                 " Add more Text Objects like `cin` and `da,`
+Plug 'sickill/vim-pasta'                  " Paste with indentation
 " Plug 'tpope/vim-commentary'               " Commenting with motion commands
-Plug 'scrooloose/nerdcommenter'
+" Plug 'suy/vim-context-commentstring'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 " Plug 'jiangmiao/auto-pairs'
@@ -96,7 +98,7 @@ Plug 'junegunn/gv.vim'
 " ==============================================================================
 " Movement
 " ==============================================================================
-Plug 'bkad/CamelCaseMotion'
+" Plug 'bkad/CamelCaseMotion'
 Plug 'kana/vim-textobj-user'                " For custom text objects, needed for all vim-textobj plugins.
 Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
 Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
@@ -130,9 +132,12 @@ Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 Plug 'samuelsimoes/vim-jsx-utils'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'kylpo/vim-jsx/'
+" Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
+" Plug 'othree/xml.vim'
 
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
@@ -507,6 +512,7 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " ==============================================================================
 let g:toggle_list_copen_command="bo copen 30"
 let g:toggle_list_lopen_command="bo copen 30"
+" let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '{/*', 'right': '*/}', 'leftAlt': '{/*', 'rightAlt': '*/}' } }
 
 " --- NERDTree ---
 " Close vim if the only window left
@@ -571,7 +577,7 @@ endif
 " autocmd FileType javascript let g:pairtools_javascript_tagwrench = 1
 " autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
 " autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
-
+" autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 
 " ==============================================================================
 " Git
@@ -892,14 +898,14 @@ nnoremap \ :Ag<SPACE>
 nmap <silent> K :Ag! "<cword>" <CR>
 
 " CamelCase
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
+" map <silent> w <Plug>CamelCaseMotion_w
+" map <silent> b <Plug>CamelCaseMotion_b
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap w
+" sunmap b
+" sunmap e
+" sunmap ge
 
 " EasyMotion
 " nmap s <Plug>(easymotion-s)
@@ -922,9 +928,23 @@ map <D-T> <Esc>:Undoquit<CR>
 
 
 " Yank overrides default 'p'
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
+" map p <Plug>(miniyank-autoput)
+" map P <Plug>(miniyank-autoPut)
 
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 
 
@@ -1063,7 +1083,7 @@ nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 nmap <Leader>s <Plug>(Scalpel)
 
 " Yank -- use cycle to go back in history
-map <leader>n <Plug>(miniyank-cycle)
+" map <leader>n <Plug>(miniyank-cycle)
 
 " <LocalLeader>e -- Edit file, starting in same directory as current file.
 " nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
