@@ -98,7 +98,7 @@ Plug 'junegunn/gv.vim'
 " ==============================================================================
 " Movement
 " ==============================================================================
-" Plug 'bkad/CamelCaseMotion'
+Plug 'bkad/CamelCaseMotion'
 Plug 'kana/vim-textobj-user'                " For custom text objects, needed for all vim-textobj plugins.
 Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
 Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
@@ -566,7 +566,6 @@ endif
 " " Disable truncation
 " let g:airline#extensions#default#section_truncate_width = {}
 
-
 " ==============================================================================
 " Editing
 " ==============================================================================
@@ -814,8 +813,17 @@ set wildcharm=<C-z>
 "totally annoying default mapping for cap k
 nmap K <nop>
 
-" Avoid unintentional switches to Ex mode.
-nmap Q q
+" map q to CamelCaseMotion, like atom's vim-mode
+map <silent> q <Plug>CamelCaseMotion_w
+map <silent> Q <Plug>CamelCaseMotion_b
+sunmap q
+sunmap Q
+
+" map iq and iQ motions
+omap <silent> iq <Plug>CamelCaseMotion_iw
+xmap <silent> iq <Plug>CamelCaseMotion_iw
+omap <silent> iQ <Plug>CamelCaseMotion_ib
+xmap <silent> iQ <Plug>CamelCaseMotion_ib
 
 " Huge saver! Why do you need to press shift when executing a command?
 " nnoremap ; :
@@ -896,16 +904,6 @@ nnoremap \ :Ag<SPACE>
 
 " bind K to grep word under cursor
 nmap <silent> K :Ag! "<cword>" <CR>
-
-" CamelCase
-" map <silent> w <Plug>CamelCaseMotion_w
-" map <silent> b <Plug>CamelCaseMotion_b
-" map <silent> e <Plug>CamelCaseMotion_e
-" map <silent> ge <Plug>CamelCaseMotion_ge
-" sunmap w
-" sunmap b
-" sunmap e
-" sunmap ge
 
 " EasyMotion
 " nmap s <Plug>(easymotion-s)
@@ -1095,3 +1093,7 @@ nnoremap <Leader>gpu :Gpush<CR>
 nnoremap <Leader>gpl :Gpull<CR>
 nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
+
+"map macro to Leader-m so q can be used for CamelCaseMotion
+nnoremap <Leader>m q
+vnoremap <Leader>m q
