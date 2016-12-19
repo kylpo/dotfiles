@@ -25,9 +25,9 @@ source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
 export PATH=$PATH:$HOME/.yarn/bin
 
-#export ANDROID_HOME=/usr/local/opt/android-sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 export MYVIMRC='~/.config/nvim/init.vim'
 export EDITOR=nvim
