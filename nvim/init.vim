@@ -29,10 +29,10 @@ call plug#begin()
 "Plug 'tpope/vim-sensible'             " Sensible defaults
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
-Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
+" Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
-Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
-Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
+" Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
+" Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
 Plug 'milkypostman/vim-togglelist'    " Allows binding key to toggle location and quickfix lists
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
@@ -47,12 +47,12 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
-Plug 'jordwalke/VimCleanColors'       " Colorschemes
-Plug 'altercation/vim-colors-solarized'
-Plug 'quanganhdo/grb256'
-Plug 'chriskempson/base16-vim'
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
-Plug 'rakr/vim-one'
+" Plug 'jordwalke/VimCleanColors'       " Colorschemes
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'quanganhdo/grb256'
+" Plug 'chriskempson/base16-vim'
+" Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+" Plug 'rakr/vim-one'
 
 
 " ==============================================================================
@@ -62,11 +62,14 @@ Plug 'tpope/vim-repeat'                   " Dot operator for extensions
 Plug 'tpope/vim-surround'                 " Edit surround
 Plug 'tomtom/tcomment_vim'                " Commenter
 Plug 'junegunn/vim-easy-align'            " Align lines based on a character
-Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
+" Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
+" Plug 'bfredl/nvim-miniyank'               " yankring for neovim
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
+Plug 'wellle/targets.vim'                 " Add more Text Objects like `cin` and `da,`
 Plug 'sickill/vim-pasta'                  " Paste with indentation
 " Plug 'tpope/vim-commentary'               " Commenting with motion commands
-Plug 'scrooloose/nerdcommenter'
+" Plug 'suy/vim-context-commentstring'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 " Plug 'jiangmiao/auto-pairs'
@@ -129,9 +132,12 @@ Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 Plug 'samuelsimoes/vim-jsx-utils'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'kylpo/vim-jsx/'
+" Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
+" Plug 'othree/xml.vim'
 
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
@@ -389,7 +395,11 @@ endif
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
 
 
+if has('inccommand')
+  set inccommand=split                  " Incremental, live substite in neovim (v0.1.7+)
+endif
 
+set clipboard=unnamed,unnamedplus
 
 set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
@@ -502,6 +512,7 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " ==============================================================================
 let g:toggle_list_copen_command="bo copen 30"
 let g:toggle_list_lopen_command="bo copen 30"
+" let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '{/*', 'right': '*/}', 'leftAlt': '{/*', 'rightAlt': '*/}' } }
 
 " --- NERDTree ---
 " Close vim if the only window left
@@ -555,7 +566,6 @@ endif
 " " Disable truncation
 " let g:airline#extensions#default#section_truncate_width = {}
 
-
 " ==============================================================================
 " Editing
 " ==============================================================================
@@ -566,7 +576,7 @@ endif
 " autocmd FileType javascript let g:pairtools_javascript_tagwrench = 1
 " autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
 " autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
-
+" autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
 
 " ==============================================================================
 " Git
@@ -803,8 +813,17 @@ set wildcharm=<C-z>
 "totally annoying default mapping for cap k
 nmap K <nop>
 
-" Avoid unintentional switches to Ex mode.
-nmap Q q
+" map q to CamelCaseMotion, like atom's vim-mode
+map <silent> q <Plug>CamelCaseMotion_w
+map <silent> Q <Plug>CamelCaseMotion_b
+sunmap q
+sunmap Q
+
+" map iq and iQ motions
+omap <silent> iq <Plug>CamelCaseMotion_iw
+xmap <silent> iq <Plug>CamelCaseMotion_iw
+omap <silent> iQ <Plug>CamelCaseMotion_ib
+xmap <silent> iQ <Plug>CamelCaseMotion_ib
 
 " Huge saver! Why do you need to press shift when executing a command?
 " nnoremap ; :
@@ -886,16 +905,6 @@ nnoremap \ :Ag<SPACE>
 " bind K to grep word under cursor
 nmap <silent> K :Ag! "<cword>" <CR>
 
-" CamelCase
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> ge <Plug>CamelCaseMotion_ge
-sunmap w
-sunmap b
-sunmap e
-sunmap ge
-
 " EasyMotion
 " nmap s <Plug>(easymotion-s)
 " nmap S <Plug>(easymotion-bd-w)
@@ -916,7 +925,24 @@ nmap guu <Plug>TComment_Uncommentc
 map <D-T> <Esc>:Undoquit<CR>
 
 
+" Yank overrides default 'p'
+" map p <Plug>(miniyank-autoput)
+" map P <Plug>(miniyank-autoPut)
 
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 
 
@@ -1054,12 +1080,20 @@ nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 
 nmap <Leader>s <Plug>(Scalpel)
 
+" Yank -- use cycle to go back in history
+" map <leader>n <Plug>(miniyank-cycle)
+
 " <LocalLeader>e -- Edit file, starting in same directory as current file.
 " nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 
 " Git
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gpu :Gpush<CR>
+nnoremap <Leader>gpl :Gpull<CR>
 nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
+
+"map macro to Leader-m so q can be used for CamelCaseMotion
+nnoremap <Leader>m q
+vnoremap <Leader>m q

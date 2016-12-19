@@ -10,7 +10,7 @@ ZSH_THEME="hyperzsh"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git brew)
+# plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -50,7 +50,7 @@ source $(brew --prefix nvm)/nvm.sh
 #--------------------------------------------------
 
 alias gs='git status'
-alias gps='git push'
+alias gpu='git push'
 alias gpl='git pull'
 alias gco='git checkout '
 
@@ -113,3 +113,6 @@ v () {
 # This binds Ctrl-O to ranger-cd:
 # bind '"\C-o":"ranger-cd\C-m"'
 
+# OPAM configuration
+. /Users/kylepoole/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+eval $(opam config env)
