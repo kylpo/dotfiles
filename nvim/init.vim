@@ -130,7 +130,8 @@ Plug 'bronson/vim-visual-star-search'
 " ==============================================================================
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 Plug 'samuelsimoes/vim-jsx-utils'
-Plug 'vim-scripts/HTML-AutoCloseTag'
+" Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'alvan/vim-closetag' " auto-close html tags
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
 Plug 'kylpo/vim-jsx/'
@@ -593,6 +594,8 @@ au BufRead,BufNewFile *.json set filetype=json
 let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.flow set filetype=javascript
 let g:javascript_plugin_flow = 1
+
+" let g:closetag_filenames = "*.html,*.js"
 
 
 " ==============================================================================
