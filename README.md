@@ -30,6 +30,8 @@ cd /tmp && git clone https://github.com/tylerreckart/hyperzsh
 cd hyperzsh && cp -R hyperzsh.zsh-theme ~/.oh-my-zsh/themes/hyperzsh.zsh-theme
 ```
 
+[Set terminal vim as default "app" for code files Finder](https://www.youtube.com/watch?v=DBUuhvS8nZ8&feature=youtu.be)
+
 NVIM Setup
 =======
 
