@@ -2,6 +2,7 @@
 " PLUGINS
 " SETTINGS
 " PLUGIN_SETTINGS
+" FUNCTIONS
 " KEYBINDINGS
 " ==============================================================================
 
@@ -129,7 +130,6 @@ Plug 'bronson/vim-visual-star-search'
 " Syntaxes
 " ==============================================================================
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
-Plug 'samuelsimoes/vim-jsx-utils'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
@@ -710,6 +710,12 @@ if has('nvim')
     if g:eslint_path != 'eslint not found'
       let g:neomake_javascript_eslint_exe = g:eslint_path
       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
+      "UNCOMMENT BELOW to --fix on neomake. Also uncomment au NeomakeFinished lower down
+      " let g:neomake_javascript_eslint_maker = {
+      "   \ 'args': ['-f', 'compact', '--fix'],
+      "   \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+      "   \ '%W%f: line %l\, col %c\, Warning - %m'
+      "   \ }
     endif
   " endif
 
@@ -740,7 +746,7 @@ if has('nvim')
           \ 'exe': 'sh',
           \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
           \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-          \ 'cwd': '%:p:h' 
+          \ 'cwd': '%:p:h'
           \ }
       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
       let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
@@ -748,10 +754,10 @@ if has('nvim')
       " let g:neomake_javascript_flow_exe = g:flow_path
       " let g:neomake_jsx_flow_exe = g:flow_path
 
-      let g:flow#flowpath = g:flow_path 
+      let g:flow#flowpath = g:flow_path
 
       " vim-flow (for CTRL-Space suggestion only)
-      " For flow check we use neomake 
+      " For flow check we use neomake
       let g:flow#enable = 0
       let g:flow#omnifunc = 1
 
@@ -759,7 +765,20 @@ if has('nvim')
   " endif
 
   if !empty(g:neomake_javascript_enabled_makers)
-    autocmd! BufWritePost * Neomake
+
+    " function! OnNeomakeFinished()
+    "   silent checktime
+    " endfunction
+    "
+    " augroup my_neomake
+    "   au!
+    "   autocmd User NeomakeFinished call OnNeomakeFinished()
+    " augroup END
+
+    au CursorHold,CursorHoldI * silent! checktime
+
+    autocmd! BufEnter * Neomake
+    autocmd! BufwritePost * Neomake
     autocmd! QuitPre * let g:neomake_verbose = 0
   endif
 else
@@ -783,6 +802,42 @@ else
 endif
 
 
+" ==============================================================================
+" Functions
+" ==============================================================================
+function! ESLintFix()
+  silent execute "!./node_modules/.bin/eslint --fix %"
+  edit! %
+  Neomake
+endfunction
+
+command!  ESLintFix call ESLintFix()
+
+" mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
+function! JSXMultiLine()
+  let l:previous_q_reg = @q
+  let l:line = getline(".")
+  let l:identation_length = len(matchstr(line, "^\[\\t|\\ \]*"))
+
+  if &expandtab
+    let l:padding = repeat(" ", (identation_length + &shiftwidth))
+  else
+    let l:padding = repeat("\t", identation_length + 1)
+  endif
+
+  let @q = substitute(line, "\\w\\+=[{|'|\"]", "\\n" . padding . "&", "g")
+  let @q = substitute(getreg("q"), ">$", "\\n>", "g")
+  let @q = substitute(getreg("q"), "/>$", "\\n/>", "g")
+
+  let @q = substitute(getreg("q"), "\ \\n", "\\n", "g")
+
+  execute "normal! 0d$\"qp"
+  execute "normal! =at=at"
+
+  let @q = previous_q_reg
+endfunction
+
+command! JSXMultiLine call JSXMultiLine()
 
 " ==============================================================================
 " KEYBINDINGS
@@ -837,6 +892,7 @@ nnoremap p p=`]<C-o>
 " Window and split navigation
 
 nnoremap <C-h> <C-w>h
+let g:BASH_Ctrl_j = 'off'
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -1097,3 +1153,5 @@ nnoremap <Leader>go :Git checkout<Space>
 "map macro to Leader-m so q can be used for CamelCaseMotion
 nnoremap <Leader>m q
 vnoremap <Leader>m q
+
+nnoremap <leader>el :call ESLintFix()<CR>

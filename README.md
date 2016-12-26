@@ -41,6 +41,8 @@ NVIM Setup
 pip3 install neovim
 ```
 
+Periodically, you may want to run :CheckHealth to make sure nvim is set up correctly
+
 #### Fix CTRL-H mapping
 
 Run `:CheckHealth`. It should suggest setting `kbs=\177` in your terminal's terminfo/termcap:
