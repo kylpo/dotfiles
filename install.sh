@@ -17,7 +17,7 @@ cd ~
 [[ ! -s ~/.hyperterm.js ]] && ln -s $DIR/hyperterm.js ~/.hyperterm.js
 
 [[ ! -s ~/.vim ]] && ln -s $DIR/vim ~/.vim
-# [[ ! -s ~/.vimrc ]] && ln -s $DIR/vimrc ~/.vimrc
+[[ ! -s ~/.vimrc ]] && ln -s $DIR/vim/init.vim ~/.vimrc
 # [[ ! -s ~/.tmux.conf ]] && ln -s $DIR/tmux.conf ~/.tmux.conf
 # [[ ! -s ~/.oh-my-zsh ]] && ln -s $DIR/oh-my-zsh ~/.oh-my-zsh
 # [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
