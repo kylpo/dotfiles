@@ -594,6 +594,8 @@ let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.flow set filetype=javascript
 let g:javascript_plugin_flow = 1
 
+" let g:closetag_filenames = "*.html,*.js"
+
 
 " ==============================================================================
 " ProjectConfig
