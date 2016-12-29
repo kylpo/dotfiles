@@ -103,7 +103,7 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'kana/vim-textobj-user'                " For custom text objects, needed for all vim-textobj plugins.
 Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
 Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/matchit.zip'              " enhances % command to jump to corresponding html tags

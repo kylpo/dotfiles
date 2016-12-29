@@ -53,6 +53,7 @@ source $(brew --prefix nvm)/nvm.sh
 #--------------------------------------------------
 
 alias gs='git status'
+alias gd='git diff'
 alias gpu='git push'
 alias gpl='git pull'
 alias gco='git checkout '
@@ -72,6 +73,11 @@ alias fix="git diff --name-only | uniq | xargs mvim"
 alias weather="curl -4 wttr.in"
 
 alias rm=trash
+
+# convenience aliases for editing configs
+alias ev='vim ~/.vimrc'
+alias et='vim ~/.tmux.conf'
+alias ez='vim ~/.zshrc'
 
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7
