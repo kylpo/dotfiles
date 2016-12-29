@@ -134,6 +134,8 @@ Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
 Plug 'kylpo/vim-jsx/'
+Plug 'galooshi/vim-import-js'
+Plug 'ruanyl/vim-fixmyjs'
 " Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
@@ -592,6 +594,9 @@ let g:javascript_plugin_flow = 1
 
 " let g:closetag_filenames = "*.html,*.js"
 
+" use linting tool installed locally in node_modules folder
+let g:fixmyjs_use_local = 1
+
 
 " ==============================================================================
 " ProjectConfig
@@ -665,8 +670,8 @@ let g:localvimrc_ask = 0
 "
 " " vim-flow (for CTRL-Space suggestion only)
 " " For flow check we use neomake 
-" let g:flow#enable = 0
-" let g:flow#omnifunc = 1
+let g:flow#enable = 0
+let g:flow#omnifunc = 1
 "
 "
 if !exists('g:ycm_semantic_triggers')
@@ -797,6 +802,9 @@ if has('nvim')
     autocmd! QuitPre * let g:neomake_verbose = 0
   endif
 else
+  let g:ale_sign_error = 'E'
+  let g:ale_sign_warning = 'W'
+
   " == scrooloose/syntastic ==
   " set statusline+=%#warningmsg#
   " set statusline+=%{SyntasticStatuslineFlag()}

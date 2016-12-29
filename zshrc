@@ -29,12 +29,14 @@ export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
-export MYVIMRC='~/.config/nvim/init.vim'
-export EDITOR=nvim
+# export MYVIMRC='~/.config/nvim/init.vim'
+# export EDITOR=nvim
+export NVM_DIR=$HOME/.nvm
+
+export MYVIMRC='~/.vim/init.vim'
+export EDITOR=vim
 # export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as the default source for fzf
-
-export NVM_DIR=~/.nvm
 
 
 #--------------------------------------------------
@@ -87,15 +89,15 @@ cd () {
   builtin cd $@ && ls -aG
 }
 
-# open nvim
+# open vim
 v () {
   if [ $# -eq 0 ]
   then
     # open current directory
-    nvim .
+    vim .
   else
     # open argument
-    nvim $1
+    vim $1
   fi
 }
 
