@@ -74,6 +74,8 @@ alias weather="curl -4 wttr.in"
 
 alias rm=trash
 
+alias t=tmux
+
 # convenience aliases for editing configs
 alias ev='vim ~/.vimrc'
 alias et='vim ~/.tmux.conf'
@@ -108,6 +110,17 @@ v () {
   fi
 }
 
+# Anonymous function to avoid leaking NBSP variable.
+# see https://www.youtube.com/watch?v=uglorjY0Ntg
+function () {
+  if [[ -n "$TMUX" ]]; then
+    # Note use a non-breaking space at the end of the prompt because we can use it as
+    # a find pattern to jump back in tmux.
+    local NBSP=' '
+    export PS1="$PS1$NBSP"
+    export ZLE_RPROMPT_INDENT=0
+  fi
+}
 
 # function ranger-cd {
 #   tempfile='/tmp/chosendir'

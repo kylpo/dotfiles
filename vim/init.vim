@@ -170,6 +170,7 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
+Plug 'wincent/terminus'
 " Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
