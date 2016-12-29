@@ -170,6 +170,7 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
+" Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -403,12 +404,14 @@ set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
 set nobackup
 
-
-
-
-
-
-
+if has('termguicolors')
+  " Don't need this in xterm-256color, but do need it inside tmux.
+  " (See `:h xterm-true-color`.)
+  if &term =~# 'screen-256color'
+    let &t_8f="\e[38;2;%ld;%ld;%ldm"
+    let &t_8b="\e[48;2;%ld;%ld;%ldm"
+  endif
+endif
 
 " if has('nvim')
 "   GuiFont Inconsolata:h14
@@ -522,6 +525,10 @@ let g:NERDTreeMapUpdir = '-'
 
 " move up, but keep current dir expanded
 let g:NERDTreeMapUpdirKeepOpen = 'u'
+
+" prevent nerdtree from overriding ctrl-j/k
+let g:NERDTreeMapJumpNextSibling = 'C-J'
+let g:NERDTreeMapJumpPrevSibling = 'C-K'
 
 " Ignore turds left behind by Mercurial.
 let g:NERDTreeIgnore=['\.orig']

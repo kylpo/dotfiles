@@ -18,18 +18,17 @@ cd ~
 
 [[ ! -s ~/.vim ]] && ln -s $DIR/vim ~/.vim
 [[ ! -s ~/.vimrc ]] && ln -s $DIR/vim/init.vim ~/.vimrc
-# [[ ! -s ~/.tmux.conf ]] && ln -s $DIR/tmux.conf ~/.tmux.conf
+[[ ! -s ~/.tmux.conf ]] && ln -s $DIR/tmux.conf ~/.tmux.conf
 # [[ ! -s ~/.oh-my-zsh ]] && ln -s $DIR/oh-my-zsh ~/.oh-my-zsh
-# [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
 # [[ ! -s ~/.bin ]] && ln -s $DIR/bin ~/.bin
 
-echo -n "Linking nvim "
-[[ ! -s ~/.config ]] && mkdir ~/.config
-[[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
-echo "done."
+# echo -n "Linking nvim "
+# [[ ! -s ~/.config ]] && mkdir ~/.config
+# [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
+# echo "done."
 
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
-echo -n "Installing nvim plugins... "
-command nvim +PlugInstall +qall
+echo -n "Installing vim plugins... "
+command vim +PlugInstall +qall
 echo "done."
