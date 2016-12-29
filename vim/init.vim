@@ -282,7 +282,7 @@ set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B
                                       " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
 set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
 set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+" set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
 set number                            " show line numbers in gutter
 
@@ -557,6 +557,19 @@ if has('autocmd')
   augroup END
 endif
 
+" TComment
+" ensure jsx attribues are commented with js's // syntax, not xml's
+let g:tcomment#syntax_substitute = {
+      \ '\C^javaScript\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^js\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlTag\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlNullTag\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlModifierTag\ze\(\u\|$\)': {'sub': 'javascript'}
+      \ }
+
+" override default jsx_block to remove whitespace
+call tcomment#DefineType('jsx_block',       '{/*%s */}')
+
 " --- Airline ---
 " if has("gui_macvim") || has("gui_vimr")
 "   autocmd VimEnter * set guioptions+=e
@@ -615,6 +628,8 @@ let g:localvimrc_ask = 0
 " ==============================================================================
 " Tools
 " ==============================================================================
+" disable changing cursors since there is too much of a delay leaving insert-mode
+let g:TerminusCursorShape=0
 "
 " Omnicomplete on CTRL space
 " Since iterm will inevitably send a <Nul> on CTRL-Space (because it's not a
@@ -1045,6 +1060,7 @@ vnoremap p "_dP
 
 "Tcomment
 vmap <D-/> <c-_><c-_>
+vmap gC :TCommentBlock<cr>
 " vmap <D-s-/> <c-_>b
 
 " Awesome visual selection maintained when indenting.
