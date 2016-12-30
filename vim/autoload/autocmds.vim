@@ -1,7 +1,7 @@
 " from https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.vim/autoload/autocmds.vim
 "
-let g:WincentColorColumnBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
-let g:WincentCursorlineBlacklist = ['command-t']
+" let g:WincentColorColumnBlacklist = ['diff', 'undotree', 'nerdtree', 'qf']
+" let g:WincentCursorlineBlacklist = ['command-t']
 " let g:WincentMkviewFiletypeBlacklist = ['diff', 'hgcommit', 'gitcommit']
 
 function! autocmds#attempt_select_last_file() abort
@@ -11,13 +11,13 @@ function! autocmds#attempt_select_last_file() abort
   endif
 endfunction
 
-function! autocmds#should_colorcolumn() abort
-  return index(g:WincentColorColumnBlacklist, &filetype) == -1
-endfunction
-
-function! autocmds#should_cursorline() abort
-  return index(g:WincentCursorlineBlacklist, &filetype) == -1
-endfunction
+" function! autocmds#should_colorcolumn() abort
+"   return index(g:WincentColorColumnBlacklist, &filetype) == -1
+" endfunction
+"
+" function! autocmds#should_cursorline() abort
+"   return index(g:WincentCursorlineBlacklist, &filetype) == -1
+" endfunction
 
 " Loosely based on: http://vim.wikia.com/wiki/Make_views_automatic
 " function! autocmds#should_mkview() abort

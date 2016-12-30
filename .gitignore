@@ -2,3 +2,4 @@ bash_aliases_secret
 secrets
 nvim/plugged
 vim/plugged
+vim/.base16

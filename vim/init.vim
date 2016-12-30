@@ -33,6 +33,7 @@ call plug#begin()
 " Editor
 " ==============================================================================
 "Plug 'tpope/vim-sensible'             " Sensible defaults
+
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
 " Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
@@ -71,14 +72,13 @@ Plug 'tpope/vim-surround'                 " Edit surround
 Plug 'tomtom/tcomment_vim'                " Commenter
 Plug 'junegunn/vim-easy-align'            " Align lines based on a character
 " Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
-" Plug 'bfredl/nvim-miniyank'               " yankring for neovim
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
 Plug 'wellle/targets.vim'                 " Add more Text Objects like `cin` and `da,`
 Plug 'sickill/vim-pasta'                  " Paste with indentation
 " Plug 'tpope/vim-commentary'               " Commenting with motion commands
 " Plug 'suy/vim-context-commentstring'
 " Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
+" Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 " Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'                    " <Space>u - open undoTree
@@ -90,7 +90,7 @@ Plug 'mtth/scratch.vim' " :Scratch
 Plug 'wincent/scalpel'
 
 " Repeat last macro with Enter if in normal buffer
-Plug 'wincent/replay'
+" Plug 'wincent/replay'
 
 
 " ==============================================================================
@@ -151,7 +151,7 @@ Plug 'elzr/vim-json'
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'ianks/vim-tsx'
@@ -177,7 +177,7 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0rp/ale'
-Plug 'wincent/terminus'
+" Plug 'wincent/terminus'
 " Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
@@ -202,6 +202,7 @@ endfunction
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 
+" set timeoutlen=1000 ttimeoutlen=0
 
 
 " originally from Wincent https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.vim/plugin/settings.vim
@@ -230,10 +231,10 @@ if has('linebreak')
   endif
 endif
 
-if exists('+colorcolumn')
-  " Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
-  let &l:colorcolumn='+' . join(range(0, 254), ',+')
-endif
+" if exists('+colorcolumn')
+"   " Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
+"   let &l:colorcolumn='+' . join(range(0, 254), ',+')
+" endif
 
 set cursorline                        " highlight current line
 
@@ -411,9 +412,6 @@ if has('termguicolors')
   endif
 endif
 
-" if has('nvim')
-"   GuiFont Inconsolata:h14
-" endif
 
 "Set color scheme
 " set background=dark
@@ -451,7 +449,7 @@ function! s:CheckColorScheme()
 
   execute 'highlight Comment ' . pinnacle#italicize('Comment')
   execute 'highlight JSXModifier ' . pinnacle#decorate('undercurl', 'Type')
-  execute 'highlight link EndOfBuffer ColorColumn'
+  " execute 'highlight link EndOfBuffer ColorColumn'
 
   " Allow for overrides:
   " - `statusline.vim` will re-set User1, User2 etc.
@@ -607,68 +605,9 @@ let g:localvimrc_ask = 0
 " Tools
 " ==============================================================================
 " disable changing cursors since there is too much of a delay leaving insert-mode
-let g:TerminusCursorShape=0
-"
-" Omnicomplete on CTRL space
-" Since iterm will inevitably send a <Nul> on CTRL-Space (because it's not a
-" GUI app), we need to make sure that those <Nul> will be mapped to <C-Space>
-" instead
-" inoremap <C-Space> <C-x><C-o>
-" imap <buffer> <Nul> <C-Space>
-" smap <buffer> <Nul> <C-Space>
+" let g:TerminusCursorShape=1
+let g:TerminusBracketedPaste=0
 
-" " Enable auto-completion by default
-" let g:deoplete#enable_at_startup = 1
-"
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-"
-" " let g:deoplete#disable_auto_complete = 1
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"
-" " deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"
-" """""""""""""""""""""""""
-" " 	NEOMAKE CONFIG
-" """""""""""""""""""""""""
-" let g:neomake_logfile=$HOME.'/.log/neomake.log'
-"
-" let g:neomake_open_list = 2
-" let g:neomake_place_signs = 1
-"
-" let g:neomake_javascript_enabled_makers = []
-"
-" if findfile('.eslintrc', '.;') !=# ''
-"   let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
-"   if g:eslint_path != 'eslint not found'
-"     let g:neomake_javascript_eslint_exe = g:eslint_path
-"     let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
-"   endif
-" endif
-"
-"   let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-"
-"   if g:flow_path != 'flow not found'
-"     let g:neomake_javascript_flow_maker = {
-"           \ 'exe': 'sh',
-"           \ 'args': ['-c', g:flow_path.' --json 2>/dev/null | ~/Projects/flow-vim-quickfix/bin/flow-vim-quickfix'],
-"           \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-"           \ 'cwd': '%:p:h' 
-"           \ }
-"     let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
-"     let g:deoplete#sources#flow#flow_bin = g:flow_path
-"     
-"     let g:flow#flowpath = g:flow_path 
-"   endif
-"
-" if !empty(g:neomake_javascript_enabled_makers)
-"   autocmd! BufWritePost * Neomake
-"   "autocmd! BufWritePost * Neomake
-"   autocmd! QuitPre * let g:neomake_verbose = 0
-" endif
-"
 " " vim-flow (for CTRL-Space suggestion only)
 " " For flow check we use neomake 
 let g:flow#enable = 0
@@ -679,6 +618,9 @@ if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.javascript = ['re!(?=[a-zA-Z_]{2})']
+
+" default <C-Space> is not already bound in tmux
+" let g:ycm_key_invoke_completion = '<M-Space>'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -692,155 +634,12 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit='vertical' " If you want :UltiSnipsEdit to split your window.
 
-" Ultisnip 
-" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsSnippetDirectories=['myUltiSnippets']
-" let g:UltiSnipsExpandTrigger='<tab>'
-" " let g:UltiSnipsJumpForwardTrigger='<c-b>'
-" " let g:UltiSnipsJumpBackwardTrigger='<c-z>'
-" let g:UltiSnipsEditSplit='vertical' " If you want :UltiSnipsEdit to split your window.
-
-
-if has('nvim')
-  " == Shougo/deoplete.nvim ==
-  let g:deoplete#enable_at_startup = 1
-  let g:SuperTabDefaultCompletionType = "<c-n>"
-  " == carlitux/deoplete-ternjs ==
-  let g:tern_request_timeout = 1
-  let g:tern_show_signature_in_pum = 0
-  set completeopt-=preview
-
-  " " let g:deoplete#disable_auto_complete = 1
-  " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-  "
-  " " deoplete tab-complete
-  " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-  "
-  " if !exists('g:deoplete#omni#input_patterns')
-  "   let g:deoplete#omni#input_patterns = {}
-  " endi
-
-  " == neomake/neomake ==
-  " let g:neomake_open_list = 2
-  " let g:neomake_place_signs = 1
-
-  let g:neomake_javascript_enabled_makers = []
-
-  " if findfile('.eslintrc', '.;') !=# ''
-    let g:eslint_path = StrTrim(system('PATH=$(npm bin):$PATH && which eslint'))
-    if g:eslint_path != 'eslint not found'
-      let g:neomake_javascript_eslint_exe = g:eslint_path
-      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'eslint']
-      "UNCOMMENT BELOW to --fix on neomake. Also uncomment au NeomakeFinished lower down
-      " let g:neomake_javascript_eslint_maker = {
-      "   \ 'args': ['-f', 'compact', '--fix'],
-      "   \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-      "   \ '%W%f: line %l\, col %c\, Warning - %m'
-      "   \ }
-    endif
-  " endif
-
-
-  let g:neomake_warning_sign = {
-        \ 'text': 'W',
-        \ 'texthl': 'Type',
-        \ }
-  let g:neomake_error_sign = {
-        \ 'text': 'E',
-        \ 'texthl': 'ErrorMsg',
-        \ }
-"   let g:neomake_error_sign = {
-"     \ 'text': '->',
-"     \ 'texthl': 'Error',
-"     \ }
-" let g:neomake_warning_sign = {
-"     \ 'text': '->',
-"     \ 'texthl': 'Type',
-"     \ }
-
-  " if findfile('.flowconfig', '.;') !=# ''
-    let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
-
-    if g:flow_path != 'flow not found'
-      let g:deoplete#sources#flow#flow_bin = g:flow_path
-      let g:neomake_javascript_flow_maker = {
-          \ 'exe': 'sh',
-          \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
-          \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-          \ 'cwd': '%:p:h'
-          \ }
-      let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
-      let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
-
-      " let g:neomake_javascript_flow_exe = g:flow_path
-      " let g:neomake_jsx_flow_exe = g:flow_path
-
-      let g:flow#flowpath = g:flow_path
-
-      " vim-flow (for CTRL-Space suggestion only)
-      " For flow check we use neomake
-      let g:flow#enable = 0
-      let g:flow#omnifunc = 1
-
-    endif
-  " endif
-
-  if !empty(g:neomake_javascript_enabled_makers)
-
-    " function! OnNeomakeFinished()
-    "   silent checktime
-    " endfunction
-    "
-    " augroup my_neomake
-    "   au!
-    "   autocmd User NeomakeFinished call OnNeomakeFinished()
-    " augroup END
-
-    au CursorHold,CursorHoldI * silent! checktime
-
-    autocmd! BufEnter * Neomake
-    autocmd! BufwritePost * Neomake
-    autocmd! QuitPre * let g:neomake_verbose = 0
-  endif
-else
-  let g:ale_sign_error = 'E'
-  let g:ale_sign_warning = 'W'
-
-  " vim-flow (for CTRL-Space suggestion only)
-  " For flow check we use ale
-  let g:flow#enable = 0
-  let g:flow#omnifunc = 1
-
-  " == scrooloose/syntastic ==
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  " let g:syntastic_always_populate_loc_list = 0
-  " let g:syntastic_auto_jump = 0
-  " let g:syntastic_auto_loc_list = 0
-  " let g:syntastic_check_on_open = 0
-  " let g:syntastic_check_on_wq = 1
-  " let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_enable_signs=1
-  let g:syntastic_always_populate_loc_list=1
-  let g:syntastic_loc_list_height=15
-  let g:syntastic_json_checkers=['jsonlint']
-  let g:syntastic_javascript_checkers=['eslint']
-  " let g:syntastic_javascript_checkers = ['flow', 'eslint']
-  let g:syntastic_javascript_eslint_exec = 'eslint_d'
-endif
-
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
 
 " ==============================================================================
 " Functions
 " ==============================================================================
-function! ESLintFix()
-  silent execute "!./node_modules/.bin/eslint --fix %"
-  edit! %
-  Neomake
-endfunction
-
-command!  ESLintFix call ESLintFix()
 
 " mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
 function! JSXMultiLine()
@@ -888,10 +687,6 @@ map g/ <Plug>(incsearch-stay)
 nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
 
-" == scrooloose/nerdtree ==
-" nnoremap <C-\> :NERDTreeToggle<CR>
-" inoremap <C-\> <ESC>:NERDTreeToggle<CR>
-
 set wildcharm=<C-z>
 
 " ==============================================================================
@@ -900,11 +695,12 @@ set wildcharm=<C-z>
 "totally annoying default mapping for cap k
 nmap K <nop>
 
+" Repeat last macro if in a normal buffer.
+nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+
 " map q to CamelCaseMotion, like atom's vim-mode
 map <silent> q <Plug>CamelCaseMotion_w
 map <silent> Q <Plug>CamelCaseMotion_b
-sunmap q
-sunmap Q
 
 " map iq and iQ motions
 omap <silent> iq <Plug>CamelCaseMotion_iw
@@ -1186,8 +982,6 @@ nnoremap <Leader>go :Git checkout<Space>
 "map macro to Leader-m so q can be used for CamelCaseMotion
 nnoremap <Leader>m q
 vnoremap <Leader>m q
-
-nnoremap <leader>el :call ESLintFix()<CR>
 
 " }}}
 " ============================================================================
