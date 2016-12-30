@@ -149,7 +149,9 @@ Plug 'elzr/vim-json'
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
-Plug 'chrisbra/Colorizer'
+" Plug 'chrisbra/Colorizer'
+
+
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'HerringtonDarkholme/yats.vim'
@@ -418,7 +420,7 @@ set background=dark
 " colorscheme base16-tomorrow-night
 " colorscheme spacegray
 colorscheme dracula
-set t_Co=256
+" set t_Co=256
 
 execute 'highlight Comment ' . pinnacle#italicize('Comment')
 execute 'highlight JSXModifier ' . pinnacle#underline('Function')
@@ -622,13 +624,13 @@ let g:flow#enable = 0
 let g:flow#omnifunc = 1
 "
 "
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.javascript = ['re!(?=[a-zA-Z_]{2})']
+" if !exists('g:ycm_semantic_triggers')
+"   let g:ycm_semantic_triggers = {}
+" endif
+" let g:ycm_semantic_triggers.javascript = ['re!(?=[a-zA-Z_]{2})']
 
 " default <C-Space> is not already bound in tmux
-" let g:ycm_key_invoke_completion = '<M-Space>'
+" let g:ycm_key_invoke_completion = '<C-/>'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
