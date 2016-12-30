@@ -54,9 +54,9 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 Plug 'kylpo/pinnacle'
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
 " Plug 'jordwalke/VimCleanColors'       " Colorschemes
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'quanganhdo/grb256'
@@ -105,8 +105,8 @@ Plug 'junegunn/gv.vim'
 " ==============================================================================
 Plug 'bkad/CamelCaseMotion'
 Plug 'kana/vim-textobj-user'                " For custom text objects, needed for all vim-textobj plugins.
-Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
-Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
+" Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
+" Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
@@ -149,6 +149,7 @@ Plug 'elzr/vim-json'
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
+Plug 'chrisbra/Colorizer'
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'HerringtonDarkholme/yats.vim'
@@ -421,6 +422,11 @@ set t_Co=256
 
 execute 'highlight Comment ' . pinnacle#italicize('Comment')
 execute 'highlight JSXModifier ' . pinnacle#underline('Function')
+hi def link jsDecorator Keyword
+hi def link jsDecoratorFunction Type
+hi def link jsObjectKey String
+hi def link jsFuncCall Function
+
 
 " from wincent: https://www.youtube.com/watch?v=QcOxU1sOOuw
 " function! s:CheckColorScheme()
@@ -643,6 +649,18 @@ let g:ale_sign_warning = 'W'
 " Functions
 " ==============================================================================
 
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 " mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
 function! JSXMultiLine()
   let l:previous_q_reg = @q
@@ -752,10 +770,10 @@ nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : fnameescape(ex
 " nmap <buffer> <expr> - g:NERDTreeMapUpdir
 
 
-nnoremap <D-b> :CtrlPBuffer<CR>
-
-"Tcomment
-nmap <D-/> gcc
+" nnoremap <D-b> :CtrlPBuffer<CR>
+"
+" "Tcomment
+" nmap <D-/> gcc
 
 
 " Make S always delete until the point where you'd want to start typing -
@@ -780,10 +798,6 @@ nnoremap gvf :vertical wincmd f<CR>
 
 
 
-" custom function to format current buffer
-nmap <D-M> :call Preserve("normal gg=G")<CR>
-
-
 " bind \ (backward slash) to grep shortcut
 " command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
@@ -796,8 +810,8 @@ nmap <silent> K :Ag! "<cword>" <CR>
 " nmap S <Plug>(easymotion-bd-w)
 
 " MacVimSmartGUITabs
-map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
-nmap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
+" map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
+" nmap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
 
 "SmoothScroll
 noremap <silent> <c-u> :call smooth_scroll#up(40, 20, 6)<CR>
@@ -843,14 +857,8 @@ vnoremap > >gv
 vnoremap p "_dP
 
 "Tcomment
-vmap <D-/> <c-_><c-_>
 vmap gC :TCommentBlock<cr>
 " vmap <D-s-/> <c-_>b
-
-" Awesome visual selection maintained when indenting.
-vmap <D-]> >gv
-vmap <D-[> <gv
-
 
 " EasyMotion
 " vmap s <Plug>(easymotion-s)
@@ -955,7 +963,7 @@ nmap <Leader>/ gcc
 
 " <Leader>p -- Show the path of the current file (mnemonic: path; useful when
 " you have a lot of splits and the status line gets truncated).
-nnoremap <Leader>p :echo expand('%')<CR>
+" nnoremap <Leader>p :echo expand('%')<CR>
 
 " <Leader>pp -- Like <Leader>p, but additionally yanks the filename and sends it
 " off to Clipper.
@@ -966,6 +974,10 @@ nnoremap <Leader>p :echo expand('%')<CR>
 nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 
 nmap <Leader>s <Plug>(Scalpel)
+
+" nmap <Leader>dt vit<<ESC>kvat<ESC>dd`<da>dd
+" nmap <Leader>dt vit<<ESC><C-o>kvat<ESC>dd`<da>dd
+nmap <Leader>dt va>Jdst
 
 " Yank -- use cycle to go back in history
 " map <leader>n <Plug>(miniyank-cycle)
@@ -984,6 +996,10 @@ nnoremap <Leader>go :Git checkout<Space>
 "map macro to Leader-m so q can be used for CamelCaseMotion
 nnoremap <Leader>m q
 vnoremap <Leader>m q
+
+" custom function to format current buffer
+nmap <Leader>p :call Preserve("normal gg=G")<CR>
+
 
 " }}}
 " ============================================================================
