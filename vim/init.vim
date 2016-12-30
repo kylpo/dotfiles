@@ -54,12 +54,12 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
-Plug 'chriskempson/base16-vim'
-Plug 'wincent/pinnacle'
+" Plug 'chriskempson/base16-vim'
+Plug 'kylpo/pinnacle'
+Plug 'dracula/vim'
 " Plug 'jordwalke/VimCleanColors'       " Colorschemes
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'quanganhdo/grb256'
-" Plug 'chriskempson/base16-vim'
 " Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 " Plug 'rakr/vim-one'
 
@@ -75,9 +75,6 @@ Plug 'junegunn/vim-easy-align'            " Align lines based on a character
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
 Plug 'wellle/targets.vim'                 " Add more Text Objects like `cin` and `da,`
 Plug 'sickill/vim-pasta'                  " Paste with indentation
-" Plug 'tpope/vim-commentary'               " Commenting with motion commands
-" Plug 'suy/vim-context-commentstring'
-" Plug 'scrooloose/nerdcommenter'
 " Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 " Plug 'jiangmiao/auto-pairs'
@@ -136,7 +133,8 @@ Plug 'bronson/vim-visual-star-search'
 " ==============================================================================
 " Syntaxes
 " ==============================================================================
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+" Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
@@ -414,59 +412,63 @@ endif
 
 
 "Set color scheme
-" set background=dark
+set background=dark
 " colorscheme grb256
 " colorscheme base16-tomorrow-night
 " colorscheme spacegray
-" set t_Co=256
+colorscheme dracula
+set t_Co=256
+
+execute 'highlight Comment ' . pinnacle#italicize('Comment')
+execute 'highlight JSXModifier ' . pinnacle#underline('Function')
 
 " from wincent: https://www.youtube.com/watch?v=QcOxU1sOOuw
-function! s:CheckColorScheme()
-  if !has('termguicolors')
-    let g:base16colorspace=256
-  endif
-
-  let s:config_file = expand('~/.vim/.base16')
-
-  if filereadable(s:config_file)
-    let s:config = readfile(s:config_file, '', 2)
-
-    if s:config[1] =~# '^dark\|light$'
-      execute 'set background=' . s:config[1]
-    else
-      echoerr 'Bad background ' . s:config[1] . ' in ' . s:config_file
-    endif
-
-    if filereadable(expand('~/.vim/plugged/base16-vim/colors/base16-' . s:config[0] . '.vim'))
-      execute 'color base16-' . s:config[0]
-    else
-      echoerr 'Bad scheme ' . s:config[0] . ' in ' . s:config_file
-    endif
-  else " default
-    set background=dark
-    color base16-tomorrow-night
-  endif
-
-  execute 'highlight Comment ' . pinnacle#italicize('Comment')
-  execute 'highlight JSXModifier ' . pinnacle#decorate('undercurl', 'Type')
-  " execute 'highlight link EndOfBuffer ColorColumn'
-
-  " Allow for overrides:
-  " - `statusline.vim` will re-set User1, User2 etc.
-  " - `after/plugin/loupe.vim` will override Search.
-  " doautocmd ColorScheme
-endfunction
-
-if v:progname !=# 'vi'
-  if has('autocmd')
-    augroup WincentAutocolor
-      autocmd!
-      autocmd FocusGained * call s:CheckColorScheme()
-    augroup END
-  endif
-
-  call s:CheckColorScheme()
-endif
+" function! s:CheckColorScheme()
+"   if !has('termguicolors')
+"     let g:base16colorspace=256
+"   endif
+"
+"   let s:config_file = expand('~/.vim/.base16')
+"
+"   if filereadable(s:config_file)
+"     let s:config = readfile(s:config_file, '', 2)
+"
+"     if s:config[1] =~# '^dark\|light$'
+"       execute 'set background=' . s:config[1]
+"     else
+"       echoerr 'Bad background ' . s:config[1] . ' in ' . s:config_file
+"     endif
+"
+"     if filereadable(expand('~/.vim/plugged/base16-vim/colors/base16-' . s:config[0] . '.vim'))
+"       execute 'color base16-' . s:config[0]
+"     else
+"       echoerr 'Bad scheme ' . s:config[0] . ' in ' . s:config_file
+"     endif
+"   else " default
+"     set background=dark
+"     color base16-tomorrow-night
+"   endif
+"
+"   execute 'highlight Comment ' . pinnacle#italicize('Comment')
+"   execute 'highlight JSXModifier ' . pinnacle#decorate('undercurl', 'Type')
+"   " execute 'highlight link EndOfBuffer ColorColumn'
+"
+"   " Allow for overrides:
+"   " - `statusline.vim` will re-set User1, User2 etc.
+"   " - `after/plugin/loupe.vim` will override Search.
+"   doautocmd ColorScheme
+" endfunction
+"
+" if v:progname !=# 'vi'
+"   if has('autocmd')
+"     augroup WincentAutocolor
+"       autocmd!
+"       autocmd FocusGained * call s:CheckColorScheme()
+"     augroup END
+"   endif
+"
+"   call s:CheckColorScheme()
+" endif
 
 " Auto-source vimrc on save
 autocmd bufwritepost init.vim source $MYVIMRC
