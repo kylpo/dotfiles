@@ -53,6 +53,8 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
+Plug 'chriskempson/base16-vim'
+Plug 'wincent/pinnacle'
 " Plug 'jordwalke/VimCleanColors'       " Colorschemes
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'quanganhdo/grb256'
@@ -332,7 +334,7 @@ if has('termguicolors')
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
 
-set textwidth=80                      " automatically hard wrap at 80 columns
+set textwidth=120                      " automatically hard wrap at 120 columns
 " set cc=+1
 
 " if has('persistent_undo')
@@ -403,7 +405,7 @@ set nobackup
 if has('termguicolors')
   " Don't need this in xterm-256color, but do need it inside tmux.
   " (See `:h xterm-true-color`.)
-  if &term =~# 'screen-256color'
+  if &term =~# 'tmux-256color'
     let &t_8f="\e[38;2;%ld;%ld;%ldm"
     let &t_8b="\e[48;2;%ld;%ld;%ldm"
   endif
@@ -414,12 +416,59 @@ endif
 " endif
 
 "Set color scheme
-set background=dark
+" set background=dark
 " colorscheme grb256
 " colorscheme base16-tomorrow-night
-colorscheme spacegray
-set t_Co=256
+" colorscheme spacegray
+" set t_Co=256
 
+" from wincent: https://www.youtube.com/watch?v=QcOxU1sOOuw
+function! s:CheckColorScheme()
+  if !has('termguicolors')
+    let g:base16colorspace=256
+  endif
+
+  let s:config_file = expand('~/.vim/.base16')
+
+  if filereadable(s:config_file)
+    let s:config = readfile(s:config_file, '', 2)
+
+    if s:config[1] =~# '^dark\|light$'
+      execute 'set background=' . s:config[1]
+    else
+      echoerr 'Bad background ' . s:config[1] . ' in ' . s:config_file
+    endif
+
+    if filereadable(expand('~/.vim/plugged/base16-vim/colors/base16-' . s:config[0] . '.vim'))
+      execute 'color base16-' . s:config[0]
+    else
+      echoerr 'Bad scheme ' . s:config[0] . ' in ' . s:config_file
+    endif
+  else " default
+    set background=dark
+    color base16-tomorrow-night
+  endif
+
+  execute 'highlight Comment ' . pinnacle#italicize('Comment')
+  execute 'highlight JSXModifier ' . pinnacle#decorate('undercurl', 'Type')
+  execute 'highlight link EndOfBuffer ColorColumn'
+
+  " Allow for overrides:
+  " - `statusline.vim` will re-set User1, User2 etc.
+  " - `after/plugin/loupe.vim` will override Search.
+  " doautocmd ColorScheme
+endfunction
+
+if v:progname !=# 'vi'
+  if has('autocmd')
+    augroup WincentAutocolor
+      autocmd!
+      autocmd FocusGained * call s:CheckColorScheme()
+    augroup END
+  endif
+
+  call s:CheckColorScheme()
+endif
 
 " Auto-source vimrc on save
 autocmd bufwritepost init.vim source $MYVIMRC
@@ -756,6 +805,11 @@ if has('nvim')
 else
   let g:ale_sign_error = 'E'
   let g:ale_sign_warning = 'W'
+
+  " vim-flow (for CTRL-Space suggestion only)
+  " For flow check we use ale
+  let g:flow#enable = 0
+  let g:flow#omnifunc = 1
 
   " == scrooloose/syntastic ==
   " set statusline+=%#warningmsg#
