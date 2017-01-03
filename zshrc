@@ -57,6 +57,7 @@ alias gd='git diff'
 alias gpu='git push'
 alias gpl='git pull'
 alias gco='git checkout '
+alias clone='hub clone'
 
 alias start='yarn start'
 alias run='yarn run'
