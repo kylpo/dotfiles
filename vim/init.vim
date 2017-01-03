@@ -805,7 +805,7 @@ nnoremap gvf :vertical wincmd f<CR>
 nnoremap \ :Ag<SPACE>
 
 " bind K to grep word under cursor
-nmap <silent> K :Ag! "<cword>" <CR>
+nmap <silent> K :Ag! <cword> <CR>
 
 " EasyMotion
 " nmap s <Plug>(easymotion-s)
