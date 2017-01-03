@@ -37,7 +37,6 @@ ZSH_THEME="hyperzsh"
 # plugins=(git brew)
 # plugins=(tmux)
 
-
 plugins+=(zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
@@ -61,6 +60,7 @@ alias gpu='git push'
 alias gpl='git pull'
 alias gco='git checkout '
 alias clone='hub clone'
+alias fix="git diff --name-only | uniq | xargs vim"
 
 alias start='yarn start'
 alias run='yarn run'
@@ -73,8 +73,8 @@ alias up3='cd ../../..'
 alias up4='cd ../../../..'
 alias up5='cd ../../../../..'
 
-alias fix="git diff --name-only | uniq | xargs mvim"
 alias weather="curl -4 wttr.in"
+alias pomo="pomojs --log ~/.pomo.log --tmux"
 
 alias rm=trash
 

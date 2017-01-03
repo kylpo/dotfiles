@@ -9,6 +9,10 @@ tic $DIR/xterm-256color.terminfo
 
 brew bundle
 
+echo -n "Installing npm globals"
+npm i -g pomo
+echo "done."
+
 cd ~
 
 # silence terminal's 'last login' message
