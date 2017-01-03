@@ -1,26 +1,9 @@
 #--------------------------------------------------
-# oh-my-zsh
+# exports
 #--------------------------------------------------
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="hyperzsh"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# plugins=(git brew)
-# plugins=(tmux)
-
-source $ZSH/oh-my-zsh.sh
-
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-#--------------------------------------------------
-# exports
-#--------------------------------------------------
 
 # https://twitter.com/ariabuckles/status/772209060506587136
 export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
@@ -34,16 +17,36 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 # export EDITOR=nvim
 export NVM_DIR=$HOME/.nvm
 
+# speed up zsh init by lazy-loading nvm
+export NVM_LAZY_LOAD=true
+
 export MYVIMRC='~/.vim/init.vim'
 export EDITOR=vim
 # export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as the default source for fzf
 
+#--------------------------------------------------
+# oh-my-zsh
+#--------------------------------------------------
+
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="hyperzsh"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# plugins=(git brew)
+# plugins=(tmux)
+
+
+plugins+=(zsh-nvm)
+
+source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 
 #--------------------------------------------------
 # sourcing
 #--------------------------------------------------
-source $(brew --prefix nvm)/nvm.sh
 . `brew --prefix`/etc/profile.d/z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -84,15 +87,15 @@ alias ez='vim ~/.zshrc'
 
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7
-function fg-bg() {
-  if [[ $#BUFFER -eq 0 ]]; then
-    fg
-  else
-    zle push-input
-  fi
-}
-zle -N fg-bg
-bindkey '^Z' fg-bg
+# function fg-bg() {
+#   if [[ $#BUFFER -eq 0 ]]; then
+#     fg
+#   else
+#     zle push-input
+#   fi
+# }
+# zle -N fg-bg
+# bindkey '^Z' fg-bg
 
 
 cd () {
@@ -252,6 +255,6 @@ function () {
 # bind '"\C-o":"ranger-cd\C-m"'
 
 # OPAM configuration
-. /Users/kylepoole/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-eval $(opam config env)
+# . /Users/kylepoole/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# eval $(opam config env)
 
