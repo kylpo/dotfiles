@@ -407,7 +407,12 @@ this.${1:methodName} = this.$1.bind( this )
 endsnippet
 
 snippet rcc "React class component"
-import React, { View, PropTypes } from 'react-native'
+// @flow
+// imports {{{
+
+import React from 'react'
+
+// }}}
 
 export default class ${1:ClassName} extends React.Component {
 

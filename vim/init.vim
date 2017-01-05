@@ -200,7 +200,7 @@ function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 endfunction
 
-let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+let g:flow#flowpath = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 
 " set timeoutlen=1000 ttimeoutlen=0
@@ -253,8 +253,8 @@ if has('folding')
   if has('windows')
     set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
   endif
-  set foldmethod=indent               " not as cool as syntax, but faster
-  set foldlevelstart=99               " start unfolded
+  set foldmethod=marker               " not as cool as syntax, but faster
+  " set foldlevelstart=99               " start unfolded
 endif
 
 if v:version > 703 || v:version == 703 && has('patch541')
@@ -514,8 +514,8 @@ let g:NERDTreeMapUpdir = '-'
 let g:NERDTreeMapUpdirKeepOpen = 'u'
 
 " prevent nerdtree from overriding ctrl-j/k
-let g:NERDTreeMapJumpNextSibling = 'C-J'
-let g:NERDTreeMapJumpPrevSibling = 'C-K'
+let g:NERDTreeMapJumpNextSibling = '<Nop>'
+let g:NERDTreeMapJumpPrevSibling = '<Nop>'
 
 " Ignore turds left behind by Mercurial.
 let g:NERDTreeIgnore=['\.orig']
@@ -845,7 +845,6 @@ xmap t <Plug>Sneak_t
 xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
-
 
 
 " ==============================================================================
