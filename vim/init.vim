@@ -12,7 +12,6 @@
 " ==============================================================================
 
 set nocompatible
-set shell=zsh\ -l
 
 " ============================================================================
 " PLUGIN {{{
@@ -368,42 +367,6 @@ set textwidth=120                      " automatically hard wrap at 120 columns
 "         echoerr 'warning: ~/.vim/tmp/viminfo exists but is not readable'
 "       endif
 "     endif
-"   endif
-" endif
-
-" if has('mksession')
-"   if isdirectory('~/local/.vim/tmp')
-"     set viewdir=~/local/.vim/tmp/view
-"   else
-"     set viewdir=~/.vim/tmp/view       " override ~/.vim/view default
-"   endif
-"   set viewoptions=cursor,folds        " save/restore just these (with `:{mk,load}view`)
-" endif
-
-if has('virtualedit')
-  set virtualedit=block               " allow cursor to move where there is no text in visual block mode
-endif
-set visualbell t_vb=                  " stop annoying beeping for non-error errors
-set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
-set wildcharm=<C-z>                   " substitute for 'wildchar' (<Tab>) in macros
-if has('wildignore')
-  set wildignore+=*.o,*.rej           " patterns to ignore during file-navigation
-endif
-if has('wildmenu')
-  set wildmenu                        " show options as list when switching buffers etc
-endif
-set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
-
-
-if has('inccommand')
-  set inccommand=split                  " Incremental, live substite in neovim (v0.1.7+)
-endif
-
-set clipboard=unnamed,unnamedplus
-
-set noswapfile     " Don't make backups.
-set nowritebackup " Even if you did make a backup, don't keep it around.
-set nobackup
 
 if has('termguicolors')
   " Don't need this in xterm-256color, but do need it inside tmux.
@@ -429,6 +392,7 @@ hi def link jsDecorator Keyword
 hi def link jsDecoratorFunction Type
 hi def link jsObjectKey String
 hi def link jsFuncCall Function
+hi def link jsThis cssURL
 
 
 " from wincent: https://www.youtube.com/watch?v=QcOxU1sOOuw
