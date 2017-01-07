@@ -12,6 +12,7 @@
 " ==============================================================================
 
 set nocompatible
+set shell=zsh\ -l
 
 " ============================================================================
 " PLUGIN {{{
@@ -55,7 +56,7 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " Themes
 " ==============================================================================
 Plug 'chriskempson/base16-vim'
-Plug 'kylpo/pinnacle'
+Plug 'wincent/pinnacle'
 " Plug 'dracula/vim'
 " Plug 'jordwalke/VimCleanColors'       " Colorschemes
 " Plug 'altercation/vim-colors-solarized'
