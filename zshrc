@@ -38,9 +38,9 @@ ZSH_THEME="hyperzsh"
 # plugins=(tmux)
 
 plugins+=(zsh-nvm)
+plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 #--------------------------------------------------
