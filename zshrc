@@ -76,7 +76,7 @@ alias up5='cd ../../../../..'
 alias weather="curl -4 wttr.in"
 alias pomo="pomojs --log ~/.pomo.log --tmux"
 
-alias rm=trash
+# alias rm=trash
 
 alias t=tmux
 

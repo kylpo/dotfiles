@@ -212,14 +212,30 @@ scriptencoding utf-8
 set autoindent                        " maintain indent of current line
 set backspace=indent,start,eol        " allow unrestricted backspacing in insert mode
 
+set nobackup
+set nowritebackup
+set noswapfile
+
+set clipboard=unnamed
+
 " if exists('$SUDO_USER')
 "   set nobackup                        " don't create root-owned files
 "   set nowritebackup                   " don't create root-owned files
+"   set noswapfile                      " don't create root-owned files
 " else
-"   set backupdir=~/local/.vim/tmp/backup
-"   set backupdir+=~/.vim/tmp/backup    " keep backup files out of the way
-"   set backupdir+=.
+"   set backupdir=~/.vim/tmp/backup//
+"   set directory=~/.vim/tmp/swap//
 " endif
+
+if has('persistent_undo')
+  if exists('$SUDO_USER')
+    set noundofile                    " don't create root-owned files
+  else
+    set undodir=~/.vim/tmp/undo
+    set undofile                      " actually use undo files
+  endif
+endif
+
 
 if exists('&belloff')
   set belloff=all                     " never ring the bell for any reason
@@ -238,14 +254,6 @@ endif
 " endif
 
 set cursorline                        " highlight current line
-
-" if exists('$SUDO_USER')
-"   set noswapfile                      " don't create root-owned files
-" else
-"   set directory=~/local/.vim/tmp/swap//
-"   set directory+=~/.vim/tmp/swap//    " keep swap files out of the way
-"   set directory+=.
-" endif
 
 set expandtab                         " always use spaces instead of tabs
 
@@ -338,17 +346,6 @@ endif
 
 set textwidth=120                      " automatically hard wrap at 120 columns
 " set cc=+1
-
-" if has('persistent_undo')
-"   if exists('$SUDO_USER')
-"     set noundofile                    " don't create root-owned files
-"   else
-"     set undodir=~/local/.vim/tmp/undo
-"     set undodir+=~/.vim/tmp/undo      " keep undo files out of the way
-"     set undodir+=.
-"     set undofile                      " actually use undo files
-"   endif
-" endif
 
 " set updatecount=80                    " update swapfiles every 80 typed chars
 
