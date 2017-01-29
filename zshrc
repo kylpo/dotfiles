@@ -66,6 +66,7 @@ alias start='yarn start'
 alias run='yarn run'
 alias build='yarn run build'
 alias clean='yarn run clean'
+alias upgrade='yarn upgrade-interactive'
 
 alias up='cd ..'
 alias up2='cd ../..'
@@ -97,6 +98,16 @@ alias ez='vim ~/.zshrc'
 # zle -N fg-bg
 # bindkey '^Z' fg-bg
 
+# from https://gist.github.com/tj/80a787364d97b391317d7aed35ad390b
+show_icons () {
+  defaults write com.apple.finder CreateDesktop true
+  killall Finder
+}
+
+hide_icons () {
+  defaults write com.apple.finder CreateDesktop false
+  killall Finder
+}
 
 cd () {
   builtin cd $@ && ls -aG

@@ -194,7 +194,15 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 
+" autocmd FileType javascript set formatprg=prettier\ --stdin
+
 au Filetype javascript setl sw=2 sts=2 et
+
+" auto-format on save
+" augroup autoindent
+"   au!
+"   autocmd BufWritePre *.js :normal migg=G`i
+" augroup End
 
 function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
