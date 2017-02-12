@@ -18,7 +18,7 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export NVM_DIR=$HOME/.nvm
 
 # speed up zsh init by lazy-loading nvm
-export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD=true
 
 export MYVIMRC='~/.vim/init.vim'
 export EDITOR=vim

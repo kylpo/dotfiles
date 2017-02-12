@@ -144,6 +144,7 @@ Plug 'ruanyl/vim-fixmyjs'
 " Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
+Plug 'GutenYe/json5.vim'
 " Plug 'othree/xml.vim'
 
 " Markdown preview for OS X via :Xmark
@@ -153,6 +154,8 @@ Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
 
 " Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+" NOTE: be sure to :TsuOpen to see completions
 " Plug 'Quramy/tsuquyomi'
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'ianks/vim-tsx'
@@ -194,6 +197,14 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 
+" Set .babelrc file to json format on open and new
+autocmd BufNewFile,BufRead .babelrc,.eslintrc set filetype=json5
+
+" set gq command to use prettierjs
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin
+" auto-format on save
+" autocmd BufWritePre *.js :normal gggqG
+
 " autocmd FileType javascript set formatprg=prettier\ --stdin
 
 au Filetype javascript setl sw=2 sts=2 et
@@ -203,6 +214,14 @@ au Filetype javascript setl sw=2 sts=2 et
 "   au!
 "   autocmd BufWritePre *.js :normal migg=G`i
 " augroup End
+au BufNewFile,BufRead *.ejs set filetype=html
+au Filetype javascript setl sw=2 sts=2 et
+
+" let g:tsuquyomi_debug = 1
+" let g:tsuquyomi_tsserver_debug = 1
+" let g:tsuquyomi_completion_detail = 1
+" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+" let g:tsuquyomi_use_local_typescript = 0
 
 function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
