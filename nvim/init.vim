@@ -1,3 +1,8 @@
+" vim: set foldmethod=marker:
+" zM to fold all
+" zr to open all folds
+" za to toggle a fold
+"
 " ==============================================================================
 " PLUGINS
 " SETTINGS
@@ -8,8 +13,8 @@
 
 set nocompatible
 
-" ==============================================================================
-" PLUGIN
+" ============================================================================
+" PLUGIN {{{
 " ==============================================================================
 " - Editor
 " - Themes
@@ -28,6 +33,7 @@ call plug#begin()
 " Editor
 " ==============================================================================
 "Plug 'tpope/vim-sensible'             " Sensible defaults
+
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
 " Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
@@ -39,8 +45,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'jordwalke/VimSplitBalancer'     " window manager
 
-Plug 'junegunn/goyo.vim'              " Zen mode
-Plug 'junegunn/limelight.vim'         " Highlight code around cursor. Rest is grey
+" Plug 'junegunn/goyo.vim'              " Zen mode
+" Plug 'junegunn/limelight.vim'         " Highlight code around cursor. Rest is grey
 Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuote> or @ key
 
 
@@ -48,10 +54,12 @@ Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuot
 " ==============================================================================
 " Themes
 " ==============================================================================
+" Plug 'chriskempson/base16-vim'
+Plug 'wincent/pinnacle'
+" Plug 'dracula/vim'
 " Plug 'jordwalke/VimCleanColors'       " Colorschemes
 " Plug 'altercation/vim-colors-solarized'
 " Plug 'quanganhdo/grb256'
-" Plug 'chriskempson/base16-vim'
 " Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 " Plug 'rakr/vim-one'
 
@@ -64,14 +72,10 @@ Plug 'tpope/vim-surround'                 " Edit surround
 Plug 'tomtom/tcomment_vim'                " Commenter
 Plug 'junegunn/vim-easy-align'            " Align lines based on a character
 " Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
-" Plug 'bfredl/nvim-miniyank'               " yankring for neovim
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
 Plug 'wellle/targets.vim'                 " Add more Text Objects like `cin` and `da,`
 Plug 'sickill/vim-pasta'                  " Paste with indentation
-" Plug 'tpope/vim-commentary'               " Commenting with motion commands
-" Plug 'suy/vim-context-commentstring'
-" Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
+" Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 " Plug 'jiangmiao/auto-pairs'
 Plug 'mbbill/undotree'                    " <Space>u - open undoTree
@@ -83,7 +87,7 @@ Plug 'mtth/scratch.vim' " :Scratch
 Plug 'wincent/scalpel'
 
 " Repeat last macro with Enter if in normal buffer
-Plug 'wincent/replay'
+" Plug 'wincent/replay'
 
 
 " ==============================================================================
@@ -101,9 +105,9 @@ Plug 'junegunn/gv.vim'
 " ==============================================================================
 Plug 'bkad/CamelCaseMotion'
 Plug 'kana/vim-textobj-user'                " For custom text objects, needed for all vim-textobj plugins.
-Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
-Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
-" Plug 'easymotion/vim-easymotion'
+" Plug 'Julian/vim-textobj-variable-segment'  " Variable (CamelCase or underscore) segment text object (iv / av).
+" Plug 'whatyouhide/vim-textobj-xmlattr'      " HTML/XML attribute text object (ix / ax).
+Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/matchit.zip'              " enhances % command to jump to corresponding html tags
@@ -129,11 +133,15 @@ Plug 'bronson/vim-visual-star-search'
 " ==============================================================================
 " Syntaxes
 " ==============================================================================
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+" Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
 Plug 'kylpo/vim-jsx/'
+" Plug 'galooshi/vim-import-js'
+Plug 'kylpo/vim-import-js'
+Plug 'ruanyl/vim-fixmyjs'
 " Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
@@ -142,7 +150,10 @@ Plug 'elzr/vim-json'
 " Markdown preview for OS X via :Xmark
 Plug 'junegunn/vim-xmark', { 'do': 'make' }
 
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+" Plug 'chrisbra/Colorizer'
+
+
+" Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 " Plug 'Quramy/tsuquyomi'
 " Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'ianks/vim-tsx'
@@ -169,27 +180,74 @@ Plug 'SirVer/ultisnips'
 
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'steelsojka/deoplete-flow'
 " Plug 'mhartington/deoplete-typescript'
 
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'w0rp/ale'
+" Plug 'wincent/terminus'
+" Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'prabirshrestha/async.vim'
+
 call plug#end()
 
-
-
-
-
-
-
-
-
-
-
-
-
+" }}}
+" ============================================================================
 
 " ==============================================================================
-" SETTINGS
+" FUNCTIONS {{{
+" ==============================================================================
+
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
+function! JSXMultiLine()
+  let l:previous_q_reg = @q
+  let l:line = getline(".")
+  let l:identation_length = len(matchstr(line, "^\[\\t|\\ \]*"))
+
+  if &expandtab
+    let l:padding = repeat(" ", (identation_length + &shiftwidth))
+  else
+    let l:padding = repeat("\t", identation_length + 1)
+  endif
+
+  let @q = substitute(line, "\\w\\+=[{|'|\"]", "\\n" . padding . "&", "g")
+  let @q = substitute(getreg("q"), ">$", "\\n>", "g")
+  let @q = substitute(getreg("q"), "/>$", "\\n/>", "g")
+
+  let @q = substitute(getreg("q"), "\ \\n", "\\n", "g")
+
+  execute "normal! 0d$\"qp"
+  execute "normal! =at=at"
+
+  let @q = previous_q_reg
+endfunction
+
+command! JSXMultiLine call JSXMultiLine()
+
+" }}}
+" ============================================================================
+
+" ==============================================================================
+" SETTINGS {{{
 " ==============================================================================
 filetype on
 filetype plugin on
@@ -198,11 +256,7 @@ syntax on
 
 au Filetype javascript setl sw=2 sts=2 et
 
-function! StrTrim(txt)
-  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-endfunction
-
-let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+" let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 
 
@@ -212,6 +266,7 @@ scriptencoding utf-8
 
 set autoindent                        " maintain indent of current line
 set backspace=indent,start,eol        " allow unrestricted backspacing in insert mode
+
 
 " if exists('$SUDO_USER')
 "   set nobackup                        " don't create root-owned files
@@ -254,8 +309,8 @@ if has('folding')
   if has('windows')
     set fillchars=vert:┃              " BOX DRAWINGS HEAVY VERTICAL (U+2503, UTF-8: E2 94 83)
   endif
-  set foldmethod=indent               " not as cool as syntax, but faster
-  set foldlevelstart=99               " start unfolded
+  set foldmethod=marker               " not as cool as syntax, but faster
+  " set foldlevelstart=99               " start unfolded
 endif
 
 if v:version > 703 || v:version == 703 && has('patch541')
@@ -337,7 +392,7 @@ if has('termguicolors')
   set termguicolors                   " use guifg/guibg instead of ctermfg/ctermbg in terminal
 endif
 
-set textwidth=80                      " automatically hard wrap at 80 columns
+set textwidth=120                      " automatically hard wrap at 120 columns
 " set cc=+1
 
 " if has('persistent_undo')
@@ -399,105 +454,34 @@ if has('inccommand')
   set inccommand=split                  " Incremental, live substite in neovim (v0.1.7+)
 endif
 
+" copy to system clipboard
 set clipboard=unnamed,unnamedplus
 
 set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
 set nobackup
 
-
-
-
-
-
-
-
-" if has('nvim')
-"   GuiFont Inconsolata:h14
-" endif
-
 "Set color scheme
 set background=dark
-" colorscheme grb256
-" colorscheme base16-tomorrow-night
-colorscheme spacegray
-set t_Co=256
+colorscheme dracula
 
+execute 'highlight Comment ' . pinnacle#italicize('Comment')
+execute 'highlight JSXModifier ' . pinnacle#underline('Function')
+hi def link jsDecorator Keyword
+hi def link jsDecoratorFunction Type
+hi def link jsObjectKey String
+hi def link jsFuncCall Function
+hi def link jsThis cssURL
 
 
 " Auto-source vimrc on save
 autocmd bufwritepost init.vim source $MYVIMRC
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+" }}}
+" ============================================================================
 
 " ==============================================================================
-" PLUGIN_SETTINGS
+" PLUGIN_SETTINGS {{{
 " ==============================================================================
 " - Editor
 " - Editing
@@ -525,6 +509,10 @@ let g:NERDTreeMapUpdir = '-'
 " move up, but keep current dir expanded
 let g:NERDTreeMapUpdirKeepOpen = 'u'
 
+" prevent nerdtree from overriding ctrl-j/k
+let g:NERDTreeMapJumpNextSibling = '<Nop>'
+let g:NERDTreeMapJumpPrevSibling = '<Nop>'
+
 " Ignore turds left behind by Mercurial.
 let g:NERDTreeIgnore=['\.orig']
 
@@ -551,20 +539,18 @@ if has('autocmd')
   augroup END
 endif
 
-" --- Airline ---
-" if has("gui_macvim") || has("gui_vimr")
-"   autocmd VimEnter * set guioptions+=e
-" endif
-" let g:airline_powerline_fonts = 1
-" 
-" let g:airline#extensions#branch#enabled = 0
-" "let g:airline#extensions#hunks#enabled = 0
-" let g:airline#extensions#hunks#non_zero_only = 1
-" let g:airline_section_y = ''
-" 
-" set laststatus=2
-" " Disable truncation
-" let g:airline#extensions#default#section_truncate_width = {}
+" TComment
+" ensure jsx attribues are commented with js's // syntax, not xml's
+let g:tcomment#syntax_substitute = {
+      \ '\C^javaScript\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^js\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlTag\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlNullTag\ze\(\u\|$\)': {'sub': 'javascript'},
+      \ '\C^xmlModifierTag\ze\(\u\|$\)': {'sub': 'javascript'}
+      \ }
+
+" override default jsx_block to remove whitespace
+call tcomment#DefineType('jsx_block',       '{/*%s */}')
 
 " ==============================================================================
 " Editing
@@ -587,7 +573,8 @@ let g:Gitv_DoNotMapCtrlKey = 1
 
 
 " ==============================================================================
-" Syntaxes ==============================================================================
+" Syntaxes
+" ==============================================================================
 au BufRead,BufNewFile *.json set filetype=json
 
 let g:jsx_ext_required = 0
@@ -596,6 +583,8 @@ let g:javascript_plugin_flow = 1
 
 " let g:closetag_filenames = "*.html,*.js"
 
+" use linting tool installed locally in node_modules folder
+let g:fixmyjs_use_local = 1
 
 " ==============================================================================
 " ProjectConfig
@@ -631,7 +620,7 @@ smap <buffer> <Nul> <C-Space>
 " """""""""""""""""""""""""
 " " 	NEOMAKE CONFIG
 " """""""""""""""""""""""""
-" let g:neomake_logfile=$HOME.'/.log/neomake.log'
+let g:neomake_logfile=$HOME.'/.log/neomake.log'
 "
 " let g:neomake_open_list = 2
 " let g:neomake_place_signs = 1
@@ -745,11 +734,16 @@ if has('nvim')
     if g:flow_path != 'flow not found'
       let g:deoplete#sources#flow#flow_bin = g:flow_path
       let g:neomake_javascript_flow_maker = {
-          \ 'exe': 'sh',
-          \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
-          \ 'errorformat': '%E%f:%l:%c\,%n: %m',
-          \ 'cwd': '%:p:h'
-          \ }
+        \ 'exe': 'sh',
+        \ 'args': ['-c', g:flow_path.' --from=vim', '--show-all-errors'],
+        \ 'errorformat': '%EFile "%f"\, line %l\, characters %c-%m,%C%m,%Z%m',
+        \ }
+
+      "     \ 'exe': 'sh',
+      "     \ 'args': ['-c', g:flow_path.' --json 2> /dev/null | flow-vim-quickfix'],
+      "     \ 'errorformat': '%E%f:%l:%c\,%n: %m',
+      "     \ 'cwd': '%:p:h'
+      "     \ }
       let g:neomake_javascript_enabled_makers = g:neomake_javascript_enabled_makers + [ 'flow']
       let g:neomake_jsx_enabled_makers = ['eslint', 'flow']
 
@@ -784,65 +778,24 @@ if has('nvim')
     autocmd! QuitPre * let g:neomake_verbose = 0
   endif
 else
+  " let g:ale_sign_error = 'E'
+  " let g:ale_sign_warning = 'W'
+
   " == scrooloose/syntastic ==
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  " let g:syntastic_always_populate_loc_list = 0
-  " let g:syntastic_auto_jump = 0
-  " let g:syntastic_auto_loc_list = 0
-  " let g:syntastic_check_on_open = 0
-  " let g:syntastic_check_on_wq = 1
-  " let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_enable_signs=1
-  let g:syntastic_always_populate_loc_list=1
-  let g:syntastic_loc_list_height=15
-  let g:syntastic_json_checkers=['jsonlint']
-  let g:syntastic_javascript_checkers=['eslint']
-  " let g:syntastic_javascript_checkers = ['flow', 'eslint']
-  let g:syntastic_javascript_eslint_exec = 'eslint_d'
+  " let g:syntastic_enable_signs=1
+  " let g:syntastic_always_populate_loc_list=1
+  " let g:syntastic_loc_list_height=15
+  " let g:syntastic_json_checkers=['jsonlint']
+  " let g:syntastic_javascript_checkers=['eslint']
+  " " let g:syntastic_javascript_checkers = ['flow', 'eslint']
+  " let g:syntastic_javascript_eslint_exec = 'eslint_d'
 endif
 
+" }}}
+" ============================================================================
 
 " ==============================================================================
-" Functions
-" ==============================================================================
-function! ESLintFix()
-  silent execute "!./node_modules/.bin/eslint --fix %"
-  edit! %
-  Neomake
-endfunction
-
-command!  ESLintFix call ESLintFix()
-
-" mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
-function! JSXMultiLine()
-  let l:previous_q_reg = @q
-  let l:line = getline(".")
-  let l:identation_length = len(matchstr(line, "^\[\\t|\\ \]*"))
-
-  if &expandtab
-    let l:padding = repeat(" ", (identation_length + &shiftwidth))
-  else
-    let l:padding = repeat("\t", identation_length + 1)
-  endif
-
-  let @q = substitute(line, "\\w\\+=[{|'|\"]", "\\n" . padding . "&", "g")
-  let @q = substitute(getreg("q"), ">$", "\\n>", "g")
-  let @q = substitute(getreg("q"), "/>$", "\\n/>", "g")
-
-  let @q = substitute(getreg("q"), "\ \\n", "\\n", "g")
-
-  execute "normal! 0d$\"qp"
-  execute "normal! =at=at"
-
-  let @q = previous_q_reg
-endfunction
-
-command! JSXMultiLine call JSXMultiLine()
-
-" ==============================================================================
-" KEYBINDINGS
+" KEYBINDINGS {{{
 " ==============================================================================
 " - Normal
 " - Visual
@@ -858,10 +811,6 @@ map g/ <Plug>(incsearch-stay)
 nnoremap <C-T> :FZF<CR>
 inoremap <C-T> <ESC>:FZF<CR>i
 
-" == scrooloose/nerdtree ==
-" nnoremap <C-\> :NERDTreeToggle<CR>
-" inoremap <C-\> <ESC>:NERDTreeToggle<CR>
-
 set wildcharm=<C-z>
 
 " ==============================================================================
@@ -870,20 +819,19 @@ set wildcharm=<C-z>
 "totally annoying default mapping for cap k
 nmap K <nop>
 
+" Repeat last macro if in a normal buffer.
+nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
+
 " map q to CamelCaseMotion, like atom's vim-mode
 map <silent> q <Plug>CamelCaseMotion_w
 map <silent> Q <Plug>CamelCaseMotion_b
-sunmap q
-sunmap Q
+
 
 " map iq and iQ motions
 omap <silent> iq <Plug>CamelCaseMotion_iw
 xmap <silent> iq <Plug>CamelCaseMotion_iw
 omap <silent> iQ <Plug>CamelCaseMotion_ib
 xmap <silent> iQ <Plug>CamelCaseMotion_ib
-
-" Huge saver! Why do you need to press shift when executing a command?
-" nnoremap ; :
 
 " clear search highlights on esc
 nnoremap <silent> <esc>  :nohlsearch<return><esc>
@@ -924,10 +872,10 @@ nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : fnameescape(ex
 " nmap <buffer> <expr> - g:NERDTreeMapUpdir
 
 
-nnoremap <D-b> :CtrlPBuffer<CR>
+" nnoremap <D-b> :CtrlPBuffer<CR>
 
 "Tcomment
-nmap <D-/> gcc
+" nmap <D-/> gcc
 
 
 " Make S always delete until the point where you'd want to start typing -
@@ -953,7 +901,7 @@ nnoremap gvf :vertical wincmd f<CR>
 
 
 " custom function to format current buffer
-nmap <D-M> :call Preserve("normal gg=G")<CR>
+" nmap <D-M> :call Preserve("normal gg=G")<CR>
 
 
 " bind \ (backward slash) to grep shortcut
@@ -968,8 +916,8 @@ nmap <silent> K :Ag! "<cword>" <CR>
 " nmap S <Plug>(easymotion-bd-w)
 
 " MacVimSmartGUITabs
-map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
-nmap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
+" map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
+" nmap <D-Cr> <Esc>:SmartGUITabsToggleFullScreen<CR>
 
 "SmoothScroll
 noremap <silent> <c-u> :call smooth_scroll#up(40, 20, 6)<CR>
@@ -1015,13 +963,8 @@ vnoremap > >gv
 vnoremap p "_dP
 
 "Tcomment
-vmap <D-/> <c-_><c-_>
+vmap gC :TCommentBlock<cr>
 " vmap <D-s-/> <c-_>b
-
-" Awesome visual selection maintained when indenting.
-vmap <D-]> >gv
-vmap <D-[> <gv
-
 
 " EasyMotion
 " vmap s <Plug>(easymotion-s)
@@ -1126,7 +1069,7 @@ nmap <Leader>/ gcc
 
 " <Leader>p -- Show the path of the current file (mnemonic: path; useful when
 " you have a lot of splits and the status line gets truncated).
-nnoremap <Leader>p :echo expand('%')<CR>
+" nnoremap <Leader>p :echo expand('%')<CR>
 
 " <Leader>pp -- Like <Leader>p, but additionally yanks the filename and sends it
 " off to Clipper.
@@ -1137,6 +1080,8 @@ nnoremap <Leader>p :echo expand('%')<CR>
 nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 
 nmap <Leader>s <Plug>(Scalpel)
+
+nmap <Leader>dt va>Jdst
 
 " Yank -- use cycle to go back in history
 " map <leader>n <Plug>(miniyank-cycle)
@@ -1156,4 +1101,8 @@ nnoremap <Leader>go :Git checkout<Space>
 nnoremap <Leader>m q
 vnoremap <Leader>m q
 
-nnoremap <leader>el :call ESLintFix()<CR>
+" custom function to format current buffer
+nmap <Leader>p :call Preserve("normal gg=G")<CR>
+
+" }}}
+" ============================================================================
