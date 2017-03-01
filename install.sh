@@ -12,6 +12,9 @@ brew bundle
 echo -n "Installing npm globals"
 npm i -g pomo
 npm i -g import-js
+
+# https://github.com/sindresorhus/fkill-cli
+npm i -g fkill-cli
 echo "done."
 
 cd ~
