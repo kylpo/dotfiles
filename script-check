@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euo pipefail
+
+task="Opening apps and websites to check"
+
+# script-log state "$task"
+
+items=(
+  "/Applications/Tweetbot.app"
+  "/Applications/Slack.app"
+  "https://www.feedly.com/"
+  "https://inbox.google.com/"
+)
+for item in "${items[@]}"; do
+  open "$item"
+done
+
+# script-log state "DONE $task"

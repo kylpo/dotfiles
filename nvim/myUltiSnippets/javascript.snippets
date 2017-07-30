@@ -160,13 +160,13 @@ endsnippet
 
 snippet om "XHTML ImmutableMap" w
 ImmutableMap.create(${1:{
-  ${2:field}:${3:value}
+	${2:field}:${3:value}
 }})$0
 endsnippet
 
 snippet om; "XHTML ImmutableMap" w
 ImmutableMap.create(${1:{
-  ${2:field}:${3:value}
+	${2:field}:${3:value}
 }});
 endsnippet
 
@@ -406,16 +406,49 @@ snippet bnd "this._method_ = this._method_.bind( this )" !
 this.${1:methodName} = this.$1.bind( this )
 endsnippet
 
-snippet rcc "React class component"
-import React, { View, PropTypes } from 'react-native'
+snippet flow "// @flow"
+// @flow
+endsnippet
+
+snippet rcf "React class file"
+// imports {{{
+import React from 'react'
+// }}}
 
 export default class ${1:ClassName} extends React.Component {
 
-  render() {
-    return (
-      ${0:<View />}
-    )
-  }
+	render() {
+		return (
+			${0}
+		)
+	}
+}
+endsnippet
+
+snippet rcc "React class component"
+class ${1:ClassName} extends React.Component {
+	render() {
+		return (
+			${0}
+		)
+	}
+}
+endsnippet
+
+snippet rmcc "React class component"
+// imports {{{
+import React from 'react'
+import { observer } from 'mobx-react'
+// }}}
+
+@observer
+export default class ${1:ClassName} extends React.Component {
+
+	render() {
+		return (
+			${0}
+		)
+	}
 }
 endsnippet
 
@@ -459,6 +492,12 @@ constructor(props, context) {
 }
 endsnippet
 
+snippet cwrp
+componentWillReceiveProps(nextProps) {
+	${1}
+}
+endsnippet
+
 snippet cwun
 componentWillUnmount() {
 	${1}
@@ -467,6 +506,12 @@ endsnippet
 
 snippet cwu
 componentWillUpdate(nextProps, nextState, nextContext) {
+	${1}
+}
+endsnippet
+
+snippet scu
+shouldComponentUpdate() {
 	${1}
 }
 endsnippet
@@ -496,7 +541,11 @@ snippet package "package.json template" !
 endsnippet
 
 snippet ss "this.setState." !
-this.setState( {${1:stateField}: ${2:newValue}} )
+this.setState({${1:stateField}: ${2:newValue}})
+endsnippet
+
+snippet ssf "this.setState. (function)" !
+this.setState((state, props) => ({${1:stateField}: ${2:newValue}}))
 endsnippet
 
 snippet s "this.state." !w

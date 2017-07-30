@@ -39,7 +39,7 @@ Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything 
 " Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
 " Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
-" Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
+Plug 'wesQ3/vim-windowswap'           " <leader>ww a window, nav to desired swap window, <leader>ww again
 Plug 'milkypostman/vim-togglelist'    " Allows binding key to toggle location and quickfix lists
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
@@ -180,11 +180,61 @@ Plug 'embear/vim-localvimrc'
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
+" Plug 'Shougo/neocomplete.vim'
 Plug 'w0rp/ale'
 " Plug 'wincent/terminus'
 " Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
+
+" }}}
+" ============================================================================
+
+" ==============================================================================
+" FUNCTIONS {{{
+" ==============================================================================
+
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
+function! JSXMultiLine()
+  let l:previous_q_reg = @q
+  let l:line = getline(".")
+  let l:identation_length = len(matchstr(line, "^\[\\t|\\ \]*"))
+
+  if &expandtab
+    let l:padding = repeat(" ", (identation_length + &shiftwidth))
+  else
+    let l:padding = repeat("\t", identation_length + 1)
+  endif
+
+  let @q = substitute(line, "\\w\\+=[{|'|\"]", "\\n" . padding . "&", "g")
+  let @q = substitute(getreg("q"), ">$", "\\n>", "g")
+  let @q = substitute(getreg("q"), "/>$", "\\n/>", "g")
+
+  let @q = substitute(getreg("q"), "\ \\n", "\\n", "g")
+
+  execute "normal! 0d$\"qp"
+  execute "normal! =at=at"
+
+  let @q = previous_q_reg
+endfunction
+
+command! JSXMultiLine call JSXMultiLine()
 
 " }}}
 " ============================================================================
@@ -222,12 +272,6 @@ au Filetype javascript setl sw=2 sts=2 et
 " let g:tsuquyomi_completion_detail = 1
 " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 " let g:tsuquyomi_use_local_typescript = 0
-
-function! StrTrim(txt)
-  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-endfunction
-
-let g:flow#flowpath = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
 
 " set timeoutlen=1000 ttimeoutlen=0
@@ -581,7 +625,8 @@ let g:Gitv_DoNotMapCtrlKey = 1
 
 
 " ==============================================================================
-" Syntaxes ==============================================================================
+" Syntaxes
+" ==============================================================================
 au BufRead,BufNewFile *.json set filetype=json
 
 let g:jsx_ext_required = 0
@@ -612,11 +657,50 @@ let g:TerminusBracketedPaste=0
 let g:flow#enable = 0
 let g:flow#omnifunc = 1
 "
+
+" " NeoComplete
+" " --------------------
+" " Disable AutoComplPop.
+" let g:acp_enableAtStartup = 0
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 3
+" " Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
+"
+" " Recommended key-mappings.
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+"   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"   " For no inserting <CR> key.
+"   "return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"
+" Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"   let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+
 "
 " if !exists('g:ycm_semantic_triggers')
 "   let g:ycm_semantic_triggers = {}
 " endif
 " let g:ycm_semantic_triggers.javascript = ['re!(?=[a-zA-Z_]{2})']
+
+" disable semantic completion for javascript
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'javascript': 1
+      \}
 
 " default <C-Space> is not already bound in tmux
 " let g:ycm_key_invoke_completion = '<C-/>'
@@ -635,48 +719,6 @@ let g:UltiSnipsEditSplit='vertical' " If you want :UltiSnipsEdit to split your w
 
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
-
-" ==============================================================================
-" Functions
-" ==============================================================================
-
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-" mostly taken from https://github.com/samuelsimoes/vim-jsx-utils/blob/master/plugin/vim-jsx-utils.vim
-function! JSXMultiLine()
-  let l:previous_q_reg = @q
-  let l:line = getline(".")
-  let l:identation_length = len(matchstr(line, "^\[\\t|\\ \]*"))
-
-  if &expandtab
-    let l:padding = repeat(" ", (identation_length + &shiftwidth))
-  else
-    let l:padding = repeat("\t", identation_length + 1)
-  endif
-
-  let @q = substitute(line, "\\w\\+=[{|'|\"]", "\\n" . padding . "&", "g")
-  let @q = substitute(getreg("q"), ">$", "\\n>", "g")
-  let @q = substitute(getreg("q"), "/>$", "\\n/>", "g")
-
-  let @q = substitute(getreg("q"), "\ \\n", "\\n", "g")
-
-  execute "normal! 0d$\"qp"
-  execute "normal! =at=at"
-
-  let @q = previous_q_reg
-endfunction
-
-command! JSXMultiLine call JSXMultiLine()
 
 " }}}
 " ============================================================================
@@ -718,9 +760,6 @@ omap <silent> iq <Plug>CamelCaseMotion_iw
 xmap <silent> iq <Plug>CamelCaseMotion_iw
 omap <silent> iQ <Plug>CamelCaseMotion_ib
 xmap <silent> iQ <Plug>CamelCaseMotion_ib
-
-" Huge saver! Why do you need to press shift when executing a command?
-" nnoremap ; :
 
 " clear search highlights on esc
 nnoremap <silent> <esc>  :nohlsearch<return><esc>

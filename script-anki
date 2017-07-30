@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+task="Opening apps and websites to check"
+
+# script-log state "$task"
+
+items=(
+  "/Applications/Anki.app"
+  "/Applications/iTunes.app"
+  "/Users/kylepoole/Applications/Chrome Apps.localized/Profile 2 cmkneeaihlcdllananjlkmppnkdahdcc.app"
+)
+for item in "${items[@]}"; do
+  open "$item"
+done
+
+# script-log state "DONE $task"

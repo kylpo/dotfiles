@@ -20,10 +20,14 @@ export NVM_DIR=$HOME/.nvm
 # speed up zsh init by lazy-loading nvm
 # export NVM_LAZY_LOAD=true
 
-export MYVIMRC='~/.vim/init.vim'
-export EDITOR=vim
+# export MYVIMRC='~/.vim/init.vim'
+# export EDITOR=vim
+export MYVIMRC='~/.nvim/init.vim'
+export EDITOR=nvim
 # export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as the default source for fzf
+
+export NPM_TOKEN='ee705bb5-7610-4d56-a158-298dfe896c09'
 
 #--------------------------------------------------
 # oh-my-zsh
@@ -118,10 +122,12 @@ v () {
   if [ $# -eq 0 ]
   then
     # open current directory
-    vim .
+    # vim .
+    nvim .
   else
     # open argument
-    vim $1
+    # vim $1
+    nvim $1
   fi
 }
 

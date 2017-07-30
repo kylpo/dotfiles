@@ -39,14 +39,14 @@ Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything 
 " Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
 Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
 " Plug 'moll/vim-bbye'                  " Add :Bdelete command to close buffer without changing layout.
-" Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
+Plug 'wesQ3/vim-windowswap'           " Single command for grabbing then swapping windows.
 Plug 'milkypostman/vim-togglelist'    " Allows binding key to toggle location and quickfix lists
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'jordwalke/VimSplitBalancer'     " window manager
 
-" Plug 'junegunn/goyo.vim'              " Zen mode
-" Plug 'junegunn/limelight.vim'         " Highlight code around cursor. Rest is grey
+Plug 'junegunn/goyo.vim'              " Zen mode
+Plug 'junegunn/limelight.vim'         " Highlight code around cursor. Rest is grey
 Plug 'junegunn/vim-peekaboo'          " Register preview on RHS with <doubleQuote> or @ key
 
 
@@ -85,6 +85,12 @@ Plug 'mtth/scratch.vim' " :Scratch
 
 " leader<e> in Normal mode to 'edit' word, and replace it throughout file
 Plug 'wincent/scalpel'
+
+Plug 'sbdchd/neoformat'
+
+" :Far foo bar **/*.py
+" :Fardo
+Plug 'brooth/far.vim'
 
 " Repeat last macro with Enter if in normal buffer
 " Plug 'wincent/replay'
@@ -139,12 +145,15 @@ Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'flowtype/vim-flow'
 " Plug 'mxw/vim-jsx'
 Plug 'kylpo/vim-jsx/'
-" Plug 'galooshi/vim-import-js'
-Plug 'kylpo/vim-import-js'
+Plug 'galooshi/vim-import-js'
+" Plug 'kylpo/vim-import-js'
 Plug 'ruanyl/vim-fixmyjs'
 " Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
+Plug 'GutenYe/json5.vim'
 " Plug 'othree/xml.vim'
 
 " Markdown preview for OS X via :Xmark
@@ -467,6 +476,9 @@ colorscheme dracula
 
 execute 'highlight Comment ' . pinnacle#italicize('Comment')
 execute 'highlight JSXModifier ' . pinnacle#underline('Function')
+" hi def link xmlNullTag Keyword
+" hi def link xmlNullTag cssURL
+hi def link xmlNullTag Comment
 hi def link jsDecorator Keyword
 hi def link jsDecoratorFunction Type
 hi def link jsObjectKey String
@@ -563,6 +575,17 @@ call tcomment#DefineType('jsx_block',       '{/*%s */}')
 " autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
 " autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
 " autocmd FileType javascript.jsx setlocal commentstring={/*\ %s\ */}
+" autocmd FileType javascript set formatprg=prettier\ --stdin\ --semi\ false\ --single-quote\ --trailing-comma\ all\ --print-width\ 120
+" autocmd BufWritePre *.js
+"       \ Neoformat |
+"       \ Fixmyjs
+
+" autocmd FileType javascript set formatprg=prettier\ --stdin\ --semi\ false\ --single-quote\ --trailing-comma\ all\
+autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
+" autocmd BufWritePre *.js Neoformat
+
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 " ==============================================================================
 " Git
@@ -577,6 +600,9 @@ let g:Gitv_DoNotMapCtrlKey = 1
 " ==============================================================================
 au BufRead,BufNewFile *.json set filetype=json
 
+" Set .babelrc file to json format on open and new
+autocmd BufNewFile,BufRead .babelrc,.eslintrc set filetype=json5
+
 let g:jsx_ext_required = 0
 au BufRead,BufNewFile *.flow set filetype=javascript
 let g:javascript_plugin_flow = 1
@@ -590,6 +616,62 @@ let g:fixmyjs_use_local = 1
 " ProjectConfig
 " ==============================================================================
 let g:localvimrc_ask = 0
+
+" https://github.com/wincent/wincent/blob/57a3bf2001/roles/dotfiles/files/.vim/after/plugin/projectionist.vim
+let g:projectionist_heuristics = {
+      \   '*': {
+      \     '*.c': {
+      \       'alternate': '{}.h',
+      \       'type': 'source'
+      \     },
+      \     '*.h': {
+      \       'alternate': '{}.c',
+      \       'type': 'header'
+      \     },
+      \
+      \     '*.js': {
+      \       'alternate': [
+      \         '{dirname}/{basename}.test.js',
+      \         '{dirname}/__tests__/{basename}-test.js',
+      \         '{dirname}/__tests__/{basename}-mocha.js'
+      \       ],
+      \       'type': 'source'
+      \     },
+      \     '*.test.js': {
+      \       'alternate': '{basename}.js',
+      \       'type': 'test',
+      \     },
+      \     '**/__tests__/*-mocha.js': {
+      \       'alternate': '{dirname}/{basename}.js',
+      \       'type': 'test'
+      \     },
+      \     '**/__tests__/*-test.js': {
+      \       'alternate': '{dirname}/{basename}.js',
+      \       'type': 'test'
+      \     },
+      \     '*.re': {
+      \       'alternate': [
+      \         '{}_test.re',
+      \         '{}.rei'
+      \       ],
+      \       'type': 'source'
+      \     },
+      \     '*.rei': {
+      \       'alternate': [
+      \         '{}.re',
+      \         '{}_test.re',
+      \       ],
+      \       'type': 'header'
+      \     },
+      \     '*_test.re': {
+      \       'alternate': [
+      \         '{}.rei',
+      \         '{}.re',
+      \       ],
+      \       'type': 'test'
+      \     }
+      \   }
+      \ }
 
 
 " ==============================================================================
@@ -1103,6 +1185,9 @@ vnoremap <Leader>m q
 
 " custom function to format current buffer
 nmap <Leader>p :call Preserve("normal gg=G")<CR>
+
+" Format
+nmap <Leader>n :Neoformat<CR>
 
 " }}}
 " ============================================================================

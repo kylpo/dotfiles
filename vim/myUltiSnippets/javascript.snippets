@@ -406,21 +406,39 @@ snippet bnd "this._method_ = this._method_.bind( this )" !
 this.${1:methodName} = this.$1.bind( this )
 endsnippet
 
-snippet rcc "React class component"
+snippet flow "// @flow"
 // @flow
+endsnippet
+
+snippet rcc "React class component"
 // imports {{{
-
 import React from 'react'
-
 // }}}
 
 export default class ${1:ClassName} extends React.Component {
 
   render() {
     return (
-      ${0:<View />}
+      ${0}
     )
   }
+}
+endsnippet
+
+snippet rmcc "React class component"
+// imports {{{
+import React from 'react'
+import { observer } from 'mobx-react'
+// }}}
+
+@observer
+export default class ${1:ClassName} extends React.Component {
+
+	render() {
+		return (
+			${0}
+		)
+	}
 }
 endsnippet
 
@@ -460,6 +478,12 @@ snippet conpc
 constructor(props, context) {
 	super(props, context)
 
+	${1}
+}
+endsnippet
+
+snippet cwrp
+componentWillReceiveProps(nextProps) {
 	${1}
 }
 endsnippet
@@ -507,7 +531,11 @@ snippet package "package.json template" !
 endsnippet
 
 snippet ss "this.setState." !
-this.setState( {${1:stateField}: ${2:newValue}} )
+this.setState({${1:stateField}: ${2:newValue}})
+endsnippet
+
+snippet ssf "this.setState. (function)" !
+this.setState((state, props) => ({${1:stateField}: ${2:newValue}}))
 endsnippet
 
 snippet s "this.state." !w

@@ -10,8 +10,9 @@
   w = whatchanged
   lgd = log --graph --decorate
   undo = reset --soft HEAD^
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	clean-branches = !git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs -n 1 git branch -d
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  clean-branches = !git branch --merged | grep -v \"\\*\" | grep -v master | grep -v develop | xargs -n 1 git branch -d
+  last = log -1 HEAD
 [color]
   diff = auto
   status = auto
