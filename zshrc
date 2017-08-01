@@ -123,11 +123,11 @@ v () {
   then
     # open current directory
     # vim .
-    nvim .
+    reattach-to-user-namespace -l nvim .
   else
     # open argument
     # vim $1
-    nvim $1
+    reattach-to-user-namespace -l nvim $1
   fi
 }
 
