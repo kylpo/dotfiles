@@ -1,9 +1,10 @@
 # dotfiles for Kylpo
-
-- First, homebrew packages are installed (from BrewFile)
-  - Note: `mas` is also included to install from app store
-- Then dotfiles are linked
-- Last, nvim opens and installs plugins
+- first, install [Homebrew](https://brew.sh/)
+- then `./install.sh`
+  - First, homebrew packages are installed (from BrewFile)
+    - Note: `mas` is also included to install from app store
+  - Then dotfiles are linked
+  - Last, nvim opens and installs plugins
 - Be sure to follow steps below to finish setup
 
 BrewFile
@@ -13,10 +14,6 @@ To update BrewFile, run `brew bundle dump --force'
 Terminal Setup
 ======
 ```sh
-#brew install z
-#brew install trash
-
-#brew install zsh
 chsh -s `which zsh`
 
 curl -L http://install.ohmyz.sh | sh

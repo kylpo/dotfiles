@@ -17,6 +17,12 @@ npm i -g import-js
 npm i -g fkill-cli
 echo "done."
 
+# echo -n "Setting up zsh... "
+# # chsh -s `which zsh`
+#
+# curl -L http://install.ohmyz.sh | sh
+# echo "done."
+
 cd ~
 
 # silence terminal's 'last login' message
@@ -37,13 +43,15 @@ cd ~
 # [[ ! -s ~/.oh-my-zsh ]] && ln -s $DIR/oh-my-zsh ~/.oh-my-zsh
 # [[ ! -s ~/.bin ]] && ln -s $DIR/bin ~/.bin
 
-# echo -n "Linking nvim "
-# [[ ! -s ~/.config ]] && mkdir ~/.config
-# [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
-# echo "done."
+echo -n "Linking nvim "
+[[ ! -s ~/.config ]] && mkdir ~/.config
+[[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
+echo "done."
 
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
+
 echo -n "Installing vim plugins... "
-command vim +PlugInstall +qall
+# command vim +PlugInstall +qall
+command nvim +PlugInstall +qall
 echo "done."
