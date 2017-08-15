@@ -7,7 +7,7 @@ echo $DIR
 tic $DIR/tmux-256color.terminfo
 tic $DIR/xterm-256color.terminfo
 
-brew bundle
+# brew bundle
 
 echo -n "Installing npm globals"
 npm i -g pomo
@@ -17,6 +17,10 @@ npm i -g import-js
 npm i -g fkill-cli
 echo "done."
 
+echo -n "Installing python3 libs"
+pip3 install --upgrade neovim
+echo "done."
+
 # echo -n "Setting up zsh... "
 # # chsh -s `which zsh`
 #
@@ -24,6 +28,11 @@ echo "done."
 # echo "done."
 
 cd ~
+
+# fix Option key in most apps
+# https://gist.github.com/cheapRoc/9670905#crash-course
+# and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
+[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 # silence terminal's 'last login' message
 [[ ! -s ~/.hushlogin ]] && touch ~/.hushlogin
@@ -53,5 +62,5 @@ echo "done."
 
 echo -n "Installing vim plugins... "
 # command vim +PlugInstall +qall
-command nvim +PlugInstall +qall
+command nvim +PlugInstall +UpdateRemotePlugins +qall
 echo "done."

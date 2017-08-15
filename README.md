@@ -7,6 +7,19 @@
   - Last, nvim opens and installs plugins
 - Be sure to follow steps below to finish setup
 
+Defaults to overwrite
+======
+```bash
+# Speed up Dock's autohide animation
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.5
+killall Dock
+
+# default screenshots to jpg instead of png
+defaults write com.apple.screencapture type jpg
+
+```
+
 BrewFile
 ======
 To update BrewFile, run `brew bundle dump --force'

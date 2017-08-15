@@ -90,6 +90,12 @@ alias ev='vim ~/.vimrc'
 alias et='vim ~/.tmux.conf'
 alias ez='vim ~/.zshrc'
 
+# http://developer.telerik.com/topics/mobile-development/launch-android-emulators-ios-simulators-command-line/
+alias android-avd="emulator -avd Nexus_5X_API_24 &"
+alias ios-simulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/"
+
+
+
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7
 # function fg-bg() {
