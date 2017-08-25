@@ -32,6 +32,7 @@ cd ~
 # fix Option key in most apps
 # https://gist.github.com/cheapRoc/9670905#crash-course
 # and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
+# and an overall guide to the Cocoa Text system, and what this file is: http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html
 [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 # silence terminal's 'last login' message
