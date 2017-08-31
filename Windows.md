@@ -13,9 +13,16 @@ choco install googlechrome
 choco install visualstudiocode
 choco install wox
 choco install autohotkey
-choco install winxcorners
 choco install divvy
 choco install sharpkeys
 ```
 
+Download and install the ones that aren't in Chocolatey:
+- [Win10 Widgets \- Widgets for Windows 10](http://win10widgets.com/)
+- [win\-10\-virtual\-desktop\-enhancer](https://github.com/sdias/win-10-virtual-desktop-enhancer/blob/master/docs/settings.md#keyboard-shortcuts)
+- [WinXCorners — Hot Corners for Windows 10 \| codigobit apps](http://apps.codigobit.info/2015/10/winxcorners-hot-corners-for-windows-10.html)
+- [eXtra Buttons: utility buttons in the title of the window](http://www.xtrabuttons.com/)
+
+
 # Apps from the Store (should auto-install)
+- [QuickLook](https://www.microsoft.com/en-us/store/p/quicklook/9nv4bs3l1h4s?ocid=badge&rtc=1)
