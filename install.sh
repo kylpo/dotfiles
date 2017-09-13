@@ -7,19 +7,44 @@ echo $DIR
 tic $DIR/tmux-256color.terminfo
 tic $DIR/xterm-256color.terminfo
 
-# brew bundle
+# Linux
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Notes on gsettings:
+  # can use dconf to find Schema
+  # `gsettings get org.gnome.desktop.input-sources xkb-option` to check values
+  # `dconf dump /org/gnome/desktop/input-sources/` to find valid keys
 
-echo -n "Installing npm globals"
-npm i -g pomo
-npm i -g import-js
+  # Remap keyboard
+  gsettings set org.gnome.desktop.input-sources xkb-options "['shift:both_capslock_cancel', 'ctrl:swap_lalt_lctl_lwin', 'caps:super', 'altwin:swap_alt_win']"
+
+  # TODO: gnome-shell extension preferences
+
+
+# Mac
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  brew bundle
+
+  # fix Option key in most apps
+  # https://gist.github.com/cheapRoc/9670905#crash-course
+  # and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
+  # and an overall guide to the Cocoa Text system, and what this file is: http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html
+  [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
+else
+  # Unknown.
+fi
+
+
+#echo -n "Installing npm globals"
+#npm i -g pomo
+#npm i -g import-js
 
 # https://github.com/sindresorhus/fkill-cli
-npm i -g fkill-cli
-echo "done."
+#npm i -g fkill-cli
+#echo "done."
 
-echo -n "Installing python3 libs"
-pip3 install --upgrade neovim
-echo "done."
+#echo -n "Installing python3 libs"
+#pip3 install --upgrade neovim
+#echo "done."
 
 # echo -n "Setting up zsh... "
 # # chsh -s `which zsh`
@@ -29,11 +54,6 @@ echo "done."
 
 cd ~
 
-# fix Option key in most apps
-# https://gist.github.com/cheapRoc/9670905#crash-course
-# and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
-# and an overall guide to the Cocoa Text system, and what this file is: http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html
-[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 # silence terminal's 'last login' message
 [[ ! -s ~/.hushlogin ]] && touch ~/.hushlogin
@@ -61,7 +81,7 @@ echo "done."
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
 
-echo -n "Installing vim plugins... "
+#echo -n "Installing vim plugins... "
 # command vim +PlugInstall +qall
-command nvim +PlugInstall +UpdateRemotePlugins +qall
-echo "done."
+#command nvim +PlugInstall +UpdateRemotePlugins +qall
+#echo "done."
