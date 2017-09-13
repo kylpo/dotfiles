@@ -18,17 +18,18 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   gsettings set org.gnome.desktop.input-sources xkb-options "['shift:both_capslock_cancel', 'ctrl:swap_lalt_lctl_lwin', 'caps:super', 'altwin:swap_alt_win']"
 
   # TODO: gnome-shell extension preferences
+  dconf load /org/gnome/ < $DIR/linux/gnome.bak
 
 
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  brew bundle
+  brew bundle --file=$DIR/mac/Brewfile
 
   # fix Option key in most apps
   # https://gist.github.com/cheapRoc/9670905#crash-course
   # and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
   # and an overall guide to the Cocoa Text system, and what this file is: http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html
-  [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
+  [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/mac/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
 else
   # Unknown.
 fi

@@ -1,0 +1,319 @@
+[settings-daemon/plugins/power]
+sleep-inactive-battery-type='nothing'
+sleep-inactive-ac-timeout=1800
+sleep-inactive-ac-type='suspend'
+sleep-inactive-battery-timeout=1800
+
+[settings-daemon/plugins/color]
+night-light-enabled=false
+night-light-last-coordinates=(45.497999999999998, -122.7784)
+
+[settings-daemon/plugins/media-keys]
+custom-keybindings=@as []
+screensaver='<Super>Escape'
+home='<Super>e'
+
+[settings-daemon/peripherals/keyboard]
+numlock-state='off'
+
+[settings-daemon/peripherals/mouse]
+locate-pointer=false
+
+[shell]
+command-history=['r']
+enabled-extensions=['drive-menu@gnome-shell-extensions.gcampax.github.com', 'gTile@vibou', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'TopIcons@phocean.net', 'sound-output-device-chooser@kgshank.net', 'pomodoro@arun.codito.in', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'no-title-bar@franglais125.gmail.com', 'TaskBar@zpydr', 'extend-panel-menu@julio641742', 'scroll-workspaces@gfxmonk.net', 'auto-move-windows@gnome-shell-extensions.gcampax.github.com', 'app-menu-window-title@eternal-sorrow.github.com', 'customcorner@eccheng.gitlab.com']
+disable-user-extensions=false
+
+[shell/extensions/TaskBar]
+appview-button-icon='/home/kylpo/.local/share/gnome-shell/extensions/TaskBar@zpydr/images/appview-button-default.svg'
+display-tasks=false
+bottom-panel-original-background-color='rgba(0, 0, 0, 255)'
+extension-path='/home/kylpo/.local/share/gnome-shell/extensions/TaskBar@zpydr'
+desktop-button-icon='/home/kylpo/.local/share/gnome-shell/extensions/TaskBar@zpydr/images/desktop-button-default.png'
+display-desktop-button=false
+tray-button-icon='/home/kylpo/.local/share/gnome-shell/extensions/TaskBar@zpydr/images/bottom-panel-tray-button.svg'
+position-max-right=2
+top-panel=true
+top-panel-original-background-color='rgba(0, 0, 0, 255)'
+first-start=false
+
+[shell/extensions/auto-move-windows]
+application-list=['spotify.desktop:4']
+
+[shell/extensions/extend-panel-menu]
+items='Night Light Indicator [GNOME Shell>=3.24];1;0;nightlight|Volume Indicator;1;0;volume|Network Indicator;1;0;network|Power(Brightness) Indicator;1;0;power|Calendar Indicator;1;0;calendar|User Indicator;1;0;user|Notification Indicator;1;0;notification'
+autohide-notification=true
+user-icon=true
+
+[shell/extensions/no-title-bar]
+automatic-theme=true
+change-appmenu=true
+theme='Arc'
+
+[shell/extensions/sound-output-device-chooser]
+hide-on-single-device=true
+
+[shell/extensions/gtile]
+bottom-panel=false
+resize1='2x1 0:0 0:0'
+resize2='2x1 1:0 1:0'
+preset-resize-1=['']
+preset-resize-2=['<Alt><Super>2']
+preset-resize-3=['<Primary><Super>q']
+preset-resize-4=['<Primary><Super>e']
+preset-resize-5=['<Primary><Super>z']
+preset-resize-6=['<Primary><Super>c']
+preset-resize-7=['<Primary><Super>1']
+preset-resize-8=['<Primary><Super>2']
+preset-resize-9=['<Primary><Super>3']
+resize3='2x2 0:0 0:0'
+resize4='2x2 1:0 1:0'
+resize5='2x2 0:1 0:1'
+resize6='2x2 1:1 1:1'
+global-presets=true
+resize10='3x1 0:0 1:0'
+resize11='3x1 1:0 2:0'
+preset-resize-10=['<Primary><Super>4']
+preset-resize-11=['<Primary><Super>6']
+preset-resize-12=['<Primary><Super>5']
+resize12='6x1 1:0 4:0'
+resize9='3x1 2:0 2:0'
+animation=false
+top-panel=true
+show-toggle-tiling=['<Super>Return']
+resize7='3x1 0:0 0:0'
+resize8='3x1 1:0 1:0'
+
+[shell/extensions/net/gfxmonk/scroll-workspaces]
+indicator=false
+
+[shell/extensions/CustomCorner]
+bottom-left-command='dbus-send --type=method_call --dest=org.gnome.ScreenSaver \\\n    /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock'
+bottom-left-action='Run Command...'
+
+[shell/overrides]
+dynamic-workspaces=false
+
+[shell/window-switcher]
+app-icon-mode='both'
+
+[shell/keybindings]
+toggle-message-tray=['', '<Super>m']
+toggle-application-view=['']
+
+[gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[gedit/plugins/filebrowser]
+virtual-root='file:///home/kylpo/.config/autokey/data/My%20Phrases'
+tree-view=true
+root='file:///'
+
+[gedit/plugins]
+active-plugins=['time', 'spell', 'modelines', 'docinfo', 'filebrowser']
+
+[gedit/state/window]
+size=(900, 700)
+state=128
+bottom-panel-size=140
+side-panel-size=200
+side-panel-active-page='GeditWindowDocumentsPanel'
+
+[gnome-screenshot]
+include-pointer=false
+include-border=true
+border-effect='none'
+delay=0
+last-save-directory='file:///home/kylpo/Desktop'
+
+[nautilus/preferences]
+search-view='icon-view'
+default-folder-viewer='icon-view'
+search-filter-time-type='last_modified'
+
+[nautilus/window-state]
+geometry='1146x1366+1473+27'
+maximized=false
+
+[pomodoro/preferences]
+long-break-interval=3.0
+enabled-plugins=['sounds', 'dark-theme']
+
+[pomodoro/state]
+timer-score=0.0
+timer-elapsed=0.0
+timer-state-duration=0.0
+timer-paused=false
+timer-date='2017-09-13T18:02:20Z'
+timer-state='null'
+timer-state-date='2017-09-13T18:02:20Z'
+
+[file-roller/listing]
+sort-method='name'
+name-column-width=250
+sort-type='ascending'
+list-mode='as-folder'
+show-path=false
+
+[file-roller/dialogs/extract]
+skip-newer=false
+recreate-folders=true
+
+[file-roller/ui]
+sidebar-width=200
+window-height=480
+window-width=600
+
+[evolution-data-server]
+network-monitor-gio-name=''
+migrated=true
+
+[simple-scan]
+save-directory='/home/kylpo/Desktop'
+document-type='photo'
+
+[deja-dup]
+backend='file'
+prompt-check='2017-09-04T21:04:56.282596Z'
+
+[deja-dup/s3]
+folder='kylpo'
+
+[deja-dup/openstack]
+container='kylpo'
+
+[deja-dup/gcs]
+folder='kylpo'
+
+[deja-dup/gdrive]
+folder='/deja-dup/kylpo'
+
+[deja-dup/rackspace]
+container='kylpo'
+
+[deja-dup/file]
+path='/home/kylpo/deja-dup'
+
+[desktop/interface]
+clock-show-date=true
+gtk-key-theme='Default'
+clock-format='12h'
+enable-animations=false
+gtk-im-module='gtk-im-context-simple'
+toolkit-accessibility=false
+
+[desktop/notifications]
+application-children=['org-gnome-pomodoro', 'jetbrains-studio', 'pithos', 'spotify', 'org-gnome-software']
+
+[desktop/notifications/application/spotify]
+application-id='spotify.desktop'
+
+[desktop/notifications/application/jetbrains-studio]
+application-id='jetbrains-studio.desktop'
+
+[desktop/notifications/application/pithos]
+application-id='pithos.desktop'
+
+[desktop/notifications/application/org-gnome-pomodoro]
+application-id='org.gnome.Pomodoro.desktop'
+
+[desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[desktop/app-folders]
+folder-children=['Utilities', 'Sundry']
+
+[desktop/app-folders/folders/Utilities]
+translate=true
+categories=['X-GNOME-Utilities']
+apps=['org.gnome.baobab.desktop', 'deja-dup-preferences.desktop', 'eog.desktop', 'evince.desktop', 'org.gnome.FileRoller.desktop', 'gnome-calculator.desktop', 'gnome-dictionary.desktop', 'org.gnome.Characters.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Screenshot.desktop', 'gnome-system-log.desktop', 'gnome-system-monitor.desktop', 'gnome-tweak-tool.desktop', 'gucharmap.desktop', 'seahorse.desktop', 'vinagre.desktop', 'yelp.desktop']
+name='X-GNOME-Utilities.directory'
+
+[desktop/app-folders/folders/Sundry]
+translate=true
+categories=['X-GNOME-Sundry']
+apps=['alacarte.desktop', 'authconfig.desktop', 'ca.desrt.dconf-editor.desktop', 'fedora-release-notes.desktop', 'firewall-config.desktop', 'flash-player-properties.desktop', 'gconf-editor.desktop', 'gnome-abrt.desktop', 'gnome-power-statistics.desktop', 'ibus-setup-anthy.desktop', 'ibus-setup.desktop', 'ibus-setup-hangul.desktop', 'ibus-setup-libbopomofo.desktop', 'ibus-setup-libpinyin.desktop', 'ibus-setup-m17n.desktop', 'ibus-setup-typing-booster.desktop', 'im-chooser.desktop', 'itweb-settings.desktop', 'jhbuild.desktop', 'javaws.desktop', 'java-1.7.0-openjdk-jconsole.desktop', 'java-1.7.0-openjdk-policytool.desktop', 'log4j-chainsaw.desktop', 'log4j-logfactor5.desktop', 'nm-connection-editor.desktop', 'orca.desktop', 'setroubleshoot.desktop', 'system-config-date.desktop', 'system-config-firewall.desktop', 'system-config-keyboard.desktop', 'system-config-language.desktop', 'system-config-printer.desktop', 'system-config-users.desktop', 'vino-preferences.desktop']
+name='X-GNOME-Sundry.directory'
+
+[desktop/screensaver]
+picture-uri='file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
+color-shading-type='solid'
+primary-color='#3465a4'
+picture-options='zoom'
+secondary-color='#000000'
+
+[desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[desktop/session]
+idle-delay=uint32 900
+
+[desktop/privacy]
+report-technical-problems=true
+
+[desktop/wm/preferences]
+num-workspaces=4
+workspace-names=@as []
+
+[desktop/wm/keybindings]
+maximize=['<Primary><Super>f', '<Super>Up', '<Primary><Alt>KP_5']
+close=['<Super>q']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+show-desktop=['<Super>d', '<Primary><Alt>d', '<Super>d']
+minimize=['', '<Primary><Alt>KP_0']
+
+[desktop/background]
+picture-uri='file:///usr/share/backgrounds/gnome/adwaita-timed.xml'
+color-shading-type='solid'
+primary-color='#3465a4'
+picture-options='zoom'
+secondary-color='#000000'
+
+[desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'us')]
+xkb-options=['shift:both_capslock_cancel', 'ctrl:swap_lalt_lctl_lwin', 'caps:super', 'altwin:swap_alt_win']
+
+[system/location]
+enabled=true
+
+[rhythmbox/library/source]
+show-browser=true
+
+[rhythmbox/plugins/audioscrobbler/Last.fm]
+scrobbling-enabled=true
+
+[rhythmbox/plugins/audioscrobbler/Libre.fm]
+scrobbling-enabled=true
+
+[rhythmbox/plugins/iradio]
+initial-stations-loaded=true
+
+[rhythmbox/plugins/iradio/source]
+show-browser=true
+
+[rhythmbox/plugins]
+active-plugins=['audiocd', 'ipod', 'power-manager', 'daap', 'dbus-media-server', 'audioscrobbler', 'android', 'mmkeys', 'iradio', 'generic-player', 'rb', 'artsearch', 'mpris', 'notification', 'mtpdevice']
+seen-plugins=['ipod', 'fmradio', 'daap', 'dbus-media-server', 'audioscrobbler', 'rblirc', 'rb', 'replaygain', 'rbzeitgeist', 'lyrics', 'soundcloud', 'sendto', 'webremote', 'im-status', 'artsearch', 'magnatune', 'grilo', 'mpris', 'pythonconsole', 'notification', 'mtpdevice']
+
+[rhythmbox/podcast/source]
+show-browser=true
+
+[rhythmbox]
+position=(126, 112)
+
+[rhythmbox/rhythmdb]
+locations=['file:///home/kylpo/Music']
+
+[software]
+check-timestamp=int64 1505309171
+
+[mutter/keybindings]
+toggle-tiled-right=['<Primary><Super>d', '<Super>Right']
+toggle-tiled-left=['<Primary><Super>a', '<Super>Left']
+
+[terminal/legacy]
+schema-version=uint32 3
