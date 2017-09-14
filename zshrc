@@ -15,7 +15,7 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 # export MYVIMRC='~/.config/nvim/init.vim'
 # export EDITOR=nvim
-export NVM_DIR=$HOME/.nvm
+# export NVM_DIR=$HOME/.nvm
 
 # speed up zsh init by lazy-loading nvm
 # export NVM_LAZY_LOAD=true
@@ -41,7 +41,7 @@ ZSH_THEME="hyperzsh"
 # plugins=(git brew)
 # plugins=(tmux)
 
-plugins+=(zsh-nvm)
+# plugins+=(zsh-nvm)
 plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -50,7 +50,8 @@ source $ZSH/oh-my-zsh.sh
 #--------------------------------------------------
 # sourcing
 #--------------------------------------------------
-. `brew --prefix`/etc/profile.d/z.sh
+# . `brew --prefix`/etc/profile.d/z.sh
+[ -f ~/.z.sh ] && source ~/.z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
@@ -129,11 +130,11 @@ v () {
   then
     # open current directory
     # vim .
-    reattach-to-user-namespace -l nvim .
+    [[ "$OSTYPE" == "darwin"* ]] && reattach-to-user-namespace -l nvim . || nvim .
   else
     # open argument
     # vim $1
-    reattach-to-user-namespace -l nvim $1
+    [[ "$OSTYPE" == "darwin"* ]] && reattach-to-user-namespace -l nvim $1 || nvim $1
   fi
 }
 
@@ -281,3 +282,5 @@ function () {
 # . /Users/kylepoole/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval $(opam config env)
 
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
