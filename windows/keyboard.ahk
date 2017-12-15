@@ -140,7 +140,7 @@ return
                Send {$}
 return
 
-; $ &
+; = #
 ~CapsLock & h::
        if getkeystate("shift")
                Send {#}
@@ -148,18 +148,20 @@ return
                Send {=}
 return
 
-; $ &
+; ( <
 ~CapsLock & j::
        if getkeystate("shift")
-               Send {<}
+               ;SendInput {<} ;conflicts with shift ,
+               SendInput {U+003C}
        else
                Send {(}
 return
 
-; ) :
+; ) >
 ~CapsLock & k::
        if getkeystate("shift")
-               Send {>}
+               ;SendInput {>} ;conflicts with shift .
+               SendInput {U+003E}
        else
                Send {)}
 return
@@ -173,7 +175,7 @@ return
 return
 
 ; `
-~Capslock & '::Send {`}
+~Capslock & '::Send {``}
 
 ; ----------------------------
 ; ---------BOTTOM ROW---------
@@ -211,12 +213,12 @@ return
 return
 
 ; ? ^
-~CapsLock & ,::
-       if getkeystate("shift")
-               Send {^}
-       else
-               Send {?}
-return
+;~CapsLock & ,::
+       ;if getkeystate("shift")
+               ;Send {^}
+       ;else
+               ;Send {?}
+;return
 
 ; !
 ~Capslock & .::Send {!}
