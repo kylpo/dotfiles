@@ -12,76 +12,76 @@ SetCapsLockState, AlwaysOff
 
 ~CapsLock & 1::
        if getkeystate("shift")
-               Send {Media_Play_Pause}
+               SendInput {Media_Play_Pause}
        else
-               Send {F1}
+               SendInput {F1}
 return
 
 ; Delete
-~Capslock & Backspace::Send {Delete}
+~Capslock & Backspace::SendInput {Delete}
 
 ; Tab
-~Capslock & Space::Send {Tab}
-~Capslock & Esc::Send {Tab}
+~Capslock & Space::SendInput {Tab}
+~Capslock & Esc::SendInput {Tab}
 
 ; Return
-;Capslock & `;::Send {Return}
-+Space::Send {Return}
+;Capslock & `;::SendInput {Return}
++Space::SendInput {Return}
 
 ; ;
-+,::Send {;}
++,::SendInput {;}
 
 ; :
-+.::Send {:}
++.::SendInput {:}
 
 ; ----------------------------
 ; ---------TOP ROW------------
 ; ----------------------------
 
 ; 1
-~Capslock & q::Send {1}
+~Capslock & q::SendInput {1}
 
 ; 2
-~Capslock & w::Send {2}
+~Capslock & w::SendInput {2}
 
 ; 3
-~Capslock & e::Send {3}
+~Capslock & e::SendInput {3}
 
 ; 4
-~Capslock & r::Send {4}
+~Capslock & r::SendInput {4}
 
 ; 5
-~Capslock & t::Send {5}
+~Capslock & t::SendInput {5}
 
 ; @
-~Capslock & y::Send {@}
+~Capslock & y::SendInput {@}
 
 ; { [
 ~CapsLock & u::
        if getkeystate("shift")
-               Send {[}
+               SendInput {[}
        else
-               Send {{}
+               SendInput {{}
 return
 
 ; } ]
 ~CapsLock & i::
        if getkeystate("shift")
-               Send {]}
+               SendInput {]}
        else
-               Send {}}
+               SendInput {}}
 return
 
 ; + %
 ~CapsLock & o::
        if getkeystate("shift")
-               Send {`%}
+               SendInput {`%}
        else
-               Send {+}
+               SendInput {+}
 return
 
 ; *
-~Capslock & p::Send {*}
+~Capslock & p::SendInput {*}
 
 ; ----------------------------
 ; ---------HOME ROW-----------
@@ -90,62 +90,62 @@ return
 ; Left
 ~CapsLock & a::
        if getkeystate("ctrl")
-               Send ^{Left}
+               SendInput ^{Left}
        else if getkeystate("shift")
-               Send +{Left}
+               SendInput +{Left}
        else if getkeystate("alt")
-               Send {Home}
+               SendInput {Home}
        else
-               Send {Left}
+               SendInput {Left}
 return
 
 ; Up
 ~CapsLock & s::
        if getkeystate("ctrl")
-               Send {PgUp}
+               SendInput {PgUp}
        else if getkeystate("shift")
-               Send +{Up}
+               SendInput +{Up}
        else
-               Send {Up}
+               SendInput {Up}
 return
 
 ; Down
 ~CapsLock & d::
        if getkeystate("ctrl")
-               Send {PgDn}
+               SendInput {PgDn}
        else if getkeystate("shift")
-               Send +{Down}
+               SendInput +{Down}
        else
-               Send {Down}
+               SendInput {Down}
 return
 
 
 ; Right
 ~CapsLock & f::
        if getkeystate("ctrl")
-               Send ^{Right}
+               SendInput ^{Right}
        else if getkeystate("shift")
-               Send +{Right}
+               SendInput +{Right}
        else if getkeystate("alt")
-               Send {End}
+               SendInput {End}
        else
-               Send {Right}
+               SendInput {Right}
 return
 
 ; $ &
 ~CapsLock & g::
        if getkeystate("shift")
-               Send {&}
+               SendInput {&}
        else
-               Send {$}
+               SendInput {$}
 return
 
 ; = #
 ~CapsLock & h::
        if getkeystate("shift")
-               Send {#}
+               SendInput {#}
        else
-               Send {=}
+               SendInput {=}
 return
 
 ; ( <
@@ -154,7 +154,7 @@ return
                ;SendInput {<} ;conflicts with shift ,
                SendInput {U+003C}
        else
-               Send {(}
+               SendInput {(}
 return
 
 ; ) >
@@ -163,65 +163,65 @@ return
                ;SendInput {>} ;conflicts with shift .
                SendInput {U+003E}
        else
-               Send {)}
+               SendInput {)}
 return
 
 ; - ~
 ~CapsLock & l::
        if getkeystate("shift")
-               Send {~}
+               SendInput {~}
        else
-               Send {-}
+               SendInput {-}
 return
 
 ; `
-~Capslock & '::Send {``}
+~Capslock & '::SendInput {``}
 
 ; ----------------------------
 ; ---------BOTTOM ROW---------
 ; ----------------------------
 
 ; 6
-~Capslock & z::Send {6}
+~Capslock & z::SendInput {6}
 
 ; 7
-~Capslock & x::Send {7}
+~Capslock & x::SendInput {7}
 
 ; 8
-~Capslock & c::Send {8}
+~Capslock & c::SendInput {8}
 
 ; 9
-~Capslock & v::Send {9}
+~Capslock & v::SendInput {9}
 
 ; 0
-~Capslock & b::Send {0}
+~Capslock & b::SendInput {0}
 
 ; _ |
 ~CapsLock & n::
        if getkeystate("shift")
-               Send {|}
+               SendInput {|}
        else
-               Send {_}
+               SendInput {_}
 return
 
 ; / \
 ~CapsLock & m::
        if getkeystate("shift")
-               Send {\}
+               SendInput {\}
        else
-               Send {/}
+               SendInput {/}
 return
 
 ; ? ^
-;~CapsLock & ,::
-       ;if getkeystate("shift")
-               ;Send {^}
-       ;else
-               ;Send {?}
-;return
+~CapsLock & ,::
+       if getkeystate("shift")
+               SendInput {^}
+       else
+               SendInput {?}
+return
 
 ; !
-~Capslock & .::Send {!}
+~Capslock & .::SendInput {!}
 
 *Capslock::SetCapsLockState, AlwaysOff
 
@@ -234,22 +234,22 @@ LWin & s::ShiftAltTab
 LWin & d::AltTab
 
 ; Close App
-#Esc::Send !{F4}
+#Esc::SendInput !{F4}
 
 ; Close Tab
-#w::Send ^{w}
+#w::SendInput ^{w}
 
 ; New Tab
-#t::Send ^{t}
+#t::SendInput ^{t}
 
 ; Re-Open Tab
-#+t::Send ^+{t}
+#+t::SendInput ^+{t}
 
 ; Copy
-#c::Send ^{c}
+#c::SendInput ^{c}
 
 ; Paste
-#v::Send ^{v}
+#v::SendInput ^{v}
 
 ; Select All
 ;#+a::^a
@@ -257,8 +257,8 @@ LWin & d::AltTab
 /*
 #a::
        if getkeystate("shift")
-               Send ^a
+               SendInput ^a
        else				
-               Send +^{Tab}
+               SendInput +^{Tab}
 return
 /*
