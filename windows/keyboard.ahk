@@ -1,3 +1,5 @@
+; To start this on login, see https://www.maketecheasier.com/schedule-autohotkey-startup-windows/
+
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
@@ -234,13 +236,16 @@ return
 LWin & vk07::return ; vk07 is "unassigned", i.e. doesn't belong to any key. The hotkey itself should never fire, but the use of RAlt in a custom combination turns it into a "prefix key". In other words, it changes the RAlt:: hotkey to fire only on release and only if no other key was pressed.
 LWin::return ; (or run Launchy)
 
+; Win-Space launches start menu
+LWin & Space::SendInput ^{Esc}
+
 ; Ctrl-Tab
 #a::+^Tab
 #f::^Tab
 
 ; Alt-Tab
 LWin & s::ShiftAltTab
-LWin & d::AltTab	
+LWin & d::AltTab
 
 ; Close App
 #Esc::SendInput !{F4}
@@ -267,7 +272,7 @@ LWin & d::AltTab
 #a::
        if getkeystate("shift")
                SendInput ^a
-       else				
+       else
                SendInput +^{Tab}
 return
 /*
