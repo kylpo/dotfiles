@@ -20,70 +20,72 @@ SetCapsLockState, AlwaysOff
 return
 
 ; Delete
-~Capslock & Backspace::SendInput {Delete}
+~Capslock & Backspace::SendInput {Blind}{Delete}
 
 ; Tab
-~Capslock & Space::SendInput {Tab}
-~Capslock & Esc::SendInput {Tab}
+;~Capslock & Space::SendInput {Blind}{Tab}
+~Capslock & Esc::SendInput {Blind}{Tab}
 
 ; Return
-;Capslock & `;::SendInput {Return}
-+Space::SendInput {Return}
+;Capslock & `;::SendInput {Blind}{Return}
+;+Space::SendInput {Blind}{Enter}
+~Capslock & Space::SendInput {Blind}{Enter}
 
 ; ;
-+,::SendInput {;}
+;+,::SendInput {;} ;unable to use Blind here since shift-; => :
++,::SendInput {Blind}{U+003B}
 
 ; :
-+.::SendInput {:}
++.::SendInput {Blind}{:}
 
 ; ----------------------------
 ; ---------TOP ROW------------
 ; ----------------------------
 
 ; 1
-~Capslock & q::SendInput {1}
+~Capslock & q::SendInput {Blind}{1}
 
 ; 2
-~Capslock & w::SendInput {2}
+~Capslock & w::SendInput {Blind}{2}
 
 ; 3
-~Capslock & e::SendInput {3}
+~Capslock & e::SendInput {Blind}{3}
 
 ; 4
-~Capslock & r::SendInput {4}
+~Capslock & r::SendInput {Blind}{4}
 
 ; 5
-~Capslock & t::SendInput {5}
+~Capslock & t::SendInput {Blind}{5}
 
 ; @
-~Capslock & y::SendInput {@}
+~Capslock & y::SendInput {Blind}{@}
 
 ; { [
 ~CapsLock & u::
        if getkeystate("shift")
-               SendInput {[}
+               SendInput {Blind}{[}
        else
-               SendInput {{}
+               SendInput {Blind}{{}
 return
 
 ; } ]
 ~CapsLock & i::
        if getkeystate("shift")
-               SendInput {]}
+               SendInput {Blind}{]}
        else
-               SendInput {}}
+               SendInput {Blind}{}}
 return
 
 ; + %
 ~CapsLock & o::
        if getkeystate("shift")
-               SendInput {`%}
+               SendInput {Blind}{`%}
        else
-               SendInput {+}
+               SendInput {Blind}{+}
 return
 
 ; *
-~Capslock & p::SendInput {*}
+~Capslock & p::SendInput {Blind}{*}
 
 ; ----------------------------
 ; ---------HOME ROW-----------
@@ -137,93 +139,93 @@ return
 ; $ &
 ~CapsLock & g::
        if getkeystate("shift")
-               SendInput {&}
+               SendInput {Blind}{&}
        else
-               SendInput {$}
+               SendInput {Blind}{$}
 return
 
 ; = #
 ~CapsLock & h::
        if getkeystate("shift")
-               SendInput {#}
+               SendInput {Blind}{#}
        else
-               SendInput {=}
+               SendInput {Blind}{=}
 return
 
 ; ( <
 ~CapsLock & j::
        if getkeystate("shift")
                ;SendInput {<} ;conflicts with shift ,
-               SendInput {U+003C}
+               SendInput {Blind}{U+003C}
        else
-               SendInput {(}
+               SendInput {Blind}{(}
 return
 
 ; ) >
 ~CapsLock & k::
        if getkeystate("shift")
                ;SendInput {>} ;conflicts with shift .
-               SendInput {U+003E}
+               SendInput {Blind}{U+003E}
        else
-               SendInput {)}
+               SendInput {Blind}{)}
 return
 
 ; - ~
 ~CapsLock & l::
        if getkeystate("shift")
-               SendInput {~}
+               SendInput {Blind}{~}
        else
-               SendInput {-}
+               SendInput {Blind}{-}
 return
 
 ; `
-~Capslock & '::SendInput {``}
+~Capslock & '::SendInput {Blind}{``}
 
 ; ----------------------------
 ; ---------BOTTOM ROW---------
 ; ----------------------------
 
 ; 6
-~Capslock & z::SendInput {6}
+~Capslock & z::SendInput {Blind}{6}
 
 ; 7
-~Capslock & x::SendInput {7}
+~Capslock & x::SendInput {Blind}{7}
 
 ; 8
-~Capslock & c::SendInput {8}
+~Capslock & c::SendInput {Blind}{8}
 
 ; 9
-~Capslock & v::SendInput {9}
+~Capslock & v::SendInput {Blind}{9}
 
 ; 0
-~Capslock & b::SendInput {0}
+~Capslock & b::SendInput {Blind}{0}
 
 ; _ |
 ~CapsLock & n::
        if getkeystate("shift")
-               SendInput {|}
+               SendInput {Blind}{|}
        else
-               SendInput {_}
+               SendInput {Blind}{_}
 return
 
 ; / \
 ~CapsLock & m::
        if getkeystate("shift")
-               SendInput {\}
+               SendInput {Blind}{\}
        else
-               SendInput {/}
+               SendInput {Blind}{/}
 return
 
 ; ? ^
 ~CapsLock & ,::
        if getkeystate("shift")
-               SendInput {^}
+               SendInput {Blind}{^}
        else
-               SendInput {?}
+               SendInput {Blind}{?}
 return
 
 ; !
-~Capslock & .::SendInput {!}
+~Capslock & .::SendInput {Blind}{!}
 
 ; ----------------------------
 ; ---------OTHERS-------------
@@ -237,7 +239,7 @@ LWin & vk07::return ; vk07 is "unassigned", i.e. doesn't belong to any key. The 
 LWin::return ; (or run Launchy)
 
 ; Win-Space launches start menu
-LWin & Space::SendInput ^{Esc}
+LWin & Space::SendInput {Blind}^{Esc}
 
 ; Ctrl-Tab
 #a::+^Tab
