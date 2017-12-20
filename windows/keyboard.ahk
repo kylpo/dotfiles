@@ -236,10 +236,14 @@ return
 ; disable Win launching start menu all the damn time
 ; thanks to https://autohotkey.com/board/topic/51631-disable-windows-key-start-menu-but-not-shortcuts/page-2 and https://autohotkey.com/board/topic/59520-raltappskey-only-for-single-ralt-press-not-combinatios/
 LWin & vk07::return ; vk07 is "unassigned", i.e. doesn't belong to any key. The hotkey itself should never fire, but the use of RAlt in a custom combination turns it into a "prefix key". In other words, it changes the RAlt:: hotkey to fire only on release and only if no other key was pressed.
-LWin::return ; (or run Launchy)
+LWin::return
 
 ; Win-Space launches start menu
-LWin & Space::SendInput {LWin up}{LCtrl down}{Esc}{LCtrl up} ;LWin up step is crucial
+LWin & Space::
+  SendInput {LWin up} ;LWin up step is crucial
+  KeyWait LWin ;Make sure it is actually up before sending next
+  SendInput ^{Esc}
+return
 
 ; Ctrl-Tab
 #a::+^Tab
