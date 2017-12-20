@@ -239,7 +239,7 @@ LWin & vk07::return ; vk07 is "unassigned", i.e. doesn't belong to any key. The 
 LWin::return ; (or run Launchy)
 
 ; Win-Space launches start menu
-LWin & Space::SendInput {Blind}^{Esc}
+LWin & Space::SendInput {LWin up}{LCtrl down}{Esc}{LCtrl up} ;LWin up step is crucial
 
 ; Ctrl-Tab
 #a::+^Tab
