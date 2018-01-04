@@ -33,5 +33,6 @@ fi
 
 [[ ! -s ~/.config ]] && mkdir ~/.config
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
+[[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/nvim
 
 echo "done."
