@@ -35,4 +35,7 @@ fi
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
 [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/nvim
 
+[[ ! -s ~/Library/KeyBindings ]] && mkdir ~/.Library/KeyBindings
+[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && ln -s $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings
+
 echo "done."

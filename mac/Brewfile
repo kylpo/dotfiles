@@ -34,6 +34,7 @@ cask "itsycal"
 cask "karabiner-elements"
 cask "witch"
 cask "yujitach-menumeters"
+cask "dash"
 #mas 'Xcode', id: 497799835
 #mas 'Keynote', id: 409183694
 #mas 'Next Meeting', id: 1017470484
