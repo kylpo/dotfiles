@@ -13,6 +13,7 @@ cd ~
 [[ ! -s ~/.agignore ]] && ln -s $DIR/agignore ~/.agignore
 [[ ! -s ~/.zsh ]] && ln -s $DIR/zsh ~/.zsh
 [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
+[[ ! -s ~/.ideavimrc ]] && ln -s $DIR/ideavimrc ~/.ideavimrc
 
 # Check if file exists and is a symlink
 if [[ ! -L ~/.zshrc ]]; then
@@ -33,9 +34,9 @@ fi
 
 [[ ! -s ~/.config ]] && mkdir ~/.config
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
-[[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/nvim
+[[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
 
-[[ ! -s ~/Library/KeyBindings ]] && mkdir ~/.Library/KeyBindings
-[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && ln -s $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings
+#[[ ! -s ~/Library/KeyBindings ]] && mkdir ~/.Library/KeyBindings
+#[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && ln -s $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings
 
 echo "done."

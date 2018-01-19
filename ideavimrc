@@ -1,0 +1,47 @@
+" for actions, use :actionlist
+"
+" helpful dotfiles:
+" https://github.com/junegunn/dotfiles/blob/master/ideavimrc
+" https://github.com/Valloric/dotfiles/blob/master/intellij/ideavimrc
+" https://github.com/beloglazov/vimrc/blob/master/.ideavimrc
+
+let mapleader = ' '
+
+" https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+set relativenumber
+set incsearch hlsearch
+set ignorecase smartcase
+"set clipboard=unnamed
+set scrolloff=5  " minimum nr. of lines above and below cursor
+set showmode " shows what mode Vim is in in statusbar
+set surround
+
+" Use ' to start mode instead of :
+vnoremap ' :
+nnoremap ' :
+
+nnoremap / :action Find<CR>
+nnoremap n :action FindNext<CR>
+nnoremap N :action FindPrevious<CR>
+nnoremap U :action $Redo<CR>
+
+" requires emacsIDEAS to be installed
+nnoremap <leader><Space> :action emacsIDEAs.AceJumpWord<CR>
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+" Won't work in visual mode (with vmap) for some reason.
+" Use default map of <c-/> for that.
+nnoremap gcc :action CommentByLineComment<cr>
+"vnoremap gcc :action CommentByBlockComment<cr>
+
+" Reload .ideavimrc
+nnoremap <leader>vs :source ~/.ideavimrc<CR>
+
+"nnoremap - :action <cr>
+

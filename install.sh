@@ -43,7 +43,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   # https://gist.github.com/cheapRoc/9670905#crash-course
   # and https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/EventOverview/TextDefaultsBindings/TextDefaultsBindings.html
   # and an overall guide to the Cocoa Text system, and what this file is: http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html
-  [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/mac/DefaultKeyBinding ~/Library/KeyBindings/DefaultKeyBinding.dict
+  [[ ! -s ~/Library/KeyBindings ]] && mkdir ~/Library/KeyBindings
+  [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 fi
 
 echo -n "Setting up zsh... "
@@ -59,12 +60,13 @@ echo "done."
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
 echo -n "Installing node (via n) and npm globals"
-curl -L https://git.io/n-install | bash
+#curl -L https://git.io/n-install | bash
 
 source ~/.zshrc
 
+npm i -g n
 #npm i -g pomo
-npm i -g import-js
+#npm i -g import-js
 
 # https://github.com/sindresorhus/fkill-cli
 #npm i -g fkill-cli
