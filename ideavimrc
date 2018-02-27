@@ -11,7 +11,7 @@ let mapleader = ' '
 set relativenumber
 set incsearch hlsearch
 set ignorecase smartcase
-"set clipboard=unnamed
+set clipboard=unnamed
 set scrolloff=5  " minimum nr. of lines above and below cursor
 set showmode " shows what mode Vim is in in statusbar
 set surround
@@ -34,6 +34,10 @@ nmap <leader>h <c-w>h
 nmap <leader>l <c-w>l
 nmap <leader>k <c-w>k
 nmap <leader>j <c-w>j
+
+
+nnoremap <leader>b :action RecentFiles<CR>
+nnoremap <leader>p :action GotoFile<CR>
 
 " Won't work in visual mode (with vmap) for some reason.
 " Use default map of <c-/> for that.

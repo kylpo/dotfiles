@@ -54,6 +54,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.z.sh ] && source ~/.z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+. /usr/local/etc/profile.d/z.sh
 
 #--------------------------------------------------
 # commands

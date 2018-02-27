@@ -98,46 +98,6 @@
                         "description": "Kylpo Symbols Keymapping",
                         "manipulators": [
                             {
-                                "description": "FN Spacebar -> Enter",
-                                "from": {
-                                    "key_code": "spacebar",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "return_or_enter"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "FN Esc -> Tab",
-                                "from": {
-                                    "key_code": "escape",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
                                 "description": "FN q -> 1",
                                 "from": {
                                     "key_code": "q",
@@ -1349,7 +1309,7 @@
                         "key_code": "caps_lock"
                     },
                     "to": {
-                        "key_code": "left_command"
+                        "key_code": "escape"
                     }
                 },
                 {
@@ -1398,14 +1358,6 @@
                     },
                     "to": {
                         "key_code": "right_control"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "tab"
-                    },
-                    "to": {
-                        "key_code": "escape"
                     }
                 }
             ],
