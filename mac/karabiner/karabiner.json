@@ -4205,7 +4205,7 @@
                         ]
                     },
                     {
-                        "description": "FN 1...0 to F1...F10",
+                        "description": "FN 1...= to F1...F12",
                         "manipulators": [
                             {
                                 "from": {
@@ -4221,10 +4221,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f1",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f1"
                                     }
                                 ],
                                 "type": "basic"
@@ -4243,10 +4240,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f2",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f2"
                                     }
                                 ],
                                 "type": "basic"
@@ -4265,10 +4259,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f3",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f3"
                                     }
                                 ],
                                 "type": "basic"
@@ -4287,10 +4278,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f4",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f4"
                                     }
                                 ],
                                 "type": "basic"
@@ -4309,10 +4297,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f5",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f5"
                                     }
                                 ],
                                 "type": "basic"
@@ -4331,10 +4316,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f6",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f6"
                                     }
                                 ],
                                 "type": "basic"
@@ -4353,10 +4335,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f7",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f7"
                                     }
                                 ],
                                 "type": "basic"
@@ -4375,10 +4354,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f8",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f8"
                                     }
                                 ],
                                 "type": "basic"
@@ -4397,10 +4373,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f9",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f9"
                                     }
                                 ],
                                 "type": "basic"
@@ -4419,19 +4392,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f10",
-                                        "modifiers": [
-                                            "fn"
-                                        ]
+                                        "key_code": "f10"
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "FN -,=,backspace to vol_down,vol_up,mute",
-                        "manipulators": [
+                            },
                             {
                                 "from": {
                                     "key_code": "hyphen",
@@ -4466,25 +4431,6 @@
                                 "to": [
                                     {
                                         "key_code": "f12"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f10"
                                     }
                                 ],
                                 "type": "basic"
@@ -4807,7 +4753,7 @@
                         "key_code": "f1"
                     },
                     "to": {
-                        "consumer_key_code": "display_brightness_decrement"
+                        "key_code": "f1"
                     }
                 },
                 {
@@ -4815,7 +4761,7 @@
                         "key_code": "f2"
                     },
                     "to": {
-                        "consumer_key_code": "display_brightness_increment"
+                        "key_code": "f2"
                     }
                 },
                 {
@@ -4823,7 +4769,7 @@
                         "key_code": "f3"
                     },
                     "to": {
-                        "key_code": "mission_control"
+                        "key_code": "f3"
                     }
                 },
                 {
@@ -4831,7 +4777,7 @@
                         "key_code": "f4"
                     },
                     "to": {
-                        "key_code": "launchpad"
+                        "key_code": "f4"
                     }
                 },
                 {
@@ -4839,7 +4785,7 @@
                         "key_code": "f5"
                     },
                     "to": {
-                        "key_code": "illumination_decrement"
+                        "key_code": "f5"
                     }
                 },
                 {
@@ -4847,7 +4793,7 @@
                         "key_code": "f6"
                     },
                     "to": {
-                        "key_code": "illumination_increment"
+                        "key_code": "f6"
                     }
                 },
                 {
@@ -4855,7 +4801,7 @@
                         "key_code": "f7"
                     },
                     "to": {
-                        "consumer_key_code": "rewind"
+                        "key_code": "f7"
                     }
                 },
                 {
@@ -4863,7 +4809,7 @@
                         "key_code": "f8"
                     },
                     "to": {
-                        "consumer_key_code": "play_or_pause"
+                        "key_code": "f8"
                     }
                 },
                 {
@@ -4871,7 +4817,7 @@
                         "key_code": "f9"
                     },
                     "to": {
-                        "consumer_key_code": "fastforward"
+                        "key_code": "f9"
                     }
                 },
                 {
