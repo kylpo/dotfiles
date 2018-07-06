@@ -3851,7 +3851,7 @@
                 },
                 "rules": [
                     {
-                        "description": "FN Command h,quote to Option backspace,del",
+                        "description": "FN Command h,enter to Option backspace,del",
                         "manipulators": [
                             {
                                 "from": {
@@ -3878,7 +3878,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "quote",
+                                    "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
                                             "command",
@@ -3902,11 +3902,11 @@
                         ]
                     },
                     {
-                        "description": "FN Command j,k,l,; to Option arrow keys",
+                        "description": "FN Command j,k,l,space to Option arrow keys",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "spacebar",
                                     "modifiers": {
                                         "mandatory": [
                                             "command",
@@ -3999,7 +3999,7 @@
                         ]
                     },
                     {
-                        "description": "FN j,k,l,; to arrow keys",
+                        "description": "FN j,k,l,space to arrow keys",
                         "manipulators": [
                             {
                                 "from": {
@@ -4060,7 +4060,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "spacebar",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -4080,7 +4080,7 @@
                         ]
                     },
                     {
-                        "description": "FN u,i,o,p to home,pgup,pgdwn,end",
+                        "description": "FN u,i,o,p,h,enter to home,pgup,pgdwn,end,backspace,del",
                         "manipulators": [
                             {
                                 "description": "FN u -> {",
@@ -4183,9 +4183,9 @@
                                 "type": "basic"
                             },
                             {
-                                "description": "FN ' -> del",
+                                "description": "FN enter -> del",
                                 "from": {
-                                    "key_code": "quote",
+                                    "key_code": "return_or_enter",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -4198,6 +4198,460 @@
                                 "to": [
                                     {
                                         "key_code": "delete_forward"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "KYLPO fn-keys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "command",
+                                            "control",
+                                            "shift",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "slash",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                  "key_code": "w",
+                                  "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                  }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "equal_sign",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                  "key_code": "e",
+                                  "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                  }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "command",
+                                            "control",
+                                            "shift",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "equal_sign"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "hyphen"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "hyphen",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "comma",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "period",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "backslash"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "backslash",
+                                        "modifiers": "shift"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "fn"
+                                      ],
+                                      "optional": [
+                                          "command",
+                                          "control",
+                                          "shift",
+                                          "option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "slash"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Shift , -> ;",
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Shift . -> ;",
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "semicolon",
+                                        "modifiers": [
+                                            "shift"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -4845,7 +5299,45 @@
                                 "key_code": "left_option"
                             },
                             "to": {
-                                "key_code": "left_command"
+                                "key_code": "fn"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "fn"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 2088,
+                        "vendor_id": 1204
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "right_option"
+                            },
+                            "to": {
+                                "key_code": "fn"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": {
+                                "key_code": "fn"
                             }
                         }
                     ]
