@@ -13,6 +13,8 @@
 
 set nocompatible
 
+let g:python3_host_prog = '/Users/kylpo/.pyenv/versions/neovim3/bin/python'
+
 " ============================================================================
 " PLUGIN {{{
 " ==============================================================================
@@ -185,7 +187,7 @@ Plug 'embear/vim-localvimrc'
 " Tools
 " ==============================================================================
 Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 Plug 'neomake/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
@@ -320,7 +322,12 @@ if has('folding')
   endif
   set foldmethod=marker               " not as cool as syntax, but faster
   " set foldlevelstart=99               " start unfolded
+
 endif
+
+" don't fold Markdown files by default
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  setf markdown
+autocmd FileType markdown exe "normal zR"
 
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j                " remove comment leader when joining comment lines

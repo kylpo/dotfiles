@@ -334,7 +334,15 @@ if has('folding')
   endif
   set foldmethod=marker               " not as cool as syntax, but faster
   " set foldlevelstart=99               " start unfolded
+  "
 endif
+
+" unfold markdown files by default
+"autocmd Syntax md,html normal zR
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  setf markdown
+
+autocmd FileType markdown exe "normal zR"
+
 
 if v:version > 703 || v:version == 703 && has('patch541')
   set formatoptions+=j                " remove comment leader when joining comment lines

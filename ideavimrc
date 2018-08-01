@@ -37,7 +37,11 @@ nmap <leader>j <c-w>j
 
 
 nnoremap <leader>b :action RecentFiles<CR>
-nnoremap <leader>p :action GotoFile<CR>
+nnoremap <leader>f :action GotoFile<CR>
+nnoremap <leader>o :action GotoClass<CR>
+nnoremap <leader>O :action GotoSymbol<CR>
+
+nnoremap <leader>s :action FileStructurePopup<CR>
 
 " Won't work in visual mode (with vmap) for some reason.
 " Use default map of <c-/> for that.

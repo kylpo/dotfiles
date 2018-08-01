@@ -13,6 +13,11 @@ export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
+# pyenv
+export PATH="/Users/kylpo/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # export MYVIMRC='~/.config/nvim/init.vim'
 # export EDITOR=nvim
 # export NVM_DIR=$HOME/.nvm
