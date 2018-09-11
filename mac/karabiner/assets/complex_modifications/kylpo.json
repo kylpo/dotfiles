@@ -810,6 +810,54 @@
       ]
     },
     {
+        "description": "shift ,. -> ;:",
+        "manipulators": [
+          {
+              "description": "Shift , -> ;",
+              "from": {
+                  "key_code": "comma",
+                  "modifiers": {
+                      "mandatory": [
+                          "shift"
+                      ],
+                      "optional": [
+                          "any"
+                      ]
+                  }
+              },
+              "to": [
+                  {
+                      "key_code": "semicolon"
+                  }
+              ],
+              "type": "basic"
+          },
+          {
+              "description": "Shift . -> ;",
+              "from": {
+                  "key_code": "period",
+                  "modifiers": {
+                      "mandatory": [
+                          "shift"
+                      ],
+                      "optional": [
+                          "any"
+                      ]
+                  }
+              },
+              "to": [
+                  {
+                      "key_code": "semicolon",
+                      "modifiers": [
+                          "shift"
+                      ]
+                  }
+              ],
+              "type": "basic"
+          }
+        ]
+    },
+    {
       "description": "FN 1...= to F1...F12",
       "manipulators": [
         {
