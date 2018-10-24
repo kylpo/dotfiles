@@ -150,6 +150,219 @@
       ]
     },
     {
+        "description": "FN Command j,; to Option arrow keys",
+        "manipulators": [
+            {
+                "from": {
+                    "key_code": "semicolon",
+                    "modifiers": {
+                        "mandatory": [
+                            "command",
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "right_arrow",
+                        "modifiers": [
+                            "option"
+                        ]
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "from": {
+                    "key_code": "j",
+                    "modifiers": {
+                        "mandatory": [
+                            "command",
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "left_arrow",
+                        "modifiers": [
+                            "option"
+                        ]
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
+        "description": "FN Command k,l to 20 up/down",
+        "manipulators": [
+            {
+                "from": {
+                    "key_code": "l",
+                    "modifiers": {
+                        "mandatory": [
+                            "command",
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    },
+                    {
+                        "key_code": "up_arrow"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "from": {
+                    "key_code": "k",
+                    "modifiers": {
+                        "mandatory": [
+                            "command",
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    },
+                    {
+                        "key_code": "down_arrow"
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
       "description": "FN j,k,l,space to arrow keys",
       "manipulators": [
         {
@@ -1321,7 +1534,7 @@
       ]
     },
     {
-      "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
+      "description": "caps_lock -> control when held, escape when tapped.",
       "manipulators": [
         {
           "from": {
@@ -1331,6 +1544,9 @@
                 "any"
               ]
             }
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 500
           },
           "to": [
             {
@@ -1342,9 +1558,48 @@
               "key_code": "escape"
             }
           ],
+          "to_if_held_down": [
+            {
+              "key_code": "left_control"
+            }
+          ],
           "type": "basic"
         }
       ]
+    },
+    {
+        "description": "spacebar -> fn when held, spacebar when tapped.",
+        "manipulators": [
+            {
+                "from": {
+                    "key_code": "spacebar",
+                    "modifiers": {
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "parameters": {
+                    "basic.to_if_alone_timeout_milliseconds": 500
+                },
+                "to": [
+                    {
+                        "key_code": "fn"
+                    }
+                ],
+                "to_if_alone": [
+                    {
+                        "key_code": "spacebar"
+                    }
+                ],
+                "to_if_held_down": [
+                    {
+                        "key_code": "fn"
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
     },
     {
       "description": "Use Delete as Move to Trash",

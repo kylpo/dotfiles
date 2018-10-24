@@ -18,7 +18,7 @@ sudo nvram SystemAudioVolume=" "
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
-# Disable auto-correct
+# Disable system-wide spell check
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Disable automatic capitalization as it’s annoying when typing code
@@ -65,3 +65,5 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
 
+# Show xcode build times
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
