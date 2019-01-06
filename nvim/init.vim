@@ -13,7 +13,7 @@
 
 set nocompatible
 
-let g:python3_host_prog = '/Users/kylpo/.pyenv/versions/neovim3/bin/python'
+" let g:python3_host_prog = '/Users/kylpo/.pyenv/versions/neovim3/bin/python'
 
 " ============================================================================
 " PLUGIN {{{
@@ -905,6 +905,16 @@ set wildcharm=<C-z>
 " ==============================================================================
 " Normal
 " ==============================================================================
+" Use jkl; for navigation
+noremap ; l
+noremap l k
+noremap k j
+noremap j h
+" Store relative line number jumps in the jumplist if they exceed a threshold.
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
+
+
 "totally annoying default mapping for cap k
 nmap K <nop>
 
@@ -949,10 +959,6 @@ nnoremap <silent> <Up> :cprevious<CR>
 nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
-
-" Store relative line number jumps in the jumplist if they exceed a threshold.
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 
 " Like vim-vinegar.
 nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : fnameescape(expand('%:p:h'))<CR><CR>

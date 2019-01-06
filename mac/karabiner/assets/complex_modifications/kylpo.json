@@ -444,6 +444,131 @@
       ]
     },
     {
+        "description": "FN u,i,o,p,h,' to home,pgup,pgdwn,end,backspace,del",
+        "manipulators": [
+            {
+                "description": "FN u -> {",
+                "from": {
+                    "key_code": "u",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "home"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "FN i -> }",
+                "from": {
+                    "key_code": "i",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "page_down"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "FN o -> +",
+                "from": {
+                    "key_code": "o",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "page_up"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "FN p -> END",
+                "from": {
+                    "key_code": "p",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "end"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "FN h -> backspace",
+                "from": {
+                    "key_code": "h",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "delete_or_backspace"
+                    }
+                ],
+                "type": "basic"
+            },
+            {
+                "description": "FN ' -> del",
+                "from": {
+                    "key_code": "quote",
+                    "modifiers": {
+                        "mandatory": [
+                            "fn"
+                        ],
+                        "optional": [
+                            "any"
+                        ]
+                    }
+                },
+                "to": [
+                    {
+                        "key_code": "delete_forward"
+                    }
+                ],
+                "type": "basic"
+            }
+        ]
+    },
+    {
       "description": "FN u,i,o,p,h,enter to home,pgup,pgdwn,end,backspace,del",
       "manipulators": [
         {

@@ -8,10 +8,12 @@ export ZSH=$HOME/.oh-my-zsh
 # https://twitter.com/ariabuckles/status/772209060506587136
 export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
 export PATH=$PATH:$HOME/.yarn/bin
+export PATH=$PATH:$HOME/flutter/bin
 
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
 
 # pyenv
 export PATH="/Users/kylpo/.pyenv/bin:$PATH"
