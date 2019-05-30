@@ -569,6 +569,91 @@
         ]
     },
     {
+      "description": "FN u,i,o,p to home,pgup,pgdwn,end",
+      "manipulators": [
+        {
+          "description": "FN u -> {",
+            "from": {
+              "key_code": "u",
+              "modifiers": {
+                "mandatory": [
+                  "fn"
+                ],
+                "optional": [
+                  "any"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "home"
+              }
+            ],
+            "type": "basic"
+          },
+          {
+            "description": "FN i -> }",
+            "from": {
+              "key_code": "i",
+              "modifiers": {
+                "mandatory": [
+                  "fn"
+                ],
+                "optional": [
+                  "any"
+                ]
+              }
+            },
+            "to": [
+              {
+                "key_code": "page_down"
+              }
+            ],
+            "type": "basic"
+        },
+        {
+          "description": "FN o -> +",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "page_up"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN p -> END",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "end"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "FN u,i,o,p,h,enter to home,pgup,pgdwn,end,backspace,del",
       "manipulators": [
         {
@@ -1973,6 +2058,1020 @@
           "type": "basic"
         }
       ]
-    }
+    },
+                  {
+                      "description": "FN q -> ?",
+                      "manipulators": [
+                        {
+                          "from": {
+                            "key_code": "q",
+                            "modifiers": {
+                              "mandatory": [
+                                "fn"
+                              ],
+                              "optional": [
+                                "command",
+                                "control",
+                                "option"
+                              ]
+                            }
+                          },
+                          "to": [
+                            {
+                              "key_code": "slash",
+                              "modifiers": "shift"
+                            }
+                          ],
+                          "type": "basic"
+                        }
+                      ]
+                  },
+                  {
+                      "description": "FN w -> =",
+                      "manipulators": [
+                        {
+                      "from": {
+                          "key_code": "w",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn"
+                              ],
+                              "optional": [
+                                  "command",
+                                  "control",
+                                  "option"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                            "key_code": "equal_sign"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN e -> '",
+                      "manipulators": [
+                        {
+                      "from": {
+                          "key_code": "e",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn"
+                              ],
+                              "optional": [
+                                  "command",
+                                  "control",
+                                  "option"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "quote"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN r -> [",
+                        "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "r",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn"
+                              ],
+                              "optional": [
+                                  "command",
+                                  "control",
+                                  "option"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "open_bracket"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN t -> ]",
+                      "manipulators": [
+                        {
+                      "from": {
+                          "key_code": "t",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn"
+                              ],
+                              "optional": [
+                                  "command",
+                                  "control",
+                                  "option"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "close_bracket"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN y -> |",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "y",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "backslash",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN a -> +",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "a",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "equal_sign",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN s -> -",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "s",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "hyphen"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN d -> \"",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "d",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "quote",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN f -> (",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "f",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "9",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN g -> )",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "g",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "0",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN h -> /",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "h",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "slash"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN z -> !",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "z",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "1",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN x -> *",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "x",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "8",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN c -> `",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "c",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "grave_accent_and_tilde"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN v -> {",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "v",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "open_bracket",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN b -> }",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "b",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "close_bracket",
+                            "modifiers": "shift"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN n -> \\",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "n",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "backslash"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                    "description": "FN enter -> tab",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "return_or_enter",
+                          "modifiers": {
+                            "mandatory": [
+                              "fn"
+                            ],
+                            "optional": [
+                              "command",
+                              "control",
+                              "option"
+                              ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "tab"
+                          }
+                        ],
+                        "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT q -> 1",
+                      "manipulators": [
+                        {
+                          "from": {
+                            "key_code": "q",
+                            "modifiers": {
+                              "mandatory": [
+                                "fn",
+                                "shift"
+                              ],
+                              "optional": [
+                                "any"
+                              ]
+                            }
+                          },
+                          "to": [
+                            {
+                              "key_code": "1"
+                            }
+                          ],
+                          "type": "basic"
+                        }
+                      ]
+                  },
+                  {
+                      "description": "FN SHIFT w -> 2",
+                      "manipulators": [
+                        {
+                      "from": {
+                          "key_code": "w",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "2"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT e -> 3",
+                      "manipulators": [
+                        {
+                      "from": {
+                          "key_code": "e",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "3"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT r -> 4",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "r",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "4"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT t -> 5",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "t",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "5"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT y -> 6",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "y",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "6"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT u -> 7",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "u",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "7"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT i -> 8",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "i",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "8"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT o -> 9",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "o",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "9"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT p -> 0",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "p",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "0"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT a -> @",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "a",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "2",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT s -> _",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "s",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "hyphen",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT d -> $",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "d",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "4",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT f -> less_than",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "f",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "comma",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT g -> greater_than",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "g",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "period",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT h -> hash",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "h",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "3",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT z -> ~",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "z",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "grave_accent_and_tilde",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT x -> &",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "x",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "7",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT c -> ^",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "c",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "6",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  },
+                  {
+                      "description": "FN SHIFT m -> %",
+                      "manipulators": [
+                          {
+                      "from": {
+                          "key_code": "m",
+                          "modifiers": {
+                              "mandatory": [
+                                  "fn",
+                                  "shift"
+                              ],
+                              "optional": [
+                                  "any"
+                              ]
+                          }
+                      },
+                      "to": [
+                          {
+                              "key_code": "5",
+                              "modifiers": "shift"
+                          }
+                      ],
+                      "type": "basic"
+                      }
+                    ]
+                  }
   ]
 }
