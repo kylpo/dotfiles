@@ -3,3 +3,4 @@ secrets
 nvim/plugged
 vim/plugged
 vim/.base16
+.DS_Store

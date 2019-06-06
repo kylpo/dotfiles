@@ -150,217 +150,217 @@
       ]
     },
     {
-        "description": "FN Command j,; to Option arrow keys",
-        "manipulators": [
-            {
-                "from": {
-                    "key_code": "semicolon",
-                    "modifiers": {
-                        "mandatory": [
-                            "command",
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "right_arrow",
-                        "modifiers": [
-                            "option"
-                        ]
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "from": {
-                    "key_code": "j",
-                    "modifiers": {
-                        "mandatory": [
-                            "command",
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "left_arrow",
-                        "modifiers": [
-                            "option"
-                        ]
-                    }
-                ],
-                "type": "basic"
+      "description": "FN Command j,; to Option arrow keys",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "semicolon",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
             }
-        ]
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "option"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "option"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     },
     {
-        "description": "FN Command k,l to 20 up/down",
-        "manipulators": [
+      "description": "FN Command k,l to 20 up/down",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
             {
-                "from": {
-                    "key_code": "l",
-                    "modifiers": {
-                        "mandatory": [
-                            "command",
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    },
-                    {
-                        "key_code": "up_arrow"
-                    }
-                ],
-                "type": "basic"
+              "key_code": "up_arrow"
             },
             {
-                "from": {
-                    "key_code": "k",
-                    "modifiers": {
-                        "mandatory": [
-                            "command",
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    },
-                    {
-                        "key_code": "down_arrow"
-                    }
-                ],
-                "type": "basic"
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
+            },
+            {
+              "key_code": "up_arrow"
             }
-        ]
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "command",
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            },
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     },
     {
       "description": "FN j,k,l,space to arrow keys",
@@ -444,172 +444,334 @@
       ]
     },
     {
-        "description": "FN u,i,o,p,h,' to home,pgup,pgdwn,end,backspace,del",
-        "manipulators": [
-            {
-                "description": "FN u -> {",
-                "from": {
-                    "key_code": "u",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "home"
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "description": "FN i -> }",
-                "from": {
-                    "key_code": "i",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "page_down"
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "description": "FN o -> +",
-                "from": {
-                    "key_code": "o",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "page_up"
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "description": "FN p -> END",
-                "from": {
-                    "key_code": "p",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "end"
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "description": "FN h -> backspace",
-                "from": {
-                    "key_code": "h",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "delete_or_backspace"
-                    }
-                ],
-                "type": "basic"
-            },
-            {
-                "description": "FN ' -> del",
-                "from": {
-                    "key_code": "quote",
-                    "modifiers": {
-                        "mandatory": [
-                            "fn"
-                        ],
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "to": [
-                    {
-                        "key_code": "delete_forward"
-                    }
-                ],
-                "type": "basic"
+      "description": "FN i,j,k,l to arrow keys",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
             }
-        ]
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN i,j,k,space to arrow keys",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN u,i,o,p,h,' to home,pgup,pgdwn,end,backspace,del",
+      "manipulators": [
+        {
+          "description": "FN u -> {",
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "home"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN i -> }",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "page_down"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN o -> +",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "page_up"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN p -> END",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "end"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN h -> backspace",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN ' -> del",
+          "from": {
+            "key_code": "quote",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     },
     {
       "description": "FN u,i,o,p to home,pgup,pgdwn,end",
       "manipulators": [
         {
           "description": "FN u -> {",
-            "from": {
-              "key_code": "u",
-              "modifiers": {
-                "mandatory": [
-                  "fn"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "home"
-              }
-            ],
-            "type": "basic"
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
           },
-          {
-            "description": "FN i -> }",
-            "from": {
-              "key_code": "i",
-              "modifiers": {
-                "mandatory": [
-                  "fn"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "page_down"
-              }
-            ],
-            "type": "basic"
+          "to": [
+            {
+              "key_code": "home"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN i -> }",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "page_down"
+            }
+          ],
+          "type": "basic"
         },
         {
           "description": "FN o -> +",
@@ -658,43 +820,43 @@
       "manipulators": [
         {
           "description": "FN u -> {",
-            "from": {
-              "key_code": "u",
-              "modifiers": {
-                "mandatory": [
-                  "fn"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "home"
-              }
-            ],
-            "type": "basic"
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
           },
-          {
-            "description": "FN i -> }",
-            "from": {
-              "key_code": "i",
-              "modifiers": {
-                "mandatory": [
-                  "fn"
-                ],
-                "optional": [
-                  "any"
-                ]
-              }
-            },
-            "to": [
-              {
-                "key_code": "page_down"
-              }
-            ],
-            "type": "basic"
+          "to": [
+            {
+              "key_code": "home"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "FN i -> }",
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "page_down"
+            }
+          ],
+          "type": "basic"
         },
         {
           "description": "FN o -> +",
@@ -1233,52 +1395,147 @@
       ]
     },
     {
-        "description": "shift ,. -> ;:",
-        "manipulators": [
-          {
-              "description": "Shift , -> ;",
-              "from": {
-                  "key_code": "comma",
-                  "modifiers": {
-                      "mandatory": [
-                          "shift"
-                      ],
-                      "optional": [
-                          "any"
-                      ]
-                  }
-              },
-              "to": [
-                  {
-                      "key_code": "semicolon"
-                  }
+      "description": "shift ,. -> ;:",
+      "manipulators": [
+        {
+          "description": "Shift , -> ;",
+          "from": {
+            "key_code": "comma",
+            "modifiers": {
+              "mandatory": [
+                "shift"
               ],
-              "type": "basic"
+              "optional": [
+                "any"
+              ]
+            }
           },
-          {
-              "description": "Shift . -> ;",
-              "from": {
-                  "key_code": "period",
-                  "modifiers": {
-                      "mandatory": [
-                          "shift"
-                      ],
-                      "optional": [
-                          "any"
-                      ]
-                  }
-              },
-              "to": [
-                  {
-                      "key_code": "semicolon",
-                      "modifiers": [
-                          "shift"
-                      ]
-                  }
+          "to": [
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "Shift . -> ;",
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "shift"
               ],
-              "type": "basic"
-          }
-        ]
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon",
+              "modifiers": [
+                "shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "shift space -> return",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "Shift . -> ;",
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon",
+              "modifiers": [
+                "shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "shift ESC,ENTER -> PREV,NEXT:",
+      "manipulators": [
+        {
+          "description": "Shift esc -> prev",
+          "from": {
+            "key_code": "escape,",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab",
+              "modifiers": [
+                "shift"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "description": "Shift enter -> next",
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     },
     {
       "description": "FN 1...= to F1...F12",
@@ -1778,38 +2035,38 @@
       ]
     },
     {
-        "description": "spacebar -> fn when held, spacebar when tapped.",
-        "manipulators": [
-            {
-                "from": {
-                    "key_code": "spacebar",
-                    "modifiers": {
-                        "optional": [
-                            "any"
-                        ]
-                    }
-                },
-                "parameters": {
-                    "basic.to_if_alone_timeout_milliseconds": 500
-                },
-                "to": [
-                    {
-                        "key_code": "fn"
-                    }
-                ],
-                "to_if_alone": [
-                    {
-                        "key_code": "spacebar"
-                    }
-                ],
-                "to_if_held_down": [
-                    {
-                        "key_code": "fn"
-                    }
-                ],
-                "type": "basic"
+      "description": "spacebar -> fn when held, spacebar when tapped.",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
             }
-        ]
+          },
+          "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 500
+          },
+          "to": [
+            {
+              "key_code": "fn"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "spacebar"
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "key_code": "fn"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
     },
     {
       "description": "Use Delete as Move to Trash",
@@ -2059,1019 +2316,2147 @@
         }
       ]
     },
-                  {
-                      "description": "FN q -> ?",
-                      "manipulators": [
-                        {
-                          "from": {
-                            "key_code": "q",
-                            "modifiers": {
-                              "mandatory": [
-                                "fn"
-                              ],
-                              "optional": [
-                                "command",
-                                "control",
-                                "option"
-                              ]
-                            }
-                          },
-                          "to": [
-                            {
-                              "key_code": "slash",
-                              "modifiers": "shift"
-                            }
-                          ],
-                          "type": "basic"
-                        }
-                      ]
-                  },
-                  {
-                      "description": "FN w -> =",
-                      "manipulators": [
-                        {
-                      "from": {
-                          "key_code": "w",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn"
-                              ],
-                              "optional": [
-                                  "command",
-                                  "control",
-                                  "option"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                            "key_code": "equal_sign"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN e -> '",
-                      "manipulators": [
-                        {
-                      "from": {
-                          "key_code": "e",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn"
-                              ],
-                              "optional": [
-                                  "command",
-                                  "control",
-                                  "option"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "quote"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN r -> [",
-                        "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "r",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn"
-                              ],
-                              "optional": [
-                                  "command",
-                                  "control",
-                                  "option"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "open_bracket"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN t -> ]",
-                      "manipulators": [
-                        {
-                      "from": {
-                          "key_code": "t",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn"
-                              ],
-                              "optional": [
-                                  "command",
-                                  "control",
-                                  "option"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "close_bracket"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN y -> |",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "y",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "backslash",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN a -> +",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "a",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "equal_sign",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN s -> -",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "s",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "hyphen"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN d -> \"",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "d",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "quote",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN f -> (",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "f",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "9",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN g -> )",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "g",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "0",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN h -> /",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "h",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "slash"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN z -> !",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "z",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "1",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN x -> *",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "x",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "8",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN c -> `",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "c",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "grave_accent_and_tilde"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN v -> {",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "v",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "open_bracket",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN b -> }",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "b",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "close_bracket",
-                            "modifiers": "shift"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN n -> \\",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "n",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "backslash"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                    "description": "FN enter -> tab",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "return_or_enter",
-                          "modifiers": {
-                            "mandatory": [
-                              "fn"
-                            ],
-                            "optional": [
-                              "command",
-                              "control",
-                              "option"
-                              ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "tab"
-                          }
-                        ],
-                        "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT q -> 1",
-                      "manipulators": [
-                        {
-                          "from": {
-                            "key_code": "q",
-                            "modifiers": {
-                              "mandatory": [
-                                "fn",
-                                "shift"
-                              ],
-                              "optional": [
-                                "any"
-                              ]
-                            }
-                          },
-                          "to": [
-                            {
-                              "key_code": "1"
-                            }
-                          ],
-                          "type": "basic"
-                        }
-                      ]
-                  },
-                  {
-                      "description": "FN SHIFT w -> 2",
-                      "manipulators": [
-                        {
-                      "from": {
-                          "key_code": "w",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "2"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT e -> 3",
-                      "manipulators": [
-                        {
-                      "from": {
-                          "key_code": "e",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "3"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT r -> 4",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "r",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "4"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT t -> 5",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "t",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "5"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT y -> 6",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "y",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "6"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT u -> 7",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "u",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "7"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT i -> 8",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "i",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "8"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT o -> 9",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "o",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "9"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT p -> 0",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "p",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "0"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT a -> @",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "a",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "2",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT s -> _",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "s",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "hyphen",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT d -> $",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "d",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "4",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT f -> less_than",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "f",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "comma",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT g -> greater_than",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "g",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "period",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT h -> hash",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "h",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "3",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT z -> ~",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "z",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "grave_accent_and_tilde",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT x -> &",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "x",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "7",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT c -> ^",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "c",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "6",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  },
-                  {
-                      "description": "FN SHIFT m -> %",
-                      "manipulators": [
-                          {
-                      "from": {
-                          "key_code": "m",
-                          "modifiers": {
-                              "mandatory": [
-                                  "fn",
-                                  "shift"
-                              ],
-                              "optional": [
-                                  "any"
-                              ]
-                          }
-                      },
-                      "to": [
-                          {
-                              "key_code": "5",
-                              "modifiers": "shift"
-                          }
-                      ],
-                      "type": "basic"
-                      }
-                    ]
-                  }
+    {
+      "description": "FN q -> ?",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN w -> =",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN e -> '",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN r -> [",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN t -> ]",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN y -> |",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "backslash",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN a -> +",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN s -> -",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN d -> \"",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN f -> (",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN g -> )",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN h -> /",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN z -> !",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "1",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN x -> *",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "8",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN c -> `",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN v -> {",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN b -> }",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN n -> \\",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "backslash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN enter -> tab",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "return_or_enter",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "command",
+                "control",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT q -> 1",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "1"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT w -> 2",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "2"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT e -> 3",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "3"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT r -> 4",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "4"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT t -> 5",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "5"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT y -> 6",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "6"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT u -> 7",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "7"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT i -> 8",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "i",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "8"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT o -> 9",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT p -> 0",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT a -> @",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "2",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT s -> _",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT d -> $",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "4",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT f -> less_than",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "comma",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT g -> greater_than",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "period",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT h -> hash",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "3",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT z -> ~",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT x -> &",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "7",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT c -> ^",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "6",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN SHIFT m -> %",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "fn",
+                "shift"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "5",
+              "modifiers": "shift"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN q -> 1",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "1"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN q -> [",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "q",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN w -> 1",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "1"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN w -> 2",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "2"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN e -> 2",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "2"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN e -> 3",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "e",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "3"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN r -> 3",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "3"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN r -> 4",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "4"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN t -> 5",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "5"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN t -> backtick",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN a -> 6",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "6"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN s -> 4",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "4"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN s -> 7",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "7"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN d -> 8",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "8"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN d -> 5",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "5"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN f -> 9",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN g -> 0",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN g -> quote",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN z -> \\",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "backslash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN x -> \\",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "backslash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN x -> 7",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "7"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN f -> /",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN c -> 8",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "8"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN c -> /",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN n -> /",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "slash"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN v -> 9",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "9"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN v -> [",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "v",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "open_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN b -> 0",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "0"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN b -> ]",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "b",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN p -> ]",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "close_bracket"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN y -> ",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "quote"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN h -> -",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN y -> =",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN u -> -",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "hyphen"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN o -> =",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "equal_sign"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN p -> `",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN u -> ESC",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "u",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN h -> ESC",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN o -> enter",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN space -> enter",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN n -> ;",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN f -> ;",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN m -> backspace",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN z -> ,",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "z",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "comma"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN l -> del",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN . -> ,",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "comma"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "FN . -> del",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "period",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
   ]
 }
