@@ -8532,11 +8532,11 @@
                         ]
                     },
                     {
-                        "description": "FN q -> slash",
+                        "description": "FN z -> [",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "q",
+                                    "key_code": "z",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -8548,7 +8548,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "slash"
+                                        "key_code": "open_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -8628,6 +8628,30 @@
                         ]
                     },
                     {
+                        "description": "FN b -> backtick",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "FN t -> 4",
                         "manipulators": [
                             {
@@ -8645,30 +8669,6 @@
                                 "to": [
                                     {
                                         "key_code": "4"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "FN . -> ,",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "comma"
                                     }
                                 ],
                                 "type": "basic"
@@ -8724,6 +8724,54 @@
                         ]
                     },
                     {
+                        "description": "FN spacebar -> quote",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "quote"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "FN p -> \\",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "backslash"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "FN f -> 7",
                         "manipulators": [
                             {
@@ -8765,54 +8813,6 @@
                                 "to": [
                                     {
                                         "key_code": "8"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "FN z -> [",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "z",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "open_bracket"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "FN x -> ]",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "fn"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "close_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -8940,11 +8940,11 @@
                         ]
                     },
                     {
-                        "description": "FN p -> \\",
+                        "description": "FN x -> ]",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "p",
+                                    "key_code": "x",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -8956,7 +8956,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "backslash"
+                                        "key_code": "close_bracket"
                                     }
                                 ],
                                 "type": "basic"
@@ -8988,11 +8988,11 @@
                         ]
                     },
                     {
-                        "description": "FN spacebar -> quote",
+                        "description": "FN q -> slash",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "spacebar",
+                                    "key_code": "q",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9004,7 +9004,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "quote"
+                                        "key_code": "slash"
                                     }
                                 ],
                                 "type": "basic"
@@ -9084,11 +9084,11 @@
                         ]
                     },
                     {
-                        "description": "FN b -> backtick",
+                        "description": "FN . -> ,",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "b",
+                                    "key_code": "period",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9100,7 +9100,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "grave_accent_and_tilde"
+                                        "key_code": "comma"
                                     }
                                 ],
                                 "type": "basic"
