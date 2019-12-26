@@ -8223,7 +8223,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "a",
                                     "modifiers": {
                                         "mandatory": [
                                             "command",
@@ -8301,7 +8301,7 @@
                         ]
                     },
                     {
-                        "description": "FN i,j,k,l to arrow keys",
+                        "description": "FN i,j,a,l to arrow keys",
                         "manipulators": [
                             {
                                 "from": {
@@ -8324,7 +8324,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "a",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9047,11 +9047,11 @@
                         ]
                     },
                     {
-                        "description": "FN a -> quote",
+                        "description": "FN spacebar -> quote",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "spacebar",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9095,11 +9095,11 @@
                         ]
                     },
                     {
-                        "description": "FN spacebar -> ;",
+                        "description": "FN m -> ;",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "spacebar",
+                                    "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9119,11 +9119,11 @@
                         ]
                     },
                     {
-                        "description": "FN b -> del",
+                        "description": "FN k -> del",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "b",
+                                    "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9143,11 +9143,11 @@
                         ]
                     },
                     {
-                        "description": "FN m -> backtick",
+                        "description": "FN b -> backtick",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "m",
+                                    "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
@@ -9390,7 +9390,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "period",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -9440,7 +9440,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "a",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -9601,11 +9601,11 @@
                         ]
                     },
                     {
-                        "description": "a -> ctrl when held, a when tapped.",
+                        "description": "period -> ctrl when held, period when tapped.",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "period",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -9622,7 +9622,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "a"
+                                        "key_code": "period"
                                     }
                                 ],
                                 "to_if_held_down": [
@@ -9685,6 +9685,14 @@
                     "simple_modifications": [
                         {
                             "from": {
+                                "key_code": "a"
+                            },
+                            "to": {
+                                "key_code": "period"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "b"
                             },
                             "to": {
@@ -9709,10 +9717,26 @@
                         },
                         {
                             "from": {
+                                "key_code": "k"
+                            },
+                            "to": {
+                                "key_code": "a"
+                            }
+                        },
+                        {
+                            "from": {
                                 "key_code": "keypad_num_lock"
                             },
                             "to": {
                                 "key_code": "fn"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_command"
+                            },
+                            "to": {
+                                "key_code": "a"
                             }
                         },
                         {
@@ -9736,7 +9760,7 @@
                                 "key_code": "period"
                             },
                             "to": {
-                                "key_code": "b"
+                                "key_code": "k"
                             }
                         },
                         {
@@ -9744,7 +9768,7 @@
                                 "key_code": "return_or_enter"
                             },
                             "to": {
-                                "key_code": "period"
+                                "key_code": "b"
                             }
                         }
                     ]
