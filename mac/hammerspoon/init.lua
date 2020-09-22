@@ -414,6 +414,31 @@ end)
 hs.hotkey.bind('ctrl','l', function()
   switcher_space:previous()
 end)
+hs.hotkey.bind({'ctrl', 'shift'},'t', function()
+  local app = hs.application.frontmostApplication()
+  if app ~= nil then
+    --  Safari
+    app:selectMenuItem({"History", "Reopen Last Closed Tab"})
+    -- Chrome
+    app:selectMenuItem({"File", "Reopen Closed Tab"})
+  end
+end)
+hs.hotkey.bind({'ctrl', 'shift'},'n', function()
+  local app = hs.application.frontmostApplication()
+  if app ~= nil then
+    --  Safari
+    app:selectMenuItem({"File", "New Tab at End"})
+    end
+end)
+hs.hotkey.bind({'ctrl', 'shift'},'m', function()
+  local app = hs.application.frontmostApplication()
+  if app ~= nil then
+    --  Safari
+    app:selectMenuItem({"View", "Show Tab Overview"})
+    -- iTerm
+    app:selectMenuItem({"Window", "Exposé all Tabs"})
+  end
+end)
 hs.hotkey.bind({"ctrl"}, "h", function()
   centerMouseInFocus()
   -- spoon.MouseCircle:show()
@@ -503,6 +528,7 @@ keyEvents = hs.eventtap.new({
     if appname == "Safari" then
       if keyCode == hs.keycodes.map["t"]
       -- or keyCode == hs.keycodes.map["l"]
+      and not flag.shift
       then
         -- hs.timer.doAfter(0.1, function()
           disableMouse()
