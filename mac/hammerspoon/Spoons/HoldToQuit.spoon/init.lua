@@ -65,7 +65,7 @@ function obj:onKeyUp()
     if self.timer:running() then
         self.timer:stop()
         local app = hs.application.frontmostApplication()
-        hs.alert.show("Hold ⌘Q to quit " .. app:name())
+        hs.alert.show("Hold to quit " .. app:name())
     end
 end
 

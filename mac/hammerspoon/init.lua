@@ -207,10 +207,11 @@ end
 function disableMouse()  
   hs.hid.capslock.set(false)
   -- hs.hid.led.set("caps", false)
-  disableMouseTimer = nil
-  deleteMenubarIndicator()
+  -- disableMouseTimer = nil
+  -- deleteMenubarIndicator()
+  focusWindow()
   
-  -- print("disableMouse()")
+  print("disableMouse()")
 
   -- local res = hs.hid.led.set("caps", false)
   -- print(res)
@@ -225,7 +226,8 @@ end
 
 function enableMouse()
   hs.hid.capslock.set(true)
-  -- print("enableMouse()")
+  print("enableMouse()")
+  focusMouse()
  
   -- drawMenubarIndicator()
   -- hs.eventtap.event.newKeyEvent(hs.keycodes.map.capslock, true):post();
@@ -262,10 +264,10 @@ capsEvent = hs.eventtap.new({
 
   if event:getKeyCode() == hs.keycodes.map["capslock"] then
 
-  -- print("before")
-  -- print(hs.eventtap.checkKeyboardModifiers().capslock)
-  -- print("event")
-  -- print(event:getKeyCode() == hs.keycodes.map["capslock"])
+  print("before")
+  print(hs.eventtap.checkKeyboardModifiers().capslock)
+  print("event")
+  print(event:getKeyCode() == hs.keycodes.map["capslock"])
 
   -- print("getRawEventData")
   -- print(dump(event:getRawEventData()))
