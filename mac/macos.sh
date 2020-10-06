@@ -88,20 +88,23 @@ defaults write com.apple.dock persistent-apps -array
 # Show only open applications in the Dock
 defaults write com.apple.dock static-only -bool true
 
-# Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
-
 # Remove the auto-hiding Dock delay
 defaults write com.apple.Dock autohide-delay -float 0
 
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t show Dashboard as a Space
 defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
 
 # Don’t group windows by application in Mission Control
 # (i.e. use the old Exposé behavior instead)

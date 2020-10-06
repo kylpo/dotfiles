@@ -37,9 +37,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  brew bundle --file=$DIR/mac/Brewfile
+  # brew bundle --file=$DIR/mac/Brewfile
 
-  ./mac/macos
+  ./mac/macos.sh
+  ./mac/apps.sh
+
 
   # fix Option key in most apps
   # https://gist.github.com/cheapRoc/9670905#crash-course
