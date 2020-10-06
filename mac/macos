@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # ~/.macos — https://mths.be/macos
+# and just googling 'site:github.com dotfiles NSUserKeyEquivalents'
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
@@ -12,11 +13,44 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+###############################################################################
+# General UI/UX
+###############################################################################
+
+# Disable menu bar transparency
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+###############################################################################
+# Inputs
+###############################################################################
+
+echo "Configuring inputs preferences"
+
+# Disable “natural” (touchscreen-style) scrolling
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+
+# enable tap-to-click for this user and for the login screen
+defaults -currentHost write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults -currentHost write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
 # Disable system-wide spell check
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -24,25 +58,27 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # Disable automatic capitalization as it’s annoying when typing code
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
-# Disable “natural” (Lion-style) scrolling
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
-
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+###############################################################################
+# Desktop, Dashboard, Spaces, Dock
+###############################################################################
 
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+echo "Configuring desktop view options"
 
-# Finder: show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -bool true
+# Show item info to the right of the icons on the desktop
+# /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# Set desktop icons size to 20x20
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 20" ~/Library/Preferences/com.apple.finder.plist
+
+# Set grid spacing for desktop icons to 50
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 50" ~/Library/Preferences/com.apple.finder.plist
+
+# Set text size to 10pt
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
 
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
@@ -55,6 +91,12 @@ defaults write com.apple.dock static-only -bool true
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
+# Remove the auto-hiding Dock delay
+defaults write com.apple.Dock autohide-delay -float 0
+
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0
+
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
@@ -65,5 +107,177 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
 
+###############################################################################
+# Printers, Screenshots
+###############################################################################
+
+echo "Configuring printers preferences"
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Save screenshots to the desktop
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+# default screenshots to jpg instead of png
+defaults write com.apple.screencapture type jpg
+
+###############################################################################
+# Finder
+###############################################################################
+
+echo "Configuring finder options"
+
+# Show the ~/Library folder
+chflags nohidden ~/Library
+
+# Show the /Volumes folder
+chflags nohidden /Volumes
+
+# Show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder 'ShowPathbar' -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+
+###############################################################################
+# Updates
+###############################################################################
+
+echo "Configuring updates preferences"
+
+# Auto install app updates [fails to write]
+#defaults write /Library/Preferences/com.apple.commerce AutoUpdate -bool TRUE
+
+# Don’t install automatically macOS updates [fails to write]
+#defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool FALSE
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+###############################################################################
+# Safari
+###############################################################################
+
+echo "Configuring safari options"
+
+# Press Tab to highlight each item on a web page
+defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+
+# Tell Safari to open new window links in tabs
+defaults write com.apple.Safari TargetedClicksCreateTabs -bool true
+
+# Show the full URL in the address bar (note: this still hides the scheme)
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# Set Safari’s home page to `about:blank` for faster loading
+# defaults write com.apple.Safari HomePage -string "about:blank"
+
+# Open new tabs with an empty page
+defaults write com.apple.Safari NewTabBehavior -int 1
+
+# Hide Safari’s sidebar in Top Sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Make Safari’s search banners default to Contains instead of Starts With
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# show the status bar at the bottom (see URL on hover)
+defaults write com.apple.Safari ShowStatusBar -bool true
+
+
+###############################################################################
+# Mail
+###############################################################################
+
+echo "Configuring mail options"
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+
+# Sort messages in thread from oldest to newest
+defaults write com.apple.mail ConversationViewSortDescending -int 0
+
+
+#
+# Xcode
+#
+
 # Show xcode build times
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+
+# ---------------------------
+# Keybinds
+# ---------------------------
+
+# modifier key legend:
+#  @ = command
+#  ^ = control
+#  ~ = option
+#  $ = shift
+###### NOTE: These shortcuts will not show in System Preferences
+######       and setting new shortcuts there will overwrite these
+
+# TODO: use backup function from https://github.com/netj/dotfiles/blob/master/Mac/NSUserKeyEquivalents.sh ?
+
+# Global
+# change tabs
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
+
+# Lock Screen
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"        '^$d'
+
+# disables
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "\U0000"
+
+# Safari
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Move Tab to New Window" '^$r'
+
+# Mail
+# add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+# add ⌘ + D to archive messages
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" -string "@d"
+
+echo "OS X defaults written. Note that some of these changes require a logout/restart to take effect."
+
+echo "Global keys:"
+defaults read NSGlobalDomain NSUserKeyEquivalents
+
+echo "Safari keys:"
+defaults read com.apple.Safari NSUserKeyEquivalents
+
+echo "Mail keys:"
+defaults read com.apple.mail NSUserKeyEquivalents

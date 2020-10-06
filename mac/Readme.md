@@ -9,12 +9,6 @@
 - [Karabiner\-Elements complex\_modifications
   rules](https://pqrs.org/osx/karabiner/complex_modifications/#emulation-modes)
 
-## And custom Mac shortcuts
-- [How to customize Google Chrome keyboard shortcuts? \- Super
-  User](https://superuser.com/questions/497526/how-to-customize-google-chrome-keyboard-shortcuts)
-- [macos \- How to create custom Keyboard Shortcuts? \- Ask
-  Different](https://apple.stackexchange.com/questions/174977/how-to-create-custom-keyboard-shortcuts/174979#174979)
-
 ## Xcode custom shortcuts
 in `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist` (use
 `sudo`), add

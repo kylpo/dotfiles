@@ -474,12 +474,12 @@ spoon.HoldToQuit:bindHotkeys({
 })
 
 -- overrides
-hotkey.bind({"ctrl"}, "o", function()
-  hs.eventtap.keyStroke({"ctrl", "shift"}, "Tab")
-end)
-hotkey.bind({"ctrl"}, "n", function()
-  hs.eventtap.keyStroke({"ctrl"}, "Tab")
-end)
+-- hotkey.bind({"ctrl"}, "o", function()
+--   hs.eventtap.keyStroke({"ctrl", "shift"}, "Tab")
+-- end)
+-- hotkey.bind({"ctrl"}, "n", function()
+--   hs.eventtap.keyStroke({"ctrl"}, "Tab")
+-- end)
 hotkey.bind({"ctrl", "shift"}, "o", function()
   hs.eventtap.keyStroke({"cmd"}, "w")
 end)
