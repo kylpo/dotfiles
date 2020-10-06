@@ -30,6 +30,8 @@ brew upgrade
 # CLI Tools
 ###############################################################################
 
+echo "Installing CLI Tools"
+
 brew install mas                  # interface for the Mac App Store
 brew install the_silver_searcher  # alternative to ack maybe faster
 brew install wget                 # similar to curl
@@ -65,6 +67,8 @@ brew install ranger
 # Quicklook
 ###############################################################################
 
+echo "Installing Quicklook plugins"
+
 brew cask install qlmarkdown        # preview Markdown files
 brew cask install qlimagesize       # image dimensions
 brew cask install qlstephen         # preview plain text files without a extension
@@ -72,7 +76,7 @@ brew cask install qlcolorcode       # preview source code with syntax highlight
 brew cask install quicklook-json    # preview JSON files
 #brew cask install quicklook-csv     # preview CSV files
 #brew cask install qlprettypatch     # preview diffs
-brew cask install betterzipql       # preview archives
+#brew cask install betterzipql       # preview archives [does not exist?]
 
 # Enable text selection in QuickLook views.
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
@@ -81,12 +85,16 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 # Menubar
 ###############################################################################
 
+echo "Installing Menubar Apps"
+
 brew cask install itsycal
 brew cask install menumeters
 
 ###############################################################################
 # Mac App Store Apps
 ###############################################################################
+
+echo "Installing Mac Store Apps"
 
 # This command will not allow you to install an app for the first time: it must
 # already be in the Purchased tab of the App Store.
@@ -97,10 +105,13 @@ mas install 803453959   # Slack
 mas install 1475897096  # Jira Cloud by Atlassian 
 mas install 1191449274  # ToothFairy - easy bluetooth audio toggles
 mas install 1333542190  # 1Password 7 - Password Manager
+mas install 1461845568  # Gifox 2 - gif screen recorder
 
 ###############################################################################
 # Development
 ###############################################################################
+
+echo "Installing Development stuff"
 
 # Install python (macOS version is outdated) and python3
 # Both are compatibles and this way you can test the code in both
@@ -117,6 +128,9 @@ brew cask install dash    # Offline programming docs
 brew cask install qmk-toolbox
 brew install qmk/qmk/qmk
 
+echo "Cleaning up..."
 
 # Cleanup
 brew cleanup
+
+echo "Done installing apps!"
