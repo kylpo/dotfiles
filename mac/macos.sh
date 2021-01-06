@@ -229,9 +229,18 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 defaults write com.apple.mail ConversationViewSortDescending -int 0
 
 
-#
+###############################################################################
+# TextEdit
+###############################################################################
+
+# Open to blank document (instead of file picker)
+# NOTE: I have not yet verified that this works
+defaults write http://com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
+
+
+###############################################################################
 # Xcode
-#
+###############################################################################
 
 # Show xcode build times
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
@@ -239,6 +248,275 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 # ---------------------------
 # Keybinds
 # ---------------------------
+
+# System Keys (symbolichotkeys)
+#
+# Use `Key Codes` app from Many Tricks + this SO thread: https://stackoverflow.com/questions/21878482/
+#
+# Action IDs: https://web.archive.org/web/20141112224103/http://hintsforums.macworld.com/showthread.php?t=114785
+#
+# parameter 1: Unicode of the character (or 65535 - hex 0xFFFF - for non-ASCII characters).
+# parameter 2: Key Code for the character.
+# parameter 3: MODS
+#   0=>"No modifier"
+#   131072=>"Shift"
+#   262144=>"Control"
+#   524288=>"Option"
+#   1048576=>"Command"
+#   393216=>"Shift + Control"
+#   655360=>"Shift + Option"
+#   1179648=>"Shift + Command"
+#   786432=>"Control + Option"
+#   1310720=>"Control + Command"
+#   1572864=>"Option + Command"
+#   917504=>"Shift + Control + Option"
+#   1441792=>"Shift + Control + Command"
+#   1703936=>"Shift + Option + Command"
+#   1835008=>"Control + Option + Command"
+#   1966080=>"Shift + Control + Option + Command"
+#
+# Print yours with: `/usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist`
+
+# Mission Control: Ctrl + d
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>100</integer>
+        <integer>2</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>100</integer>
+        <integer>2</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Show Desktop: Ctrl + l
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 36 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>108</integer>
+        <integer>37</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>108</integer>
+        <integer>37</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Show Spotlight: Ctrl + a
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>97</integer>
+        <integer>0</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Show Spotlight (Files): Ctrl + Shift + a
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 65 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>97</integer>
+        <integer>0</integer>
+        <integer>393216</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Toggle Notifications: Ctrl + h
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 163 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>104</integer>
+        <integer>4</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Move Space Left: Ctrl + m
+# Note: No idea what 80 does (Ctrl + Shift + m)
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>109</integer>
+        <integer>46</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>109</integer>
+        <integer>46</integer>
+        <integer>393216</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Move Space Right: Ctrl + w
+# Note: No idea what 82 does (Ctrl + Shift + w)
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>119</integer>
+        <integer>13</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>119</integer>
+        <integer>13</integer>
+        <integer>393216</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Screenshot Area: Ctrl + w
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>98</integer>
+        <integer>11</integer>
+        <integer>262144</integer>
+      </array>
+    </dict>
+  </dict>
+"
+
+# Screenshot Area to Clipboard: Ctrl + Shift + w
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31 "
+  <dict>
+    <key>enabled</key>
+    <true/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>98</integer>
+        <integer>11</integer>
+        <integer>393216</integer>
+      </array>
+    </dict>
+  </dict>
+"
 
 # modifier key legend:
 #  @ = command
@@ -252,15 +530,22 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 
 # Global
 # change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\\U0020"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
-
+# New tab at end
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      '^$\U0020'
+# Reopen tab
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
+# Tab expose
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
 # Lock Screen
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"        '^$d'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen" -string '^$l'
 
 # disables
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "\U0000"
@@ -284,3 +569,5 @@ defaults read com.apple.Safari NSUserKeyEquivalents
 
 echo "Mail keys:"
 defaults read com.apple.mail NSUserKeyEquivalents
+
+echo "!!! Restart required for new System hotkeys"
