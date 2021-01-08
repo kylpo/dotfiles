@@ -16,9 +16,9 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 
 # pyenv
-export PATH="/Users/kylpo/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PATH="/Users/kylpo/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # export MYVIMRC='~/.config/nvim/init.vim'
 # export EDITOR=nvim
@@ -69,6 +69,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias gs='git status'
 alias gd='git diff'
+alias gbd='BRANCH=$(git rev-parse --abbrev-ref HEAD) && git checkout dev && git branch -d $BRANCH && git pull'
 alias gpu='git push'
 alias gpl='git pull'
 alias gco='git checkout '
@@ -91,6 +92,8 @@ alias weather="curl -4 wttr.in"
 alias pomo="pomojs --log ~/.pomo.log --tmux"
 
 # alias rm=trash
+# idea from https://github.com/andreafrancia/trash-cli#can-i-alias-rm-to-trash-put
+alias rm='echo "NOPE!!! $(tput bold)Use $(tput setaf 2)trash$(tput sgr0). $(tput dim)(or \\\rm to override this)"; false'
 
 alias t=tmux
 
@@ -292,3 +295,15 @@ function () {
 
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+export QMK_HOME=$HOME/qmk_firmware
+export PATH="/usr/local/sbin:$PATH"
