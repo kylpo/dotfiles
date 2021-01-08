@@ -410,38 +410,40 @@ end
 -----------------------------------------------------------------------
 -- Bindings 
 -----------------------------------------------------------------------
-hs.hotkey.bind('ctrl','s', function()
-  switcher_space:next()
-end)
-hs.hotkey.bind('ctrl','l', function()
-  switcher_space:previous()
-end)
-hs.hotkey.bind({'ctrl', 'shift'},'t', function()
-  local app = hs.application.frontmostApplication()
-  if app ~= nil then
-    --  Safari
-    app:selectMenuItem({"History", "Reopen Last Closed Tab"})
-    -- Chrome
-    app:selectMenuItem({"File", "Reopen Closed Tab"})
-  end
-end)
-hs.hotkey.bind({'ctrl', 'shift'},'n', function()
-  local app = hs.application.frontmostApplication()
-  if app ~= nil then
-    --  Safari
-    app:selectMenuItem({"File", "New Tab at End"})
-    end
-end)
-hs.hotkey.bind({'ctrl', 'shift'},'m', function()
-  local app = hs.application.frontmostApplication()
-  if app ~= nil then
-    --  Safari
-    app:selectMenuItem({"View", "Show Tab Overview"})
-    -- iTerm
-    app:selectMenuItem({"Window", "Exposé all Tabs"})
-  end
-end)
-hs.hotkey.bind({"ctrl"}, "h", function()
+-- Now using Witch instead, since Switch would miss newly created windows
+-- hs.hotkey.bind('ctrl','c', function()
+--   switcher_space:next()
+-- end)
+-- hs.hotkey.bind('ctrl','r', function()
+--   switcher_space:previous()
+-- end)
+
+-- hs.hotkey.bind({'ctrl', 'shift'},'t', function()
+--   local app = hs.application.frontmostApplication()
+--   if app ~= nil then
+--     --  Safari
+--     app:selectMenuItem({"History", "Reopen Last Closed Tab"})
+--     -- Chrome
+--     app:selectMenuItem({"File", "Reopen Closed Tab"})
+--   end
+-- end)
+-- hs.hotkey.bind({'ctrl', 'shift'},'n', function()
+--   local app = hs.application.frontmostApplication()
+--   if app ~= nil then
+--     --  Safari
+--     app:selectMenuItem({"File", "New Tab at End"})
+--     end
+-- end)
+-- hs.hotkey.bind({'ctrl', 'shift'},'m', function()
+--   local app = hs.application.frontmostApplication()
+--   if app ~= nil then
+--     --  Safari
+--     app:selectMenuItem({"View", "Show Tab Overview"})
+--     -- iTerm
+--     app:selectMenuItem({"Window", "Exposé all Tabs"})
+--   end
+-- end)
+hs.hotkey.bind({"ctrl"}, "s", function()
   centerMouseInFocus()
   -- spoon.MouseCircle:show()
   enableMouse()
@@ -470,7 +472,7 @@ spoon.MicMute:bindHotkeys({
   toggle = { { "ctrl" }, "5" }
 })
 spoon.HoldToQuit:bindHotkeys({
-  quit = { { "ctrl", "shift" }, "b" }
+  quit = { { "ctrl", "shift" }, "y" }
 })
 
 -- overrides
@@ -489,27 +491,24 @@ hotkey.bind({"cmd"}, "q", function() return end)
 
 
 -- experimental
-hs.hotkey.bind({"ctrl"}, "j", function()
-  -- moveMouseToCenter()
-  -- hs.hints.windowHints()
-  -- expose:toggleShow()
-  hs.grid.toggleShow()
-end)
-hs.hotkey.bind({"ctrl"}, "2", function()
-  -- moveMouseToLeft()
-  hs.hints.windowHints()
-end)
+-- hs.hotkey.bind({"ctrl"}, "j", function()
+--   hs.grid.toggleShow()
+-- end)
+-- hs.hotkey.bind({"ctrl"}, "2", function()
+--   hs.hints.windowHints()
+-- end)
 
 
 --[ Side Effects ]-----------------------------------------------
 keyEvents = hs.eventtap.new({
-  hs.eventtap.event.types.keyUp
+  hs.eventtap.event.types.keyDown,
+  -- hs.eventtap.event.types.keyUp
 }, function(event)
-  -- print("code")
-  -- print(event:getKeyCode())
-
   -- print("flags")
   -- print(dump(event:getFlags()))
+
+  -- print("code")
+  -- print(event:getKeyCode())
 
   -- print("getRawEventData")
   -- print(dump(event:getRawEventData()))

@@ -155,6 +155,8 @@ defaults write com.apple.finder 'ShowPathbar' -bool true
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 ###############################################################################
 # Updates
@@ -251,7 +253,9 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 
 # System Keys (symbolichotkeys)
 #
-# Use `Key Codes` app from Many Tricks + this SO thread: https://stackoverflow.com/questions/21878482/
+# Use `Key Codes` app from Many Tricks + this SO thread: https://stackoverflow.com/questions/21878482/.
+# Search for domains with `defaults domains | grep google`, for example.
+# Also a big thanks to https://github.com/tiiiecherle/osx_install_config/blob/master/11_system_and_app_preferences/11c_macos_preferences_11.sh
 #
 # Action IDs: https://web.archive.org/web/20141112224103/http://hintsforums.macworld.com/showthread.php?t=114785
 #
@@ -347,7 +351,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37
       </array>
     </dict>
   </dict>
-"
+" 
 
 # Show Spotlight: Ctrl + a
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "
@@ -523,44 +527,79 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
 #  ^ = control
 #  ~ = option
 #  $ = shift
-###### NOTE: These shortcuts will not show in System Preferences
-######       and setting new shortcuts there will overwrite these
+#
+# \033 = ASCII Escape character
+# \U0020 = Spacebar
+# \U0000 = disabled
 
 # TODO: use backup function from https://github.com/netj/dotfiles/blob/master/Mac/NSUserKeyEquivalents.sh ?
 
 # Global
-# change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\\U0020"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\\U0020"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\\U0020"
+# ------
+# Change tabs
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\U0020"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
-# New tab at end
+# New tab
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"      '^t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      '^$\U0020'
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
 # Tab expose
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$d'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$d'
+# Move tab
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Move Tab to New Window" '^$n'
+# New window
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"      '^n'
 # Lock Screen
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen" -string '^$l'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen" '^$l'
+# Cut/Copy/Paste
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Cut" '@v'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Copy" '@h'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste" '@p'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" '@$p'
+# Undo/Redo
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo" '@u'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Redo" '@$u'
+# Select
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All" '@$a'
+# Open
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open Location..." '@o'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open Location..." '@o'
+# History
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back" '@m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@w'
 
-# disables
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "\U0000"
+# DISABLES
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize" "\U0000"
 
-# Safari
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Move Tab to New Window" '^$r'
+# Mail 
+# ----
+# Note: I'm not sure whey the \033s are necessary, but these doesn't work without them
+#   Thanks to https://github.com/joeyhoer/starter/blob/master/apps/mail.sh for the fix
+#   and https://github.com/joeyhoer/starter/blob/master/apps/safari.sh
 
-# Mail
 # add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send" "@↩"
 # add ⌘ + D to archive messages
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Archive" -string "@d"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Archive" "@d"
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send Again" "\U0000"
 
-echo "OS X defaults written. Note that some of these changes require a logout/restart to take effect."
-
+# com.apple.mail.plist also lives in ~/Library/Containers. See https://discussions.apple.com/thread/7539914.
+# TODO: add try/catch here. Echo that you need to give program Full Disk Access: https://osxdaily.com/2018/10/09/fix-operation-not-permitted-terminal-error-macos/
+# sudo /usr/libexec/PlistBuddy                                               \
+#     -c "Delete :NSUserKeyEquivalents"                           \
+#     -c "Add    :NSUserKeyEquivalents:Archive       string '@d'" \
+#     -c "Add    :NSUserKeyEquivalents:Send       string '@↩'" \
+#     ~/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist
+   
 echo "Global keys:"
 defaults read NSGlobalDomain NSUserKeyEquivalents
 
@@ -570,4 +609,4 @@ defaults read com.apple.Safari NSUserKeyEquivalents
 echo "Mail keys:"
 defaults read com.apple.mail NSUserKeyEquivalents
 
-echo "!!! Restart required for new System hotkeys"
+echo "OS X defaults written. Note that some of these changes require a logout/restart to take effect."
