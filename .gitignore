@@ -1,6 +1,9 @@
 bash_aliases_secret
 secrets
 nvim/plugged
+nvim/.netrwhist
 vim/plugged
 vim/.base16
+vim/.netrwhist
+mac/karabiner/automatic_backups
 .DS_Store
