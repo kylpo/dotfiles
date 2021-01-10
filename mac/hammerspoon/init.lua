@@ -41,6 +41,13 @@ spoon.MouseCircle.color = tronOrange
 --   show = { { "ctrl" }, "4" }
 -- })
 
+---- Clipboard
+hs.loadSpoon("ClipboardTool")
+spoon.ClipboardTool.show_copied_alert = false
+spoon.ClipboardTool.paste_on_select = true
+spoon.ClipboardTool:start()
+
+
 ---- MoveSpaces
 -- hs.loadSpoon("MoveSpaces")
 -- spoon.MoveSpaces:bindHotkeys({
@@ -410,6 +417,15 @@ end
 -----------------------------------------------------------------------
 -- Bindings 
 -----------------------------------------------------------------------
+
+function bypassBind(binding, mods, keycode)
+  binding:disable()
+  hs.eventtap.keyStroke(mods, keycode)
+  hs.timer.doAfter(0.1, function()
+    binding:enable()
+  end)
+end
+
 -- Now using Witch instead, since Switch would miss newly created windows
 -- hs.hotkey.bind('ctrl','c', function()
 --   switcher_space:next()
@@ -474,6 +490,25 @@ spoon.MicMute:bindHotkeys({
 spoon.HoldToQuit:bindHotkeys({
   quit = { { "ctrl", "shift" }, "y" }
 })
+spoon.ClipboardTool:bindHotkeys({
+  show_clipboard = { { "cmd", "shift" }, "/" }
+})
+
+-- Play/Pause
+hotkey.bind({"ctrl", "shift"}, "u", function()
+  hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
+  hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
+end)
+-- Previous Song
+hotkey.bind({"ctrl", "shift"}, "p", function()
+  hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
+  hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
+end)
+-- Next Song
+hotkey.bind({"ctrl", "shift"}, "f", function()
+  hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
+  hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
+end)
 
 -- overrides
 -- hotkey.bind({"ctrl"}, "o", function()
@@ -482,8 +517,40 @@ spoon.HoldToQuit:bindHotkeys({
 -- hotkey.bind({"ctrl"}, "n", function()
 --   hs.eventtap.keyStroke({"ctrl"}, "Tab")
 -- end)
+
+-- Close
 hotkey.bind({"ctrl", "shift"}, "o", function()
-  hs.eventtap.keyStroke({"cmd"}, "w")
+  bypassBind(cmdW, {"cmd"}, "w")
+end)
+
+-- Next Tab
+hotkey.bind({"ctrl"}, "Space", function()
+  hs.eventtap.keyStroke({"ctrl"}, "Tab")
+end)
+-- Previous Tab
+hotkey.bind({"ctrl"}, "o", function()
+  hs.eventtap.keyStroke({"ctrl", "shift"}, "Tab")
+end)
+
+-- Forward
+cmdW = hotkey.bind({"cmd"}, "w", function()
+  bypassBind(cmdH, {"cmd"}, "h")
+end)
+
+-- Copy
+cmdH = hotkey.bind({"cmd"}, "h", function()
+  hs.eventtap.keyStroke({"cmd"}, "c")
+end)
+-- Cut
+cmdV = hotkey.bind({"cmd"}, "v", function()
+  hs.eventtap.keyStroke({"cmd"}, "x")
+end)
+-- Paste
+cmdP = hotkey.bind({"cmd"}, "p", function()
+  bypassBind(cmdV, {"cmd"}, "v")
+end)
+hotkey.bind({"cmd", "shift"}, "p", function()
+  hs.eventtap.keyStroke({"cmd", "shift"}, "v")
 end)
 
 -- disables
