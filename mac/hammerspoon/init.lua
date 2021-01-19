@@ -464,10 +464,13 @@ hs.hotkey.bind({"ctrl"}, "s", function()
   -- spoon.MouseCircle:show()
   enableMouse()
 end)
+
 hs.hotkey.bind({}, "f16", function()
   moveMouseToCenter()
   -- spoon.MouseCircle:show()
 end)
+-- Consider: double and triple click to warp further
+-- see https://stackoverflow.com/questions/44303244/binding-to-multiple-button-clicks
 hs.hotkey.bind({}, "f19", function()
   moveMouseToTopLeft()
   -- spoon.MouseCircle:show()
@@ -610,7 +613,7 @@ keyEvents = hs.eventtap.new({
   if flag.cmd then  
     if appname == "Safari" then
       if keyCode == hs.keycodes.map["f"]
-      or keyCode == hs.keycodes.map["l"]
+      or keyCode == hs.keycodes.map["o"]
       then
         -- hs.timer.doAfter(0.1, function()
           -- print("HERE")

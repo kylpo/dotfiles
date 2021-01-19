@@ -20,9 +20,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
@@ -36,6 +33,24 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+
+###############################################################################
+# Sound
+###############################################################################
+# System alert sound
+# Defaults sounds located in `/System/Library/Sounds/`; test with `afplay`
+# Basso         Blow          Bottle        Frog
+# Funk          Glass         Hero          Morse
+# Ping          Pop           Purr          Sosumi
+# Submarine     Tink
+defaults write com.apple.systemsound com.apple.sound.beep.sound -string "/System/Library/Sounds/Funk.aiff"
+
+# Play feedback when volume is changed
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
+
+# Disable the sound effects on boot
+sudo nvram SystemAudioVolume=" "
 
 ###############################################################################
 # Inputs
@@ -149,14 +164,33 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
-defaults write com.apple.finder 'ShowPathbar' -bool true
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+# Icon View   : `icnv`
+# List View   : `Nlsv`
+# Column View : `clmv`
+# Cover Flow  : `Flwv`
+# After configuring preferred view style, clear all `.DS_Store` files
+# to ensure settings are applied for every directory
+# sudo find / -name ".DS_Store" --delete
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# New window target
+# Computer     : `PfCm`
+# Volume       : `PfVo`
+# $HOME        : `PfHm`
+# Desktop      : `PfDe`
+# Documents    : `PfDo`
+# All My Files : `PfAF`
+# Other…       : `PfLo`
+defaults write com.apple.finder NewWindowTarget -string 'PfHm'
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Opening and closing speed of Quick Look windows
+defaults write NSGlobalDomain QLPanelAnimationDuration -float 0
 
 ###############################################################################
 # Updates
@@ -192,8 +226,17 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 # Set Safari’s home page to `about:blank` for faster loading
 # defaults write com.apple.Safari HomePage -string "about:blank"
 
-# Open new tabs with an empty page
+# Start with all windows from last session
+defaults write com.apple.Safari AlwaysRestoreSessionAtLaunch -bool true
+
+# Setup new window and tab behvior
+# 0: Homepage
+# 1: Empty Page
+# 2: Same Page
+# 3: Bookmarks
+# 4: Top Sites
 defaults write com.apple.Safari NewTabBehavior -int 1
+defaults write com.apple.Safari NewWindowBehavior -int 1
 
 # Hide Safari’s sidebar in Top Sites
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
@@ -215,6 +258,17 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # show the status bar at the bottom (see URL on hover)
 defaults write com.apple.Safari ShowStatusBar -bool true
 
+# Website use of location services:
+# 0: Deny without prompting
+# 1: Prompt for each website once each day
+# 2: Prompt for each website one time only
+defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 2
+
+# Ask websites not to track me
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+# Allow websites to check if Apple Pay is set up
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2ApplePayCapabilityDisclosureAllowed -bool true
 
 ###############################################################################
 # Mail
@@ -239,6 +293,16 @@ defaults write com.apple.mail ConversationViewSortDescending -int 0
 # NOTE: I have not yet verified that this works
 defaults write http://com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
 
+# Disable "Smart" features
+defaults write com.apple.TextEdit SmartDashes -bool false
+defaults write com.apple.TextEdit SmartQuotes -bool false
+defaults write com.apple.TextEdit CorrectSpellingAutomatically -bool false
+
+# Add ".txt" extensions to plain text files
+defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool false
+
+# Hide Ruler
+defaults write com.apple.TextEdit ShowRuler -bool false
 
 ###############################################################################
 # Xcode
@@ -531,6 +595,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
 # \033 = ASCII Escape character
 # \U0020 = Spacebar
 # \U0000 = disabled
+#
+# A menu item of `Format->Indentation->Increase` in System Preferences is stored as `\033Format\033Indentation\033Incease`
 
 # TODO: use backup function from https://github.com/netj/dotfiles/blob/master/Mac/NSUserKeyEquivalents.sh ?
 
@@ -588,15 +654,16 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print" "\U0000"
 
 # Mail 
 # ----
-# Note: I'm not sure whey the \033s are necessary, but these doesn't work without them
-#   Thanks to https://github.com/joeyhoer/starter/blob/master/apps/mail.sh for the fix
-#   and https://github.com/joeyhoer/starter/blob/master/apps/safari.sh
-
 # add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send" "@↩"
 # add ⌘ + D to archive messages
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Archive" "@d"
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send Again" "\U0000"
+
+# Finder
+# ------
+# defaults write com.apple.finder NSUserKeyEquivalents -dict-add "\033File\033Quick Look" "@\U0020"
+
 
 # com.apple.mail.plist also lives in ~/Library/Containers. See https://discussions.apple.com/thread/7539914.
 # TODO: add try/catch here. Echo that you need to give program Full Disk Access: https://osxdaily.com/2018/10/09/fix-operation-not-permitted-terminal-error-macos/
@@ -614,5 +681,8 @@ defaults read com.apple.Safari NSUserKeyEquivalents
 
 echo "Mail keys:"
 defaults read com.apple.mail NSUserKeyEquivalents
+
+echo "Finder keys:"
+defaults read com.apple.finder NSUserKeyEquivalents
 
 echo "OS X defaults written. Note that some of these changes require a logout/restart to take effect."
