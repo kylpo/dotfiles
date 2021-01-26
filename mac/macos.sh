@@ -345,7 +345,7 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 #
 # Print yours with: `/usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist`
 
-# Mission Control: Ctrl + d
+# Mission Control: Ctrl + m
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "
   <dict>
     <key>enabled</key>
@@ -356,7 +356,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>100</integer>
+        <integer>109</integer>
         <integer>2</integer>
         <integer>262144</integer>
       </array>
@@ -373,7 +373,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>100</integer>
+        <integer>109</integer>
         <integer>2</integer>
         <integer>262144</integer>
       </array>
