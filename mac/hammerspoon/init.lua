@@ -491,14 +491,14 @@ spoon.MicMute:bindHotkeys({
   toggle = { { "ctrl" }, "5" }
 })
 spoon.HoldToQuit:bindHotkeys({
-  quit = { { "ctrl", "shift" }, "y" }
+  quit = { { "ctrl", "shift" }, "k" }
 })
 spoon.ClipboardTool:bindHotkeys({
   show_clipboard = { { "cmd", "shift" }, "/" }
 })
 
 -- Play/Pause
-hotkey.bind({"ctrl", "shift"}, "u", function()
+hotkey.bind({"ctrl", "shift"}, "f", function()
   hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
   hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
 end)
@@ -508,7 +508,7 @@ hotkey.bind({"ctrl", "shift"}, "p", function()
   hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
 end)
 -- Next Song
-hotkey.bind({"ctrl", "shift"}, "f", function()
+hotkey.bind({"ctrl", "shift"}, "u", function()
   hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
   hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
 end)
@@ -536,7 +536,7 @@ hotkey.bind({"ctrl"}, "o", function()
 end)
 
 -- Forward
-cmdW = hotkey.bind({"cmd"}, "w", function()
+cmdW = hotkey.bind({"cmd"}, "d", function()
   bypassBind(cmdH, {"cmd"}, "h")
 end)
 

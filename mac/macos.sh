@@ -474,8 +474,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 16
   </dict>
 "
 
-# Move Space Left: Ctrl + m
-# Note: No idea what 80 does (Ctrl + Shift + m)
+# Move Space Left: Ctrl + d
+# Note: No idea what 80 does (Ctrl + Shift + d)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "
   <dict>
     <key>enabled</key>
@@ -486,7 +486,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>109</integer>
+        <integer>100</integer>
         <integer>46</integer>
         <integer>262144</integer>
       </array>
@@ -503,7 +503,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>109</integer>
+        <integer>100</integer>
         <integer>46</integer>
         <integer>393216</integer>
       </array>
@@ -619,8 +619,8 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
 # Tab expose
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$d'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$d'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
 # Move tab
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Move Tab to New Window" '^$n'
 # New window
