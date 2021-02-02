@@ -617,7 +617,7 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"   
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
 # Tab expose
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
@@ -645,7 +645,7 @@ defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open Location...
 defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
 defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open Location..." '@o'
 # History
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back" '@m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back" '@d'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@h'
 
 # DISABLES
@@ -673,6 +673,10 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Sen
 #     -c "Add    :NSUserKeyEquivalents:Send       string '@↩'" \
 #     ~/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist
    
+# This command is needed to show your keybinds in Preferences > Keyboard > Shortcuts > App Shortcuts
+#   See https://apple.stackexchange.com/questions/398561/how-to-set-system-keyboard-shortcuts-via-command-line
+defaults write com.apple.universalaccess com.apple.custommenu.apps -array NSGlobalDomain "com.apple.Safari" "com.apple.mail" "com.google.Chrome"
+
 echo "Global keys:"
 defaults read NSGlobalDomain NSUserKeyEquivalents
 
