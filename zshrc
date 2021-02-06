@@ -63,6 +63,8 @@ source $ZSH/oh-my-zsh.sh
 
 . /usr/local/etc/profile.d/z.sh
 
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 #--------------------------------------------------
 # commands
 #--------------------------------------------------

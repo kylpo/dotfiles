@@ -5,5 +5,6 @@ nvim/.netrwhist
 vim/plugged
 vim/.base16
 vim/.netrwhist
+zshrc.local
 mac/karabiner/automatic_backups
 .DS_Store
