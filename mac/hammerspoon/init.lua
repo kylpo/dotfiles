@@ -494,7 +494,7 @@ spoon.HoldToQuit:bindHotkeys({
   quit = { { "ctrl", "shift" }, "k" }
 })
 spoon.ClipboardTool:bindHotkeys({
-  show_clipboard = { { "cmd", "shift" }, "/" }
+  show_clipboard = { { "cmd", "shift" }, "8" }
 })
 
 -- Play/Pause
@@ -536,7 +536,7 @@ hotkey.bind({"ctrl"}, "o", function()
 end)
 
 -- Forward
-cmdW = hotkey.bind({"cmd"}, "d", function()
+cmdW = hotkey.bind({"cmd"}, "w", function()
   bypassBind(cmdH, {"cmd"}, "h")
 end)
 

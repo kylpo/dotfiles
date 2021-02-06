@@ -10,6 +10,8 @@
   rules](https://pqrs.org/osx/karabiner/complex_modifications/#emulation-modes)
 
 ## Xcode custom shortcuts
+See http://www.hcs.harvard.edu/~jrus/Site/selectors.html for the available text commands. Also http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html.
+
 in `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist` (use
 `sudo`), add
 ```xml
@@ -21,8 +23,14 @@ in `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Reso
         <string>moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:</string>
         <key>Insert Newline Above</key>
         <string>moveUp:, moveToEndOfLine:, insertNewline:</string>
+        <key>Insert Newline Below</key>
+        <string>moveToEndOfLine:, insertNewline:</string>
         <key>Join</key>
         <string>moveToEndOfLine:, moveWordRightAndModifySelection:, moveWordLeftAndModifySelection:, delete:</string>
+        <key>Duplicate Current Line</key>
+        <string>moveToBeginningOfLine:, deleteToEndOfLine:, yank:, insertNewline:, moveToBeginningOfLine:, yank:</string>
+        <key>Delete Line</key>
+        <string>selectLine:, deleteBackward:</string>
     </dict>
 
 ```
