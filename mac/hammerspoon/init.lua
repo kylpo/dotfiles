@@ -461,31 +461,31 @@ end
 -- end)
 hs.hotkey.bind({"ctrl"}, "s", function()
   centerMouseInFocus()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
   enableMouse()
 end)
 
 hs.hotkey.bind({}, "f16", function()
   moveMouseToCenter()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
 end)
 -- Consider: double and triple click to warp further
 -- see https://stackoverflow.com/questions/44303244/binding-to-multiple-button-clicks
 hs.hotkey.bind({}, "f19", function()
   moveMouseToTopLeft()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
 end)
 hs.hotkey.bind({}, "f18", function()
   moveMouseToTopRight()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
 end)
 hs.hotkey.bind({}, "f17", function()
   moveMouseToBottomRight()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
 end)
 hs.hotkey.bind({}, "f15", function()
   moveMouseToBottomLeft()
-  -- spoon.MouseCircle:show()
+  spoon.MouseCircle:show()
 end)
 spoon.MicMute:bindHotkeys({
   toggle = { { "ctrl" }, "5" }
@@ -497,68 +497,8 @@ spoon.ClipboardTool:bindHotkeys({
   show_clipboard = { { "cmd", "shift" }, "8" }
 })
 
--- Play/Pause
-hotkey.bind({"ctrl", "shift"}, "f", function()
-  hs.eventtap.event.newSystemKeyEvent("PLAY", true):post()
-  hs.eventtap.event.newSystemKeyEvent("PLAY", false):post()
-end)
--- Previous Song
-hotkey.bind({"ctrl", "shift"}, "p", function()
-  hs.eventtap.event.newSystemKeyEvent("PREVIOUS", true):post()
-  hs.eventtap.event.newSystemKeyEvent("PREVIOUS", false):post()
-end)
--- Next Song
-hotkey.bind({"ctrl", "shift"}, "u", function()
-  hs.eventtap.event.newSystemKeyEvent("NEXT", true):post()
-  hs.eventtap.event.newSystemKeyEvent("NEXT", false):post()
-end)
-
--- overrides
--- hotkey.bind({"ctrl"}, "o", function()
---   hs.eventtap.keyStroke({"ctrl", "shift"}, "Tab")
--- end)
--- hotkey.bind({"ctrl"}, "n", function()
---   hs.eventtap.keyStroke({"ctrl"}, "Tab")
--- end)
-
--- Close
-hotkey.bind({"ctrl", "shift"}, "o", function()
-  bypassBind(cmdW, {"cmd"}, "w")
-end)
-
--- Next Tab
-hotkey.bind({"ctrl"}, "Space", function()
-  hs.eventtap.keyStroke({"ctrl"}, "Tab")
-end)
--- Previous Tab
-hotkey.bind({"ctrl"}, "o", function()
-  hs.eventtap.keyStroke({"ctrl", "shift"}, "Tab")
-end)
-
--- Forward
-cmdW = hotkey.bind({"cmd"}, "w", function()
-  bypassBind(cmdH, {"cmd"}, "h")
-end)
-
--- Copy
-cmdH = hotkey.bind({"cmd"}, "h", function()
-  hs.eventtap.keyStroke({"cmd"}, "c")
-end)
--- Cut
-cmdV = hotkey.bind({"cmd"}, "v", function()
-  hs.eventtap.keyStroke({"cmd"}, "x")
-end)
--- Paste
-cmdP = hotkey.bind({"cmd"}, "p", function()
-  bypassBind(cmdV, {"cmd"}, "v")
-end)
-hotkey.bind({"cmd", "shift"}, "p", function()
-  hs.eventtap.keyStroke({"cmd", "shift"}, "v")
-end)
-
 -- disables
 hotkey.bind({"cmd"}, "q", function() return end)
-
 
 -- experimental
 -- hs.hotkey.bind({"ctrl"}, "j", function()

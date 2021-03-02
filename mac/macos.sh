@@ -603,17 +603,17 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
 # Global
 # ------
 # Change tabs
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\U0020"
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\U0020"
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\U0020"
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\U0020"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
 # New tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"      '^t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      '^$\U0020'
 # Close tab
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab" '^$o'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab" '^$o'
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
@@ -635,10 +635,10 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen" '^$l'
 # defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste" '@p'
 # defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" '@$p'
 # Undo/Redo
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo" '@u'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Redo" '@$u'
+# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo" '@u'
+# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Redo" '@$u'
 # Select
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All" '@$a'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All" '@$e'
 # Open
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open Location..." '@o'
@@ -646,7 +646,7 @@ defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open File..." "
 defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open Location..." '@o'
 # History
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back" '@d'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@h'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@w'
 
 # DISABLES
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize" "\U0000"
