@@ -652,6 +652,11 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@w'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize" "\U0000"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print" "\U0000"
 
+# Chrome
+# ----
+# "Bookmark" interferes with "Back"
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Bookmark This Tab..." "\U0000"
+
 # Mail 
 # ----
 # add the keyboard shortcut ⌘ + Enter to send an email in Mail.app

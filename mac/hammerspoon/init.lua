@@ -68,16 +68,16 @@ spoon.ClipboardTool:start()
 
 
 --[ Switcher ]---------------------------------------------------------
-switcher_space = switcher.new(
-  hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{},
-  {
-    showTitles=false, -- disable text label over thumbnail
-    showThumbnails=true, -- show app preview in thumbnail
-    showSelectedThumbnail=false, -- disable large preview
-    thumbnailSize = 256, -- double size of thumbnails (may big too big for laptop-mode?)
-    highlightColor = focusColor
-  }
-)
+-- switcher_space = switcher.new(
+--   hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{},
+--   {
+--     showTitles=false, -- disable text label over thumbnail
+--     showThumbnails=true, -- show app preview in thumbnail
+--     showSelectedThumbnail=false, -- disable large preview
+--     thumbnailSize = 256, -- double size of thumbnails (may big too big for laptop-mode?)
+--     highlightColor = focusColor
+--   }
+-- )
 
 --[ Caffeine ]---------------------------------------------------------
 caffeine = hs.menubar.new()
@@ -508,7 +508,6 @@ hotkey.bind({"cmd"}, "q", function() return end)
 --   hs.hints.windowHints()
 -- end)
 
-
 --[ Side Effects ]-----------------------------------------------
 keyEvents = hs.eventtap.new({
   hs.eventtap.event.types.keyDown,
@@ -536,7 +535,7 @@ keyEvents = hs.eventtap.new({
       disableMouse()
     end
 
-    if appname == "Safari" then
+    if appname == "Safari" or appname == "Chrome" then
       if keyCode == hs.keycodes.map["t"]
       -- or keyCode == hs.keycodes.map["l"]
       and not flag.shift
@@ -551,7 +550,7 @@ keyEvents = hs.eventtap.new({
   end
 
   if flag.cmd then  
-    if appname == "Safari" then
+    if appname == "Safari" or appname == "Chrome" then
       if keyCode == hs.keycodes.map["f"]
       or keyCode == hs.keycodes.map["o"]
       then
@@ -570,6 +569,115 @@ keyEvents:start()
 -----------------------------------------------------------------------
 -- App Bindings 
 -----------------------------------------------------------------------
+-- Helpful links for using Chooser:
+--   http://xenodium.com/emacs-utilities-for-your-os/
+--   https://aldur.github.io/articles/hammerspoon-emojis/
+
+--[ Xcode ]------------------------------------------------------------
+local handleXcodeActionChoice = function(choice)
+  if not choice then return end
+
+  if choice["hotkey"] then hs.eventtap.keyStroke(table.unpack(choice["hotkey"])) end
+
+  if choice["action"] then
+    local xcode = hs.appfinder.appFromName("Xcode")
+    xcode:selectMenuItem(choice["action"])
+  end
+end
+
+-- View
+local xcodeViewChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeViewChooser:choices({
+  {
+     ["text"] = "Explorer",
+    --  ["action"] = {"View", "Navigators", "Project"},
+     ["action"] = {"Navigate", "Reveal in Project Navigator"},
+
+  },
+  {
+    ["text"] = "Tests",
+    ["action"] = {"View", "Navigators", "Tests"},
+ },
+})
+-- Inspector
+local xcodeInspectorChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeInspectorChooser:choices({
+  {
+     ["text"] = "Quick Help",
+     ["action"] = {"View", "Inspectors", "Quick Help"},
+  },
+  {
+    ["text"] = "File",
+    ["action"] = {"View", "Inspectors", "File"},
+  },
+  {
+    ["text"] = "History",
+    ["action"] = {"View", "Inspectors", "History"},
+  },
+})
+-- Go To
+local xcodeGoToChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeGoToChooser:choices({
+  {
+    ["text"] = "Line",
+    ["hotkey"] = {{"alt"}, "l"},
+    --  ["action"] = {"Navigate", "Jump to..."},
+  },
+  {
+    ["text"] = "Definition",
+    ["hotkey"] = {{"cmd"}, "f12"},
+    -- ["action"] = {"Navigate", "Jump to Definition"},
+  },
+  {
+    ["text"] = "Previous Edit",
+    ["action"] = {"Navigate", "Jump to Previous Change"},
+  },
+  {
+    ["text"] = "Back",
+    ["action"] = {"Navigate", "Go Back"},
+  },
+  {
+    ["text"] = "Forward",
+    ["action"] = {"Navigate", "Go Forward"},
+  },
+})
+
+local xcodeKeybinds = {
+  hotkey.new({"cmd"}, "p", function() xcodeViewChooser:show() end),
+  hotkey.new({"cmd"}, ".", function() xcodeInspectorChooser:show() end),
+  hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
+  -- hotkey.new({"cmd"}, "s", function() 
+  --   local xcode = hs.appfinder.appFromName("Xcode")
+
+  --   -- set mark
+  --   hs.eventtap.keyStroke({"cmd"}, "u")
+  --   -- select all
+  --   hs.eventtap.keyStroke({"cmd", "shift"}, "e")
+  --   hs.timer.doAfter(0.1, function()
+ 
+  --   xcode:selectMenuItem({"Editor", "Structure", "Re-Indent"})
+  --   -- Unselect all
+  --   -- hs.eventtap.keyStroke({}, "Down")
+
+  --     -- swap to mark
+  --   hs.eventtap.keyStroke({"cmd", "shift"}, "u")
+  --   -- center to selection
+  --   hs.eventtap.keyStroke({"cmd"}, "/")
+
+  --   xcode:selectMenuItem({"File", "Save"})
+  -- end)
+
+  --  end),
+}
+
+local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+  if eventType ~= hs.application.watcher.activated then return end
+  local fnName = name == "Xcode" and "enable" or "disable"
+  for i, keybind in ipairs(xcodeKeybinds) do
+    keybind[fnName](keybind)
+  end
+end)
+xcodeWatcher:start()
 
 --[ Slack ]------------------------------------------------------------
 -- FROM https://github.com/STRML/init/blob/master/hammerspoon/init.lua

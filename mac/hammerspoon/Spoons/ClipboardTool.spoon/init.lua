@@ -156,9 +156,7 @@ function obj:_processSelectedItem(value)
          end
 --         self:pasteboardToClipboard(value.text)
          if (self.paste_on_select) then
-            -- BEGIN KYLPO CHANGE
-            hs.eventtap.keyStroke({"cmd"}, "p")
-            -- END KYLPO CHANGE
+            hs.eventtap.keyStroke({"cmd"}, "v")
          end
       end
       last_change = pasteboard.changeCount()
