@@ -68,16 +68,16 @@ spoon.ClipboardTool:start()
 
 
 --[ Switcher ]---------------------------------------------------------
--- switcher_space = switcher.new(
---   hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{},
---   {
---     showTitles=false, -- disable text label over thumbnail
---     showThumbnails=true, -- show app preview in thumbnail
---     showSelectedThumbnail=false, -- disable large preview
---     thumbnailSize = 256, -- double size of thumbnails (may big too big for laptop-mode?)
---     highlightColor = focusColor
---   }
--- )
+switcher_space = switcher.new(
+  hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{},
+  {
+    showTitles=false, -- disable text label over thumbnail
+    showThumbnails=true, -- show app preview in thumbnail
+    showSelectedThumbnail=false, -- disable large preview
+    thumbnailSize = 256, -- double size of thumbnails (may big too big for laptop-mode?)
+    highlightColor = focusColor
+  }
+)
 
 --[ Caffeine ]---------------------------------------------------------
 caffeine = hs.menubar.new()
@@ -427,12 +427,12 @@ function bypassBind(binding, mods, keycode)
 end
 
 -- Now using Witch instead, since Switch would miss newly created windows
--- hs.hotkey.bind('ctrl','c', function()
---   switcher_space:next()
--- end)
--- hs.hotkey.bind('ctrl','r', function()
---   switcher_space:previous()
--- end)
+hs.hotkey.bind('ctrl','c', function()
+  switcher_space:next()
+end)
+hs.hotkey.bind('ctrl','r', function()
+  switcher_space:previous()
+end)
 
 -- hs.hotkey.bind({'ctrl', 'shift'},'t', function()
 --   local app = hs.application.frontmostApplication()
@@ -535,7 +535,7 @@ keyEvents = hs.eventtap.new({
       disableMouse()
     end
 
-    if appname == "Safari" or appname == "Chrome" then
+    if appname == "Safari" or appname == "Google Chrome" then
       if keyCode == hs.keycodes.map["t"]
       -- or keyCode == hs.keycodes.map["l"]
       and not flag.shift
@@ -550,7 +550,7 @@ keyEvents = hs.eventtap.new({
   end
 
   if flag.cmd then  
-    if appname == "Safari" or appname == "Chrome" then
+    if appname == "Safari" or appname == "Google Chrome" then
       if keyCode == hs.keycodes.map["f"]
       or keyCode == hs.keycodes.map["o"]
       then
@@ -671,6 +671,7 @@ local xcodeKeybinds = {
 }
 
 local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+-- print(name)  
   if eventType ~= hs.application.watcher.activated then return end
   local fnName = name == "Xcode" and "enable" or "disable"
   for i, keybind in ipairs(xcodeKeybinds) do
@@ -679,30 +680,33 @@ local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
 end)
 xcodeWatcher:start()
 
+-- Note: I think having 2 watchers messed things up.
+-- Commenting Slack for now...
+
 --[ Slack ]------------------------------------------------------------
 -- FROM https://github.com/STRML/init/blob/master/hammerspoon/init.lua
-slackKeybinds = {
-  hotkey.new({"ctrl"}, "n", function()
-    hs.eventtap.keyStroke({"alt", "shift"}, "Down")
-  end),
-  hotkey.new({"ctrl"}, "o", function()
-    hs.eventtap.keyStroke({"alt", "shift"}, "Up")
-  end),
-  hotkey.new({"cmd", "shift"}, "[", function()
-    hs.eventtap.keyStroke({"alt"}, "Up")
-  end),
-  hotkey.new({"cmd", "shift"}, "]", function()
-    hs.eventtap.keyStroke({"alt"}, "Down")
-  end),
-  -- Disables cmd-w entirely, which is so annoying on slack
-  hotkey.new({"cmd"}, "w", function() return end)
-}
-local slackWatcher = hs.application.watcher.new(function(name, eventType, app)
-  if eventType ~= hs.application.watcher.activated then return end
-  local fnName = name == "Slack" and "enable" or "disable"
-  for i, keybind in ipairs(slackKeybinds) do
-    -- Remember that lua is weird, so this is the same as keybind.enable() in JS, `this` is first param
-    keybind[fnName](keybind)
-  end
-end)
-slackWatcher:start()
+-- slackKeybinds = {
+--   hotkey.new({"ctrl"}, "n", function()
+--     hs.eventtap.keyStroke({"alt", "shift"}, "Down")
+--   end),
+--   hotkey.new({"ctrl"}, "o", function()
+--     hs.eventtap.keyStroke({"alt", "shift"}, "Up")
+--   end),
+--   hotkey.new({"cmd", "shift"}, "[", function()
+--     hs.eventtap.keyStroke({"alt"}, "Up")
+--   end),
+--   hotkey.new({"cmd", "shift"}, "]", function()
+--     hs.eventtap.keyStroke({"alt"}, "Down")
+--   end),
+--   -- Disables cmd-w entirely, which is so annoying on slack
+--   hotkey.new({"cmd"}, "w", function() return end)
+-- }
+-- local slackWatcher = hs.application.watcher.new(function(name, eventType, app)
+--   if eventType ~= hs.application.watcher.activated then return end
+--   local fnName = name == "Slack" and "enable" or "disable"
+--   for i, keybind in ipairs(slackKeybinds) do
+--     -- Remember that lua is weird, so this is the same as keybind.enable() in JS, `this` is first param
+--     keybind[fnName](keybind)
+--   end
+-- end)
+-- slackWatcher:start()
