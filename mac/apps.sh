@@ -43,7 +43,7 @@ brew install tree                 # display full directory hierarchy
 brew install pstree               # display running processes as a tree
 #brew install pv                   # show progress bar in pipelines
 brew install iftop                # show network usage (similar to top)
-brew install unrar                # decompress rar files
+# brew install unrar                # decompress rar files
 #brew install dockutil             # manage dock items from the terminal
 #brew install gpg                  # free implementation of the OpenPGP
 #brew install thefuck		  # correct previous console command
@@ -69,11 +69,11 @@ brew install ranger
 
 echo "Installing Quicklook plugins"
 
-brew cask install qlmarkdown        # preview Markdown files
-brew cask install qlimagesize       # image dimensions
-brew cask install qlstephen         # preview plain text files without a extension
-brew cask install qlcolorcode       # preview source code with syntax highlight
-brew cask install quicklook-json    # preview JSON files
+brew install qlmarkdown        # preview Markdown files
+brew install qlimagesize       # image dimensions
+brew install qlstephen         # preview plain text files without a extension
+# brew cask install qlcolorcode       # preview source code with syntax highlight
+brew install quicklook-json    # preview JSON files
 #brew cask install quicklook-csv     # preview CSV files
 #brew cask install qlprettypatch     # preview diffs
 #brew cask install betterzipql       # preview archives [does not exist?]
@@ -87,8 +87,8 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
 echo "Installing Menubar Apps"
 
-brew cask install itsycal
-brew cask install menumeters
+brew install itsycal
+brew install menumeters
 
 ###############################################################################
 # Mac App Store Apps
@@ -121,11 +121,11 @@ brew install python python3
 pip install --upgrade pip setuptools
 pip3 install --upgrade pip setuptools wheel
 
-brew cask install iterm2  # Better terminal than Terminal
-brew cask install dash    # Offline programming docs
+brew install iterm2  # Better terminal than Terminal
+brew install dash    # Offline programming docs
 
 ## QMK stuff
-brew cask install qmk-toolbox
+brew install qmk-toolbox
 brew install qmk/qmk/qmk
 
 echo "Cleaning up..."
@@ -137,8 +137,8 @@ echo "Cleaning up..."
 # - https://stackoverflow.com/questions/9224849/multiple-line-cursor-movements-in-xcode-4
 # - http://www.hcs.harvard.edu/~jrus/Site/selectors.html for the available text actions. Also http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html.
 
-# XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
-XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+# XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 
 if [ -f "$XCODE_PATH" ]; then
   echo "Adding Xcode commands/hotkeys:"
@@ -171,6 +171,8 @@ if [ -f "$XCODE_PATH" ]; then
     -c "Add    :Custom:Insert\ Newline\ Below string moveToEndOfLine:, insertNewline:"\
     -c "Add    :Custom:Join string moveToEndOfLine:, moveWordRightAndModifySelection:, moveWordLeftAndModifySelection:, delete:"\
     -c "Add    :Custom:Duplicate\ Line string moveToBeginningOfLine:, deleteToEndOfLine:, yank:, insertNewline:, moveToBeginningOfLine:, yank:"\
+    -c "Add    :Custom:Duplicate\ Lines string selectLine:, delete:, yank:, yank:"\
+    -c "Add    :Custom:Duplicate\ Selection string delete:, yank:, yank:"\
     -c "Add    :Custom:Delete\ Line string selectLine:, deleteBackward:"\
     -c "Print :Custom"\
     $XCODE_PATH
