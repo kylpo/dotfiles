@@ -343,7 +343,8 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 #   1835008=>"Control + Option + Command"
 #   1966080=>"Shift + Control + Option + Command"
 #
-# Print yours with: `/usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist`
+# Print yours with:
+#   /usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist
 
 # Mission Control: Ctrl + m
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "
@@ -548,6 +549,25 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82
   </dict>
 "
 
+# Move focus to next window in application - DISABLED
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 27 "
+  <dict>
+    <key>enabled</key>
+    <false/>
+    <key>value</key>
+    <dict>
+      <key>type</key>
+      <string>standard</string>
+      <key>parameters</key>
+      <array>
+        <integer>96</integer>
+        <integer>50</integer>
+        <integer>1048576</integer>
+      </array>
+    </dict>    
+  </dict>
+"    
+
 # Screenshot Area: Ctrl + w
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30 "
   <dict>
@@ -617,7 +637,7 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab" '^$o'
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
+# defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
 # Tab expose
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
