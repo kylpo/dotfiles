@@ -37,9 +37,6 @@ spoon.ReloadConfiguration:start()
 ---- MouseCircle
 hs.loadSpoon("MouseCircle")
 spoon.MouseCircle.color = tronOrange
--- spoon.MouseCircle:bindHotkeys({
---   show = { { "ctrl" }, "4" }
--- })
 
 ---- Clipboard
 hs.loadSpoon("ClipboardTool")
@@ -325,23 +322,23 @@ end)
 capsEvent:start()
 
 ---- Disable when entering lock screen
-local pow = hs.caffeinate.watcher
-pow.new(function(event)
-  if event == pow.screensDidSleep
-  or event == pow.systemWillSleep
-  or event == pow.systemWillPowerOff
-  or event == pow.sessionDidResignActive
-  or event == pow.screensDidLock 
-  then
-    -- hardware disable
-    hs.hid.capslock.set(false)
+-- local pow = hs.caffeinate.watcher
+-- pow.new(function(event)
+--   if event == pow.screensDidSleep
+--   or event == pow.systemWillSleep
+--   or event == pow.systemWillPowerOff
+--   or event == pow.sessionDidResignActive
+--   or event == pow.screensDidLock 
+--   then
+--     -- hardware disable
+--     hs.hid.capslock.set(false)
 
-    -- if hs.eventtap.checkKeyboardModifiers().capslock then
-    -- software disable (via key-up)
-    hs.eventtap.event.newKeyEvent(hs.keycodes.map.capslock, false):post();
-    -- end
-  end
-end):start()
+--     -- if hs.eventtap.checkKeyboardModifiers().capslock then
+--     -- software disable (via key-up)
+--     hs.eventtap.event.newKeyEvent(hs.keycodes.map.capslock, false):post();
+--     -- end
+--   end
+-- end):start()
 
 ---- Update menubar after logging in
 wakeWatcher = hs.caffeinate.watcher
@@ -418,13 +415,13 @@ end
 -- Bindings 
 -----------------------------------------------------------------------
 
-function bypassBind(binding, mods, keycode)
-  binding:disable()
-  hs.eventtap.keyStroke(mods, keycode)
-  hs.timer.doAfter(0.1, function()
-    binding:enable()
-  end)
-end
+-- function bypassBind(binding, mods, keycode)
+--   binding:disable()
+--   hs.eventtap.keyStroke(mods, keycode)
+--   hs.timer.doAfter(0.1, function()
+--     binding:enable()
+--   end)
+-- end
 
 -- Now using Witch instead, since Switch would miss newly created windows
 hs.hotkey.bind('ctrl','c', function()
