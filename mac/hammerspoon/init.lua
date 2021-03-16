@@ -424,10 +424,10 @@ end
 -- end
 
 -- Now using Witch instead, since Switch would miss newly created windows
-hs.hotkey.bind('ctrl','c', function()
+hs.hotkey.bind('ctrl','t', function()
   switcher_space:next()
 end)
-hs.hotkey.bind('ctrl','r', function()
+hs.hotkey.bind('ctrl','n', function()
   switcher_space:previous()
 end)
 
@@ -494,17 +494,6 @@ spoon.ClipboardTool:bindHotkeys({
   show_clipboard = { { "cmd", "shift" }, "8" }
 })
 
--- disables
-hotkey.bind({"cmd"}, "q", function() return end)
-
--- experimental
--- hs.hotkey.bind({"ctrl"}, "j", function()
---   hs.grid.toggleShow()
--- end)
--- hs.hotkey.bind({"ctrl"}, "2", function()
---   hs.hints.windowHints()
--- end)
-
 --[ Side Effects ]-----------------------------------------------
 keyEvents = hs.eventtap.new({
   hs.eventtap.event.types.keyDown,
@@ -533,7 +522,7 @@ keyEvents = hs.eventtap.new({
     end
 
     if appname == "Safari" or appname == "Google Chrome" then
-      if keyCode == hs.keycodes.map["t"]
+      if keyCode == hs.keycodes.map["c"]
       -- or keyCode == hs.keycodes.map["l"]
       and not flag.shift
       then

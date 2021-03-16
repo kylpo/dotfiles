@@ -318,7 +318,12 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 # System Keys (symbolichotkeys)
 #
 # Use `Key Codes` app from Many Tricks + this SO thread: https://stackoverflow.com/questions/21878482/.
-# Search for domains with `defaults domains | grep google`, for example.
+#
+# Using `defaults`:
+#   Search for domains with `defaults domains | tr ',' '\n' | grep google`, for example.
+#   https://www.shell-tips.com/mac/defaults/
+#   https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/
+#
 # Also a big thanks to https://github.com/tiiiecherle/osx_install_config/blob/master/11_system_and_app_preferences/11c_macos_preferences_11.sh
 #
 # Action IDs: https://web.archive.org/web/20141112224103/http://hintsforums.macworld.com/showthread.php?t=114785
@@ -606,89 +611,125 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
   </dict>
 "
 
-# modifier key legend:
-#  @ = command
-#  ^ = control
-#  ~ = option
-#  $ = shift
+# TODO: use backup function from https://github.com/netj/dotfiles/blob/master/Mac/NSUserKeyEquivalents.sh ?
+
+# A menu item of `Format->Indentation->Increase` in System Preferences is stored as `\033Format\033Indentation\033Incease`
 #
 # \033 = ASCII Escape character
-# \U0020 = Spacebar
-# \U0000 = disabled
-#
-# A menu item of `Format->Indentation->Increase` in System Preferences is stored as `\033Format\033Indentation\033Incease`
 
-# TODO: use backup function from https://github.com/netj/dotfiles/blob/master/Mac/NSUserKeyEquivalents.sh ?
+CMD="@"
+CTRL="^"
+OPT="~"
+SHIFT="$"
+UP='\U2191'
+DOWN='\U2193'
+LEFT='\U2190'
+RIGHT='\U2192'
+SPACE='\U0020'
+DISABLED='\U0000'
+
+Chrome="com.google.Chrome"   # bundleIdentifier /Applications/Google\ Chrome.app
+Mail="com.apple.mail"        # bundleIdentifier /System/Applications/Mail.app
+Safari="com.apple.Safari"    # bundleIdentifier /Applications/Safari.app
+
+bundleIds=(NSGlobalDomain "$Chrome" "$Mail" "$Safari")
+
+# Reset keys
+for bundleId in "${bundleIds[@]}"; do
+  defaults write "$bundleId" NSUserKeyEquivalents -dict
+done
 
 # Global
 # ------
 # Change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "^\U0020"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "^\U0020"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "^\U0020"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "^o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "^o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "^o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}${SPACE}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}${SPACE}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}${SPACE}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}o"
 # New tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"      '^t'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      '^$\U0020'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}c"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}${SPACE}"
 # Close tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab" '^$o'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}o"
 # Reopen tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" '^$t'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab" '^$t'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" "${CTRL}${SHIFT}t"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"   "${CTRL}${SHIFT}t"
 # defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Undo Close Tab" '^$t'
 # Tab expose
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview" '^$m'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs" '^$m'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview"   "${CTRL}${SHIFT}m"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs"     "${CTRL}${SHIFT}m"
 # Move tab
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Move Tab to New Window" '^$n'
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Move Tab to New Window"   "${CTRL}${SHIFT}n"
 # New window
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"      '^n'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"          "${CTRL}r"
 # Close window
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Window" '^$r'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Window"        "${CTRL}${SHIFT}r"
 # Lock Screen
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen" '^$l'
-# Cut/Copy/Paste
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Cut" '@v'
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Copy" '@h'
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste" '@p'
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Paste and Match Style" '@$p'
-# Undo/Redo
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Undo" '@u'
-# defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Redo" '@$u'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"         "${CTRL}${SHIFT}l"
 # Select
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All" '@$e'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All"          "${CMD}${SHIFT}e"
 # Open
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Open Location..." '@o'
-defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open File..." "\U0000"
-defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Open Location..." '@o'
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
+defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
+defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
 # History
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back" '@d'
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward" '@w'
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}d"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}w"
 
 # DISABLES
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize" "\U0000"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print" "\U0000"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "${DISABLED}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print"               "${DISABLED}"
+
+# QUIT
+# ----
+update_quit_keybind() {
+  for absoluteFile in "$1"*.app; do
+    bundleId=$(mdls -name kMDItemCFBundleIdentifier -raw "$absoluteFile")
+    file="${absoluteFile##*/}"
+    name="${file%%.*}"
+
+    # Overrides (where Quit command does not match its app name)
+    if [[ $name == "1Password 7" ]]
+    then
+      name="1Password"
+    elif [[ $name == "VoiceMemos" ]]
+    then
+      name="Voice Memos"
+    elif [[ $name == "Xcode-beta" ]]
+    then
+      name="Xcode"
+    fi
+    # Did you miss one? Delete it with below's command, then add the correction here
+    # `defaults delete com.apple.dt.Xcode NSUserKeyEquivalents`
+
+    echo "[Updating Quit keybind] $bundleId ___ $name"
+    defaults write "$bundleId" NSUserKeyEquivalents -dict-add "Quit $name" "${CTRL}${SHIFT}z"
+  done 
+}
+
+update_quit_keybind "/Applications/"
+update_quit_keybind "/System/Applications/"
+update_quit_keybind "/System/Applications/Utilities/"
 
 # Chrome
 # ----
 # "Bookmark" interferes with "Back"
-defaults write com.google.Chrome NSUserKeyEquivalents -dict-add "Bookmark This Tab..." "\U0000"
+defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Bookmark This Tab..."     "${DISABLED}"
 
 # Mail 
 # ----
 # add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send" "@↩"
+defaults write "$Mail" NSUserKeyEquivalents -dict-add "\033Message\033Send"        "${CMD}↩"
 # add ⌘ + D to archive messages
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Archive" "@d"
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Send Again" "\U0000"
+defaults write "$Mail" NSUserKeyEquivalents -dict-add "\033Message\033Archive"     "${CMD}d"
+defaults write "$Mail" NSUserKeyEquivalents -dict-add "\033Message\033Send Again"  "${DISABLED}"
 
 # Finder
 # ------
 # defaults write com.apple.finder NSUserKeyEquivalents -dict-add "\033File\033Quick Look" "@\U0020"
-
 
 # com.apple.mail.plist also lives in ~/Library/Containers. See https://discussions.apple.com/thread/7539914.
 # TODO: add try/catch here. Echo that you need to give program Full Disk Access: https://osxdaily.com/2018/10/09/fix-operation-not-permitted-terminal-error-macos/
@@ -699,19 +740,14 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "\033Message\033Sen
 #     ~/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist
    
 # This command is needed to show your keybinds in Preferences > Keyboard > Shortcuts > App Shortcuts
-#   See https://apple.stackexchange.com/questions/398561/how-to-set-system-keyboard-shortcuts-via-command-line
-defaults write com.apple.universalaccess com.apple.custommenu.apps -array NSGlobalDomain "com.apple.Safari" "com.apple.mail" "com.google.Chrome"
+defaults write com.apple.universalaccess com.apple.custommenu.apps -array $(echo -e "${bundleIds[@]}")
+killall cfprefsd
+killall Finder
 
-echo "Global keys:"
-defaults read NSGlobalDomain NSUserKeyEquivalents
+# Report hotkeys to user
+for bundleId in "${bundleIds[@]}"; do
+  echo "$bundleId keys:"
+  defaults read "$bundleId" NSUserKeyEquivalents
+done
 
-echo "Safari keys:"
-defaults read com.apple.Safari NSUserKeyEquivalents
-
-echo "Mail keys:"
-defaults read com.apple.mail NSUserKeyEquivalents
-
-echo "Finder keys:"
-defaults read com.apple.finder NSUserKeyEquivalents
-
-echo "OS X defaults written. Note that some of these changes require a logout/restart to take effect."
+echo "OS X defaults written. Note that some of these changes may require a logout/restart to take effect."

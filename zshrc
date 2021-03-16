@@ -151,6 +151,12 @@ v () {
   fi
 }
 
+# from https://github.com/scottrbaxter/profile/blob/master/scripts/macos-bundle-identifier
+# related: https://gist.github.com/scottrbaxter/8a150546cd4a306cbd8adcf3ce52fe8b 
+bundleIdentifier(){
+    echo -e "$(mdls -name kMDItemCFBundleIdentifier -raw "$1")"
+}
+
 # Anonymous function to avoid leaking NBSP variable.
 # see https://www.youtube.com/watch?v=uglorjY0Ntg
 function () {
