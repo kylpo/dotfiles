@@ -130,8 +130,16 @@ brew install qmk/qmk/qmk
 
 echo "Cleaning up..."
 
+# ---------------------------
 # XCode
-# ------
+# ---------------------------
+
+# Show xcode build times
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+
+# Add file Counterparts (see https://twitter.com/peterfriese/status/1364544309878534144)
+defaults write com.apple.dt.Xcode IDEAdditionalCounterpartSuffixes -array-add "ViewModel" "View" "Screen"
+
 # For more on custom commands:
 # - https://stackoverflow.com/questions/10266170/xcode-duplicate-line
 # - https://stackoverflow.com/questions/9224849/multiple-line-cursor-movements-in-xcode-4

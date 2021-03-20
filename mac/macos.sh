@@ -304,13 +304,6 @@ defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool false
 # Hide Ruler
 defaults write com.apple.TextEdit ShowRuler -bool false
 
-###############################################################################
-# Xcode
-###############################################################################
-
-# Show xcode build times
-defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
-
 # ---------------------------
 # Keybinds
 # ---------------------------

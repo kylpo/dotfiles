@@ -28,6 +28,7 @@ end
 --[ Spoons ]-----------------------------------------------------------
 hs.loadSpoon("MicMute")
 hs.loadSpoon("HoldToQuit")
+hs.loadSpoon("CountDown")
 
 ---- Auto-Reload
 hs.alert.show('Config loaded!')
@@ -493,6 +494,9 @@ spoon.HoldToQuit:bindHotkeys({
 spoon.ClipboardTool:bindHotkeys({
   show_clipboard = { { "cmd", "shift" }, "8" }
 })
+-- hs.hotkey.bind({"ctrl"}, "g", function()
+--   spoon.CountDown:startFor(1)
+-- end)
 
 --[ Side Effects ]-----------------------------------------------
 keyEvents = hs.eventtap.new({
