@@ -27,8 +27,8 @@ end
 
 --[ Spoons ]-----------------------------------------------------------
 hs.loadSpoon("MicMute")
-hs.loadSpoon("HoldToQuit")
-hs.loadSpoon("CountDown")
+-- hs.loadSpoon("HoldToQuit")
+-- hs.loadSpoon("CountDown")
 
 ---- Auto-Reload
 hs.alert.show('Config loaded!')
@@ -468,6 +468,7 @@ hs.hotkey.bind({}, "f16", function()
   spoon.MouseCircle:show()
 end)
 -- Consider: double and triple click to warp further
+-- Mouse warp in-app. Outside on double-tap.
 -- see https://stackoverflow.com/questions/44303244/binding-to-multiple-button-clicks
 hs.hotkey.bind({}, "f19", function()
   moveMouseToTopLeft()
@@ -488,9 +489,9 @@ end)
 spoon.MicMute:bindHotkeys({
   toggle = { { "ctrl" }, "5" }
 })
-spoon.HoldToQuit:bindHotkeys({
-  quit = { { "ctrl", "shift" }, "k" }
-})
+-- spoon.HoldToQuit:bindHotkeys({
+--   quit = { { "ctrl", "shift" }, "k" }
+-- })
 spoon.ClipboardTool:bindHotkeys({
   show_clipboard = { { "cmd", "shift" }, "8" }
 })
@@ -527,12 +528,9 @@ keyEvents = hs.eventtap.new({
 
     if appname == "Safari" or appname == "Google Chrome" then
       if keyCode == hs.keycodes.map["c"]
-      -- or keyCode == hs.keycodes.map["l"]
       and not flag.shift
       then
-        -- hs.timer.doAfter(0.1, function()
           disableMouse()
-        -- end)
       end
     end
     
@@ -540,14 +538,27 @@ keyEvents = hs.eventtap.new({
   end
 
   if flag.cmd then  
-    if appname == "Safari" or appname == "Google Chrome" then
-      if keyCode == hs.keycodes.map["f"]
-      or keyCode == hs.keycodes.map["o"]
+    -- cmd+f
+    if keyCode == hs.keycodes.map["f"] then
+      if appname == "Safari"
+      or appname == "Google Chrome"
+      or appname == "Code"
       then
-        -- hs.timer.doAfter(0.1, function()
-          -- print("HERE")
-          disableMouse()
-        -- end)
+        disableMouse()
+      end
+    -- cmd+o
+    elseif keyCode == hs.keycodes.map["o"] then
+      if appname == "Safari"
+      or appname == "Google Chrome"
+      or appname == "Code"
+      then
+        disableMouse()
+      end 
+    -- cmd+a
+    elseif keyCode == hs.keycodes.map["a"] then
+      if appname == "Code"
+      then
+        disableMouse()
       end
     end
   end

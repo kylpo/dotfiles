@@ -133,12 +133,17 @@ echo "Cleaning up..."
 # ---------------------------
 # XCode
 # ---------------------------
+# find more of these with commands from https://twitter.com/j4n0/status/1173370217239666688 (though it doesn't find all of them).
+#   `strings /Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/IDEKit | grep -E '^IDE[[:alpha:]]+$' | grep -E '(Animation|Disable|Enable|Disable|Show|Speed)' | sort`
 
-# Show xcode build times
+# Show project build times in the activity viewer
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 
 # Add file Counterparts (see https://twitter.com/peterfriese/status/1364544309878534144)
 defaults write com.apple.dt.Xcode IDEAdditionalCounterpartSuffixes -array-add "ViewModel" "View" "Screen"
+
+# If you use the rename refactoring in Xcode a lot, you can save some time by skipping the code folding animation
+defaults write com.apple.dt.Xcode CodeFoldingAnimationSpeed -int 0
 
 # For more on custom commands:
 # - https://stackoverflow.com/questions/10266170/xcode-duplicate-line
