@@ -74,7 +74,8 @@ alias gd='git diff'
 alias gbd='BRANCH=$(git rev-parse --abbrev-ref HEAD) && git checkout dev && git branch -d $BRANCH && git pull'
 alias gpu='git push'
 alias gpl='git pull'
-alias gco='git checkout '
+alias gco='git checkout'
+alias gco-='git checkout -'
 alias clone='hub clone'
 alias fix="git diff --name-only | uniq | xargs vim"
 

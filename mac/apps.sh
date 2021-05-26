@@ -108,6 +108,13 @@ mas install 1333542190  # 1Password 7 - Password Manager
 mas install 1461845568  # Gifox 2 - gif screen recorder
 
 ###############################################################################
+# Misc Apps
+###############################################################################
+
+echo "Installing Misc Apps"
+brew install hammerspoon
+
+###############################################################################
 # Development
 ###############################################################################
 
@@ -125,7 +132,7 @@ brew install iterm2  # Better terminal than Terminal
 brew install dash    # Offline programming docs
 
 ## QMK stuff
-brew install qmk-toolbox
+brew install --cask qmk-toolbox
 brew install qmk/qmk/qmk
 
 echo "Cleaning up..."

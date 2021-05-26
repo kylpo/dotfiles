@@ -6,6 +6,25 @@
   - Then dotfiles are linked
   - Last, nvim opens and installs plugins
 
+1. Open `App Store` and sign in
+2. Open a terminal. Input the following:
+
+```sh
+# Install xcode's CLI tools
+xcode-select --install
+
+mkdir ~/github && cd ~/github
+git clone git@github.com:kylpo/dotfiles.git && cd dotfiles
+
+# Install Homebrew (https://brew.sh/)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# ...and add it to your path
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+./install.sh
+```
+
 BrewFile
 ======
 To update BrewFile, run `brew bundle dump --force'
