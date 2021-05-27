@@ -106,12 +106,14 @@ mas install 1475897096  # Jira Cloud by Atlassian
 mas install 1191449274  # ToothFairy - easy bluetooth audio toggles
 mas install 1333542190  # 1Password 7 - Password Manager
 mas install 1461845568  # Gifox 2 - gif screen recorder
+mas install 497799835   # Xcode
 
 ###############################################################################
 # Misc Apps
 ###############################################################################
 
 echo "Installing Misc Apps"
+
 brew install hammerspoon
 brew install google-chrome
 
@@ -123,14 +125,15 @@ echo "Installing Development stuff"
 
 # Install python (macOS version is outdated) and python3
 # Both are compatibles and this way you can test the code in both
-brew install python python3
+# brew install python python3
 
 # update pip and setuptools
-pip install --upgrade pip setuptools
-pip3 install --upgrade pip setuptools wheel
+# pip install --upgrade pip setuptools
+# pip3 install --upgrade pip setuptools wheel
 
 brew install iterm2  # Better terminal than Terminal
 brew install dash    # Offline programming docs
+brew install visual-studio-code
 
 ## QMK stuff
 brew install --cask qmk-toolbox
@@ -158,8 +161,8 @@ defaults write com.apple.dt.Xcode CodeFoldingAnimationSpeed -int 0
 # - https://stackoverflow.com/questions/9224849/multiple-line-cursor-movements-in-xcode-4
 # - http://www.hcs.harvard.edu/~jrus/Site/selectors.html for the available text actions. Also http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html.
 
-XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
-# XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+# XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 
 if [ -f "$XCODE_PATH" ]; then
   echo "Adding Xcode commands/hotkeys:"

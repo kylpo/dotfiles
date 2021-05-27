@@ -23,6 +23,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
   - [Generating a new SSH key and adding it to the ssh-agent - GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
   - https://github.com/settings/ssh/new
 5. TODO: clone repos
+6. Add `Internet Accounts`
+7. Set up `VSCode`'s `Settings Sync`
 
 iTerm2 Setup
 =======
