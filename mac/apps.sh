@@ -6,7 +6,7 @@
 # Install Xcode before running this script.
 
 # agree to xcode license and install command line tools
-sudo xcodebuild -license
+# sudo xcodebuild -license
 sudo xcode-select --install
 
 # Install brew (if not already installed)

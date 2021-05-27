@@ -66,11 +66,11 @@ echo "done."
 echo -n "Installing node (via n) and npm globals"
 #curl -L https://git.io/n-install | bash
 
-source ~/.zshrc
-
 npm i -g n
 #npm i -g pomo
 #npm i -g import-js
+
+source ~/.zshrc
 
 # https://github.com/sindresorhus/fkill-cli
 #npm i -g fkill-cli

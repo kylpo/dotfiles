@@ -159,7 +159,7 @@ echo "Configuring finder options"
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-chflags nohidden /Volumes
+sudo chflags nohidden /Volumes
 
 # Show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
