@@ -161,10 +161,10 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 for plist in "$DIR/prefs/"*; do
     # Remove file path
-    local fileName=${plist##*/}
+    fileName=${plist##*/}
 
     # Remove file extension
-    local domain=${fileName%.*}
+    domain=${fileName%.*}
     
     echo "defaults import $domain $plist"
     defaults import $domain $plist
