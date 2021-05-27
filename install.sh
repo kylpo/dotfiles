@@ -76,11 +76,10 @@ npm i -g n
 #npm i -g fkill-cli
 echo "done."
 
-echo -n "Installing python3 libs"
-pip3 install --upgrade neovim
-echo "done."
+# echo -n "Installing python3 libs"
+# pip3 install --upgrade neovim
+# echo "done."
 
-echo -n "Installing vim plugins... "
-# command vim +PlugInstall +qall
-command nvim +PlugInstall +UpdateRemotePlugins +qall
-echo "done."
+# echo -n "Installing vim plugins... "
+# command nvim +PlugInstall +UpdateRemotePlugins +qall
+# echo "done."
