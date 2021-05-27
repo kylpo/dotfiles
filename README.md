@@ -1,6 +1,9 @@
 # dotfiles for Kylpo
-1. Open `App Store` and sign in
-2. Open a terminal. Input the following:
+- Open `App Store` and sign in
+- Set desktop wallpaper to `Black`
+- `Preferences` > `Security & Privacy` > `General`
+  - Require password after `5 seconds` after sleep on screen saver begins
+- Open a terminal. Input the following:
 
 ```sh
 # Install xcode's CLI tools
@@ -9,13 +12,8 @@ xcode-select --install
 mkdir ~/github && cd ~/github
 git clone git@github.com:kylpo/dotfiles.git && cd dotfiles
 
-# Install Homebrew (https://brew.sh/)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# ...and add it to your path
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-./install.sh
+# `caffeinate -s` to keep the Mac awake while it is plugged into AC power
+caffeinate -s ./install.sh
 ```
 
 3. Sign in to 1Password

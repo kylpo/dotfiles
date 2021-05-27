@@ -38,9 +38,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  . $MAC_DIR/system.sh
-  . $MAC_DIR/apps.sh
-  . $MAC_DIR/hotkeys.sh
+  cd $MAC_DIR
+  ./system.sh
+  ./apps.sh
+  ./hotkeys.sh
+  cd $DIR
 
   # fix Option key in most apps
   # https://gist.github.com/cheapRoc/9670905#crash-course
@@ -50,33 +52,31 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   [[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && cp $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 fi
 
-echo -n "Setting up zsh... "
-# chsh -s `which zsh`
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! -d ~/.oh-my-zsh ]; then
+  echo -n "Setting up zsh... "
+  # chsh -s `which zsh`
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-# git clone https://github.com/lukechilds/zsh-nvm ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  # git clone https://github.com/lukechilds/zsh-nvm ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-nvm
 
-# https://github.com/tylerreckart/hyperzsh
-curl -L https://raw.githubusercontent.com/tylerreckart/hyperzsh/master/hyperzsh.zsh-theme > ~/.oh-my-zsh/themes/hyperzsh.zsh-theme
-echo "done."
+  # https://github.com/tylerreckart/hyperzsh
+  curl -L https://raw.githubusercontent.com/tylerreckart/hyperzsh/master/hyperzsh.zsh-theme > ~/.oh-my-zsh/themes/hyperzsh.zsh-theme
+  echo "done."
+fi
 
 ./linkify.sh
+
+source ~/.zshrc
 
 #[[ ! -s ~/.config/powerline ]] && ln -s $DIR/powerline  ~/.config/powerline
 
 echo -n "Installing node (via n) and npm globals"
-#curl -L https://git.io/n-install | bash
-
 npm i -g n
-#npm i -g pomo
-#npm i -g import-js
-
-source ~/.zshrc
+echo "done."
 
 # https://github.com/sindresorhus/fkill-cli
 #npm i -g fkill-cli
-echo "done."
 
 # echo -n "Installing python3 libs"
 # pip3 install --upgrade neovim
