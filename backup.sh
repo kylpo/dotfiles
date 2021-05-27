@@ -2,20 +2,33 @@
 set -e
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
-echo $DIR
+
+BACKUP_DIR="$HOME/backup"
+PREFS_DIR="$BACKUP_DIR/prefs"
 
 # Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  # see https://askubuntu.com/questions/420527/how-to-dump-all-the-manully-altered-gsettings-keys
-  dconf dump /org/gnome/ > $DIR/linux/gnome.bak
+  # https://askubuntu.com/questions/420527/how-to-dump-all-the-manully-altered-gsettings-keys
+  dconf dump /org/gnome/ > $BACKUP_DIR/gnome.bak
 
   # if something goes wrong, reset wtih `dconf reset -f /org/gnome/`
 
-
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  brew bundle dump --force --file=$DIR/mac/Brewfile
+  echo "Backing up preferences to $PREFS_DIR"
 
-else
-  # Unknown.
+  # Make the prefs dir (and parents) if it doesn't already exist
+  mkdir -p $PREFS_DIR
+
+  # Put domains into an array
+  IFS=", " domains=(`defaults domains`)
+
+  # Loop over domains and export their .plist
+  for i in ${domains[@]}; do
+    defaults export $i "$PREFS_DIR/$i.plist"
+  done
+
+  echo "Generating hotkeys backup..."
+
+  [[ -f $DIR/mac/backup-hotkeys.sh ]] && . $DIR/mac/backup-hotkeys.sh
 fi
