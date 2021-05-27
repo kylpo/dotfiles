@@ -2,7 +2,8 @@
 set -e
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
-echo $DIR
+LINUX_DIR=$DIR/linux
+MAC_DIR=$DIR/mac
 
 tic $DIR/tmux-256color.terminfo
 tic $DIR/xterm-256color.terminfo
@@ -33,12 +34,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # https://github.com/rupa/z
   wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/.z.sh
 
-  ./install-tmux.sh
+  . $LINUX_DIR/install-tmux.sh
 
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  ./mac/macos.sh
-  ./mac/apps.sh
+  . $MAC_DIR/system.sh
+  . $MAC_DIR/apps.sh
+  . $MAC_DIR/hotkeys.sh
 
   # fix Option key in most apps
   # https://gist.github.com/cheapRoc/9670905#crash-course

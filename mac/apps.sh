@@ -30,7 +30,7 @@ brew upgrade
 # CLI Tools
 ###############################################################################
 
-echo "Installing CLI Tools"
+echo "Installing CLI Tools..."
 
 brew install mas                  # interface for the Mac App Store
 brew install the_silver_searcher  # alternative to ack maybe faster
@@ -67,7 +67,7 @@ brew install ranger
 # Quicklook
 ###############################################################################
 
-echo "Installing Quicklook plugins"
+echo "Installing Quicklook plugins..."
 
 brew install qlmarkdown        # preview Markdown files
 brew install qlimagesize       # image dimensions
@@ -85,7 +85,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 # Menubar
 ###############################################################################
 
-echo "Installing Menubar Apps"
+echo "Installing Menubar Apps..."
 
 brew install itsycal
 brew install menumeters
@@ -94,7 +94,7 @@ brew install menumeters
 # Mac App Store Apps
 ###############################################################################
 
-echo "Installing Mac Store Apps"
+echo "Installing Mac Store Apps..."
 
 # This command will not allow you to install an app for the first time: it must
 # already be in the Purchased tab of the App Store.
@@ -112,7 +112,7 @@ mas install 497799835   # Xcode
 # Misc Apps
 ###############################################################################
 
-echo "Installing Misc Apps"
+echo "Installing Misc Apps..."
 
 brew install hammerspoon
 brew install google-chrome
@@ -121,7 +121,7 @@ brew install google-chrome
 # Development
 ###############################################################################
 
-echo "Installing Development stuff"
+echo "Installing Development stuff..."
 
 # Install python (macOS version is outdated) and python3
 # Both are compatibles and this way you can test the code in both
@@ -139,7 +139,26 @@ brew install visual-studio-code
 brew install --cask qmk-toolbox
 brew install qmk/qmk/qmk
 
-echo "Cleaning up..."
+###############################################################################
+# Prefs
+###############################################################################
+
+echo "Importing App preferences..."
+
+DIR="$( cd "$( dirname "$0" )" && pwd )"
+PREFS_DIR="$DIR/prefs"
+
+for plist in "$PREFS_DIR/"*; do
+    # Remove file path
+    fileName=${plist##*/}
+
+    # Remove file extension
+    domain=${fileName%.*}
+    
+    echo "defaults import $domain $plist"
+    defaults import $domain $plist
+  done
+
 
 # ---------------------------
 # XCode
@@ -203,6 +222,8 @@ if [ -f "$XCODE_PATH" ]; then
 else
   echo "Xcode path not found! Skipping..."
 fi
+
+echo "Cleaning up..."
 
 # Cleanup
 brew cleanup
