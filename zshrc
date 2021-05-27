@@ -58,10 +58,10 @@ source $ZSH/oh-my-zsh.sh
 # sourcing
 #--------------------------------------------------
 # . `brew --prefix`/etc/profile.d/z.sh
-[ -f ~/.z.sh ] && source ~/.z.sh
+# [ -f ~/.z.sh ] && source ~/.z.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. /usr/local/etc/profile.d/z.sh
+source /opt/homebrew/etc/profile.d/z.sh
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 

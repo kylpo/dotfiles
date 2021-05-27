@@ -50,7 +50,12 @@ defaults write com.apple.systemsound com.apple.sound.beep.sound -string "/System
 defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+sudo nvram StartupMute=%01
+
+# Enable the sound effects on boot
+# sudo nvram SystemAudioVolume=" "
+# sudo nvram StartupMute=%00
+
 
 ###############################################################################
 # Inputs

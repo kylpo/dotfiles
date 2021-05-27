@@ -113,6 +113,7 @@ mas install 1461845568  # Gifox 2 - gif screen recorder
 
 echo "Installing Misc Apps"
 brew install hammerspoon
+brew install google-chrome
 
 ###############################################################################
 # Development

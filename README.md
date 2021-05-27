@@ -25,6 +25,12 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ./install.sh
 ```
 
+3. Sign in to 1Password
+4. Add computer to Github
+  - [Generating a new SSH key and adding it to the ssh-agent - GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+  - https://github.com/settings/ssh/new
+
+
 BrewFile
 ======
 To update BrewFile, run `brew bundle dump --force'
