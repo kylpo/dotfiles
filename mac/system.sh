@@ -3,6 +3,15 @@
 # ~/.macos — https://mths.be/macos
 # and just googling 'site:github.com dotfiles NSUserKeyEquivalents'
 
+# See https://github.com/herrbischoff/awesome-macos-command-line for some examples
+
+# Want to find out what to write to? Make a `before` and `after` diff:
+#
+# defaults read > ~/Desktop/before.txt
+# <MAKE YOUR PREF CHANGE>
+# defaults read > ~/Desktop/before.txt
+# code --diff ~/Desktop/before.txt ~/Desktop/before.txt
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'

@@ -6,6 +6,9 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 BACKUP_DIR="$HOME/backup"
 PREFS_DIR="$BACKUP_DIR/prefs"
 
+# Make the prefs dir (and parents) if it doesn't already exist
+mkdir -p $PREFS_DIR
+
 # Linux
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # https://askubuntu.com/questions/420527/how-to-dump-all-the-manully-altered-gsettings-keys
@@ -15,13 +18,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  echo "Backing up preferences to $PREFS_DIR"
-
-  # Make the prefs dir (and parents) if it doesn't already exist
-  mkdir -p $PREFS_DIR
-
   # Dump all prefs into a file for reading/diffing later
-  defaults read > "$PREFS_DIR/prefs.txt"
+  defaults read > "$BACKUP_DIR/prefs.txt"
+
+  echo "Backing up preferences to $PREFS_DIR"
 
   # Put domains into an array
   IFS=", " domains=(`defaults domains`)
