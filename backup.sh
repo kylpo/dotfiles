@@ -20,6 +20,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Make the prefs dir (and parents) if it doesn't already exist
   mkdir -p $PREFS_DIR
 
+  # Dump all prefs into a file for reading/diffing later
+  defaults read > "$PREFS_DIR/prefs.txt"
+
   # Put domains into an array
   IFS=", " domains=(`defaults domains`)
 

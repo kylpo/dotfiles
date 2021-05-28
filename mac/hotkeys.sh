@@ -56,7 +56,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32
       <key>parameters</key>
       <array>
         <integer>109</integer>
-        <integer>2</integer>
+        <integer>46</integer>
         <integer>262144</integer>
       </array>
     </dict>
@@ -73,8 +73,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
       <key>parameters</key>
       <array>
         <integer>109</integer>
-        <integer>2</integer>
-        <integer>262144</integer>
+        <integer>46</integer>
+        <integer>393216</integer>
       </array>
     </dict>
   </dict>
@@ -110,7 +110,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37
       <array>
         <integer>108</integer>
         <integer>37</integer>
-        <integer>262144</integer>
+        <integer>393216</integer>
       </array>
     </dict>
   </dict>
@@ -174,7 +174,6 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 16
 "
 
 # Move Space Left: Ctrl + d
-# Note: No idea what 80 does (Ctrl + Shift + d)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "
   <dict>
     <key>enabled</key>
@@ -211,7 +210,6 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80
 "
 
 # Move Space Right: Ctrl + w
-# Note: No idea what 82 does (Ctrl + Shift + w)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81 "
   <dict>
     <key>enabled</key>
@@ -247,26 +245,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82
   </dict>
 "
 
-# Move focus to next window in application - DISABLED
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 27 "
-  <dict>
-    <key>enabled</key>
-    <false/>
-    <key>value</key>
-    <dict>
-      <key>type</key>
-      <string>standard</string>
-      <key>parameters</key>
-      <array>
-        <integer>96</integer>
-        <integer>50</integer>
-        <integer>1048576</integer>
-      </array>
-    </dict>    
-  </dict>
-"    
-
-# Screenshot Area: Ctrl + w
+# Screenshot Area: Ctrl + b
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30 "
   <dict>
     <key>enabled</key>
@@ -285,7 +264,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30
   </dict>
 "
 
-# Screenshot Area to Clipboard: Ctrl + Shift + w
+# Screenshot Area to Clipboard: Ctrl + Shift + b
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31 "
   <dict>
     <key>enabled</key>
@@ -301,6 +280,35 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
         <integer>393216</integer>
       </array>
     </dict>
+  </dict>
+"
+
+# Move focus to next window in application - DISABLED
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 27 "
+  <dict>
+    <key>enabled</key>
+    <false/>
+  </dict>
+"
+
+# Application windows - DISABLED
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 33 "
+  <dict>
+    <key>enabled</key>
+    <false/>
+  </dict>
+"
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 35 "
+  <dict>
+    <key>enabled</key>
+    <false/>
+  </dict>
+"
+# Turn Dock Hiding On/Off - DISABLED
+defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 52 "
+  <dict>
+    <key>enabled</key>
+    <false/>
   </dict>
 "
 
