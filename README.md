@@ -1,13 +1,38 @@
 # dotfiles for Kylpo
 - Open `App Store` and sign in
-- Set desktop wallpaper to `Black`
-- `Preferences` > `Security & Privacy` > `General`
-  - Require password after `5 seconds` after sleep on screen saver begins
-- Add computer to Github
-  - [Generating a new SSH key and adding it to the ssh-agent - GitHub Docs](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-  - https://github.com/settings/ssh/new
-- Open a terminal. Input the following:
+- `Preferences`
+  - \> `Desktop & Screensaver` 
+    - Set desktop wallpaper to `Black`
+  - \> `Security & Privacy` > `General`
+    - Require password after `5 seconds` after sleep on screen saver begins
+- [Add computer to Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+```sh
+ssh-keygen -t ed25519 -C "2kylepoole@gmail.com"
 
+# When you're prompted to "Enter a file in which to save the key," press Enter.
+
+# Input a password
+
+eval "$(ssh-agent -s)"
+
+echo "Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519" > ~/.ssh/config
+
+ssh-add -K ~/.ssh/id_ed25519
+
+# Input password
+
+pbcopy < ~/.ssh/id_ed25519.pub
+
+open https://github.com/settings/ssh/new
+
+# Input `Title` like: "Macbook Air"
+# Paste key into `Key`
+```
+
+- Run install
 ```sh
 # Install xcode's CLI tools
 xcode-select --install
@@ -20,20 +45,15 @@ git clone git@github.com:kylpo/dotfiles.git && cd dotfiles
 
 # `caffeinate -s` to keep the Mac awake while it is plugged into AC power
 caffeinate -s ./install.sh
+
+./repos.sh
 ```
 
-1. `./repos.sh`
-2. Sign in to 1Password
-3. Add `Internet Accounts`
-4. Set up `VSCode`'s `Settings Sync`
-
-iTerm2 Setup
-=======
-
-Enable `Applications in terminal may access clipboard` so tmux can save to
-clipboard
-- see [this thread](https://github.com/tmux/tmux/issues/592#issuecomment-255763680) for more context
-
-Also, see these useful tweets
-- [adding the .bin folder to your path so you can run CLIs without having to install them globally](https://twitter.com/ariabuckles/status/772209060506587136)
-- [Badassify your terminal and shell](http://jilles.me/badassify-your-terminal-and-shell/)
+- Sign in to `1Password`
+- Add `Internet Accounts`
+- Set up `VSCode`
+  - `Settings Sync`
+  - `Command Palette`: "install `code` command"
+- Set up `iTerm`
+  - Import profile: `dotfiles/mac/iterm/Klaws.json`
+  - Set it to `Default`

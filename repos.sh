@@ -3,7 +3,7 @@ set -e
 
 PUBLIC_DIR=$HOME/github
 WORK_DIR=$HOME/work/
-CHRONSTRUCT_DIR=$HOME/chronstruct
+CHRONSTRUCT_DIR=$WORK_DIR/chronstruct
 
 echo "Cloning public repos..."
 
