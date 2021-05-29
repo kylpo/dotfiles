@@ -14,7 +14,6 @@ pulicRepos=(
   git@github.com:kylpo/react-playbook.git
   git@github.com:kylpo/kylpo.me.git
   git@github.com:kylpo/kylpo.com.git
-  git@github.com:kylpo/qmk_firmware.git
   git@github.com:Chronstruct/primitives.git
 )
 

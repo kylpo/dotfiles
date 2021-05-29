@@ -141,7 +141,8 @@ brew install dash    # Offline programming docs
 brew install visual-studio-code
 
 ## QMK stuff
-#brew install --cask qmk-toolbox
+brew install homebrew/cask-drivers/qmk-toolbox
+# Install QMK via Rosetta: https://stackoverflow.com/questions/67098972/how-do-you-install-qmk-with-the-new-mac-m1-arm-chip
 #brew install qmk/qmk/qmk
 
 ###############################################################################
@@ -170,6 +171,22 @@ for plist in "$DIR/prefs/"*; do
     echo "defaults import $domain $plist"
     defaults import $domain $plist
   done
+
+# MenuMeters
+# ---------------------------
+MenuMeters="com.yujitach.MenuMetersApp"
+
+defaults write "$MenuMeters" CPUAverageLowerHalfProcs -int 0
+defaults write "$MenuMeters" CPUAverageMultiProcs -int 1
+defaults write "$MenuMeters" CPUDisplayMode -int 2
+defaults write "$MenuMeters" CPUSortByUsage -int 0
+defaults write "$MenuMeters" CPUSumAllProcsPercent -int 0
+defaults write "$MenuMeters" CPUTemperature -int 0
+defaults write "$MenuMeters" MemDisplayMode -int 4
+defaults write "$MenuMeters" NetPreferInterface -string 'primary'
+defaults write "$MenuMeters" "com.ragingmenace.MenuMeterDisk" -int 0
+defaults write "$MenuMeters" "com.ragingmenace.MenuMeterNet" -int 0
+defaults write "$MenuMeters" migratedFromRagingMenaceToYujitach -int 1
 
 # ---------------------------
 # XCode

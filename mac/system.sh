@@ -9,8 +9,8 @@
 #
 # defaults read > ~/Desktop/before.txt
 # <MAKE YOUR PREF CHANGE>
-# defaults read > ~/Desktop/before.txt
-# code --diff ~/Desktop/before.txt ~/Desktop/before.txt
+# defaults read > ~/Desktop/after.txt
+# code --diff ~/Desktop/before.txt ~/Desktop/after.txt
 
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
