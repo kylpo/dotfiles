@@ -108,6 +108,7 @@ mas install 1475897096  # Jira Cloud by Atlassian
 mas install 1191449274  # ToothFairy - easy bluetooth audio toggles
 mas install 1333542190  # 1Password 7 - Password Manager
 mas install 1461845568  # Gifox 2 - gif screen recorder
+mas install 1487937127  # Craft - Docs and Notes Editor
 
 mas install 497799835   # Xcode
 # agree to xcode license

@@ -496,8 +496,8 @@ echo "Cleaning up..."
 
 # This command is needed to show your keybinds in Preferences > Keyboard > Shortcuts > App Shortcuts
 defaults write com.apple.universalaccess com.apple.custommenu.apps -array $(echo -e "${bundleIds[@]}")
-killall cfprefsd
-killall Finder
+# killall cfprefsd
+# killall Finder
 
 # Report hotkeys to user
 for bundleId in "${bundleIds[@]}"; do
@@ -505,4 +505,10 @@ for bundleId in "${bundleIds[@]}"; do
   defaults read "$bundleId" NSUserKeyEquivalents
 done
 
-echo "OS X defaults written. Note that some of these changes may require a logout/restart to take effect."
+# Need to restart for several changes to take effect. Trackpad settings in particular.
+# from https://github.com/LukeChannings/dotfiles/blob/main/install.macos
+echo "Doing a soft restart of affected apps. You should restart when everything is finished."
+
+for app in "SystemUIServer" "cfprefsd" "Finder" "Dock" "ControlStrip" "Safari" "TextEdit" "ActivityMonitor"; do
+    killall $app
+done

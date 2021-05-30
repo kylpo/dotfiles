@@ -26,6 +26,12 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX
 ###############################################################################
 
+# Dark theme
+# ... Disable auto-theme if set
+defaults delete NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically
+# ... Set theme to Dark
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
@@ -43,6 +49,8 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+# Show volume in the menu bar
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -int 1
 
 ###############################################################################
 # Sound
@@ -226,6 +234,14 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 ###############################################################################
 
 echo "Configuring safari options"
+
+# Set DuckDuckGo as the search engine
+defaults write -g NSPreferredWebServices '{
+  NSWebServicesProviderWebSearch = {
+    NSDefaultDisplayName = DuckDuckGo;
+    NSProviderIdentifier = "com.duckduckgo";
+  };
+}'
 
 # Press Tab to highlight each item on a web page
 defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true

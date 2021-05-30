@@ -57,3 +57,11 @@ caffeinate -s ./install.sh
 - Set up `iTerm`
   - Import profile: `dotfiles/mac/iterm/Klaws.json`
   - Set it to `Default`
+
+## Tasks to perform on a new machine
+- Listen to `Music`
+- Build/Test kylpo.com
+- Build/Test iOS app
+- Open Chronstruct Email + Drive
+- Set up Notes workspace
+- Compile custom QMK firmware (and transfer it to a keyboard)
