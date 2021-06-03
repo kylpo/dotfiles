@@ -69,6 +69,21 @@ source /opt/homebrew/etc/profile.d/z.sh
 # commands
 #--------------------------------------------------
 
+alias l='ls -l'
+alias la='ls -A'
+alias ll='ls -alF'
+alias llh='ls -alh'
+alias lls='ls -lSr' #sort by size
+alias llsh='ls -lSrh' #sort by size
+alias latr='ls -latr'
+
+alias 400='chmod 400'
+alias 600='chmod 600'
+alias 644='chmod 644'
+alias 700='chmod 700'
+alias 755='chmod 755'
+alias 777='chmod 777'
+
 alias gs='git status'
 alias gd='git diff'
 alias gbd='BRANCH=$(git rev-parse --abbrev-ref HEAD) && git checkout dev && git branch -d $BRANCH && git pull'
@@ -84,6 +99,8 @@ alias run='yarn run'
 alias build='yarn run build'
 alias clean='yarn run clean'
 alias upgrade='yarn upgrade-interactive'
+
+alias desktop="cd ~/Desktop"
 
 alias up='cd ..'
 alias up2='cd ../..'

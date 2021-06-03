@@ -39,9 +39,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 # Mac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   cd $MAC_DIR
-  ./system.sh
-  ./apps.sh
-  ./hotkeys.sh
+  ./install.sh
   cd $DIR
 
   # fix Option key in most apps
