@@ -5,6 +5,9 @@
     - Set desktop wallpaper to `Black`
   - \> `Security & Privacy` > `General`
     - Require password after `5 seconds` after sleep on screen saver begins
+  - \> `Security & Privacy` > `Privacy` > `Full Disk Access`
+    - Add `Terminal`
+    - This is critical for updating certain prefs like Safari and universalaccess.
 - [Add computer to Github](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 ```sh
 ssh-keygen -t ed25519 -C "2kylepoole@gmail.com"
@@ -57,6 +60,8 @@ caffeinate -s ./install.sh
 - Set up `iTerm`
   - Import profile: `dotfiles/mac/iterm/Klaws.json`
   - Set it to `Default`
+  - Give iTerm Full Disk Access
+  - `Preferences` \> `Security & Privacy` > `Privacy` > `Full Disk Access`
 
 ## Tasks to perform on a new machine
 - Listen to `Music`

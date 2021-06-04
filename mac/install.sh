@@ -1066,8 +1066,6 @@ echo "Cleaning up..."
 
 # This command is needed to show your keybinds in Preferences > Keyboard > Shortcuts > App Shortcuts
 defaults write com.apple.universalaccess com.apple.custommenu.apps -array $(echo -e "${bundleIds[@]}")
-# killall cfprefsd
-# killall Finder
 
 # Report hotkeys to user
 for bundleId in "${bundleIds[@]}"; do
