@@ -269,10 +269,10 @@ capsEvent = hs.eventtap.new({
 
   if event:getKeyCode() == hs.keycodes.map["capslock"] then
 
-  print("before")
-  print(hs.eventtap.checkKeyboardModifiers().capslock)
-  print("event")
-  print(event:getKeyCode() == hs.keycodes.map["capslock"])
+  -- print("before")
+  -- print(hs.eventtap.checkKeyboardModifiers().capslock)
+  -- print("event")
+  -- print(event:getKeyCode() == hs.keycodes.map["capslock"])
 
   -- print("getRawEventData")
   -- print(dump(event:getRawEventData()))
@@ -356,12 +356,7 @@ wakeWatcher.new(function(event)
 end):start()
 
 --[ Mouse Jumps ]------------------------------------------------------------
-local function centerMouseInFocus()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
+----\ Screen Jumps \---------------------------------------------------------
 
 local function moveMouseToCenter()
   local screen = hs.mouse.getCurrentScreen()
@@ -412,9 +407,63 @@ local function moveMouseToBottomLeft()
   hs.mouse.setRelativePosition(center, screen)
 end
 
+----\ Window Jumps \------------------------------------------------------------
+local function moveMouseToCenterOfWindow()
+  local window = hs.window.focusedWindow()
+  local rect = window:frame()
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
+local function moveMouseToTopLeftOfWindow()
+  local window = hs.window.focusedWindow()
+  local rect = window:frame()
+  rect.w = rect.w / 2
+  rect.h = rect.h / 2
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
+local function moveMouseToTopRightOfWindow()
+  local window = hs.window.focusedWindow()
+  local rect = window:frame()
+  rect.w = rect.w / 2
+  rect.h = rect.h / 2
+  rect.x = rect.w
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
+local function moveMouseToBottomRightOfWindow()
+  local window = hs.window.focusedWindow()
+  local rect = window:frame()
+  rect.w = rect.w / 2
+  rect.h = rect.h / 2
+  rect.x = rect.w
+  rect.y = rect.h
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
+local function moveMouseToBottomLeftOfWindow()
+  local window = hs.window.focusedWindow()
+  local rect = window:frame()
+  rect.w = rect.w / 2
+  rect.h = rect.h / 2
+  rect.y = rect.h
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
 -----------------------------------------------------------------------
 -- Bindings 
 -----------------------------------------------------------------------
+local DOUBLE_TAP_DELAY = 0.20
+
+local f19Timer = 0
+local f18Timer = 0
+local f17Timer = 0
+local f15Timer = 0
 
 -- function bypassBind(binding, mods, keycode)
 --   binding:disable()
@@ -457,8 +506,9 @@ end)
 --     app:selectMenuItem({"Window", "Exposé all Tabs"})
 --   end
 -- end)
+
 hs.hotkey.bind({"ctrl"}, "s", function()
-  centerMouseInFocus()
+  moveMouseToCenterOfWindow()
   spoon.MouseCircle:show()
   enableMouse()
 end)
@@ -467,24 +517,81 @@ hs.hotkey.bind({}, "f16", function()
   moveMouseToCenter()
   spoon.MouseCircle:show()
 end)
--- Consider: double and triple click to warp further
--- Mouse warp in-app. Outside on double-tap.
--- see https://stackoverflow.com/questions/44303244/binding-to-multiple-button-clicks
 hs.hotkey.bind({}, "f19", function()
-  moveMouseToTopLeft()
-  spoon.MouseCircle:show()
+  -- Double Tap
+  if f19Timer > 0 and hs.timer.secondsSinceEpoch() - f19Timer < DOUBLE_TAP_DELAY then
+    f19Timer = 0
+    moveMouseToTopLeft()
+    spoon.MouseCircle:show()
+  -- Single Tap
+  else
+    f19Timer = hs.timer.secondsSinceEpoch()
+
+    hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
+      if (f19Timer > 0) then  
+        f19Timer = 0
+        moveMouseToTopLeftOfWindow()
+        spoon.MouseCircle:show()
+      end
+    end)
+  end
 end)
 hs.hotkey.bind({}, "f18", function()
-  moveMouseToTopRight()
-  spoon.MouseCircle:show()
+  -- Double Tap
+  if f18Timer > 0 and hs.timer.secondsSinceEpoch() - f18Timer < DOUBLE_TAP_DELAY then
+    f18Timer = 0
+    moveMouseToTopRight()
+    spoon.MouseCircle:show()
+  -- Single Tap
+  else
+    f18Timer = hs.timer.secondsSinceEpoch()
+
+    hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
+      if (f18Timer > 0) then  
+        f18Timer = 0
+        moveMouseToTopRightOfWindow()
+        spoon.MouseCircle:show()
+      end
+    end)
+  end
 end)
 hs.hotkey.bind({}, "f17", function()
-  moveMouseToBottomRight()
-  spoon.MouseCircle:show()
+  -- Double Tap
+  if f17Timer > 0 and hs.timer.secondsSinceEpoch() - f17Timer < DOUBLE_TAP_DELAY then
+    f17Timer = 0
+    moveMouseToBottomRight()
+    spoon.MouseCircle:show()
+  -- Single Tap
+  else
+    f17Timer = hs.timer.secondsSinceEpoch()
+
+    hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
+      if (f17Timer > 0) then  
+        f17Timer = 0
+        moveMouseToBottomRightOfWindow()
+        spoon.MouseCircle:show()
+      end
+    end)
+  end
 end)
 hs.hotkey.bind({}, "f15", function()
-  moveMouseToBottomLeft()
-  spoon.MouseCircle:show()
+  -- Double Tap
+  if f15Timer > 0 and hs.timer.secondsSinceEpoch() - f15Timer < DOUBLE_TAP_DELAY then
+    f15Timer = 0
+    moveMouseToBottomLeft()
+    spoon.MouseCircle:show()
+  -- Single Tap
+  else
+    f15Timer = hs.timer.secondsSinceEpoch()
+
+    hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
+      if (f15Timer > 0) then  
+        f15Timer = 0
+        moveMouseToBottomLeftOfWindow()
+        spoon.MouseCircle:show()
+      end
+    end)
+  end
 end)
 spoon.MicMute:bindHotkeys({
   toggle = { { "ctrl" }, "5" }
