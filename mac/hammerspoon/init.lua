@@ -429,7 +429,7 @@ local function moveMouseToTopRightOfWindow()
   local rect = window:frame()
   rect.w = rect.w / 2
   rect.h = rect.h / 2
-  rect.x = rect.w
+  rect.x = rect.x + rect.w
   local center = hs.geometry.rectMidPoint(rect)
   hs.mouse.setAbsolutePosition(center)
 end
@@ -439,7 +439,7 @@ local function moveMouseToBottomRightOfWindow()
   local rect = window:frame()
   rect.w = rect.w / 2
   rect.h = rect.h / 2
-  rect.x = rect.w
+  rect.x = rect.x + rect.w
   rect.y = rect.h
   local center = hs.geometry.rectMidPoint(rect)
   hs.mouse.setAbsolutePosition(center)
