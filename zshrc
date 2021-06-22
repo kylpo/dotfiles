@@ -63,8 +63,6 @@ source $ZSH/oh-my-zsh.sh
 
 source /opt/homebrew/etc/profile.d/z.sh
 
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
-
 #--------------------------------------------------
 # commands
 #--------------------------------------------------
@@ -333,3 +331,6 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 export QMK_HOME=$HOME/qmk_firmware
 export PATH="/usr/local/sbin:$PATH"
+
+# Local overrides and additions
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
