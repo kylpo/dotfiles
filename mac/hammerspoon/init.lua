@@ -463,6 +463,7 @@ local DOUBLE_TAP_DELAY = 0.20
 local f19Timer = 0
 local f18Timer = 0
 local f17Timer = 0
+local f16Timer = 0
 local f15Timer = 0
 
 -- function bypassBind(binding, mods, keycode)
@@ -514,8 +515,23 @@ hs.hotkey.bind({"ctrl"}, "s", function()
 end)
 
 hs.hotkey.bind({}, "f16", function()
-  moveMouseToCenter()
-  spoon.MouseCircle:show()
+  -- Double Tap
+  if f19Timer > 0 and hs.timer.secondsSinceEpoch() - f19Timer < DOUBLE_TAP_DELAY then
+    f16Timer = 0
+    moveMouseToCenter()
+    spoon.MouseCircle:show()
+  -- Single Tap
+  else
+    f16Timer = hs.timer.secondsSinceEpoch()
+
+    hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
+      if (f16Timer > 0) then  
+        f16Timer = 0
+        moveMouseToCenterOfWindow()
+        spoon.MouseCircle:show()
+      end
+    end)
+  end
 end)
 hs.hotkey.bind({}, "f19", function()
   -- Double Tap
