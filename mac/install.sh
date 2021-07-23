@@ -429,9 +429,9 @@ brew install ranger
 
 echo "Installing Quicklook plugins..."
 
-brew install qlmarkdown        # preview Markdown files
+# brew install qlmarkdown        # preview Markdown files
 brew install qlimagesize       # image dimensions
-brew install qlstephen         # preview plain text files without a extension
+# brew install qlstephen         # preview plain text files without a extension
 # brew cask install qlcolorcode       # preview source code with syntax highlight
 brew install quicklook-json    # preview JSON files
 #brew cask install quicklook-csv     # preview CSV files
