@@ -1,4 +1,5 @@
 local switcher = require 'switcher'
+local mouseJump = require 'mouseJump'
 local hotkey = require "hs.hotkey"
 
 local tronCyan = {["hex"]="#6FC3DF"}
@@ -342,118 +343,34 @@ capsEvent:start()
 -- end):start()
 
 ---- Update menubar after logging in
-wakeWatcher = hs.caffeinate.watcher
-wakeWatcher.new(function(event)
-  if event == pow.systemDidWake
-  then
-    -- isLocked = hs.eventtap.checkKeyboardModifiers().capslock
-    if (hs.eventtap.checkKeyboardModifiers().capslock) then
-      drawMenubarIndicator()
-    else
+hs.caffeinate.watcher.new(function(event)
+    -- if event == hs.caffeinate.watcher.systemDidWake
+    -- or event == hs.caffeinate.watcher.screensDidWake
+    if event == hs.caffeinate.watcher.screensDidUnlock
+    then
       deleteMenubarIndicator()
+  
+      if hs.eventtap.checkKeyboardModifiers().capslock then
+        drawMenubarIndicator()
+      end
     end
-  end
-end):start()
+  end):start()
 
---[ Mouse Jumps ]------------------------------------------------------------
-----\ Screen Jumps \---------------------------------------------------------
 
-local function moveMouseToCenter()
-  local screen = hs.mouse.getCurrentScreen()
-  -- local nextScreen = screen:next()
-  local rect = screen:fullFrame()
-  local center = hs.geometry.rectMidPoint(rect)
-  -- hs.mouse.setAbsolutePosition(center)
-  hs.mouse.setRelativePosition(center, screen)
-end
-
-local function moveMouseToTopLeft()
-  local screen = hs.mouse.getCurrentScreen()
-  local rect = screen:fullFrame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setRelativePosition(center, screen)
-end
-
-local function moveMouseToTopRight()
-  local screen = hs.mouse.getCurrentScreen()
-  local rect = screen:fullFrame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.x = rect.w
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setRelativePosition(center, screen)
-end
-
-local function moveMouseToBottomRight()
-  local screen = hs.mouse.getCurrentScreen()
-  local rect = screen:fullFrame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.x = rect.w
-  rect.y = rect.h
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setRelativePosition(center, screen)
-end
-
-local function moveMouseToBottomLeft()
-  local screen = hs.mouse.getCurrentScreen()
-  local rect = screen:fullFrame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.y = rect.h
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setRelativePosition(center, screen)
-end
-
-----\ Window Jumps \------------------------------------------------------------
-local function moveMouseToCenterOfWindow()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
-
-local function moveMouseToTopLeftOfWindow()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
-
-local function moveMouseToTopRightOfWindow()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.x = rect.x + rect.w
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
-
-local function moveMouseToBottomRightOfWindow()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.x = rect.x + rect.w
-  rect.y = rect.h
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
-
-local function moveMouseToBottomLeftOfWindow()
-  local window = hs.window.focusedWindow()
-  local rect = window:frame()
-  rect.w = rect.w / 2
-  rect.h = rect.h / 2
-  rect.y = rect.h
-  local center = hs.geometry.rectMidPoint(rect)
-  hs.mouse.setAbsolutePosition(center)
-end
+---- Update menubar after logging in
+-- wakeWatcher = hs.caffeinate.watcher
+-- wakeWatcher.new(function(event)
+--   if event == hs.caffeinate.watcher.systemDidWake
+--   or event == hs.caffeinate.watcher.screensDidWake
+--   then
+--     -- isLocked = hs.eventtap.checkKeyboardModifiers().capslock
+--     if (hs.eventtap.checkKeyboardModifiers().capslock) then
+--       drawMenubarIndicator()
+--     else
+--       deleteMenubarIndicator()
+--     end
+--   end
+-- end):start()
 
 -----------------------------------------------------------------------
 -- Bindings 
@@ -509,16 +426,16 @@ end)
 -- end)
 
 hs.hotkey.bind({"ctrl"}, "s", function()
-  moveMouseToCenterOfWindow()
+  mouseJump.toCenterOfWindow()
   spoon.MouseCircle:show()
   enableMouse()
 end)
 
 hs.hotkey.bind({}, "f16", function()
   -- Double Tap
-  if f19Timer > 0 and hs.timer.secondsSinceEpoch() - f19Timer < DOUBLE_TAP_DELAY then
+  if f16Timer > 0 and hs.timer.secondsSinceEpoch() - f16Timer < DOUBLE_TAP_DELAY then
     f16Timer = 0
-    moveMouseToCenter()
+    mouseJump.toCenter()
     spoon.MouseCircle:show()
   -- Single Tap
   else
@@ -527,7 +444,7 @@ hs.hotkey.bind({}, "f16", function()
     hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
       if (f16Timer > 0) then  
         f16Timer = 0
-        moveMouseToCenterOfWindow()
+        mouseJump.toCenterOfWindow()
         spoon.MouseCircle:show()
       end
     end)
@@ -537,7 +454,7 @@ hs.hotkey.bind({}, "f19", function()
   -- Double Tap
   if f19Timer > 0 and hs.timer.secondsSinceEpoch() - f19Timer < DOUBLE_TAP_DELAY then
     f19Timer = 0
-    moveMouseToTopLeft()
+    mouseJump.toTopLeft()
     spoon.MouseCircle:show()
   -- Single Tap
   else
@@ -546,7 +463,7 @@ hs.hotkey.bind({}, "f19", function()
     hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
       if (f19Timer > 0) then  
         f19Timer = 0
-        moveMouseToTopLeftOfWindow()
+        mouseJump.toTopLeftOfWindow()
         spoon.MouseCircle:show()
       end
     end)
@@ -556,7 +473,7 @@ hs.hotkey.bind({}, "f18", function()
   -- Double Tap
   if f18Timer > 0 and hs.timer.secondsSinceEpoch() - f18Timer < DOUBLE_TAP_DELAY then
     f18Timer = 0
-    moveMouseToTopRight()
+    mouseJump.toTopRight()
     spoon.MouseCircle:show()
   -- Single Tap
   else
@@ -565,7 +482,7 @@ hs.hotkey.bind({}, "f18", function()
     hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
       if (f18Timer > 0) then  
         f18Timer = 0
-        moveMouseToTopRightOfWindow()
+        mouseJump.toTopRightOfWindow()
         spoon.MouseCircle:show()
       end
     end)
@@ -575,7 +492,7 @@ hs.hotkey.bind({}, "f17", function()
   -- Double Tap
   if f17Timer > 0 and hs.timer.secondsSinceEpoch() - f17Timer < DOUBLE_TAP_DELAY then
     f17Timer = 0
-    moveMouseToBottomRight()
+    mouseJump.toBottomRight()
     spoon.MouseCircle:show()
   -- Single Tap
   else
@@ -584,7 +501,7 @@ hs.hotkey.bind({}, "f17", function()
     hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
       if (f17Timer > 0) then  
         f17Timer = 0
-        moveMouseToBottomRightOfWindow()
+        mouseJump.toBottomRightOfWindow()
         spoon.MouseCircle:show()
       end
     end)
@@ -594,7 +511,7 @@ hs.hotkey.bind({}, "f15", function()
   -- Double Tap
   if f15Timer > 0 and hs.timer.secondsSinceEpoch() - f15Timer < DOUBLE_TAP_DELAY then
     f15Timer = 0
-    moveMouseToBottomLeft()
+    mouseJump.toBottomLeft()
     spoon.MouseCircle:show()
   -- Single Tap
   else
@@ -603,7 +520,7 @@ hs.hotkey.bind({}, "f15", function()
     hs.timer.doAfter(DOUBLE_TAP_DELAY, function()
       if (f15Timer > 0) then  
         f15Timer = 0
-        moveMouseToBottomLeftOfWindow()
+        mouseJump.toBottomLeftOfWindow()
         spoon.MouseCircle:show()
       end
     end)
@@ -643,6 +560,11 @@ keyEvents = hs.eventtap.new({
   -- print(dump(appname))
 
   if flag.ctrl then
+    if keyCode == hs.keycodes.map["b"]
+    then
+      enableMouse()
+    end
+
     if keyCode == hs.keycodes.map["i"]
     or keyCode == hs.keycodes.map["a"]
     then
@@ -795,9 +717,14 @@ local xcodeKeybinds = {
 }
 
 local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
--- print(name)  
+  -- print("eventType")
+  -- print(eventType)
+  -- print("hs.application.watcher.activated")  
+  -- print(hs.application.watcher.activated)  
   if eventType ~= hs.application.watcher.activated then return end
   local fnName = name == "Xcode" and "enable" or "disable"
+  -- print("fnNam")
+  -- print(fnName)
   for i, keybind in ipairs(xcodeKeybinds) do
     keybind[fnName](keybind)
   end
