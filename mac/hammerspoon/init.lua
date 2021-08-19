@@ -71,9 +71,9 @@ switcher_space = switcher.new(
   hs.window.filter.new():setCurrentSpace(true):setDefaultFilter{},
   {
     showTitles=false, -- disable text label over thumbnail
-    showThumbnails=true, -- show app preview in thumbnail
+    showThumbnails=false, -- show app preview in thumbnail
     showSelectedThumbnail=false, -- disable large preview
-    thumbnailSize = 256, -- double size of thumbnails (may big too big for laptop-mode?)
+    thumbnailSize = 256, -- double size of thumbnails (may be too big for laptop-mode?)
     highlightColor = focusColor
   }
 )
@@ -175,18 +175,19 @@ function disableFocusBorder()
 end
 
 --[ Menubar Focus ]----------------------------------------------------
-menubarIndicator = nil
+menubarIndicators = {}
 
 function drawMenubarIndicator()
-  if menubarIndicator == nil then
+  -- if menubarIndicator == nil then
 
   -- hs.drawing.color.x11.red
   screens = hs.screen.allScreens()
   for i,screen in ipairs(screens) do
+    -- local screen = hs.screen.primaryScreen()
     local screeng = screen:fullFrame()
     local width = screeng.w
     height = (screen:frame().y - screeng.y)
-    menubarIndicator = hs.drawing.rectangle(hs.geometry.rect(screeng.x+(width*(i-1)), screeng.y,
+    local menubarIndicator = hs.drawing.rectangle(hs.geometry.rect(screeng.x, screeng.y,
                                         width, height))
     -- c:setFillColor(hs.drawing.color.x11.orangeRed)
     -- menubarIndicator:setFillColor(tronOrange)
@@ -198,15 +199,26 @@ function drawMenubarIndicator()
     menubarIndicator:setStroke(false)
     menubarIndicator:setBehavior(hs.drawing.windowBehaviors.canJoinAllSpaces)
     menubarIndicator:show()
+    -- print(dump(menubarIndicator))
+
+    table.insert(menubarIndicators, menubarIndicator)
   end
-end
+-- end
 end
 
 function deleteMenubarIndicator()
-  if menubarIndicator ~= nil then
+  -- print("delete menubars")
+  -- print(dump(menubarIndicators))
+
+  for _, menubarIndicator in pairs(menubarIndicators) do
+    -- print("delete menubar")
+    -- print(menubarIndicator)
+
     menubarIndicator:delete()
-    menubarIndicator = nil
+    -- menubarIndicator = nil
   end
+
+  menubarIndicators = {}
 end
 
 --[ Mouse Mode ]------------------------------------------------------------
@@ -232,7 +244,7 @@ end
 
 function enableMouse()
   hs.hid.capslock.set(true)
-  print("enableMouse()")
+  -- print("enableMouse()")
   focusMouse()
  
   -- drawMenubarIndicator()
@@ -344,6 +356,8 @@ capsEvent:start()
 
 ---- Update menubar after logging in
 hs.caffeinate.watcher.new(function(event)
+  print("caffeinate event: ")
+  print(event)
     -- if event == hs.caffeinate.watcher.systemDidWake
     -- or event == hs.caffeinate.watcher.screensDidWake
     if event == hs.caffeinate.watcher.screensDidUnlock
@@ -356,6 +370,28 @@ hs.caffeinate.watcher.new(function(event)
     end
   end):start()
 
+  ---- Update menubar after [dis]connecting monitors
+local num_of_screens =  #hs.screen.allScreens()
+hs.screen.watcher.new(function(e)
+  -- This function fires twice when a monitor is added/removed:
+  --   Once before the change (stored num_of_screens is different from current value)
+  --   Once after the change (stored num_of_screens is same as current value)
+  if num_of_screens == #hs.screen.allScreens() then
+    if hs.eventtap.checkKeyboardModifiers().capslock then
+      -- hs.timer.doAfter(0.5, function()
+        deleteMenubarIndicator()
+        drawMenubarIndicator()
+      -- end)
+      
+    end
+  end
+  
+  -- print("screens before:")
+  -- print(num_of_screens)
+  num_of_screens = #hs.screen.allScreens()
+  -- print("screens after:")
+  -- print(num_of_screens)
+end):start()
 
 ---- Update menubar after logging in
 -- wakeWatcher = hs.caffeinate.watcher
@@ -560,12 +596,14 @@ keyEvents = hs.eventtap.new({
   -- print(dump(appname))
 
   if flag.ctrl then
+    -- Screenshot mode
     if keyCode == hs.keycodes.map["b"]
     then
       enableMouse()
     end
 
     if keyCode == hs.keycodes.map["i"]
+    -- Action mode
     or keyCode == hs.keycodes.map["a"]
     then
       disableMouse()
