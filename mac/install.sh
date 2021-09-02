@@ -956,7 +956,37 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print"            
 
 # QUIT
 # ----
-./update-quit-shortcut.sh
+update_quit_keybind() {
+  for absoluteFile in "$1"*.app; do
+    bundleId=$(mdls -name kMDItemCFBundleIdentifier -raw "$absoluteFile")
+    file="${absoluteFile##*/}"
+    name="${file%%.*}"
+
+    # Overrides (where Quit command does not match its app name)
+    if [[ $name == "1Password 7" ]]
+    then
+      name="1Password"
+    elif [[ $name == "iTerm" ]]
+    then
+      name="iTerm2"
+    elif [[ $name == "VoiceMemos" ]]
+    then
+      name="Voice Memos"
+    elif [[ $name == "Xcode-beta" ]]
+    then
+      name="Xcode"
+    fi
+    # Did you miss one? Delete it with below's command, then add the correction here
+    # `defaults delete com.apple.dt.Xcode NSUserKeyEquivalents`
+
+    echo "[Updating Quit keybind] $bundleId ___ $name"
+    defaults write "$bundleId" NSUserKeyEquivalents -dict-add "Quit $name" "${CTRL}${SHIFT}j"
+  done
+}
+
+update_quit_keybind "/Applications/"
+update_quit_keybind "/System/Applications/"
+update_quit_keybind "/System/Applications/Utilities/"
 
 # Chrome
 # ----
@@ -1015,11 +1045,14 @@ if [ -f "$XCODE_PATH" ]; then
   #     <key>Delete Line</key>
   #     <string>selectLine:, deleteBackward:</string>
   # </dict>
+  
   sudo /usr/libexec/PlistBuddy                                               \
     -c "Delete :Custom"\
     -c "Add    :Custom dict"\
     -c "Add    :Custom:Move\ Down\ 20 string moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, moveDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:"\
+    -c "Add    :Custom:Move\ Selection\ Down\ 20 string moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, moveDownAndModifySelection:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:, scrollLineDown:"\
     -c "Add    :Custom:Move\ Up\ 20 string moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, moveUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:"\
+    -c "Add    :Custom:Move\ Selection\ Up\ 20 string moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, moveUpAndModifySelection:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:, scrollLineUp:"\
     -c "Add    :Custom:Insert\ Newline\ Above string moveUp:, moveToEndOfLine:, insertNewline:"\
     -c "Add    :Custom:Insert\ Newline\ Below string moveToEndOfLine:, insertNewline:"\
     -c "Add    :Custom:Join string moveToEndOfLine:, moveWordRightAndModifySelection:, moveWordLeftAndModifySelection:, delete:"\

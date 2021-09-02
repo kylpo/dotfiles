@@ -371,27 +371,27 @@ hs.caffeinate.watcher.new(function(event)
   end):start()
 
   ---- Update menubar after [dis]connecting monitors
-local num_of_screens =  #hs.screen.allScreens()
-hs.screen.watcher.new(function(e)
-  -- This function fires twice when a monitor is added/removed:
-  --   Once before the change (stored num_of_screens is different from current value)
-  --   Once after the change (stored num_of_screens is same as current value)
-  if num_of_screens == #hs.screen.allScreens() then
-    if hs.eventtap.checkKeyboardModifiers().capslock then
-      -- hs.timer.doAfter(0.5, function()
-        deleteMenubarIndicator()
-        drawMenubarIndicator()
-      -- end)
+-- local num_of_screens =  #hs.screen.allScreens()
+-- hs.screen.watcher.new(function(e)
+--   -- This function fires twice when a monitor is added/removed:
+--   --   Once before the change (stored num_of_screens is different from current value)
+--   --   Once after the change (stored num_of_screens is same as current value)
+--   if num_of_screens == #hs.screen.allScreens() then
+--     if hs.eventtap.checkKeyboardModifiers().capslock then
+--       -- hs.timer.doAfter(0.5, function()
+--         deleteMenubarIndicator()
+--         drawMenubarIndicator()
+--       -- end)
       
-    end
-  end
+--     end
+--   end
   
-  -- print("screens before:")
-  -- print(num_of_screens)
-  num_of_screens = #hs.screen.allScreens()
-  -- print("screens after:")
-  -- print(num_of_screens)
-end):start()
+--   -- print("screens before:")
+--   -- print(num_of_screens)
+--   num_of_screens = #hs.screen.allScreens()
+--   -- print("screens after:")
+--   -- print(num_of_screens)
+-- end):start()
 
 ---- Update menubar after logging in
 -- wakeWatcher = hs.caffeinate.watcher
