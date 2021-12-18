@@ -52,6 +52,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Show volume in the menu bar
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -int 1
 
+# Make crash reports show up as a notification, not as a modal
+defaults write com.apple.CrashReporter UseUNC 1
+
 ###############################################################################
 # Sound
 ###############################################################################
