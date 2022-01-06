@@ -34,8 +34,6 @@ export EDITOR=nvim
 # export FZF_DEFAULT_COMMAND='ag -g ""'   # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as the default source for fzf
 
-export NPM_TOKEN='ee705bb5-7610-4d56-a158-298dfe896c09'
-
 # history size
 export HISTFILESIZE=10000
 export HISTSIZE=10000
