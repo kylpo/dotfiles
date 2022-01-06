@@ -36,6 +36,10 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'   # Setting ag as t
 
 export NPM_TOKEN='ee705bb5-7610-4d56-a158-298dfe896c09'
 
+# history size
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+
 #--------------------------------------------------
 # oh-my-zsh
 #--------------------------------------------------
