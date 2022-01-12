@@ -431,7 +431,7 @@ local f15Timer = 0
 hs.hotkey.bind('ctrl','t', function()
   switcher_space:next()
 end)
-hs.hotkey.bind('ctrl','n', function()
+hs.hotkey.bind('ctrl','h', function()
   switcher_space:previous()
 end)
 

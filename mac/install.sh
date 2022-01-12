@@ -619,6 +619,18 @@ echo "Done installing apps!"
 # Print yours with:
 #   /usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist
 
+
+UNICODE_D="100"
+UNICODE_M="109"
+UNICODE_W="119"
+UNICODE_Y="121"
+UNICODE_=""
+KEY_D="2"
+KEY_M="46"
+KEY_W="13"
+KEY_Y="16"
+KEY_=""
+
 # Mission Control: Ctrl + m
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "
   <dict>
@@ -630,8 +642,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>109</integer>
-        <integer>46</integer>
+        <integer>${UNICODE_W}</integer>
+        <integer>${KEY_W}</integer>
         <integer>262144</integer>
       </array>
     </dict>
@@ -647,8 +659,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>109</integer>
-        <integer>46</integer>
+        <integer>${UNICODE_W}</integer>
+        <integer>${KEY_W}</integer>
         <integer>393216</integer>
       </array>
     </dict>
@@ -740,8 +752,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 16
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>104</integer>
-        <integer>4</integer>
+        <integer>${UNICODE_D}</integer>
+        <integer>${KEY_D}</integer>
         <integer>262144</integer>
       </array>
     </dict>
@@ -759,8 +771,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>100</integer>
-        <integer>46</integer>
+        <integer>${UNICODE_M}</integer>
+        <integer>${KEY_M}</integer>
         <integer>262144</integer>
       </array>
     </dict>
@@ -776,8 +788,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>100</integer>
-        <integer>46</integer>
+        <integer>${UNICODE_M}</integer>
+        <integer>${KEY_M}</integer>
         <integer>393216</integer>
       </array>
     </dict>
@@ -795,8 +807,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>119</integer>
-        <integer>13</integer>
+        <integer>${UNICODE_Y}</integer>
+        <integer>${KEY_Y}</integer>
         <integer>262144</integer>
       </array>
     </dict>
@@ -812,8 +824,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>119</integer>
-        <integer>13</integer>
+        <integer>${UNICODE_Y}</integer>
+        <integer>${KEY_Y}</integer>
         <integer>393216</integer>
       </array>
     </dict>
@@ -916,15 +928,15 @@ done
 # Global
 # ------
 # Change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}${SPACE}"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}${SPACE}"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}${SPACE}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}n"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}o"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}o"
 # New tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}c"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}${SPACE}"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}n"
 # Close tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}o"
 # Reopen tab
@@ -935,7 +947,7 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview"   "${CTRL}${SHIFT}m"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs"     "${CTRL}${SHIFT}m"
 # Move tab
-defaults write "$Safari" NSUserKeyEquivalents -dict-add "Move Tab to New Window"   "${CTRL}${SHIFT}n"
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Move Tab to New Window"   "${CTRL}${SHIFT}h"
 # New window
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"          "${CTRL}r"
 # Close window
@@ -950,8 +962,8 @@ defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."      
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
 # History
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}d"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}w"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}m"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}y"
 
 # DISABLES
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "${DISABLED}"
