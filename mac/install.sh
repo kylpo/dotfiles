@@ -115,6 +115,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 2
 
+# [Needed for vim] holding a key repeats the press (prevents the Hold -> menu feature)
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Custom substitutions
 defaults write -g NSUserDictionaryReplacementItems '(
 )'
