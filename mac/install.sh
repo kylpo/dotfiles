@@ -622,19 +622,63 @@ echo "Done installing apps!"
 # Print yours with:
 #   /usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys" ~/Library/Preferences/com.apple.symbolichotkeys.plist
 
+CONTROL="262144"
+SHIFT_CONTROL="393216"
 
+UNICODE_A="97"
+UNICODE_B="98"
+UNICODE_C="99"
 UNICODE_D="100"
+UNICODE_E="101"
+UNICODE_F="102"
+UNICODE_G="103"
+UNICODE_H="104"
+UNICODE_I="105"
+UNICODE_J="106"
+UNICODE_K="107"
+UNICODE_L="108"
 UNICODE_M="109"
+UNICODE_N="110"
+UNICODE_O="111"
+UNICODE_P="112"
+UNICODE_Q="113"
+UNICODE_R="114"
+UNICODE_S="115"
+UNICODE_T="116"
+UNICODE_U="117"
+UNICODE_V="118"
 UNICODE_W="119"
+UNICODE_X="120"
 UNICODE_Y="121"
-UNICODE_=""
+UNICODE_Z="122"
+KEY_A="0"
+KEY_B="11"
+KEY_C="8"
 KEY_D="2"
+KEY_E="14"
+KEY_F="3"
+KEY_G="5"
+KEY_H="4"
+KEY_I="34"
+KEY_J="38"
+KEY_K="40"
+KEY_L="37"
 KEY_M="46"
+KEY_N="45"
+KEY_O="31"
+KEY_P="35"
+KEY_Q="12"
+KEY_R="15"
+KEY_S="1"
+KEY_T="17"
+KEY_U="32"
+KEY_V="9"
 KEY_W="13"
+KEY_X="7"
 KEY_Y="16"
-KEY_=""
+KEY_Z="6"
 
-# Mission Control: Ctrl + m
+# Mission Control
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32 "
   <dict>
     <key>enabled</key>
@@ -647,7 +691,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32
       <array>
         <integer>${UNICODE_W}</integer>
         <integer>${KEY_W}</integer>
-        <integer>262144</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
@@ -664,13 +708,13 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
       <array>
         <integer>${UNICODE_W}</integer>
         <integer>${KEY_W}</integer>
-        <integer>393216</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Show Desktop: Ctrl + l
+# Show Desktop
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 36 "
   <dict>
     <key>enabled</key>
@@ -681,9 +725,9 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 36
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>108</integer>
-        <integer>37</integer>
-        <integer>262144</integer>
+        <integer>${UNICODE_L}</integer>
+        <integer>${KEY_L}</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
@@ -698,15 +742,15 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>108</integer>
-        <integer>37</integer>
-        <integer>393216</integer>
+        <integer>${UNICODE_L}</integer>
+        <integer>${KEY_L}</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
 " 
 
-# Show Spotlight: Ctrl + a
+# Show Spotlight
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "
   <dict>
     <key>enabled</key>
@@ -717,15 +761,15 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>97</integer>
-        <integer>0</integer>
-        <integer>262144</integer>
+        <integer>${UNICODE_A}</integer>
+        <integer>${KEY_A}</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Show Spotlight (Files): Ctrl + Shift + a
+# Show Spotlight (Files)
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 65 "
   <dict>
     <key>enabled</key>
@@ -736,15 +780,15 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 65
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>97</integer>
-        <integer>0</integer>
-        <integer>393216</integer>
+        <integer>${UNICODE_A}</integer>
+        <integer>${KEY_A}</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Toggle Notifications: Ctrl + h
+# Toggle Notifications
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 163 "
   <dict>
     <key>enabled</key>
@@ -757,13 +801,13 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 16
       <array>
         <integer>${UNICODE_D}</integer>
         <integer>${KEY_D}</integer>
-        <integer>262144</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Move Space Left: Ctrl + d
+# Move Space Left
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "
   <dict>
     <key>enabled</key>
@@ -776,7 +820,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79
       <array>
         <integer>${UNICODE_M}</integer>
         <integer>${KEY_M}</integer>
-        <integer>262144</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
@@ -793,13 +837,13 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80
       <array>
         <integer>${UNICODE_M}</integer>
         <integer>${KEY_M}</integer>
-        <integer>393216</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Move Space Right: Ctrl + w
+# Move Space Right
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81 "
   <dict>
     <key>enabled</key>
@@ -812,7 +856,7 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81
       <array>
         <integer>${UNICODE_Y}</integer>
         <integer>${KEY_Y}</integer>
-        <integer>262144</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
@@ -829,13 +873,13 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82
       <array>
         <integer>${UNICODE_Y}</integer>
         <integer>${KEY_Y}</integer>
-        <integer>393216</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Screenshot Area: Ctrl + b
+# Screenshot Area
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30 "
   <dict>
     <key>enabled</key>
@@ -846,15 +890,15 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>98</integer>
-        <integer>11</integer>
-        <integer>262144</integer>
+        <integer>${UNICODE_B}</integer>
+        <integer>${KEY_B}</integer>
+        <integer>${CONTROL}</integer>
       </array>
     </dict>
   </dict>
 "
 
-# Screenshot Area to Clipboard: Ctrl + Shift + b
+# Screenshot Area to Clipboard
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31 "
   <dict>
     <key>enabled</key>
@@ -865,9 +909,9 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>98</integer>
-        <integer>11</integer>
-        <integer>393216</integer>
+        <integer>${UNICODE_B}</integer>
+        <integer>${KEY_B}</integer>
+        <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
   </dict>
