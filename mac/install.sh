@@ -689,8 +689,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 32
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_W}</integer>
-        <integer>${KEY_W}</integer>
+        <integer>${UNICODE_M}</integer>
+        <integer>${KEY_M}</integer>
         <integer>${CONTROL}</integer>
       </array>
     </dict>
@@ -706,8 +706,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_W}</integer>
-        <integer>${KEY_W}</integer>
+        <integer>${UNICODE_M}</integer>
+        <integer>${KEY_M}</integer>
         <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
@@ -799,8 +799,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 16
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_D}</integer>
-        <integer>${KEY_D}</integer>
+        <integer>${UNICODE_G}</integer>
+        <integer>${KEY_G}</integer>
         <integer>${CONTROL}</integer>
       </array>
     </dict>
@@ -818,8 +818,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_M}</integer>
-        <integer>${KEY_M}</integer>
+        <integer>${UNICODE_H}</integer>
+        <integer>${KEY_H}</integer>
         <integer>${CONTROL}</integer>
       </array>
     </dict>
@@ -835,8 +835,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 80
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_M}</integer>
-        <integer>${KEY_M}</integer>
+        <integer>${UNICODE_H}</integer>
+        <integer>${KEY_H}</integer>
         <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
@@ -854,8 +854,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_Y}</integer>
-        <integer>${KEY_Y}</integer>
+        <integer>${UNICODE_W}</integer>
+        <integer>${KEY_W}</integer>
         <integer>${CONTROL}</integer>
       </array>
     </dict>
@@ -871,8 +871,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 82
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_Y}</integer>
-        <integer>${KEY_Y}</integer>
+        <integer>${UNICODE_W}</integer>
+        <integer>${KEY_W}</integer>
         <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
@@ -890,8 +890,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 30
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_B}</integer>
-        <integer>${KEY_B}</integer>
+        <integer>${UNICODE_Q}</integer>
+        <integer>${KEY_Q}</integer>
         <integer>${CONTROL}</integer>
       </array>
     </dict>
@@ -909,8 +909,8 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 31
       <string>standard</string>
       <key>parameters</key>
       <array>
-        <integer>${UNICODE_B}</integer>
-        <integer>${KEY_B}</integer>
+        <integer>${UNICODE_Q}</integer>
+        <integer>${KEY_Q}</integer>
         <integer>${SHIFT_CONTROL}</integer>
       </array>
     </dict>
@@ -975,17 +975,17 @@ done
 # Global
 # ------
 # Change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}n"
 # New tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}c"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}o"
 # Close tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}n"
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" "${CTRL}${SHIFT}t"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"   "${CTRL}${SHIFT}t"
@@ -994,11 +994,11 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Tab Overview"   "${CTRL}${SHIFT}m"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Exposé all Tabs"     "${CTRL}${SHIFT}m"
 # Move tab
-defaults write "$Safari" NSUserKeyEquivalents -dict-add "Move Tab to New Window"   "${CTRL}${SHIFT}h"
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Move Tab to New Window"   "${CTRL}${SHIFT}r"
 # New window
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"          "${CTRL}r"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"          "${CTRL}y"
 # Close window
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Window"        "${CTRL}${SHIFT}r"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Window"        "${CTRL}${SHIFT}y"
 # Lock Screen
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"         "${CTRL}${SHIFT}l"
 # Select
@@ -1009,8 +1009,8 @@ defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."      
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
 # History
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}m"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}y"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}h"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}w"
 
 # DISABLES
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Minimize"            "${DISABLED}"

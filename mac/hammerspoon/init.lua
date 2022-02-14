@@ -431,7 +431,7 @@ local f15Timer = 0
 hs.hotkey.bind('ctrl','t', function()
   switcher_space:next()
 end)
-hs.hotkey.bind('ctrl','h', function()
+hs.hotkey.bind('ctrl','r', function()
   switcher_space:previous()
 end)
 
@@ -462,6 +462,12 @@ end)
 -- end)
 
 hs.hotkey.bind({"ctrl"}, "s", function()
+  mouseJump.toCenterOfWindow()
+  spoon.MouseCircle:show()
+  enableMouse()
+end)
+
+hs.hotkey.bind({"cmd"}, "space", function()
   mouseJump.toCenterOfWindow()
   spoon.MouseCircle:show()
   enableMouse()
@@ -597,7 +603,7 @@ keyEvents = hs.eventtap.new({
 
   if flag.ctrl then
     -- Screenshot mode
-    if keyCode == hs.keycodes.map["b"]
+    if keyCode == hs.keycodes.map["q"]
     then
       enableMouse()
     end
