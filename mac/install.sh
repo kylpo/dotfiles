@@ -975,17 +975,17 @@ done
 # Global
 # ------
 # Change tabs
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}o"
 # New tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}c"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}n"
 # Close tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}n"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}o"
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" "${CTRL}${SHIFT}t"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"   "${CTRL}${SHIFT}t"
@@ -1018,6 +1018,8 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Print"            
 
 # QUIT
 # ----
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Quit"               "${CTRL}${SHIFT}j"
+
 update_quit_keybind() {
   for absoluteFile in "$1"*.app; do
     bundleId=$(mdls -name kMDItemCFBundleIdentifier -raw "$absoluteFile")
