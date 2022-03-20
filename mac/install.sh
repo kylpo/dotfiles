@@ -978,14 +978,14 @@ done
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Next Tab"       "${CTRL}n"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Next Tab"            "${CTRL}n"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Next Tab"     "${CTRL}n"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}o"
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Show Previous Tab"   "${CTRL}i"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select Previous Tab" "${CTRL}i"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Previous Tab"        "${CTRL}i"
 # New tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}c"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab"             "${CTRL}l"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Tab at End"      "${CTRL}${SHIFT}n"
 # Close tab
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}o"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Tab"           "${CTRL}${SHIFT}i"
 # Reopen tab
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Last Closed Tab" "${CTRL}${SHIFT}t"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Reopen Closed Tab"   "${CTRL}${SHIFT}t"
@@ -1000,14 +1000,14 @@ defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "New Window"       
 # Close window
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Close Window"        "${CTRL}${SHIFT}y"
 # Lock Screen
-defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"         "${CTRL}${SHIFT}l"
+defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Lock Screen"         "${CTRL}${SHIFT}d"
 # Select
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Select All"          "${CMD}${SHIFT}e"
 # Open
 defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
-defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
+defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}i"
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
-defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
+defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}i"
 # History
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}h"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}w"

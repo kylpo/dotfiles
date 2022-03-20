@@ -428,12 +428,12 @@ local f15Timer = 0
 -- end
 
 -- Now using Witch instead, since Switch would miss newly created windows
-hs.hotkey.bind('ctrl','t', function()
-  switcher_space:next()
-end)
-hs.hotkey.bind('ctrl','r', function()
-  switcher_space:previous()
-end)
+-- hs.hotkey.bind('ctrl','t', function()
+--   switcher_space:next()
+-- end)
+-- hs.hotkey.bind('ctrl','r', function()
+--   switcher_space:previous()
+-- end)
 
 -- hs.hotkey.bind({'ctrl', 'shift'},'t', function()
 --   local app = hs.application.frontmostApplication()
@@ -461,7 +461,7 @@ end)
 --   end
 -- end)
 
-hs.hotkey.bind({"ctrl"}, "s", function()
+hs.hotkey.bind({"ctrl"}, "c", function()
   mouseJump.toCenterOfWindow()
   spoon.MouseCircle:show()
   enableMouse()
@@ -568,14 +568,14 @@ hs.hotkey.bind({}, "f15", function()
     end)
   end
 end)
-spoon.MicMute:bindHotkeys({
-  toggle = { { "ctrl" }, "5" }
-})
+-- spoon.MicMute:bindHotkeys({
+--   toggle = { { "ctrl" }, "5" }
+-- })
 -- spoon.HoldToQuit:bindHotkeys({
 --   quit = { { "ctrl", "shift" }, "k" }
 -- })
 spoon.ClipboardTool:bindHotkeys({
-  show_clipboard = { { "cmd", "shift" }, "8" }
+  show_clipboard = { { "cmd" }, "'" };
 })
 -- hs.hotkey.bind({"ctrl"}, "g", function()
 --   spoon.CountDown:startFor(1)
