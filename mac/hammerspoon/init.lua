@@ -243,9 +243,11 @@ function disableMouse()
 end
 
 function enableMouse()
-  hs.hid.capslock.set(true)
-  -- print("enableMouse()")
-  focusMouse()
+  if not hs.hid.capslock.get() then
+    hs.hid.capslock.set(true)
+    -- print("enableMouse()")
+    focusMouse()
+  end
  
   -- drawMenubarIndicator()
   -- hs.eventtap.event.newKeyEvent(hs.keycodes.map.capslock, true):post();
@@ -604,6 +606,8 @@ keyEvents = hs.eventtap.new({
   if flag.ctrl then
     -- Screenshot mode
     if keyCode == hs.keycodes.map["q"]
+    -- Expose
+    or keyCode == hs.keycodes.map["m"]
     then
       enableMouse()
     end
@@ -616,7 +620,7 @@ keyEvents = hs.eventtap.new({
     end
 
     if appname == "Safari" or appname == "Google Chrome" then
-      if keyCode == hs.keycodes.map["c"]
+      if keyCode == hs.keycodes.map["l"]
       and not flag.shift
       then
           disableMouse()
