@@ -1,0 +1,90 @@
+{
+  "settingsVersion": "1.67",
+  "exclusionRules": [
+    {
+      "pattern": "http*://mail.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "http*://www.google.com/reader/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "http*://www.gliffy.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "http://chrome.supergiantgames.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "http*://inbox.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://medium.com/*/edit",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://github.com/*",
+      "passKeys": "t"
+    },
+    {
+      "pattern": "https?://keep.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.keyhero.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://wpm-test.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://oregon.statefillableforms.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://zty.pe/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "http*://docs.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://excalidraw.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.asetniop.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://asetniop.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://config.qmk.fm/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.\n\nunmapAll\n\nmap i LinkHints.activateMode\nmap I LinkHints.activateModeToOpenInNewTab\nmap u LinkHints.activateModeToOpenInNewTab\n\nmap t scrollDown\nmap r scrollUp\nmap o scrollLeft\nmap n scrollRight\nmap e scrollPageDown\nmap c scrollPageUp\nmap C scrollToTop\nmap E scrollToBottom\nmap s goBack\nmap w goForward\n\n#unmap H\n#unmap d\n#unmap u\n#unmap G\n#unmap gg",
+  "linkHintCharacters": "etanio",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: https://www.google.com/search?q=%s Google\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: https://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
