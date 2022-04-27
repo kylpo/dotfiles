@@ -373,6 +373,8 @@ DOWN='\U2193'
 LEFT='\U2190'
 RIGHT='\U2192'
 SPACE='\U0020'
+DELETE='\U007F'
+BACKSPACE='\U0008'
 DISABLED='\U0000'
 
 Chrome="com.google.Chrome"   # bundleIdentifier /Applications/Google\ Chrome.app
@@ -490,6 +492,7 @@ defaults write "$Mail" NSUserKeyEquivalents -dict-add "\033Message\033Send Again
 # Finder
 # ------
 # defaults write com.apple.finder NSUserKeyEquivalents -dict-add "\033File\033Quick Look" "@\U0020"
+defaults write com.apple.finder NSUserKeyEquivalents -dict-add 'Move to Trash' "${DELETE}"
 
 # Xcode
 # ------
