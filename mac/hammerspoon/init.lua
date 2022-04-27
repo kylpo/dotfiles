@@ -27,7 +27,7 @@ end
 -----------------------------------------------------------------------
 
 --[ Spoons ]-----------------------------------------------------------
-hs.loadSpoon("MicMute")
+-- hs.loadSpoon("MicMute")
 -- hs.loadSpoon("HoldToQuit")
 -- hs.loadSpoon("CountDown")
 
@@ -44,6 +44,7 @@ spoon.MouseCircle.color = tronOrange
 hs.loadSpoon("ClipboardTool")
 spoon.ClipboardTool.show_copied_alert = false
 spoon.ClipboardTool.paste_on_select = true
+spoon.ClipboardTool.show_in_menubar = false
 spoon.ClipboardTool:start()
 
 
@@ -79,18 +80,18 @@ switcher_space = switcher.new(
 )
 
 --[ Caffeine ]---------------------------------------------------------
-caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-    if state then
-        caffeine:setTitle("AWAKE")
-    else
-        caffeine:setTitle("SLEEPY")
-    end
-end
+-- caffeine = hs.menubar.new()
+-- function setCaffeineDisplay(state)
+--     if state then
+--         caffeine:setTitle("AWAKE")
+--     else
+--         caffeine:setTitle("SLEEPY")
+--     end
+-- end
 
-function caffeineClicked()
-    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-end
+-- function caffeineClicked()
+--     setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+-- end
 
 -- if caffeine then
 --     caffeine:setClickCallback(caffeineClicked)
