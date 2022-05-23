@@ -132,6 +132,7 @@ redrawBorder()
 allwindows = hs.window.filter.new(nil)
 allwindows:subscribe({
   hs.window.filter.windowCreated,
+  hs.window.filter.windowDestroyed,
   hs.window.filter.windowFocused,
   hs.window.filter.windowMoved,
   hs.window.filter.windowUnfocused
