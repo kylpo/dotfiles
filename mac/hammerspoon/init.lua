@@ -41,11 +41,14 @@ hs.loadSpoon("MouseCircle")
 spoon.MouseCircle.color = tronOrange
 
 ---- Clipboard
-hs.loadSpoon("ClipboardTool")
-spoon.ClipboardTool.show_copied_alert = false
-spoon.ClipboardTool.paste_on_select = true
-spoon.ClipboardTool.show_in_menubar = false
-spoon.ClipboardTool:start()
+-- hs.loadSpoon("ClipboardTool")
+-- spoon.ClipboardTool.show_copied_alert = false
+-- spoon.ClipboardTool.paste_on_select = true
+-- spoon.ClipboardTool.show_in_menubar = false
+-- spoon.ClipboardTool:start()
+-- spoon.ClipboardTool:bindHotkeys({
+--   show_clipboard = { { "cmd" }, "'" };
+-- })
 
 
 ---- MoveSpaces
@@ -578,9 +581,6 @@ end)
 -- spoon.HoldToQuit:bindHotkeys({
 --   quit = { { "ctrl", "shift" }, "k" }
 -- })
-spoon.ClipboardTool:bindHotkeys({
-  show_clipboard = { { "cmd" }, "'" };
-})
 -- hs.hotkey.bind({"ctrl"}, "g", function()
 --   spoon.CountDown:startFor(1)
 -- end)
