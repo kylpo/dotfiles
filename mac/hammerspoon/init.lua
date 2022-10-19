@@ -468,17 +468,17 @@ local f15Timer = 0
 --   end
 -- end)
 
-hs.hotkey.bind({"ctrl"}, "c", function()
-  mouseJump.toCenterOfWindow()
-  spoon.MouseCircle:show()
-  enableMouse()
-end)
+-- hs.hotkey.bind({"ctrl"}, "c", function()
+--   mouseJump.toCenterOfWindow()
+--   spoon.MouseCircle:show()
+--   enableMouse()
+-- end)
 
-hs.hotkey.bind({"cmd"}, "space", function()
-  mouseJump.toCenterOfWindow()
-  spoon.MouseCircle:show()
-  enableMouse()
-end)
+-- hs.hotkey.bind({"cmd"}, "space", function()
+--   mouseJump.toCenterOfWindow()
+--   spoon.MouseCircle:show()
+--   enableMouse()
+-- end)
 
 hs.hotkey.bind({}, "f16", function()
   -- Double Tap
