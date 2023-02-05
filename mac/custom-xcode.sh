@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+#
+# Documentation on available commands: https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
+#
+
 # XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 

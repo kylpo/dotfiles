@@ -766,7 +766,11 @@ local xcodeKeybinds = {
   --  end),
 }
 
-local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+-- Note: xcodeWatcher must NOT be a `local` var!
+--   I don't know why, but I was just bitten by this.
+xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+  -- print("name")
+  -- print(name)
   -- print("eventType")
   -- print(eventType)
   -- print("hs.application.watcher.activated")  

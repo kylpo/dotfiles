@@ -129,40 +129,40 @@ defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 34
 "
 
 # Show Desktop
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 36 "
-  <dict>
-    <key>enabled</key>
-    <true/>
-    <key>value</key>
-    <dict>
-      <key>type</key>
-      <string>standard</string>
-      <key>parameters</key>
-      <array>
-        <integer>${UNICODE_D}</integer>
-        <integer>${KEY_D}</integer>
-        <integer>${CONTROL}</integer>
-      </array>
-    </dict>
-  </dict>
-"
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37 "
-  <dict>
-    <key>enabled</key>
-    <true/>
-    <key>value</key>
-    <dict>
-      <key>type</key>
-      <string>standard</string>
-      <key>parameters</key>
-      <array>
-        <integer>${UNICODE_D}</integer>
-        <integer>${KEY_D}</integer>
-        <integer>${SHIFT_CONTROL}</integer>
-      </array>
-    </dict>
-  </dict>
-" 
+# defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 36 "
+#   <dict>
+#     <key>enabled</key>
+#     <true/>
+#     <key>value</key>
+#     <dict>
+#       <key>type</key>
+#       <string>standard</string>
+#       <key>parameters</key>
+#       <array>
+#         <integer>${UNICODE_D}</integer>
+#         <integer>${KEY_D}</integer>
+#         <integer>${CONTROL}</integer>
+#       </array>
+#     </dict>
+#   </dict>
+# "
+# defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 37 "
+#   <dict>
+#     <key>enabled</key>
+#     <true/>
+#     <key>value</key>
+#     <dict>
+#       <key>type</key>
+#       <string>standard</string>
+#       <key>parameters</key>
+#       <array>
+#         <integer>${UNICODE_D}</integer>
+#         <integer>${KEY_D}</integer>
+#         <integer>${SHIFT_CONTROL}</integer>
+#       </array>
+#     </dict>
+#   </dict>
+# " 
 
 # Show Spotlight
 defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 64 "

@@ -570,6 +570,9 @@ defaults write com.apple.dt.Xcode IDEAdditionalCounterpartSuffixes -array-add "V
 # If you use the rename refactoring in Xcode a lot, you can save some time by skipping the code folding animation
 defaults write com.apple.dt.Xcode CodeFoldingAnimationSpeed -int 0
 
+# Hide Xcode Cloud upsell alerts
+defaults write com.apple.dt.Xcode XcodeCloudUpsellPromptEnabled -bool false
+
 # ---------------------------
 # iTerm2
 # ---------------------------
