@@ -170,6 +170,10 @@ defaults write com.apple.dock mru-spaces -bool false
 # (i.e. use the old Exposé behavior instead)
 defaults write com.apple.dock expose-group-by-app -bool false
 
+# Disable bottom right Hot Corner (to disable Quick Note action)
+# https://apple.stackexchange.com/a/362338
+defaults write com.apple.dock wvous-br-corner -int 0
+
 ###############################################################################
 # Printers, Screenshots
 ###############################################################################
