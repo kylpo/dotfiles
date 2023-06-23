@@ -72,11 +72,6 @@ defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool true
 # Disable the sound effects on boot
 sudo nvram StartupMute=%01
 
-# Enable the sound effects on boot
-# sudo nvram SystemAudioVolume=" "
-# sudo nvram StartupMute=%00
-
-
 ###############################################################################
 # Inputs
 ###############################################################################
@@ -255,6 +250,18 @@ echo "Configuring updates preferences"
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+###############################################################################
+# Bootup
+###############################################################################
+
+# Enable the sound effects on boot
+# sudo nvram SystemAudioVolume=" "
+# sudo nvram StartupMute=%00
+
+# Auto-start computer at 5am (I like to shut down my machine every night)
+# https://support.apple.com/guide/mac-help/schedule-your-mac-to-turn-on-or-off-mchl40376151/13.0/mac/13.0
+sudo pmset repeat poweron MTWRF 5:00:00
 
 ###############################################################################
 # Safari
