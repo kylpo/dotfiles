@@ -336,3 +336,5 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Local overrides and additions
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
