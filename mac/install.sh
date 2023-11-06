@@ -117,6 +117,10 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g NSUserDictionaryReplacementItems '(
 )'
 
+# Disable the CAPS LOCK indicator introduced in Sonoma
+# https://stackoverflow.com/questions/77248249/disable-macos-sonoma-text-insertion-point-cursor-caps-lock-indicator
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
+
 ###############################################################################
 # Desktop, Dashboard, Spaces, Dock
 ###############################################################################

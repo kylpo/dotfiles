@@ -32,9 +32,9 @@ end
 -- hs.loadSpoon("CountDown")
 
 ---- Auto-Reload
-hs.alert.show('Config loaded!')
-hs.loadSpoon("ReloadConfiguration")
-spoon.ReloadConfiguration:start()
+-- hs.alert.show('Config loaded!')
+-- hs.loadSpoon("ReloadConfiguration")
+-- spoon.ReloadConfiguration:start()
 
 ---- MouseCircle
 hs.loadSpoon("MouseCircle")
@@ -136,10 +136,17 @@ allwindows = hs.window.filter.new(nil)
 allwindows:subscribe({
   hs.window.filter.windowCreated,
   hs.window.filter.windowDestroyed,
+  -- hs.window.filter.windowHidden,
+  -- hs.window.filter.windowMinimized,
   hs.window.filter.windowFocused,
   hs.window.filter.windowMoved,
-  hs.window.filter.windowUnfocused
+  -- hs.window.filter.windowUnfocused,
+  -- hs.window.filter.windowsChanged
 }, redrawBorder)
+
+-- hs.window.filter.new(nil):subscribe(hs.window.filter.windowFocused, function(focusedWindow)
+--   print("focus", focusedWindow:title())
+-- end)
 
 function enableFocusBorder()
   borderAlpha = 0.8
