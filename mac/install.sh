@@ -117,7 +117,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write -g NSUserDictionaryReplacementItems '(
 )'
 
-# Disable the CAPS LOCK indicator introduced in Sonoma
+# Disable the CAPS LOCK indicator (introduced in Sonoma)
 # https://stackoverflow.com/questions/77248249/disable-macos-sonoma-text-insertion-point-cursor-caps-lock-indicator
 sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO
 
@@ -172,6 +172,10 @@ defaults write com.apple.dock expose-group-by-app -bool false
 # Disable bottom right Hot Corner (to disable Quick Note action)
 # https://apple.stackexchange.com/a/362338
 defaults write com.apple.dock wvous-br-corner -int 0
+
+# Disable click wallpaper to show desktop items (introduced in Sonoma)
+# https://forums.macrumors.com/threads/disable-show-desktop-single-click.2400250/
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop 0
 
 ###############################################################################
 # Printers, Screenshots
@@ -473,6 +477,13 @@ echo "Installing Menubar Apps..."
 brew install itsycal
 brew install menumeters
 
+# Always show Sound in menubar
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -int 1
+
+# Don't show the date or day in Clock (show it in itsycal instead)
+defaults write com.apple.menuextra.clock ShowDate -int 2
+defaults write com.apple.menuextra.clock ShowDayOfWeek -int 0
+
 ###############################################################################
 # Mac App Store Apps
 ###############################################################################
@@ -482,14 +493,14 @@ echo "Installing Mac Store Apps..."
 # This command will not allow you to install an app for the first time: it must
 # already be in the Purchased tab of the App Store.
 
-mas install 557168941	  # Tweetbot
+# mas install 557168941	  # Tweetbot
 mas install 419330170	  # Moom
-mas install 803453959   # Slack
-mas install 1475897096  # Jira Cloud by Atlassian 
-mas install 1191449274  # ToothFairy - easy bluetooth audio toggles
-mas install 1333542190  # 1Password 7 - Password Manager
+# mas install 803453959   # Slack
+# mas install 1475897096  # Jira Cloud by Atlassian 
+# mas install 1191449274  # ToothFairy - easy bluetooth audio toggles
+# mas install 1333542190  # 1Password 7 - Password Manager
 mas install 1461845568  # Gifox 2 - gif screen recorder
-mas install 1487937127  # Craft - Docs and Notes Editor
+# mas install 1487937127  # Craft - Docs and Notes Editor
 
 mas install 497799835   # Xcode
 # agree to xcode license
@@ -503,6 +514,9 @@ echo "Installing Misc Apps..."
 
 brew install hammerspoon
 brew install google-chrome
+brew install --cask discord
+brew install --cask witch
+brew install --cask qmk-toolbox
 
 ###############################################################################
 # Development

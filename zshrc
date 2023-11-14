@@ -338,3 +338,12 @@ export PATH="/usr/local/sbin:$PATH"
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+# automatically choose which Homebrew installation to use depending whether it is running on Rosetta
+# from https://indiespark.top/software/run-command-line-apple-silicon/
+if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
