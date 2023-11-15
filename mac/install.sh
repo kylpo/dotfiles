@@ -517,6 +517,7 @@ brew install google-chrome
 brew install --cask discord
 brew install --cask witch
 brew install --cask qmk-toolbox
+brew install --cask anki
 
 ###############################################################################
 # Development
