@@ -746,7 +746,8 @@ xcodeGoToChooser:choices({
 })
 
 local xcodeKeybinds = {
-  hotkey.new({"cmd"}, "p", function() xcodeViewChooser:show() end),
+  -- cmd+v maps to cmd+d, so this is cmd+v
+  hotkey.new({"cmd"}, "d", function() xcodeViewChooser:show() end),
   hotkey.new({"cmd"}, ".", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   -- hotkey.new({"cmd"}, "s", function() 

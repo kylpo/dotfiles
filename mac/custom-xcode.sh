@@ -1,9 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -e
 
 #
 # Documentation on available commands: https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
 #
+# For more on custom commands:
+# - https://stackoverflow.com/questions/10266170/xcode-duplicate-line
+# - https://stackoverflow.com/questions/9224849/multiple-line-cursor-movements-in-xcode-4
+# - http://www.hcs.harvard.edu/~jrus/Site/selectors.html for the available text actions. Also http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html.
+
 
 # XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'

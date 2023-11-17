@@ -37,8 +37,11 @@ fi
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  XCODE="~/Library/Developer/Xcode/UserData"
+  
   [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
   [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon
+  [[ ! -s $XCODE/KeyBindings/Klaws.idekeybindings ]] && ln -s $DIR/mac/xcode/Klaws.idekeybindings $XCODE/KeyBindings/Klaws.idekeybindings
 fi
 
 

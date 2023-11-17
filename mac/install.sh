@@ -516,7 +516,6 @@ brew install hammerspoon
 brew install google-chrome
 brew install --cask discord
 brew install --cask witch
-brew install --cask qmk-toolbox
 brew install --cask anki
 
 ###############################################################################
@@ -538,7 +537,8 @@ brew install dash    # Offline programming docs
 brew install visual-studio-code
 
 ## QMK stuff
-brew install homebrew/cask-drivers/qmk-toolbox
+#brew install homebrew/cask-drivers/qmk-toolbox
+brew install --cask qmk-toolbox
 # Install QMK via Rosetta: https://stackoverflow.com/questions/67098972/how-do-you-install-qmk-with-the-new-mac-m1-arm-chip
 #brew install qmk/qmk/qmk
 
