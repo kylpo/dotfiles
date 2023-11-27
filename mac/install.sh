@@ -102,6 +102,9 @@ defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Disable predictive text (Sonoma)
+defaults write -g NSAutomaticInlinePredictionEnabled -bool false
+
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
