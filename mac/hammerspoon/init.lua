@@ -27,24 +27,28 @@ end
 -----------------------------------------------------------------------
 
 --[ Spoons ]-----------------------------------------------------------
-hs.loadSpoon("MicMute")
+-- hs.loadSpoon("MicMute")
 -- hs.loadSpoon("HoldToQuit")
 -- hs.loadSpoon("CountDown")
 
 ---- Auto-Reload
-hs.alert.show('Config loaded!')
-hs.loadSpoon("ReloadConfiguration")
-spoon.ReloadConfiguration:start()
+-- hs.alert.show('Config loaded!')
+-- hs.loadSpoon("ReloadConfiguration")
+-- spoon.ReloadConfiguration:start()
 
 ---- MouseCircle
 hs.loadSpoon("MouseCircle")
 spoon.MouseCircle.color = tronOrange
 
 ---- Clipboard
-hs.loadSpoon("ClipboardTool")
-spoon.ClipboardTool.show_copied_alert = false
-spoon.ClipboardTool.paste_on_select = true
-spoon.ClipboardTool:start()
+-- hs.loadSpoon("ClipboardTool")
+-- spoon.ClipboardTool.show_copied_alert = false
+-- spoon.ClipboardTool.paste_on_select = true
+-- spoon.ClipboardTool.show_in_menubar = false
+-- spoon.ClipboardTool:start()
+-- spoon.ClipboardTool:bindHotkeys({
+--   show_clipboard = { { "cmd" }, "'" };
+-- })
 
 
 ---- MoveSpaces
@@ -79,18 +83,18 @@ switcher_space = switcher.new(
 )
 
 --[ Caffeine ]---------------------------------------------------------
-caffeine = hs.menubar.new()
-function setCaffeineDisplay(state)
-    if state then
-        caffeine:setTitle("AWAKE")
-    else
-        caffeine:setTitle("SLEEPY")
-    end
-end
+-- caffeine = hs.menubar.new()
+-- function setCaffeineDisplay(state)
+--     if state then
+--         caffeine:setTitle("AWAKE")
+--     else
+--         caffeine:setTitle("SLEEPY")
+--     end
+-- end
 
-function caffeineClicked()
-    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
-end
+-- function caffeineClicked()
+--     setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+-- end
 
 -- if caffeine then
 --     caffeine:setClickCallback(caffeineClicked)
@@ -131,10 +135,18 @@ redrawBorder()
 allwindows = hs.window.filter.new(nil)
 allwindows:subscribe({
   hs.window.filter.windowCreated,
+  hs.window.filter.windowDestroyed,
+  -- hs.window.filter.windowHidden,
+  -- hs.window.filter.windowMinimized,
   hs.window.filter.windowFocused,
   hs.window.filter.windowMoved,
-  hs.window.filter.windowUnfocused
+  -- hs.window.filter.windowUnfocused,
+  -- hs.window.filter.windowsChanged
 }, redrawBorder)
+
+-- hs.window.filter.new(nil):subscribe(hs.window.filter.windowFocused, function(focusedWindow)
+--   print("focus", focusedWindow:title())
+-- end)
 
 function enableFocusBorder()
   borderAlpha = 0.8
@@ -243,9 +255,11 @@ function disableMouse()
 end
 
 function enableMouse()
-  hs.hid.capslock.set(true)
-  -- print("enableMouse()")
-  focusMouse()
+  if not hs.hid.capslock.get() then
+    hs.hid.capslock.set(true)
+    -- print("enableMouse()")
+    focusMouse()
+  end
  
   -- drawMenubarIndicator()
   -- hs.eventtap.event.newKeyEvent(hs.keycodes.map.capslock, true):post();
@@ -428,12 +442,12 @@ local f15Timer = 0
 -- end
 
 -- Now using Witch instead, since Switch would miss newly created windows
-hs.hotkey.bind('ctrl','t', function()
-  switcher_space:next()
-end)
-hs.hotkey.bind('ctrl','h', function()
-  switcher_space:previous()
-end)
+-- hs.hotkey.bind('ctrl','t', function()
+--   switcher_space:next()
+-- end)
+-- hs.hotkey.bind('ctrl','r', function()
+--   switcher_space:previous()
+-- end)
 
 -- hs.hotkey.bind({'ctrl', 'shift'},'t', function()
 --   local app = hs.application.frontmostApplication()
@@ -461,11 +475,17 @@ end)
 --   end
 -- end)
 
-hs.hotkey.bind({"ctrl"}, "s", function()
-  mouseJump.toCenterOfWindow()
-  spoon.MouseCircle:show()
-  enableMouse()
-end)
+-- hs.hotkey.bind({"ctrl"}, "c", function()
+--   mouseJump.toCenterOfWindow()
+--   spoon.MouseCircle:show()
+--   enableMouse()
+-- end)
+
+-- hs.hotkey.bind({"cmd"}, "space", function()
+--   mouseJump.toCenterOfWindow()
+--   spoon.MouseCircle:show()
+--   enableMouse()
+-- end)
 
 hs.hotkey.bind({}, "f16", function()
   -- Double Tap
@@ -562,15 +582,12 @@ hs.hotkey.bind({}, "f15", function()
     end)
   end
 end)
-spoon.MicMute:bindHotkeys({
-  toggle = { { "ctrl" }, "5" }
-})
+-- spoon.MicMute:bindHotkeys({
+--   toggle = { { "ctrl" }, "5" }
+-- })
 -- spoon.HoldToQuit:bindHotkeys({
 --   quit = { { "ctrl", "shift" }, "k" }
 -- })
-spoon.ClipboardTool:bindHotkeys({
-  show_clipboard = { { "cmd", "shift" }, "8" }
-})
 -- hs.hotkey.bind({"ctrl"}, "g", function()
 --   spoon.CountDown:startFor(1)
 -- end)
@@ -597,7 +614,9 @@ keyEvents = hs.eventtap.new({
 
   if flag.ctrl then
     -- Screenshot mode
-    if keyCode == hs.keycodes.map["b"]
+    if keyCode == hs.keycodes.map["q"]
+    -- Expose
+    or keyCode == hs.keycodes.map["m"]
     then
       enableMouse()
     end
@@ -610,7 +629,7 @@ keyEvents = hs.eventtap.new({
     end
 
     if appname == "Safari" or appname == "Google Chrome" then
-      if keyCode == hs.keycodes.map["c"]
+      if keyCode == hs.keycodes.map["l"]
       and not flag.shift
       then
           disableMouse()
@@ -727,8 +746,9 @@ xcodeGoToChooser:choices({
 })
 
 local xcodeKeybinds = {
-  hotkey.new({"cmd"}, "p", function() xcodeViewChooser:show() end),
-  hotkey.new({"cmd"}, ".", function() xcodeInspectorChooser:show() end),
+  -- cmd+v maps to cmd+d, so this is cmd+v
+  hotkey.new({"cmd"}, "d", function() xcodeViewChooser:show() end),
+  hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   -- hotkey.new({"cmd"}, "s", function() 
   --   local xcode = hs.appfinder.appFromName("Xcode")
@@ -754,7 +774,11 @@ local xcodeKeybinds = {
   --  end),
 }
 
-local xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+-- Note: xcodeWatcher must NOT be a `local` var!
+--   I don't know why, but I was just bitten by this.
+xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+  -- print("name")
+  -- print(name)
   -- print("eventType")
   -- print(eventType)
   -- print("hs.application.watcher.activated")  

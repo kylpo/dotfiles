@@ -31,6 +31,7 @@
   enabled = 1
 [push]
   default = tracking
+	autoSetupRemote = true
 [branch]
   autosetuprebase = always
 #[mergetool "ediff"]

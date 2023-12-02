@@ -10,10 +10,10 @@ bundleIds=(
   com.manytricks.Moom
   com.manytricks.Witch
   com.yujitach.MenuMetersApp
-  com.robinlu.mac.Tooth-Fairy
-  dexterleng.vimac
-  com.runningwithcrayons.Alfred-3
-  com.runningwithcrayons.Alfred-Preferences-3
+  # com.robinlu.mac.Tooth-Fairy
+  # dexterleng.vimac
+  # com.runningwithcrayons.Alfred-3
+  # com.runningwithcrayons.Alfred-Preferences-3
   # com.googlecode.iterm2
 )
 
