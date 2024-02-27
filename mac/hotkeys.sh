@@ -380,6 +380,7 @@ DISABLED='\U0000'
 Chrome="com.google.Chrome"   # bundleIdentifier /Applications/Google\ Chrome.app
 Mail="com.apple.mail"        # bundleIdentifier /System/Applications/Mail.app
 Safari="com.apple.Safari"    # bundleIdentifier /Applications/Safari.app
+Finder="com.apple.finder"
 
 bundleIds=(NSGlobalDomain "$Chrome" "$Mail" "$Safari")
 
@@ -424,6 +425,8 @@ defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open File..."          
 defaults write "$Safari" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open File..."             "${DISABLED}"
 defaults write "$Chrome" NSUserKeyEquivalents -dict-add "Open Location..."         "${CMD}o"
+defaults write "$Finder" NSUserKeyEquivalents -dict-add "Open"             "${DISABLED}"
+defaults write "$Finder" NSUserKeyEquivalents -dict-add 'Go to Folder...'          "${CMD}o"
 # History
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Back"                "${CMD}s"
 defaults write NSGlobalDomain NSUserKeyEquivalents -dict-add "Forward"             "${CMD}w"
@@ -468,6 +471,10 @@ update_quit_keybind "/Applications/"
 update_quit_keybind "/System/Applications/"
 update_quit_keybind "/System/Applications/Utilities/"
 
+# BundleId found with:
+#   osascript -e 'id of app "System Settings"'
+defaults write com.apple.systempreferences NSUserKeyEquivalents -dict-add "Quit System Settings" "${CTRL}${SHIFT}j"
+
 # Chrome
 # ----
 # "Bookmark" interferes with "Back"
@@ -492,7 +499,7 @@ defaults write "$Mail" NSUserKeyEquivalents -dict-add "\033Message\033Send Again
 # Finder
 # ------
 # defaults write com.apple.finder NSUserKeyEquivalents -dict-add "\033File\033Quick Look" "@\U0020"
-defaults write com.apple.finder NSUserKeyEquivalents -dict-add 'Move to Trash' "${DELETE}"
+defaults write "$Finder" NSUserKeyEquivalents -dict-add 'Move to Trash' "${DELETE}"
 
 # Xcode
 # ------

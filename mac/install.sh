@@ -388,6 +388,13 @@ defaults write com.apple.TextEdit AddExtensionToNewPlainTextFiles -bool false
 defaults write com.apple.TextEdit ShowRuler -bool false
 
 ###############################################################################
+# Notes
+###############################################################################
+
+defaults write com.apple.Notes ShouldCorrectSpellingAutomatically -int 0
+defaults write com.apple.Notes ShouldPerformTextReplacement -int 0
+
+###############################################################################
 ###############################################################################
 #
 # External Apps
@@ -544,6 +551,10 @@ brew install visual-studio-code
 brew install --cask qmk-toolbox
 # Install QMK via Rosetta: https://stackoverflow.com/questions/67098972/how-do-you-install-qmk-with-the-new-mac-m1-arm-chip
 #brew install qmk/qmk/qmk
+
+# Xcode utils
+brew install swiftformat
+brew install --cask swiftformat-for-xcode
 
 ###############################################################################
 # Cleanup

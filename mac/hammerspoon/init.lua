@@ -442,12 +442,12 @@ local f15Timer = 0
 -- end
 
 -- Now using Witch instead, since Switch would miss newly created windows
--- hs.hotkey.bind('ctrl','t', function()
---   switcher_space:next()
--- end)
--- hs.hotkey.bind('ctrl','r', function()
---   switcher_space:previous()
--- end)
+hs.hotkey.bind('ctrl','t', function()
+  switcher_space:next()
+end)
+hs.hotkey.bind('ctrl','r', function()
+  switcher_space:previous()
+end)
 
 -- hs.hotkey.bind({'ctrl', 'shift'},'t', function()
 --   local app = hs.application.frontmostApplication()
@@ -645,6 +645,7 @@ keyEvents = hs.eventtap.new({
       if appname == "Safari"
       or appname == "Google Chrome"
       or appname == "Code"
+      or appname == "Xcode"
       then
         disableMouse()
       end
@@ -653,12 +654,14 @@ keyEvents = hs.eventtap.new({
       if appname == "Safari"
       or appname == "Google Chrome"
       or appname == "Code"
+      or appname == "Xcode"
       then
         disableMouse()
       end 
     -- cmd+a
     elseif keyCode == hs.keycodes.map["a"] then
       if appname == "Code"
+      or appname == "Xcode"
       then
         disableMouse()
       end
@@ -701,6 +704,10 @@ xcodeViewChooser:choices({
     ["text"] = "Tests",
     ["action"] = {"View", "Navigators", "Tests"},
  },
+ {
+  ["text"] = "Git",
+  ["action"] = {"View", "Navigators", "Source Control"},
+},
 })
 -- Inspector
 local xcodeInspectorChooser = hs.chooser.new(handleXcodeActionChoice)
@@ -721,11 +728,11 @@ xcodeInspectorChooser:choices({
 -- Go To
 local xcodeGoToChooser = hs.chooser.new(handleXcodeActionChoice)
 xcodeGoToChooser:choices({
-  {
-    ["text"] = "Line",
-    ["hotkey"] = {{"alt"}, "l"},
-    --  ["action"] = {"Navigate", "Jump to..."},
-  },
+  -- {
+  --   ["text"] = "Line",
+  --   -- ["hotkey"] = {{"alt"}, "l"},
+  --    ["action"] = {"Navigate", "Jump to..."},
+  -- },
   {
     ["text"] = "Definition",
     ["hotkey"] = {{"cmd"}, "f12"},
