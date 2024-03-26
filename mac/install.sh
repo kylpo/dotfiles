@@ -345,6 +345,9 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 # Allow websites to check if Apple Pay is set up
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2ApplePayCapabilityDisclosureAllowed -bool true
 
+# Disable auto-correct of typing
+defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -int 0
+
 ###############################################################################
 # Mail
 ###############################################################################
