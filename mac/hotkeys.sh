@@ -474,6 +474,7 @@ update_quit_keybind "/System/Applications/Utilities/"
 # BundleId found with:
 #   osascript -e 'id of app "System Settings"'
 defaults write com.apple.systempreferences NSUserKeyEquivalents -dict-add "Quit System Settings" "${CTRL}${SHIFT}j"
+defaults write com.apple.iphonesimulator NSUserKeyEquivalents -dict-add "Quit Simulator" "${CTRL}${SHIFT}j"
 
 # Chrome
 # ----

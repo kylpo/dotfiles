@@ -752,11 +752,27 @@ xcodeGoToChooser:choices({
   },
 })
 
+-- Refactor
+local xcodeRefactorChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeRefactorChooser:choices({
+  {
+    ["text"] = "Rename...",
+    -- ["hotkey"] = {{"cmd"}, "f12"},
+    -- ["action"] = {"Editor", "Refactor", "Rename..."},
+    ["action"] = {"Refactor", "Rename..."},
+
+    -- ["action"] = {"Rename..."},
+
+  },
+})
+
 local xcodeKeybinds = {
   -- cmd+v maps to cmd+d, so this is cmd+v
   hotkey.new({"cmd"}, "d", function() xcodeViewChooser:show() end),
   hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
+  -- cmd )
+  hotkey.new({"cmd", "shift"}, "0", function() xcodeRefactorChooser:show() end),
   -- hotkey.new({"cmd"}, "s", function() 
   --   local xcode = hs.appfinder.appFromName("Xcode")
 
