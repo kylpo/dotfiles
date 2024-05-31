@@ -9,6 +9,7 @@ set -e
 # - https://stackoverflow.com/questions/10266170/xcode-duplicate-line
 # - https://stackoverflow.com/questions/9224849/multiple-line-cursor-movements-in-xcode-4
 # - http://www.hcs.harvard.edu/~jrus/Site/selectors.html for the available text actions. Also http://www.hcs.harvard.edu/~jrus/Site/cocoa-text.html.
+#   - ^ appears to no longer exist. Use https://github.com/jrus/cocoa-text-system/blob/master/selectors.md
 
 
 # XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'

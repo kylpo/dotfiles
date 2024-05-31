@@ -1,5 +1,3 @@
-//___FILEHEADER___
-
 import SwiftUI
 import CronstructUI
 

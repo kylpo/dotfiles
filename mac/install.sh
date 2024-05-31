@@ -398,6 +398,23 @@ defaults write com.apple.Notes ShouldCorrectSpellingAutomatically -int 0
 defaults write com.apple.Notes ShouldPerformTextReplacement -int 0
 
 ###############################################################################
+# Services
+###############################################################################
+
+# Disable Sticky Note hotkey
+# from https://apple.stackexchange.com/a/115722
+defaults write pbs NSServicesStatus '{
+    "com.apple.Stickies - Make Sticky - makeStickyFromTextService" =             {
+        "enabled_services_menu" = 0;
+        "key_equivalent" = "";
+        "presentation_modes" =                 {
+            ContextMenu = 0;
+            ServicesMenu = 0;
+        };
+    };
+}'
+
+###############################################################################
 ###############################################################################
 #
 # External Apps

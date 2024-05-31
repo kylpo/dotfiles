@@ -645,7 +645,7 @@ keyEvents = hs.eventtap.new({
       if appname == "Safari"
       or appname == "Google Chrome"
       or appname == "Code"
-      or appname == "Xcode"
+      -- or appname == "Xcode"
       then
         disableMouse()
       end
@@ -772,7 +772,20 @@ local xcodeKeybinds = {
   hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   -- cmd )
-  hotkey.new({"cmd", "shift"}, "0", function() xcodeRefactorChooser:show() end),
+  -- hotkey.new({"cmd", "shift"}, "0", function() xcodeRefactorChooser:show() end),
+  -- hotkey.new({"cmd", "shift"}, "f", function() 
+  --   local xcode = hs.appfinder.appFromName("Xcode")
+
+  --   print("hi")
+  --   -- select word
+  --   hs.eventtap.keyStroke({"cmd", "shift"}, 4)
+  --   print("hi1")
+  --   -- hs.timer.doAfter(0.1, function()
+  --     -- xcode:selectMenuItem({"Find", "Use Selection for Find"})
+  --     -- print("h2")
+  --   -- end)
+  --  end),
+
   -- hotkey.new({"cmd"}, "s", function() 
   --   local xcode = hs.appfinder.appFromName("Xcode")
 
