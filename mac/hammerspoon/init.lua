@@ -683,7 +683,14 @@ keyEvents:start()
 local handleXcodeActionChoice = function(choice)
   if not choice then return end
 
-  if choice["hotkey"] then hs.eventtap.keyStroke(table.unpack(choice["hotkey"])) end
+  if choice["hotkey"] then
+    hs.eventtap.keyStroke(table.unpack(choice["hotkey"]))
+    -- hs.timer.doAfter(1, function()
+    --   -- print(table.unpack(choice["hotkey"]))
+    --   print(choice["hotkey"])
+      -- hs.eventtap.keyStroke({"cmd", "ctrl", "shift"}, "e", 200, xcode)
+    -- end)
+  end
 
   if choice["action"] then
     local xcode = hs.appfinder.appFromName("Xcode")
@@ -752,17 +759,20 @@ xcodeGoToChooser:choices({
   },
 })
 
--- Refactor
-local xcodeRefactorChooser = hs.chooser.new(handleXcodeActionChoice)
-xcodeRefactorChooser:choices({
+-- Run
+local xcodeRunChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeRunChooser:choices({
   {
-    ["text"] = "Rename...",
-    -- ["hotkey"] = {{"cmd"}, "f12"},
-    -- ["action"] = {"Editor", "Refactor", "Rename..."},
-    ["action"] = {"Refactor", "Rename..."},
-
-    -- ["action"] = {"Rename..."},
-
+    ["text"] = "Run",
+    ["hotkey"] = {{"cmd", "ctrl", "shift"}, "q"},
+  },
+  {
+    ["text"] = "re-Test",
+    ["hotkey"] = {{"alt"}, "e"},
+  },
+  {
+    ["text"] = "Stop",
+    ["action"] = {"Product", "Stop"},
   },
 })
 
@@ -771,6 +781,7 @@ local xcodeKeybinds = {
   hotkey.new({"cmd"}, "d", function() xcodeViewChooser:show() end),
   hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
+  hotkey.new({"cmd"}, "u", function() xcodeRunChooser:show() end),
   -- cmd )
   -- hotkey.new({"cmd", "shift"}, "0", function() xcodeRefactorChooser:show() end),
   -- hotkey.new({"cmd", "shift"}, "f", function() 
