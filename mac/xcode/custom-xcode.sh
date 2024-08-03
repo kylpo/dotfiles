@@ -12,8 +12,8 @@ set -e
 #   - ^ appears to no longer exist. Use https://github.com/jrus/cocoa-text-system/blob/master/selectors.md
 
 
-# XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
-XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+XCODE_PATH='/Applications/Xcode-beta.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
+# XCODE_PATH='/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist'
 
 if [ -f "$XCODE_PATH" ]; then
   echo "Adding Xcode commands/hotkeys:"

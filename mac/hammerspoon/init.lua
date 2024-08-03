@@ -759,6 +759,15 @@ xcodeGoToChooser:choices({
   },
 })
 
+-- Refactor
+local xcodeRefactorChooser = hs.chooser.new(handleXcodeActionChoice)
+xcodeRefactorChooser:choices({
+  {
+    ["text"] = "Rename",
+    ["hotkey"] = {{"alt"}, "r"},
+  },
+})
+
 -- Run
 local xcodeRunChooser = hs.chooser.new(handleXcodeActionChoice)
 xcodeRunChooser:choices({
@@ -782,8 +791,8 @@ local xcodeKeybinds = {
   hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   hotkey.new({"cmd"}, "u", function() xcodeRunChooser:show() end),
-  -- cmd )
-  -- hotkey.new({"cmd", "shift"}, "0", function() xcodeRefactorChooser:show() end),
+  hotkey.new({"cmd", "shift"}, "b", function() xcodeRefactorChooser:show() end),
+
   -- hotkey.new({"cmd", "shift"}, "f", function() 
   --   local xcode = hs.appfinder.appFromName("Xcode")
 
