@@ -91,6 +91,8 @@
 				<string>stepToPreviousCall:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.GPUToolsKit.CmdDefinition.StepPreviousCall</string>
 				<key>CommandID</key>
 				<string>Xcode.GPUToolsKit.CmdDefinition.StepPreviousCall</string>
 				<key>Group</key>
@@ -109,6 +111,8 @@
 				<string>buildForRunActiveRunContext:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.BuildForRun</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.BuildForRun</string>
 				<key>Group</key>
@@ -129,6 +133,8 @@
 				<string>checkSpelling:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CheckDocumentNow</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CheckDocumentNow</string>
 				<key>Group</key>
@@ -149,6 +155,8 @@
 				<string>closeDocument:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseDocument</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseDocument</string>
 				<key>Group</key>
@@ -169,6 +177,8 @@
 				<string>_closeActiveEditor:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseEditor</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseEditor</string>
 				<key>Group</key>
@@ -189,6 +199,8 @@
 				<string>dvt_closeActiveEditorTab:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseEditorTab</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseEditorTab</string>
 				<key>Group</key>
@@ -209,6 +221,8 @@
 				<string>_closeOtherEditorTabs:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseOtherEditorTabs</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseOtherEditorTabs</string>
 				<key>Group</key>
@@ -229,6 +243,8 @@
 				<string>closeOtherEditors:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseOtherEditors</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseOtherEditors</string>
 				<key>Group</key>
@@ -249,6 +265,8 @@
 				<string>closeOtherWindowTabs:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseOtherWindowTabs</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseOtherWindowTabs</string>
 				<key>Group</key>
@@ -269,6 +287,8 @@
 				<string>dvt_closeWindowAsWindowTab:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.CloseWindowTab</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.CloseWindowTab</string>
 				<key>Group</key>
@@ -289,6 +309,8 @@
 				<string>toggleDebuggerVisibility:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.DebuggerToggleVisibility</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.DebuggerToggleVisibility</string>
 				<key>Group</key>
@@ -309,6 +331,8 @@
 				<string>delete:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Delete</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Delete</string>
 				<key>Group</key>
@@ -367,6 +391,8 @@
 				<string>duplicate:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Duplicate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Duplicate</string>
 				<key>Group</key>
@@ -385,6 +411,8 @@
 				<string>ide_duplicateDocument:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.DuplicateDocument</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.DuplicateDocument</string>
 				<key>Group</key>
@@ -405,6 +433,8 @@
 				<string>editAndProfileActiveScheme:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.EditAndProfile</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.EditAndProfile</string>
 				<key>Group</key>
@@ -425,6 +455,8 @@
 				<string>editAndRunActiveRunContext:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.EditAndRun</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.EditAndRun</string>
 				<key>Group</key>
@@ -445,6 +477,8 @@
 				<string>editAndTestActiveRunContext:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.EditAndTest</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.EditAndTest</string>
 				<key>Group</key>
@@ -465,6 +499,8 @@
 				<string>findInWorkspace:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.FindInWorkspace</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.FindInWorkspace</string>
 				<key>Group</key>
@@ -485,6 +521,8 @@
 				<string>findNext:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.FindNext</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.FindNext</string>
 				<key>Group</key>
@@ -505,6 +543,8 @@
 				<string>findPrevious:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.FindPrevious</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.FindPrevious</string>
 				<key>Group</key>
@@ -525,6 +565,8 @@
 				<string>findSelectedTextInWorkspace:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.FindSelectedTextInWorkspace</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.FindSelectedTextInWorkspace</string>
 				<key>Group</key>
@@ -545,6 +587,8 @@
 				<string>goBackInHistoryByCommand:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoBack</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoBack</string>
 				<key>Group</key>
@@ -565,6 +609,8 @@
 				<string>goBackInHistoryByCommandWithAlternate:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoBackWithAlternate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoBackWithAlternate</string>
 				<key>Group</key>
@@ -585,6 +631,8 @@
 				<string>goBackInHistoryByCommandWithShiftPlusAlternate:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoBackWithShiftPlusAlternate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoBackWithShiftPlusAlternate</string>
 				<key>Group</key>
@@ -605,6 +653,8 @@
 				<string>goForwardInHistoryByCommand:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoForward</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoForward</string>
 				<key>Group</key>
@@ -625,6 +675,8 @@
 				<string>goForwardInHistoryByCommandWithAlternate:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoForwardWithAlternate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoForwardWithAlternate</string>
 				<key>Group</key>
@@ -645,6 +697,8 @@
 				<string>goForwardInHistoryByCommandWithShiftPlusAlternate:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.GoForwardWithShiftPlusAlternate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.GoForwardWithShiftPlusAlternate</string>
 				<key>Group</key>
@@ -665,6 +719,8 @@
 				<string>hide:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Hide</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Hide</string>
 				<key>Group</key>
@@ -683,6 +739,8 @@
 				<string>hideOtherApplications:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.HideOthers</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.HideOthers</string>
 				<key>Group</key>
@@ -808,9 +866,77 @@
 			</dict>
 			<dict>
 				<key>Action</key>
+				<string>editorContext_jumpToDefinition:</string>
+				<key>Alternate</key>
+				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinition</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinition</string>
+				<key>Group</key>
+				<string>Navigate Menu</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.Main</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>@</string>
+				<key>Navigation</key>
+				<string>YES</string>
+				<key>Title</key>
+				<string>Jump to Definition</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>editorContext_jumpToDefinitionWithAlternate:</string>
+				<key>Alternate</key>
+				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinitionWithAlternate</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinitionWithAlternate</string>
+				<key>Group</key>
+				<string>Navigate Menu</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.Main</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>~@</string>
+				<key>Navigation</key>
+				<string>YES</string>
+				<key>Title</key>
+				<string>Jump to Definition (option)</string>
+			</dict>
+			<dict>
+				<key>Action</key>
+				<string>editorContext_jumpToDefinitionWithShiftPlusAlternate:</string>
+				<key>Alternate</key>
+				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinitionWithShiftPlusAlternate</string>
+				<key>CommandID</key>
+				<string>Xcode.IDEKit.CmdDefinition.JumpToDefinitionWithShiftPlusAlternate</string>
+				<key>Group</key>
+				<string>Navigate Menu</string>
+				<key>GroupID</key>
+				<string>Xcode.IDEKit.MenuDefinition.Main</string>
+				<key>GroupedAlternate</key>
+				<string>NO</string>
+				<key>Keyboard Shortcut</key>
+				<string>~$@</string>
+				<key>Navigation</key>
+				<string>YES</string>
+				<key>Title</key>
+				<string>Jump to Definition (shift+option)</string>
+			</dict>
+			<dict>
+				<key>Action</key>
 				<string>openLibrary:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Libraries.OpenLibrary</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Libraries.OpenLibrary</string>
 				<key>Group</key>
@@ -831,6 +957,8 @@
 				<string>showLibrary:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Libraries.ShowLibrary</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Libraries.ShowLibrary</string>
 				<key>Group</key>
@@ -851,6 +979,8 @@
 				<string>performMiniaturize:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Minimize</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Minimize</string>
 				<key>Group</key>
@@ -871,6 +1001,8 @@
 				<string>miniaturizeAll:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.MinimizeAll</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.MinimizeAll</string>
 				<key>Group</key>
@@ -891,6 +1023,8 @@
 				<string>moveFocusToEditor:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToEditor</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToEditor</string>
 				<key>Group</key>
@@ -911,6 +1045,8 @@
 				<string>moveKeyboardFocusToNextEditor:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToNextEditor</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToNextEditor</string>
 				<key>Group</key>
@@ -931,6 +1067,8 @@
 				<string>moveKeyboardFocusToPreviousEditor:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToPreviousEditor</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.MoveFocusToPreviousEditor</string>
 				<key>Group</key>
@@ -951,6 +1089,8 @@
 				<string>tabController_newEditorAreaSplit:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewEditor</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewEditor</string>
 				<key>Group</key>
@@ -973,6 +1113,8 @@
 				<string>tabController_newEditorAreaSplitAlternate:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewEditorAlternate</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewEditorAlternate</string>
 				<key>Group</key>
@@ -992,11 +1134,13 @@
 			</dict>
 			<dict>
 				<key>Action</key>
-				<string>newDocument:</string>
+				<string>newFolder:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>IDENewGrouping</string>
 				<key>CommandID</key>
-				<string>Xcode.IDEKit.CmdDefinition.NewFile</string>
+				<string>Xcode.IDEKit.CmdDefinition.NewFolder</string>
 				<key>Group</key>
 				<string>File Menu</string>
 				<key>GroupID</key>
@@ -1004,19 +1148,21 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>@q</string>
+				<string>~@n</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Parent Title</key>
 				<string>New</string>
 				<key>Title</key>
-				<string>File…</string>
+				<string>Folder</string>
 			</dict>
 			<dict>
 				<key>Action</key>
 				<string>newPackage:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewPackage</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewPackage</string>
 				<key>Group</key>
@@ -1037,6 +1183,8 @@
 				<string>newProject:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewProject</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewProject</string>
 				<key>Group</key>
@@ -1057,6 +1205,8 @@
 				<string>newWindow:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewWindow</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewWindow</string>
 				<key>Group</key>
@@ -1079,6 +1229,8 @@
 				<string>newTab:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewWindowTab</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewWindowTab</string>
 				<key>Group</key>
@@ -1101,6 +1253,8 @@
 				<string>newWorkspace:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.NewWorkspace</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.NewWorkspace</string>
 				<key>Group</key>
@@ -1121,6 +1275,8 @@
 				<string>openDocument:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Open</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Open</string>
 				<key>Group</key>
@@ -1139,6 +1295,8 @@
 				<string>openQuickly:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.OpenQuickly</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.OpenQuickly</string>
 				<key>Group</key>
@@ -1159,6 +1317,8 @@
 				<string>runPageLayout:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.PageSetup</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.PageSetup</string>
 				<key>Group</key>
@@ -1177,6 +1337,8 @@
 				<string>showPreferencesPanel:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Preferences</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Preferences</string>
 				<key>Group</key>
@@ -1195,6 +1357,8 @@
 				<string>printDocument:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Print</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Print</string>
 				<key>Group</key>
@@ -1213,6 +1377,8 @@
 				<string>profileActiveScheme:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Profile</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Profile</string>
 				<key>Group</key>
@@ -1233,6 +1399,8 @@
 				<string>terminate:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.QuitXcode</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.QuitXcode</string>
 				<key>Group</key>
@@ -1251,6 +1419,8 @@
 				<string>resetAssistantEditorSelection:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ResetAssistantEditorSelection</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ResetAssistantEditorSelection</string>
 				<key>Group</key>
@@ -1269,6 +1439,8 @@
 				<string>revealInDebugNavigator:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.RevealInDebugNavigator</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.RevealInDebugNavigator</string>
 				<key>Group</key>
@@ -1287,6 +1459,8 @@
 				<string>revealInProjectNavigator:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.RevealInProjectNavigator</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.RevealInProjectNavigator</string>
 				<key>Group</key>
@@ -1305,6 +1479,8 @@
 				<string>runActiveRunContext:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Run</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Run</string>
 				<key>Group</key>
@@ -1325,6 +1501,8 @@
 				<string>saveAllEditorDocuments:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.SaveAllEditorDocuments</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.SaveAllEditorDocuments</string>
 				<key>Group</key>
@@ -1345,6 +1523,8 @@
 				<string>ide_saveDocument:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.SaveDocument</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.SaveDocument</string>
 				<key>Group</key>
@@ -1365,6 +1545,8 @@
 				<string>ide_saveDocumentAs:</string>
 				<key>Alternate</key>
 				<string>YES</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.SaveDocumentAs</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.SaveDocumentAs</string>
 				<key>Group</key>
@@ -1385,6 +1567,8 @@
 				<string>selectAll:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.SelectAll</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.SelectAll</string>
 				<key>Group</key>
@@ -1403,6 +1587,8 @@
 				<string>showDocumentItemsMenu:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowDocumentItemsMenu</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowDocumentItemsMenu</string>
 				<key>Group</key>
@@ -1425,6 +1611,8 @@
 				<string>orderFrontFontPanel:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowFonts</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowFonts</string>
 				<key>Group</key>
@@ -1445,6 +1633,8 @@
 				<string>showGroupFilesMenu:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowGroupFilesMenu</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowGroupFilesMenu</string>
 				<key>Group</key>
@@ -1465,6 +1655,8 @@
 				<string>_showNextEditorTab:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowNextEditorTab</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowNextEditorTab</string>
 				<key>Group</key>
@@ -1483,6 +1675,8 @@
 				<string>_showPreviousEditorTab:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowPreviousEditorTab</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowPreviousEditorTab</string>
 				<key>Group</key>
@@ -1501,6 +1695,8 @@
 				<string>showQuickActions:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowQuickActions</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowQuickActions</string>
 				<key>Group</key>
@@ -1521,6 +1717,8 @@
 				<string>showRelatedItemsMenu:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowRelatedItemsMenu</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowRelatedItemsMenu</string>
 				<key>Group</key>
@@ -1543,6 +1741,8 @@
 				<string>showGuessPanel:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowSpellingAndGrammar</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowSpellingAndGrammar</string>
 				<key>Group</key>
@@ -1563,6 +1763,8 @@
 				<string>showTopLevelItemsMenu:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ShowTopLevelItemsMenu</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ShowTopLevelItemsMenu</string>
 				<key>Group</key>
@@ -1583,6 +1785,8 @@
 				<string>specialPaste:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.SpecialPaste</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.SpecialPaste</string>
 				<key>Group</key>
@@ -1605,6 +1809,8 @@
 				<string>stepIntoInstruction:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.StepIntoInstruction</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.StepIntoInstruction</string>
 				<key>Group</key>
@@ -1643,6 +1849,8 @@
 				<string>testActiveRunContext:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.Test</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.Test</string>
 				<key>Group</key>
@@ -1663,6 +1871,8 @@
 				<string>testAgain:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.TestAgain</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.TestAgain</string>
 				<key>Group</key>
@@ -1685,6 +1895,8 @@
 				<string>toggleBreakpointAtCurrentLine:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ToggleBreakpointAtCurrentLine</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ToggleBreakpointAtCurrentLine</string>
 				<key>Group</key>
@@ -1705,6 +1917,8 @@
 				<string>toggleBreakpoints:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ToggleBreakpoints</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ToggleBreakpoints</string>
 				<key>Group</key>
@@ -1723,6 +1937,8 @@
 				<string>_toggleShowCodeReviewForEditor:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ToggleShowCodeReview</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ToggleShowCodeReview</string>
 				<key>Group</key>
@@ -1741,6 +1957,8 @@
 				<string>useSelectionForFind:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.UseSelectionForFind</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.UseSelectionForFind</string>
 				<key>Group</key>
@@ -1761,6 +1979,8 @@
 				<string>useSelectionForReplace:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.UseSelectionForReplace</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.UseSelectionForReplace</string>
 				<key>Group</key>
@@ -1779,6 +1999,8 @@
 				<string>viewMemory:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEKit.CmdDefinition.ViewMemory</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEKit.CmdDefinition.ViewMemory</string>
 				<key>Group</key>
@@ -2252,7 +2474,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>@)</string>
+				<string>~r</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Parent Title</key>
@@ -2276,7 +2498,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>@)</string>
+				<string>~r</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Parent Title</key>
@@ -2300,7 +2522,7 @@
 				<key>GroupedAlternate</key>
 				<string>NO</string>
 				<key>Keyboard Shortcut</key>
-				<string>@)</string>
+				<string>~r</string>
 				<key>Navigation</key>
 				<string>NO</string>
 				<key>Parent Title</key>
@@ -2313,6 +2535,8 @@
 				<string>selectColumnDown:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>Group</key>
@@ -2333,6 +2557,8 @@
 				<string>selectColumnDown:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>Group</key>
@@ -2353,6 +2579,8 @@
 				<string>selectColumnDown:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.SelectColumnDown</string>
 				<key>Group</key>
@@ -2505,6 +2733,8 @@
 				<string>toggleMinimapShown:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.ShowMinimap</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.ShowMinimap</string>
 				<key>Group</key>
@@ -2675,6 +2905,8 @@
 				<string>toggleWrapLines:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.WrapLines</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.WrapLines</string>
 				<key>Group</key>
@@ -2733,6 +2965,8 @@
 				<string>toggleWrapLines:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.WrapLines</string>
 				<key>CommandID</key>
 				<string>Xcode.IDEPegasusSourceEditor.CmdDefinition.WrapLines</string>
 				<key>Group</key>
@@ -2751,6 +2985,8 @@
 				<string>revealInChangesNavigator:</string>
 				<key>Alternate</key>
 				<string>NO</string>
+				<key>CommandGroupID</key>
+				<string>Xcode.IDESourceControlUI.CmdDefinition.RevealInChangesNavigator</string>
 				<key>CommandID</key>
 				<string>Xcode.IDESourceControlUI.CmdDefinition.RevealInChangesNavigator</string>
 				<key>Group</key>

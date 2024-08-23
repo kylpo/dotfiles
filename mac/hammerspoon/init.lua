@@ -783,6 +783,10 @@ xcodeRunChooser:choices({
     ["text"] = "Stop",
     ["action"] = {"Product", "Stop"},
   },
+  {
+    ["text"] = "Test",
+    ["action"] = {"Product", "Test"},
+  }
 })
 
 local xcodeKeybinds = {
@@ -792,6 +796,14 @@ local xcodeKeybinds = {
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   hotkey.new({"cmd"}, "u", function() xcodeRunChooser:show() end),
   hotkey.new({"cmd", "shift"}, "b", function() xcodeRefactorChooser:show() end),
+  -- hotkey.new({"cmd"}, "t", function()
+  --   hs.eventtap.keyStroke({"cmd", "alt"}, "t")
+  -- end),
+  --   hotkey.new({"cmd", "shift"}, "[", function()
+--     hs.eventtap.keyStroke({"alt"}, "y")
+--   end),
+
+
 
   -- hotkey.new({"cmd", "shift"}, "f", function() 
   --   local xcode = hs.appfinder.appFromName("Xcode")
