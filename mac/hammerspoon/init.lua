@@ -796,65 +796,14 @@ local xcodeKeybinds = {
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   hotkey.new({"cmd"}, "u", function() xcodeRunChooser:show() end),
   hotkey.new({"cmd", "shift"}, "b", function() xcodeRefactorChooser:show() end),
-  -- hotkey.new({"cmd"}, "t", function()
-  --   hs.eventtap.keyStroke({"cmd", "alt"}, "t")
-  -- end),
-  --   hotkey.new({"cmd", "shift"}, "[", function()
---     hs.eventtap.keyStroke({"alt"}, "y")
---   end),
-
-
-
-  -- hotkey.new({"cmd", "shift"}, "f", function() 
-  --   local xcode = hs.appfinder.appFromName("Xcode")
-
-  --   print("hi")
-  --   -- select word
-  --   hs.eventtap.keyStroke({"cmd", "shift"}, 4)
-  --   print("hi1")
-  --   -- hs.timer.doAfter(0.1, function()
-  --     -- xcode:selectMenuItem({"Find", "Use Selection for Find"})
-  --     -- print("h2")
-  --   -- end)
-  --  end),
-
-  -- hotkey.new({"cmd"}, "s", function() 
-  --   local xcode = hs.appfinder.appFromName("Xcode")
-
-  --   -- set mark
-  --   hs.eventtap.keyStroke({"cmd"}, "u")
-  --   -- select all
-  --   hs.eventtap.keyStroke({"cmd", "shift"}, "e")
-  --   hs.timer.doAfter(0.1, function()
- 
-  --   xcode:selectMenuItem({"Editor", "Structure", "Re-Indent"})
-  --   -- Unselect all
-  --   -- hs.eventtap.keyStroke({}, "Down")
-
-  --     -- swap to mark
-  --   hs.eventtap.keyStroke({"cmd", "shift"}, "u")
-  --   -- center to selection
-  --   hs.eventtap.keyStroke({"cmd"}, "/")
-
-  --   xcode:selectMenuItem({"File", "Save"})
-  -- end)
-
-  --  end),
 }
 
 -- Note: xcodeWatcher must NOT be a `local` var!
 --   I don't know why, but I was just bitten by this.
 xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
-  -- print("name")
-  -- print(name)
-  -- print("eventType")
-  -- print(eventType)
-  -- print("hs.application.watcher.activated")  
-  -- print(hs.application.watcher.activated)  
   if eventType ~= hs.application.watcher.activated then return end
   local fnName = name == "Xcode" and "enable" or "disable"
-  -- print("fnNam")
-  -- print(fnName)
+  
   for i, keybind in ipairs(xcodeKeybinds) do
     keybind[fnName](keybind)
   end
