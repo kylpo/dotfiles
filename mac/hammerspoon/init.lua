@@ -788,17 +788,17 @@ xcodeRunChooser:choices({
     ["hotkey"] = {{"alt"}, "e"},
   },
   {
-    ["text"] = "Stop",
-    ["action"] = {"Product", "Stop"},
-  },
-  {
     ["text"] = "Test",
     ["action"] = {"Product", "Test"},
   },
   {
     ["text"] = "Build",
     ["action"] = {"Product", "Build"},
-  }
+  },
+  {
+    ["text"] = "Stop",
+    ["action"] = {"Product", "Stop"},
+  },
 })
 
 -- Note: xcodeWatcher must NOT be a `local` var!
