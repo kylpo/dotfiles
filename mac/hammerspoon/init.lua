@@ -786,6 +786,10 @@ xcodeRunChooser:choices({
   {
     ["text"] = "Test",
     ["action"] = {"Product", "Test"},
+  },
+  {
+    ["text"] = "Build",
+    ["action"] = {"Product", "Build"},
   }
 })
 

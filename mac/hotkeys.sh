@@ -455,6 +455,9 @@ update_quit_keybind() {
     elif [[ $name == "VoiceMemos" ]]
     then
       name="Voice Memos"
+    elif [[ $name == "Discord" ]]
+    then
+      name="discord"
     elif [[ $name == "Xcode-beta" ]]
     then
       name="Xcode"
