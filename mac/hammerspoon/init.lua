@@ -715,6 +715,10 @@ xcodeViewChooser:choices({
   ["text"] = "Git",
   ["action"] = {"View", "Navigators", "Source Control"},
 },
+    {
+    ["text"] = "Close",
+    ["action"] = {"View", "Navigators", "Hide Navigator"},
+  },
 })
 -- Inspector
 local xcodeInspectorChooser = hs.chooser.new(handleXcodeActionChoice)
@@ -730,6 +734,10 @@ xcodeInspectorChooser:choices({
   {
     ["text"] = "History",
     ["action"] = {"View", "Inspectors", "History"},
+  },
+    {
+    ["text"] = "Close",
+    ["action"] = {"View", "Inspectors", "Hide Inspector"},
   },
 })
 -- Go To
@@ -793,21 +801,24 @@ xcodeRunChooser:choices({
   }
 })
 
-local xcodeKeybinds = {
+-- Note: xcodeWatcher must NOT be a `local` var!
+--   I don't know why, but I was just bitten by this.
+xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
+  if eventType ~= hs.application.watcher.activated then return end
+  local fnName = name == "Xcode" and "enable" or "disable"
+
+  local xcodeKeybinds = {
   -- cmd+v maps to cmd+d, so this is cmd+v
   hotkey.new({"cmd"}, "d", function() xcodeViewChooser:show() end),
   hotkey.new({"cmd"}, "k", function() xcodeInspectorChooser:show() end),
   hotkey.new({"cmd"}, "g", function() xcodeGoToChooser:show() end),
   hotkey.new({"cmd"}, "u", function() xcodeRunChooser:show() end),
   hotkey.new({"cmd", "shift"}, "b", function() xcodeRefactorChooser:show() end),
-}
+  hotkey.new({"cmd", "shift"}, "s", function() app:selectMenuItem({"View", "Editor", "Show Previous History"}) end),
+  hotkey.new({"cmd", "shift"}, "w", function() app:selectMenuItem({"View", "Editor", "Show Next History"}) end),
+  }
 
--- Note: xcodeWatcher must NOT be a `local` var!
---   I don't know why, but I was just bitten by this.
-xcodeWatcher = hs.application.watcher.new(function(name, eventType, app)
-  if eventType ~= hs.application.watcher.activated then return end
-  local fnName = name == "Xcode" and "enable" or "disable"
-  
+  -- Remember that lua is weird, so this is the same as keybind.enable() in JS, `this` is first param
   for i, keybind in ipairs(xcodeKeybinds) do
     keybind[fnName](keybind)
   end
