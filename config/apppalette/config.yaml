@@ -11,6 +11,23 @@
 #   menu_item — click a menu item by path
 #   shell     — run a shell command
 #   url       — open a URL
+
+# UI appearance — all fields are optional; defaults shown below.
+# accent_color drives highlight, borders, glow, and selected number color.
+ui:
+  accent_color: "#6FC3DF"
+  corner_radius: 12
+  max_visible_items: 10
+  item_height: 40
+  font_size: 16
+  filter_font_size: 18
+  min_width: 460
+  max_width: 600
+  text_color: "#FFFFFF"
+  text_alpha: 0.65
+  highlight_alpha: 0.12
+  border_width: 1.0
+
 apps:
   Xcode:
     palettes:
