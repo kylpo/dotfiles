@@ -1,0 +1,34 @@
+# SpaceSwitcher config — window switcher overlay.
+#
+# Ctrl+T cycles forward through windows on the current space.
+# Ctrl+R cycles backward. Release modifiers to focus the selection.
+
+show_menubar_icon: true
+
+keybinds:
+  next:
+    modifiers: [ctrl]
+    key: t
+  previous:
+    modifiers: [ctrl]
+    key: r
+
+ui:
+  icon_size: 256
+  highlight_color: "#6FC3DF"
+  highlight_alpha: 0.8
+  background_color: "#4D4D4D"
+  background_alpha: 1.0
+  show_titles: false
+  show_thumbnails: false
+  corner_radius: 25
+
+modifier_dismiss:
+  check_interval_ms: 50
+  ignore: [capslock]
+
+# Delay (ms) before focusing the selected window on dismiss.
+focus_delay_ms: 150
+
+# Delay (ms) before drawing the switcher UI after activation.
+draw_delay_ms: 200

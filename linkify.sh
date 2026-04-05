@@ -36,9 +36,15 @@ fi
 [[ ! -s ~/.config ]] && mkdir ~/.config
 [[ ! -s ~/.config/nvim ]] && ln -s $DIR/nvim ~/.config/nvim
 
+# Symlink all folders/files in config/ to ~/.config/
+for item in "$DIR"/config/*; do
+  name="$(basename "$item")"
+  [[ ! -s ~/.config/$name ]] && ln -s "$item" ~/.config/"$name"
+done
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
-  [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon
+  # [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon
 fi
 
 

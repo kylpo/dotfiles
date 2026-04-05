@@ -1,0 +1,8 @@
+# FocusIndicator config — focus border and CAPS_LOCK mouse mode.
+#
+# Apps in ignore_apps won't trigger border updates — the border stays
+# on the last non-ignored window.
+
+ignore_apps:
+  - AppPalette
+  - Moom Classic

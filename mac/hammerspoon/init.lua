@@ -736,6 +736,10 @@ xcodeInspectorChooser:choices({
     ["action"] = {"View", "Inspectors", "History"},
   },
     {
+    ["text"] = "Attributes",
+    ["action"] = {"View", "Inspectors", "Attributes"},
+  },
+    {
     ["text"] = "Close",
     ["action"] = {"View", "Inspectors", "Hide Inspector"},
   },

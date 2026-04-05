@@ -347,3 +347,7 @@ if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
 else
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+. "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/kylpo/.antigravity/antigravity/bin:$PATH"

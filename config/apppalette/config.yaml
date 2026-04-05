@@ -1,0 +1,89 @@
+# AppPalette config — per-app hotkey-triggered command palettes.
+#
+# Each app is keyed by its localizedName (as shown in the menu bar).
+# Use "*" for bindings active in all apps.
+#
+# Trigger keys: a-z, 0-9, f1-f19, return, tab, space, escape, etc.
+# Modifiers: cmd, alt (option), shift, ctrl (control)
+#
+# Action types:
+#   hotkey    — fire a keystroke (modifiers + key)
+#   menu_item — click a menu item by path
+#   shell     — run a shell command
+#   url       — open a URL
+apps:
+  Xcode:
+    palettes:
+      - trigger: { modifiers: [cmd], key: d }
+        title: View
+        filterable: false
+        number_selection: true
+        items:
+          - text: Explorer
+            action: { type: menu_item, path: [Navigate, "Reveal in Project Navigator"] }
+          - text: Tests
+            action: { type: menu_item, path: [View, Navigators, Tests] }
+          - text: Git
+            action: { type: menu_item, path: [View, Navigators, Source Control] }
+          - text: Close
+            action: { type: menu_item, path: [View, Navigators, Hide Navigator] }
+
+      - trigger: { modifiers: [cmd], key: k }
+        title: Inspector
+        filterable: false
+        number_selection: true
+        items:
+          - text: Quick Help
+            action: { type: menu_item, path: [View, Inspectors, Quick Help] }
+          - text: File
+            action: { type: menu_item, path: [View, Inspectors, File] }
+          - text: History
+            action: { type: menu_item, path: [View, Inspectors, History] }
+          - text: Attributes
+            action: { type: menu_item, path: [View, Inspectors, Attributes] }
+          - text: Close
+            action: { type: menu_item, path: [View, Inspectors, Hide Inspector] }
+
+      - trigger: { modifiers: [cmd], key: g }
+        title: GoTo
+        filterable: false
+        number_selection: true
+        items:
+          - text: Definition
+            action: { type: hotkey, modifiers: [cmd], key: F12 }
+          - text: Previous Edit
+            action: { type: menu_item, path: [Navigate, "Jump to Previous Change"] }
+          - text: Back
+            action: { type: menu_item, path: [Navigate, Go Back] }
+          - text: Forward
+            action: { type: menu_item, path: [Navigate, Go Forward] }
+
+      - trigger: { modifiers: [cmd], key: u }
+        title: Run
+        filterable: false
+        number_selection: true
+        items:
+          - text: Run
+            action: { type: hotkey, modifiers: [cmd, ctrl, shift], key: q }
+          - text: re-Test
+            action: { type: hotkey, modifiers: [alt], key: e }
+          - text: Test
+            action: { type: menu_item, path: [Product, Test] }
+          - text: Build
+            action: { type: menu_item, path: [Product, Build] }
+          - text: Stop
+            action: { type: menu_item, path: [Product, Stop] }
+
+      - trigger: { modifiers: [cmd, shift], key: b }
+        title: Refactor
+        filterable: false
+        number_selection: true
+        items:
+          - text: Rename
+            action: { type: hotkey, modifiers: [alt], key: r }
+
+    direct_bindings:
+      - trigger: { modifiers: [cmd, shift], key: s }
+        action: { type: menu_item, path: [View, Editor, "Show Previous History"] }
+      - trigger: { modifiers: [cmd, shift], key: w }
+        action: { type: menu_item, path: [View, Editor, "Show Next History"] }

@@ -542,10 +542,10 @@ sudo xcodebuild -license accept
 
 echo "Installing Misc Apps..."
 
-brew install hammerspoon
+# brew install hammerspoon
 brew install google-chrome
 brew install --cask discord
-brew install --cask witch
+# brew install --cask witch
 brew install --cask anki
 
 ###############################################################################

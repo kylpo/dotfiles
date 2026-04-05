@@ -1,0 +1,23 @@
+# MouseJump config — F-key double-tap cursor teleportation.
+#
+# Double-tap an F-key to jump the cursor to a screen position.
+# Single-tap jumps relative to the focused window.
+
+show_menubar_icon: true
+
+# Maximum interval (ms) between two key presses to count as a double-tap.
+double_tap_threshold_ms: 200
+
+circle:
+  color: "#DF740C"
+  diameter: 80
+  stroke_width: 5
+  fade_in_duration: 0.5
+  fade_out_duration: 0.5
+
+keys:
+  center: F16
+  top_left: F19
+  top_right: F18
+  bottom_right: F17
+  bottom_left: F15

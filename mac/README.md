@@ -38,6 +38,7 @@ cp -rf ./xcode/Klaws.idekeybindings ~/Library/Developer/Xcode/UserData/KeyBindin
 
 ```sh
 sudo cp -r ./xcode/My\ SwiftUI\ View.xctemplate /Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File\ Templates/MultiPlatform/User\ Interface
+sudo cp -r ./xcode/RobotSheet.xctemplate /Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/File\ Templates/MultiPlatform/Test
 ```
 
 See https://www.kodeco.com/26582967-xcode-project-and-file-templates/page/2?page=4#toc-anchor-016 for help
