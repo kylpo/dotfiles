@@ -8,7 +8,7 @@ echo "Updating preferences in $PREFS_DIR"
 
 bundleIds=(
   com.manytricks.Moom
-  com.manytricks.Witch
+  # com.manytricks.Witch
   com.yujitach.MenuMetersApp
   # com.robinlu.mac.Tooth-Fairy
   # dexterleng.vimac

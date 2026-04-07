@@ -42,6 +42,13 @@ for item in "$DIR"/config/*; do
   [[ ! -s ~/.config/$name ]] && ln -s "$item" ~/.config/"$name"
 done
 
+# Symlink all scripts in bin/ to ~/.local/bin/
+mkdir -p ~/.local/bin
+for item in "$DIR"/bin/*; do
+  name="$(basename "$item")"
+  [[ ! -L ~/.local/bin/$name ]] && ln -s "$item" ~/.local/bin/"$name"
+done
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
   [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
   # [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon

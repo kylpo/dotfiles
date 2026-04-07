@@ -12,6 +12,9 @@
 #   shell     — run a shell command
 #   url       — open a URL
 
+hot_reload: false
+show_menubar_icon: false
+
 # UI appearance — all fields are optional; defaults shown below.
 # accent_color drives highlight, borders, glow, and selected number color.
 ui:

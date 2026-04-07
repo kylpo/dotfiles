@@ -3,7 +3,8 @@
 # Double-tap an F-key to jump the cursor to a screen position.
 # Single-tap jumps relative to the focused window.
 
-show_menubar_icon: true
+hot_reload: false
+show_menubar_icon: false
 
 # Maximum interval (ms) between two key presses to count as a double-tap.
 double_tap_threshold_ms: 200

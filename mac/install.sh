@@ -504,15 +504,16 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
 echo "Installing Menubar Apps..."
 
-brew install itsycal
+# brew install itsycal
 brew install menumeters
 
 # Always show Sound in menubar
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -int 1
 
 # Don't show the date or day in Clock (show it in itsycal instead)
-defaults write com.apple.menuextra.clock ShowDate -int 2
-defaults write com.apple.menuextra.clock ShowDayOfWeek -int 0
+# defaults write com.apple.menuextra.clock ShowDate -int 2
+# defaults write com.apple.menuextra.clock ShowDayOfWeek -int 0
+defaults write com.apple.menuextra.clock IsAnalog -bool TRUE
 
 ###############################################################################
 # Mac App Store Apps
