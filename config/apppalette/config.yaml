@@ -12,7 +12,7 @@
 #   shell     — run a shell command
 #   url       — open a URL
 
-hot_reload: false
+hot_reload: true
 show_menubar_icon: false
 
 # UI appearance — all fields are optional; defaults shown below.

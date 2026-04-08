@@ -525,7 +525,7 @@ echo "Installing Mac Store Apps..."
 # already be in the Purchased tab of the App Store.
 
 # mas install 557168941	  # Tweetbot
-mas install 419330170	  # Moom
+# mas install 419330170	  # Moom
 # mas install 803453959   # Slack
 # mas install 1475897096  # Jira Cloud by Atlassian 
 # mas install 1191449274  # ToothFairy - easy bluetooth audio toggles

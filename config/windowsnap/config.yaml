@@ -1,0 +1,47 @@
+# WindowSnap config — keyboard and drag-to-edge window snapping.
+#
+# Activation: Press the activation hotkey to enter snap mode, then press
+# a snap key to move the focused window to that zone.
+#
+# Drag-to-edge: Always active. Drag a window to a screen edge to snap.
+# Green button: Always active. Click the green button to zoom-to-fill.
+
+# Automatically reload config when the file changes on disk.
+# Changing false → true requires a restart or "Reload Config" from the menubar.
+hot_reload: true
+
+# Show the WindowSnap menubar icon.
+show_menubar_icon: true
+
+# Global activation hotkey — enters snap mode.
+activation:
+  modifiers: [ctrl]
+  key: k
+
+# Snap keys — pressed after activation to snap the focused window.
+# No modifiers needed — just the bare key.
+snap_keys:
+  left: o
+  top_left: g
+  top: r
+  top_right: l
+  right: n
+  bottom_right: w
+  bottom: m
+  bottom_left: s
+  maximize: t
+
+# Gap (in points) between snapped windows and screen edges.
+edge_gap: 50
+
+# Snap animation duration in milliseconds. 0 = instant.
+animation_duration_ms: 0
+
+# Color of the menubar icon background when snap mode is active.
+# Hex RGB format.
+activation_color: "#6FC3DF"
+
+# Drag-to-edge snap preview appearance.
+preview:
+  color: "#FFFFFF"
+  alpha: 0.15

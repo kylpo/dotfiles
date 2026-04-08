@@ -3,7 +3,7 @@
 # Ctrl+T cycles forward through windows on the current space.
 # Ctrl+R cycles backward. Release modifiers to focus the selection.
 
-hot_reload: false
+hot_reload: true
 show_menubar_icon: false
 
 keybinds:
