@@ -505,7 +505,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 echo "Installing Menubar Apps..."
 
 # brew install itsycal
-brew install menumeters
+# brew install menumeters
 
 # Always show Sound in menubar
 defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -int 1
@@ -606,19 +606,19 @@ for plist in "$DIR/prefs/"*; do
 
 # MenuMeters
 # ---------------------------
-MenuMeters="com.yujitach.MenuMetersApp"
+# MenuMeters="com.yujitach.MenuMetersApp"
 
-defaults write "$MenuMeters" CPUAverageLowerHalfProcs -int 0
-defaults write "$MenuMeters" CPUAverageMultiProcs -int 1
-defaults write "$MenuMeters" CPUDisplayMode -int 2
-defaults write "$MenuMeters" CPUSortByUsage -int 0
-defaults write "$MenuMeters" CPUSumAllProcsPercent -int 0
-defaults write "$MenuMeters" CPUTemperature -int 0
-defaults write "$MenuMeters" MemDisplayMode -int 4
-defaults write "$MenuMeters" NetPreferInterface -string 'primary'
-defaults write "$MenuMeters" "com.ragingmenace.MenuMeterDisk" -int 0
-defaults write "$MenuMeters" "com.ragingmenace.MenuMeterNet" -int 0
-defaults write "$MenuMeters" migratedFromRagingMenaceToYujitach -int 1
+# defaults write "$MenuMeters" CPUAverageLowerHalfProcs -int 0
+# defaults write "$MenuMeters" CPUAverageMultiProcs -int 1
+# defaults write "$MenuMeters" CPUDisplayMode -int 2
+# defaults write "$MenuMeters" CPUSortByUsage -int 0
+# defaults write "$MenuMeters" CPUSumAllProcsPercent -int 0
+# defaults write "$MenuMeters" CPUTemperature -int 0
+# defaults write "$MenuMeters" MemDisplayMode -int 4
+# defaults write "$MenuMeters" NetPreferInterface -string 'primary'
+# defaults write "$MenuMeters" "com.ragingmenace.MenuMeterDisk" -int 0
+# defaults write "$MenuMeters" "com.ragingmenace.MenuMeterNet" -int 0
+# defaults write "$MenuMeters" migratedFromRagingMenaceToYujitach -int 1
 
 # ---------------------------
 # XCode

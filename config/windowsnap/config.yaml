@@ -3,8 +3,8 @@
 # Activation: Press the activation hotkey to enter snap mode, then press
 # a snap key to move the focused window to that zone.
 #
-# Drag-to-edge: Always active. Drag a window to a screen edge to snap.
-# Green button: Always active. Click the green button to zoom-to-fill.
+# Drag-to-edge: Drag a window to a screen edge to snap.
+# Green button: Click the green button to zoom-to-fill.
 
 # Automatically reload config when the file changes on disk.
 # Changing false → true requires a restart or "Reload Config" from the menubar.
@@ -32,7 +32,7 @@ snap_keys:
   maximize: t
 
 # Gap (in points) between snapped windows and screen edges.
-edge_gap: 50
+edge_gap: 0
 
 # Snap animation duration in milliseconds. 0 = instant.
 animation_duration_ms: 0
@@ -41,7 +41,15 @@ animation_duration_ms: 0
 # Hex RGB format.
 activation_color: "#6FC3DF"
 
-# Drag-to-edge snap preview appearance.
-preview:
-  color: "#FFFFFF"
-  alpha: 0.15
+# Drag-to-edge snapping — drag a window to a screen edge to snap.
+drag_to_edge:
+  enabled: true               # Enable/disable drag-to-edge snapping (default: true)
+  edge_width: 30              # Pixels from screen edge to trigger snap (default: 15)
+  corner_width: 30            # Pixels from corner to trigger snap (default: 30)
+  preview:                    # Snap preview overlay appearance
+    color: "#FFFFFF"
+    alpha: 0.15
+
+# Green button override — click green button to zoom-to-fill instead of fullscreen.
+green_button:
+  enabled: true               # Enable/disable green button override (default: true)

@@ -4,7 +4,7 @@
 # Single-tap jumps relative to the focused window.
 
 hot_reload: true
-show_menubar_icon: false
+show_menubar_icon: true
 
 # Maximum interval (ms) between two key presses to count as a double-tap.
 double_tap_threshold_ms: 200

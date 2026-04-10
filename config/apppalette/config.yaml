@@ -13,7 +13,7 @@
 #   url       — open a URL
 
 hot_reload: true
-show_menubar_icon: false
+show_menubar_icon: true
 
 # UI appearance — all fields are optional; defaults shown below.
 # accent_color drives highlight, borders, glow, and selected number color.

@@ -49,11 +49,10 @@ for item in "$DIR"/bin/*; do
   [[ ! -L ~/.local/bin/$name ]] && ln -s "$item" ~/.local/bin/"$name"
 done
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
-  # [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon
-fi
-
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#   [[ ! -s ~/.config/karabiner ]] && ln -s $DIR/mac/karabiner ~/.config/karabiner
+#   [[ ! -s ~/.hammerspoon ]] && ln -s $DIR/mac/hammerspoon ~/.hammerspoon
+# fi
 
 #[[ ! -s ~/Library/KeyBindings ]] && mkdir ~/.Library/KeyBindings
 #[[ ! -s ~/Library/KeyBindings/DefaultKeyBinding.dict ]] && ln -s $DIR/mac/DefaultKeyBinding.dict ~/Library/KeyBindings

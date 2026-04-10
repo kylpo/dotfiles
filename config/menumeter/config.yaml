@@ -5,9 +5,10 @@ update_interval: 2.0
 
 cpu:
   enabled: true
-  style: text        # text | graph
+  style: graph        # text | graph
   label: "CPU"
   color: "#FFFFFF"
+  fill_color: "#999999"
 
 ram:
   enabled: true
@@ -15,6 +16,7 @@ ram:
   format: percentage # percentage | used_total
   label: "RAM"
   color: "#FFFFFF"
+  fill_color: "#999999"
 
 popover:
   background_color: "#1E1E1E"

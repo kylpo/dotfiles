@@ -4,7 +4,7 @@
 # Ctrl+R cycles backward. Release modifiers to focus the selection.
 
 hot_reload: true
-show_menubar_icon: false
+show_menubar_icon: true
 
 keybinds:
   next:

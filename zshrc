@@ -151,9 +151,10 @@ hide_icons () {
   killall Finder
 }
 
-cd () {
-  builtin cd $@ && ls -aG
-}
+# I will miss this functionality, but it just litters the LLM too much and wastes tokens
+# cd () {
+#   builtin cd $@ && ls -aG
+# }
 
 # open vim
 v () {
