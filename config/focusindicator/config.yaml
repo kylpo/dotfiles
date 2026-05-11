@@ -4,7 +4,7 @@
 # on the last non-ignored window.
 
 # Automatically reload config when the file changes on disk.
-# Changing false → true requires a restart or "Reload Config" from the menubar.
+# Changing false → true requires a restart.
 hot_reload: true
 
 show_menubar_icon: true
@@ -18,4 +18,35 @@ menubar_width_percent: 100
 menubar_rounded: true
 
 ignore_apps:
-  - AppPalette
+  - AppKeys
+
+# Optional user-authored side-effect rules. Each rule maps a keyDown event
+# to a CAPS_LOCK mode transition, in addition to the 8 built-in rules
+# (ctrl+q, ctrl+m, ctrl+i, ctrl+a, ctrl+l in browsers, cmd+f/o/a in editors).
+# Built-ins always fire first and cannot be disabled. User rules below are
+# appended AFTER the built-ins, so a user rule that duplicates a built-in's
+# hotkey+scope will never match.
+#
+# Fields:
+#   hotkey (required, string) — canonical Tron hotkey: "ctrl+p", "cmd+shift+f", etc.
+#   apps   (optional, array)  — scope to specific NSWorkspace.localizedName values;
+#                               omit or leave empty to match any app.
+#   action (required, enum)   — "to_mouse_mode" or "to_keyboard_mode".
+side_effects:
+  # Expose - Mouse
+  - hotkey: "ctrl+m"
+    action: to_mouse_mode
+  # Screenshot - Mouse
+  - hotkey: "ctrl+q"
+    action: to_mouse_mode
+  - hotkey: "ctrl+shift+q"
+    action: to_mouse_mode
+  # Find - Keyboard
+  - hotkey: "cmd+f"
+    action: to_keyboard_mode
+  # WindonSnap - Keyboard
+  - hotkey: "ctrl+k"
+    action: to_keyboard_mode
+  # - hotkey: "ctrl+l"
+  #   apps: [Safari, "Google Chrome", Code]
+  #   action: to_keyboard_mode

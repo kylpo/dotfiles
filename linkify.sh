@@ -13,8 +13,8 @@ cd ~
 [[ ! -s ~/.agignore ]] && ln -s $DIR/agignore ~/.agignore
 [[ ! -s ~/.zsh ]] && ln -s $DIR/zsh ~/.zsh
 [[ ! -s ~/.zshrc ]] && ln -s $DIR/zshrc ~/.zshrc
-[[ ! -s ~/.zshrc.local ]] && ln -s $DIR/zshrc.local ~/.zshrc.local
-[[ ! -s ~/.ideavimrc ]] && ln -s $DIR/ideavimrc ~/.ideavimrc
+[[ ! -e ~/.zshrc.local && ! -L ~/.zshrc.local ]] && ln -s $DIR/zshrc.local ~/.zshrc.local
+# [[ ! -s ~/.ideavimrc ]] && ln -s $DIR/ideavimrc ~/.ideavimrc
 
 # Check if file exists and is a symlink
 if [[ ! -L ~/.zshrc ]]; then

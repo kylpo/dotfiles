@@ -3,14 +3,14 @@
 # Each app is keyed by its localizedName (as shown in the menu bar).
 # Use "*" for bindings active in all apps.
 #
-# Trigger keys: a-z, 0-9, f1-f19, return, tab, space, escape, etc.
+# Trigger: hotkey string like "cmd+d", "ctrl+shift+k"
 # Modifiers: cmd, alt (option), shift, ctrl (control)
 #
-# Action types:
-#   hotkey    — fire a keystroke (modifiers + key)
-#   menu_item — click a menu item by path
-#   shell     — run a shell command
-#   url       — open a URL
+# Action fields (exactly one per item/binding):
+#   hotkey: "mod+key"           — fire a keystroke
+#   path: [Menu, Submenu, Item] — click a menu item by path
+#   shell: "command"            — run a shell command
+#   url: "https://..."          — open a URL
 
 hot_reload: true
 show_menubar_icon: true
@@ -34,76 +34,77 @@ ui:
 apps:
   Xcode:
     palettes:
-      - trigger: { modifiers: [cmd], key: d }
+      - trigger: "cmd+d"
         title: View
         filterable: false
         number_selection: true
         items:
           - text: Explorer
-            action: { type: menu_item, path: [Navigate, "Reveal in Project Navigator"] }
+            path: [Navigate, "Reveal in Project Navigator"]
           - text: Tests
-            action: { type: menu_item, path: [View, Navigators, Tests] }
+            path: [View, Navigators, Tests]
           - text: Git
-            action: { type: menu_item, path: [View, Navigators, Source Control] }
+            path: [View, Navigators, Source Control]
           - text: Close
-            action: { type: menu_item, path: [View, Navigators, Hide Navigator] }
+            path: [View, Navigators, Hide Navigator]
 
-      - trigger: { modifiers: [cmd], key: k }
+      - trigger: "cmd+k"
         title: Inspector
         filterable: false
         number_selection: true
         items:
           - text: Quick Help
-            action: { type: menu_item, path: [View, Inspectors, Quick Help] }
+            path: [View, Inspectors, Quick Help]
           - text: File
-            action: { type: menu_item, path: [View, Inspectors, File] }
+            path: [View, Inspectors, File]
           - text: History
-            action: { type: menu_item, path: [View, Inspectors, History] }
+            path: [View, Inspectors, History]
           - text: Attributes
-            action: { type: menu_item, path: [View, Inspectors, Attributes] }
+            path: [View, Inspectors, Attributes]
           - text: Close
-            action: { type: menu_item, path: [View, Inspectors, Hide Inspector] }
+            path: [View, Inspectors, Hide Inspector]
 
-      - trigger: { modifiers: [cmd], key: g }
+      - trigger: "cmd+g"
         title: GoTo
         filterable: false
         number_selection: true
         items:
           - text: Definition
-            action: { type: hotkey, modifiers: [cmd], key: F12 }
+            hotkey: "cmd+F12"
           - text: Previous Edit
-            action: { type: menu_item, path: [Navigate, "Jump to Previous Change"] }
+            path: [Navigate, "Jump to Previous Change"]
           - text: Back
-            action: { type: menu_item, path: [Navigate, Go Back] }
+            path: [Navigate, Go Back]
           - text: Forward
-            action: { type: menu_item, path: [Navigate, Go Forward] }
+            path: [Navigate, Go Forward]
 
-      - trigger: { modifiers: [cmd], key: u }
+      - trigger: "cmd+u"
         title: Run
         filterable: false
         number_selection: true
         items:
           - text: Run
-            action: { type: hotkey, modifiers: [cmd, ctrl, shift], key: q }
+            hotkey: "cmd+ctrl+shift+q"
           - text: re-Test
-            action: { type: hotkey, modifiers: [alt], key: e }
+            hotkey: "alt+e"
           - text: Test
-            action: { type: menu_item, path: [Product, Test] }
+            path: [Product, Test]
           - text: Build
-            action: { type: menu_item, path: [Product, Build] }
+            path: [Product, Build]
           - text: Stop
-            action: { type: menu_item, path: [Product, Stop] }
+            path: [Product, Stop]
 
-      - trigger: { modifiers: [cmd, shift], key: b }
+      - trigger: "cmd+shift+b"
         title: Refactor
         filterable: false
         number_selection: true
         items:
           - text: Rename
-            action: { type: hotkey, modifiers: [alt], key: r }
+            hotkey: "alt+r"
 
     direct_bindings:
-      - trigger: { modifiers: [cmd, shift], key: s }
-        action: { type: menu_item, path: [View, Editor, "Show Previous History"] }
-      - trigger: { modifiers: [cmd, shift], key: w }
-        action: { type: menu_item, path: [View, Editor, "Show Next History"] }
+      - trigger: "cmd+shift+s"
+        path: [View, Editor, "Show Previous History"]
+      - trigger: "cmd+shift+w"
+        path: [View, Editor, "Show Next History"]
+

@@ -71,8 +71,7 @@ source /opt/homebrew/etc/profile.d/z.sh
 
 alias l='ls -l'
 alias la='ls -A'
-alias ll='ls -alF'
-alias llh='ls -alh'
+alias ll='ls -alF'alias llh='ls -alh'
 alias lls='ls -lSr' #sort by size
 alias llsh='ls -lSrh' #sort by size
 alias latr='ls -latr'
@@ -93,6 +92,8 @@ alias gco='git checkout'
 alias gco-='git checkout -'
 alias clone='hub clone'
 alias fix="git diff --name-only | uniq | xargs vim"
+
+alias precommit='"$(git rev-parse --git-dir)/hooks/pre-commit"'
 
 alias start='yarn start'
 alias run='yarn run'
@@ -126,7 +127,26 @@ alias ez='vim ~/.zshrc'
 alias android-avd="emulator -avd Nexus_5X_API_24 &"
 alias ios-simulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/"
 
+# custom binary shorthands
+alias td='thunderdome'
 
+# cross-platform clipboard copy (reads from stdin)
+copy() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    pbcopy
+  elif [[ -n "$WAYLAND_DISPLAY" ]] && command -v wl-copy >/dev/null 2>&1; then
+    wl-copy
+  elif command -v xclip >/dev/null 2>&1; then
+    xclip -selection clipboard
+  elif command -v xsel >/dev/null 2>&1; then
+    xsel --clipboard --input
+  elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" ]]; then
+    clip
+  else
+    echo "copy: no clipboard utility found" >&2
+    return 1
+  fi
+}
 
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7

@@ -1,18 +1,17 @@
-# SpaceSwitcher config — window switcher overlay.
+# FocusSwitcher config — window switcher overlay.
 #
 # Ctrl+T cycles forward through windows on the current space.
 # Ctrl+R cycles backward. Release modifiers to focus the selection.
 
+# Automatically reload config when the file changes on disk.
+# Changing false → true requires a restart.
 hot_reload: true
+
 show_menubar_icon: true
 
-keybinds:
-  next:
-    modifiers: [ctrl]
-    key: t
-  previous:
-    modifiers: [ctrl]
-    key: r
+hotkeys:
+  next: "ctrl+t"
+  previous: "ctrl+r"
 
 ui:
   icon_size: 256

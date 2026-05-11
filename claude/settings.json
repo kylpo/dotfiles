@@ -1,0 +1,415 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(ls:*)",
+      "WebSearch",
+      "Bash(swift test:*)",
+      "Bash(swift build:*)",
+      "Bash(xcrun momc:*)",
+      "Bash(echo exit: $?:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(xcodebuild build:*)",
+      "Bash(xcodebuild build-for-testing:*)",
+      "Bash(mv:*)",
+      "Bash(swift:*)",
+      "Bash(wc:*)",
+      "Bash(echo EXIT: $?:*)",
+      "Bash(chmod +x:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(~/.claude/skills/**)",
+      "Read(~/github/skills/**)",
+      "Read(~/.claude/**)",
+      "Skill",
+      "Bash(cd /tmp/worktree-*)",
+      "Read(//tmp/worktree-*/**)",
+      "Write(//tmp/worktree-*/**)",
+      "Edit(//tmp/worktree-*/**)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "matcher": "auth_success",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "matcher": "elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|])find([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Glob tool instead of the find command. For file pattern matching use Glob; for content search use Grep.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|`$()])rm([[:space:];&|]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "path=$(jq -r '.tool_input.file_path // empty'); if printf '%s' \"$path\" | grep -Eq '\\.pbxproj$'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Do not read project.pbxproj directly - it is huge and wastes context. Use `pbxproj` instead (on $PATH via ~/github/tools). Run `pbxproj --help` for subcommands: targets, files, add-file, remove-file, build-settings, set-build-setting.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail|sed|awk)([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail (and Edit instead of sed/awk). The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -q 'LEVERS\\.md' && ! printf '%s' \"$cmd\" | grep -q 'resolve\\.sh'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use ~/.claude/skills/protocol-levers/resolve.sh <path> [keys...] to get the merged effective LEVERS view (root defaults + package overrides). Reading LEVERS.md directly skips the inheritance resolution.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "path=$(jq -r '.tool_input.file_path // empty'); if printf '%s' \"$path\" | grep -Eq '(^|/)LEVERS\\.md$'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use ~/.claude/skills/protocol-levers/resolve.sh <path> [keys...] to get the merged effective LEVERS view. Reading LEVERS.md directly skips inheritance resolution between root and package files.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -q '\\.pbxproj'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Do not access project.pbxproj directly via shell — it is huge and wastes context. Use `pbxproj` instead (on $PATH via ~/github/tools). Run `pbxproj --help` for subcommands: targets, files, add-file, remove-file, build-settings, set-build-setting.\"}}'; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PermissionDenied": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "ConfigChange": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "FileChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "InstructionsLoaded": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "Elicitation": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "ElicitationResult": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "TaskCreated": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "WorktreeRemove": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "autoMemoryEnabled": false,
+  "verbose": true
+}

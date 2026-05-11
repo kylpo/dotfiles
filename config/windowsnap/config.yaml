@@ -14,9 +14,7 @@ hot_reload: true
 show_menubar_icon: true
 
 # Global activation hotkey — enters snap mode.
-activation:
-  modifiers: [ctrl]
-  key: k
+activation: "ctrl+k"
 
 # Snap keys — pressed after activation to snap the focused window.
 # No modifiers needed — just the bare key.
@@ -44,8 +42,8 @@ activation_color: "#6FC3DF"
 # Drag-to-edge snapping — drag a window to a screen edge to snap.
 drag_to_edge:
   enabled: true               # Enable/disable drag-to-edge snapping (default: true)
-  edge_width: 30              # Pixels from screen edge to trigger snap (default: 15)
-  corner_width: 30            # Pixels from corner to trigger snap (default: 30)
+  edge_threshold: 30          # Pixels from screen edge to trigger snap (default: 15)
+  corner_threshold: 30        # Pixels from corner to trigger snap (default: 30)
   preview:                    # Snap preview overlay appearance
     color: "#FFFFFF"
     alpha: 0.15
@@ -53,3 +51,4 @@ drag_to_edge:
 # Green button override — click green button to zoom-to-fill instead of fullscreen.
 green_button:
   enabled: true               # Enable/disable green button override (default: true)
+

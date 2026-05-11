@@ -1,6 +1,6 @@
 # MenuMeter config — system stats in your menubar.
-hot_reload: true
-show_menubar_icon: true
+hot_reload: false
+show_menubar_icon: false
 update_interval: 2.0
 
 cpu:
@@ -24,3 +24,4 @@ popover:
   secondary_text_color: "#8E8E93"
   accent_color: "#6FC3DF"
   font_size: 13.0
+
