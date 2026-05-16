@@ -26,7 +26,10 @@
       "Bash(cd /tmp/worktree-*)",
       "Read(//tmp/worktree-*/**)",
       "Write(//tmp/worktree-*/**)",
-      "Edit(//tmp/worktree-*/**)"
+      "Edit(//tmp/worktree-*/**)",
+      "Bash(/Users/kylpo/.claude/skills/**)",
+      "Bash(/Users/kylpo/.claude/scripts/**)",
+      "Read(//Users/kylpo/github/skills/**)"    
     ],
     "defaultMode": "default"
   },
@@ -125,6 +128,14 @@
             "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/skill-md-gate.sh prompt"
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -133,6 +144,24 @@
           {
             "type": "command",
             "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/skill-md-gate.sh write"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/skill-md-gate.sh edit"
           }
         ]
       },
@@ -177,7 +206,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -q 'LEVERS\\.md' && ! printf '%s' \"$cmd\" | grep -q 'resolve\\.sh'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use ~/.claude/skills/protocol-levers/resolve.sh <path> [keys...] to get the merged effective LEVERS view (root defaults + package overrides). Reading LEVERS.md directly skips the inheritance resolution.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[^a-zA-Z0-9_/.-])\\.levers\\.yml([^a-zA-Z0-9_/.-]|$)' && ! printf '%s' \"$cmd\" | grep -qE '(^|[[:space:]])levers[[:space:]]+(get|merge-strictest|validate|audit|set|init|detect-packages|list-enums)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `levers get [<key>] --at <path>` (omit the key for the full merged view) to read the effective value. Reading .levers.yml directly skips inheritance resolution between root and package files.\"}}'; fi"
           }
         ]
       },
@@ -186,7 +215,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "path=$(jq -r '.tool_input.file_path // empty'); if printf '%s' \"$path\" | grep -Eq '(^|/)LEVERS\\.md$'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use ~/.claude/skills/protocol-levers/resolve.sh <path> [keys...] to get the merged effective LEVERS view. Reading LEVERS.md directly skips inheritance resolution between root and package files.\"}}'; fi"
+            "command": "path=$(jq -r '.tool_input.file_path // empty'); if printf '%s' \"$path\" | grep -Eq '(^|/)\\.levers\\.yml$'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `levers get [<key>] --at <path>` (omit the key for the full merged view) to read the effective value. Reading .levers.yml directly skips inheritance resolution between root and package files.\"}}'; fi"
           }
         ]
       },
@@ -392,8 +421,8 @@
     ]
   },
   "enabledPlugins": {
-    "claude-code-setup@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
