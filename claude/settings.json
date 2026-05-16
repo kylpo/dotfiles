@@ -128,14 +128,6 @@
             "command": "printf '{\"ppid\":%s,\"event\":%s}\\n' \"$PPID\" \"$(cat)\" | nc -U ~/Library/Containers/com.cronstruct.MAIFocus/Data/server.sock"
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/skill-md-gate.sh prompt"
-          }
-        ]
       }
     ],
     "PreToolUse": [
