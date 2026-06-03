@@ -1,0 +1,79 @@
+# MouseLock config — F-key cursor teleport + focus border + CAPS_LOCK mouse mode.
+#
+# The two feature stacks are nested under `jump:` (formerly MouseJump) and
+# `focus:` (formerly FocusIndicator). Shared settings stay at the top level.
+
+# Automatically reload config when the file changes on disk.
+# Changing false → true requires a restart.
+hot_reload: true
+
+show_menubar_icon: true
+
+# --- Cursor teleport (formerly MouseJump) -----------------------------------
+#
+# Double-tap an F-key to jump the cursor to a screen position.
+# Single-tap jumps relative to the focused window.
+jump:
+  # Maximum interval (ms) between two key presses to count as a double-tap.
+  double_tap_threshold_ms: 200
+
+  circle:
+    color: "#DF740C"
+    diameter: 80
+    stroke_width: 5
+    fade_in_duration: 0.5
+    fade_out_duration: 0.5
+
+  keys:
+    center: F16
+    top_left: F19
+    top_right: F18
+    bottom_right: F17
+    bottom_left: F15
+
+# --- Focus indicator + mouse mode (formerly FocusIndicator) -----------------
+#
+# Apps in ignore_apps won't trigger border updates — the border stays on the
+# last non-ignored window.
+focus:
+  # Width of the menubar indicator as a percentage of the screen width (1-100).
+  # The indicator is horizontally centered. Default: 100 (full width).
+  menubar_width_percent: 100
+
+  # Whether the menubar indicator uses rounded corners (capsule shape).
+  # When true, the indicator becomes a pill/capsule shape. Default: false.
+  menubar_rounded: true
+
+  ignore_apps:
+    - AppKeys
+
+  # User-authored side-effect rules. Each rule maps a keyDown event to a
+  # CAPS_LOCK mode transition, in addition to the built-in rules
+  # (ctrl+q, ctrl+m, ctrl+i, ctrl+a, ctrl+l in browsers, cmd+f/o/a in editors).
+  # Built-ins always fire first and cannot be disabled. User rules below are
+  # appended AFTER the built-ins, so a user rule that duplicates a built-in's
+  # hotkey+scope will never match.
+  #
+  # Fields:
+  #   hotkey (required, string) — canonical Tron hotkey: "ctrl+p", "cmd+shift+f", etc.
+  #   apps   (optional, array)  — scope to specific NSWorkspace.localizedName values;
+  #                               omit or leave empty to match any app.
+  #   action (required, enum)   — "to_mouse_mode" or "to_keyboard_mode".
+  side_effects:
+    # Expose - Mouse
+    - hotkey: "ctrl+m"
+      action: to_mouse_mode
+    # Screenshot - Mouse
+    - hotkey: "ctrl+q"
+      action: to_mouse_mode
+    - hotkey: "ctrl+shift+q"
+      action: to_mouse_mode
+    # Find - Keyboard
+    - hotkey: "cmd+f"
+      action: to_keyboard_mode
+    # WindowSnap - Keyboard
+    - hotkey: "ctrl+k"
+      action: to_keyboard_mode
+    # - hotkey: "ctrl+l"
+    #   apps: [Safari, "Google Chrome", Code]
+    #   action: to_keyboard_mode

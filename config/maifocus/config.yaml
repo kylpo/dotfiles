@@ -1,0 +1,78 @@
+# MAIFocus Configuration
+# Location: ~/.config/maifocus/config.yaml
+# Changes are applied automatically when hot_reload is enabled.
+
+# ─── General ───────────────────────────────────────────
+hot_reload: true
+show_menubar_icon: true
+
+# Menubar indicator style:
+#   sparkles     — SF Symbol sparkle / sparkles + numeric badge (waiting + idle count)
+#   colored_dot  — single colored dot; color reflects highest-priority attention state
+#                  (waiting → session_colors.waiting, idle → session_colors.idle, else sparkle)
+status_item_indicator: colored_dot
+
+# ─── Notifications ─────────────────────────────────────
+# The notifications subsystem is considered active when any on_* trigger is true.
+notifications:
+  # Claude-only Notification gate. Either a Bool (applies to every subtype) or a
+  # {subtype: Bool} map. Subtypes omitted from the map default to false.
+  on_claude_notification:
+    permission_prompt: false       # PermissionRequest covers this; avoid double-fire
+    idle_prompt: false
+    auth_success: false
+    elicitation_dialog: false
+  on_stop: false                   # Session finished a turn (top-level only)
+  on_permission_request: false     # Cross-product attention signal (Claude + Codex)
+  on_claude_task_completed: false  # Claude-only; background task finished
+
+# ─── Auto-Focus ────────────────────────────────────────
+# The auto-focus subsystem is considered active when any on_* trigger is true.
+# (There is no master enabled toggle — mirrors the notifications pattern.)
+auto_focus:
+  # Pre-focus delay: Typically use to give sound_cue and countdown_hud wait time (0 = immediate)
+  delay_seconds: 2.0
+
+  # Per-event focus triggers
+  on_claude_notification:
+    permission_prompt: false       # PermissionRequest covers this; avoid double-fire
+    idle_prompt: false
+    auth_success: false
+    elicitation_dialog: false
+  on_stop: true
+  on_permission_request: true     # Cross-product attention signal (Claude + Codex)
+  on_claude_task_completed: false
+
+  # Guards (prevent interrupting the user)
+  activity_grace_seconds: 0       # Skip if user active within N seconds (0 = disabled)
+  modifier_key_guard: false       # Skip if cmd/opt/ctrl/shift held
+
+  # Pre-focus feedback
+  sound_cue:
+    enabled: true
+    sound: "Submarine"                # Basso, Blow, Bottle, Frog, Funk, Glass, Hero, Morse, Ping, Pop, Purr, Sosumi, Submarine, Tink
+
+  countdown_hud:
+    enabled: true
+    click_to_cancel: true        # Clicking the HUD before countdown ends will cancel the auto-focus
+
+# ─── Auto-Hide ─────────────────────────────────────────
+# Switch focus AWAY from the current session (alt-tab to a different window).
+# Runtime-independent of auto_focus — these have no shared guards.
+auto_hide:
+  on_user_prompt_submit: true   # Alt-tab away after submitting a prompt to Claude Code
+
+# ─── Hotkeys ───────────────────────────────────────────
+# Global hotkeys. Empty string = disabled.
+# Format: "cmd+opt+n", "ctrl+shift+d", etc.
+hotkeys:
+  suspend_notifications: ""     # Toggle the notifications subsystem on/off
+  suspend_disruptors: ""        # Toggle both auto_focus and auto_hide on/off
+
+# ─── Session Status Colors ─────────────────────────────
+# Hex strings only (#RRGGBB or #RRGGBBAA). Invalid values fall back to defaults below.
+# `completed` is always system gray and is not configurable.
+session_colors:
+  working: "#30D158"            # Green — agent is running a turn
+  waiting: "#FF453A"            # Red   — blocked on user input (permission / idle)
+  idle:    "#FFD60A"            # Yellow — finished a turn or just started

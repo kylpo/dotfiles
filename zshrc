@@ -95,11 +95,11 @@ alias fix="git diff --name-only | uniq | xargs vim"
 
 alias precommit='"$(git rev-parse --git-dir)/hooks/pre-commit"'
 
-alias start='yarn start'
-alias run='yarn run'
-alias build='yarn run build'
-alias clean='yarn run clean'
-alias upgrade='yarn upgrade-interactive'
+# alias start='yarn start'
+# alias run='yarn run'
+# alias build='yarn run build'
+# alias clean='yarn run clean'
+# alias upgrade='yarn upgrade-interactive'
 
 alias desktop="cd ~/Desktop"
 
