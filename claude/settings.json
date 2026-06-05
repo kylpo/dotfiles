@@ -29,7 +29,7 @@
       "Edit(//tmp/worktree-*/**)",
       "Bash(/Users/kylpo/.claude/skills/**)",
       "Bash(/Users/kylpo/.claude/scripts/**)",
-      "Read(//Users/kylpo/github/skills/**)"    
+      "Read(//Users/kylpo/github/skills/**)"
     ],
     "defaultMode": "default"
   },
@@ -162,15 +162,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|])find([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Glob tool instead of the find command. For file pattern matching use Glob; for content search use Grep.\"}}'; fi"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
             "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|`$()])rm([[:space:];&|]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
           }
         ]
@@ -217,6 +208,15 @@
           {
             "type": "command",
             "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -q '\\.pbxproj'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Do not access project.pbxproj directly via shell — it is huge and wastes context. Use `pbxproj` instead (on $PATH via ~/github/tools). Run `pbxproj --help` for subcommands: targets, files, add-file, remove-file, build-settings, set-build-setting.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "path=$(jq -r '.tool_input.file_path // empty'); if printf '%s' \"$path\" | grep -Eq '/\\.blaster-(plan\\.md|metadata\\.json)$'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"This file is script-owned. To change the plan, edit .blaster-analysis.md and re-run ~/.claude/skills/blaster/scripts/build-plan.sh. To change metadata, re-run ~/.claude/skills/blaster/scripts/orient.sh (mid-pipeline package discovery / lever re-resolution) or bin/blaster-setup.sh (ticket fields).\"}}'; fi"
           }
         ]
       }
@@ -416,7 +416,7 @@
     "claude-code-setup@claude-plugins-official": false,
     "claude-md-management@claude-plugins-official": false,
     "feature-dev@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": false,
     "frontend-design@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
