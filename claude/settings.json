@@ -180,7 +180,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail|sed|awk)([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail (and Edit instead of sed/awk). The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
           }
         ]
       },
