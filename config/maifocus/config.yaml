@@ -68,6 +68,8 @@ auto_hide:
 hotkeys:
   suspend_notifications: ""     # Toggle the notifications subsystem on/off
   suspend_disruptors: ""        # Toggle both auto_focus and auto_hide on/off
+  focus_next: "ctrl+d"                # Cycle through eligible sessions on repeated press
+  focus_first: ""               # Jump to the single highest-priority eligible session
 
 # ─── Session Status Colors ─────────────────────────────
 # Hex strings only (#RRGGBB or #RRGGBBAA). Invalid values fall back to defaults below.

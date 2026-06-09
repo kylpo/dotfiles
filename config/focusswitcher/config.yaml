@@ -19,8 +19,8 @@ ui:
   highlight_alpha: 0.8
   background_color: "#4D4D4D"
   background_alpha: 1.0
-  show_titles: false
-  show_thumbnails: false
+  show_titles: true
+  show_thumbnails: true
   corner_radius: 25
 
 modifier_dismiss:
@@ -28,7 +28,7 @@ modifier_dismiss:
   ignore: [capslock]
 
 # Delay (ms) before focusing the selected window on dismiss.
-focus_delay_ms: 150
+focus_delay_ms: 0
 
 # Delay (ms) before drawing the switcher UI after activation.
 draw_delay_ms: 200
