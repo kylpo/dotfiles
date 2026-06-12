@@ -61,6 +61,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -208,7 +209,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)' && ! printf '%s' \"$cmd\" | grep -Eq '(<<|>|(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)[^|;]*\\|)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
           }
         ]
       },
@@ -235,7 +236,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -q '\\.pbxproj'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Do not access project.pbxproj directly via shell — it is huge and wastes context. Use `pbxproj` instead (on $PATH via ~/github/tools). Run `pbxproj --help` for subcommands: targets, files, add-file, remove-file, build-settings, set-build-setting.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); cmd=$(printf '%s' \"$cmd\" | sed -E 's/:(!|\\(exclude\\))[^[:space:]]*//g'); if printf '%s' \"$cmd\" | grep -q '\\.pbxproj'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Do not access project.pbxproj directly via shell — it is huge and wastes context. Use `pbxproj` instead (on $PATH via ~/github/tools). Run `pbxproj --help` for subcommands: targets, files, add-file, remove-file, build-settings, set-build-setting.\"}}'; fi"
           }
         ]
       },
