@@ -1,0 +1,34 @@
+hot_reload: true            # re-apply config on file change (ConfigFileWatcher)
+menubar:
+  show_icon: true
+  recent_items: 10          # rows in the menubar menu
+history:
+  max_items: 200            # recent-list cap; registers exempt
+capture:
+  poll_interval_ms: 500
+  secret_detection: standard   # off | standard | strict
+  ignore_apps:                 # bundle IDs whose copies are never recorded
+    - com.apple.Passwords
+    - com.1password.1password
+hotkeys:
+  show: "ctrl+alt+v"        # full popover, lands on last-selected tab
+  show_recent: ""           # Recent-only popover; "" = disabled
+  show_saved: ""            # Saved-only popover; "" = disabled
+ui:                         # appearance theme (DEC-P014); defaults = docs/DESIGN.md
+  accent_color: "FFD24A"    # colors are RRGGBB hex, optional leading "#"
+  mask_flag_color: "FFB866"
+  text_color: "FFFFFF"
+  text_alpha: 0.65
+  selected_text_alpha: 1.0
+  index_color: "FFFFFF"     # composited at a fixed 0.30 alpha (no index_alpha key)
+  highlight_alpha: 0.12     # selection fill = resolved accent_color at this alpha
+  panel_material: hud       # hud -> .hudWindow; unknown values fall back to hud
+  panel_fallback_color: "1A1F24"
+  corner_radius: 12
+  border_alpha: 0.10        # ghost border = white at this alpha (base not configurable)
+  min_width: 520
+  max_width: 680
+  max_visible_items: 12
+  item_height: 36
+  font_size: 14             # item text; keycap glyphs render at font_size - 2, medium weight
+  filter_font_size: 14

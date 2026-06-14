@@ -1,0 +1,124 @@
+# AppKeys config — per-app hotkey-triggered command palettes.
+#
+# Each app is keyed by its localizedName (as shown in the menu bar).
+# Use "*" for bindings active in all apps.
+#
+# Trigger: hotkey string like "cmd+d", "ctrl+shift+k"
+# Modifiers: cmd, alt (option), shift, ctrl (control)
+#
+# Action fields (exactly one per item/binding):
+#   hotkey: "mod+key"           — fire a keystroke
+#   path: [Menu, Submenu, Item] — click a menu item by path
+#   shell: "command"            — run a shell command
+#   url: "https://..."          — open a URL
+
+# Automatically reload config when the file changes on disk.
+# Changing false -> true requires a restart.
+hot_reload: true
+
+# Menubar settings. Both fields default to `true` when omitted.
+#   enabled          — show the status item
+#   global_palettes  — show the Global Palettes section in the status menu
+menubar:
+  enabled: true
+  global_palettes: true
+
+# UI appearance — all fields are optional; defaults shown below.
+# accent_color drives highlight, borders, glow, and selected number color.
+ui:
+  accent_color: "#6FC3DF"
+  corner_radius: 12
+  max_visible_items: 10
+  item_height: 40
+  font_size: 16
+  filter_font_size: 18
+  min_width: 460
+  max_width: 600
+  text_color: "#FFFFFF"
+  text_alpha: 0.65
+  highlight_alpha: 0.12
+  border_width: 1.0
+
+apps:
+  Discord:
+    direct_bindings:
+      - trigger: "enter"
+        hotkey: "shift+enter"
+      - trigger: "cmd+enter"
+        hotkey: "enter"
+        
+  Xcode:
+    palettes:
+      - trigger: "cmd+d"
+        title: View
+        filterable: false
+        number_selection: true
+        items:
+          - text: Explorer
+            path: [Navigate, "Reveal in Project Navigator"]
+          - text: Tests
+            path: [View, Navigators, Tests]
+          - text: Git
+            path: [View, Navigators, Source Control]
+          - text: Close
+            path: [View, Navigators, Hide Navigator]
+
+      - trigger: "cmd+k"
+        title: Inspector
+        filterable: false
+        number_selection: true
+        items:
+          - text: Quick Help
+            path: [View, Inspectors, Quick Help]
+          - text: File
+            path: [View, Inspectors, File]
+          - text: History
+            path: [View, Inspectors, History]
+          - text: Attributes
+            path: [View, Inspectors, Attributes]
+          - text: Close
+            path: [View, Inspectors, Hide Inspector]
+
+      - trigger: "cmd+g"
+        title: GoTo
+        filterable: false
+        number_selection: true
+        items:
+          - text: Definition
+            hotkey: "cmd+F12"
+          - text: Previous Edit
+            path: [Navigate, "Jump to Previous Change"]
+          - text: Back
+            path: [Navigate, Go Back]
+          - text: Forward
+            path: [Navigate, Go Forward]
+
+      - trigger: "cmd+u"
+        title: Run
+        filterable: false
+        number_selection: true
+        items:
+          - text: Run
+            hotkey: "cmd+ctrl+shift+q"
+          - text: re-Test
+            hotkey: "alt+e"
+          - text: Test
+            path: [Product, Test]
+          - text: Build
+            path: [Product, Build]
+          - text: Stop
+            path: [Product, Stop]
+
+      - trigger: "cmd+shift+b"
+        title: Refactor
+        filterable: false
+        number_selection: true
+        items:
+          - text: Rename
+            hotkey: "alt+r"
+
+    direct_bindings:
+      - trigger: "cmd+shift+s"
+        path: [View, Editor, "Show Previous History"]
+      - trigger: "cmd+shift+w"
+        path: [View, Editor, "Show Next History"]

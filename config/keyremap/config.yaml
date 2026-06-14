@@ -1,0 +1,25 @@
+# KeyRemap configuration
+# Remaps modifier keys per-keyboard using macOS hidutil.
+# Changes take effect immediately when hot_reload is enabled.
+
+hot_reload: true
+show_menubar_icon: true
+
+keyboards:
+  - name: "Microsoft® Nano Transceiver v2.1"
+    vendor_id: 0x045E
+    product_id: 0x07A5
+    enabled: false
+    remappings: []
+
+  - name: "Rhymestone"
+    vendor_id: 0xFEED
+    product_id: 0xDFA1
+    enabled: false
+    remappings: []
+
+
+# Available modifier key names:
+#   left_control, left_shift, left_option, left_command
+#   right_control, right_shift, right_option, right_command
+#   caps_lock

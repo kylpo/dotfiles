@@ -1,0 +1,78 @@
+# Beacon config — spatial AX hotkeys for clicking on-screen elements
+# without a mouse. Press a hotkey, type the short letter code over an
+# element, and Beacon clicks it.
+
+# Automatically reload config when the file changes on disk.
+# Changing false → true requires a restart.
+hot_reload: true
+
+# Show the Beacon icon in the menubar.
+show_menubar_icon: true
+
+# --- Keyboard layout ----------------------------------------------------
+# Used to map keys to screen position (top-left keys → top-left zones).
+# Options: qwerty (default) | dvorak | colemak | custom
+# When set to `custom`, the `custom_layout` block below is read.
+keyboard_layout: custom
+
+# Optional user-defined layout — only read when `keyboard_layout: custom`.
+# Rows are listed top to bottom; keys left to right within each row.
+# Uncomment and edit if none of the built-in presets fit your keyboard.
+custom_layout:
+  rows:
+    - [z, d, c, y, g, r, l, q]
+    - [a, e, i, p, b, o, t, n]
+    - [f, u, h, x, j, s, m, w]
+
+# --- Hotkeys ------------------------------------------------------------
+# Hotkey strings use "mod+mod+...+key" format.
+# Modifiers: cmd, alt (option), shift, ctrl (control)
+hotkeys:
+  # Chained flow entry points: press, then pick an action (left-click is
+  # the default). Scope is baked in; the action is chosen mid-flow.
+#  focused_window: ctrl+shift+f       # scan the frontmost window
+#  current_monitor: ctrl+shift+s      # scan the monitor under the cursor
+#  all_monitors: ctrl+shift+a         # scan every connected monitor
+
+  # Direct combos (optional): scope + action type baked into one hotkey,
+  # so the action fires immediately on key match — no action picker.
+  # Uncomment any of these and adjust the binding to taste.
+  # focused_window_left_click: ctrl+shift+f
+  # focused_window_right_click: ctrl+shift+r
+  # focused_window_shift_click: ctrl+shift+g
+  # focused_window_cmd_click: ctrl+shift+d
+  current_monitor_left_click: ctrl+i
+  # current_monitor_right_click: ctrl+shift+e
+  # current_monitor_shift_click: ctrl+shift+w
+  current_monitor_cmd_click: ctrl+shift+i
+
+# --- Per-app overrides --------------------------------------------------
+# Bundle IDs of apps where the dedup keeps BOTH parent and child elements
+# when both are clickable (e.g., iTerm2 tabs + their hidden close buttons).
+# For all other apps, only the parent is labeled.
+keep_child_buttons_for_apps:
+  - com.googlecode.iterm2
+
+# --- Pill label appearance ----------------------------------------------
+# All fields optional; defaults shown below.
+label:
+  # Font family: atkinson_hyperlegible (default, bundled) | system
+  font: atkinson_hyperlegible
+  font_size: 12
+
+  # Background hex color and opacity (0.0 transparent → 1.0 opaque).
+  background_color: "#FFEB3B"
+#  background_color: "#F5D547"
+#  background_color: "#F3CE3D"
+  background_opacity: 1
+
+  # Untyped portion of the code.
+  text_color: "#000000"
+  # Typed prefix — dimmed to show progress as you type.
+#  typed_text_color: "#7A6A1A"
+  typed_text_color: "#6B6B6B"
+
+  # When true, the label is a pill shape (radius derived from height).
+  # When false, set `corner_radius` (in points) for a fixed rounded rect.
+#  corner_radius_auto: true
+  corner_radius: 6
