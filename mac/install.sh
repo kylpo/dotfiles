@@ -563,6 +563,7 @@ echo "Installing Development stuff..."
 # pip install --upgrade pip setuptools
 # pip3 install --upgrade pip setuptools wheel
 
+brew install bash    # `/bin/bash`` is frozen at 3.2.57, so use `$(brew --prefix)/bin/bash`` instead for v5+
 brew install iterm2  # Better terminal than Terminal
 brew install dash    # Offline programming docs
 brew install visual-studio-code

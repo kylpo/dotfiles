@@ -130,6 +130,13 @@ alias ios-simulator="open /Applications/Xcode.app/Contents/Developer/Application
 # custom binary shorthands
 alias td='thunderdome'
 
+# Claude Code's "Bash" tool executes commands in $SHELL, which we've auto-set to zsh.
+# zsh doesn't word-split unquoted $vars, so bash-style scripts (e.g. `for f in
+# $FILES`) silently misbehave. Force the tool to use bash by overriding $SHELL
+# for the claude process only. Point at Homebrew's bash (5.x) instead of Apple's
+# /bin/bash (frozen at 3.2.57, no associative arrays, ${var,,}, mapfile, etc.).
+alias claude='SHELL="$(brew --prefix)/bin/bash" claude'
+
 # cross-platform clipboard copy (reads from stdin)
 copy() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -171,10 +178,9 @@ hide_icons () {
   killall Finder
 }
 
-# I will miss this functionality, but it just litters the LLM too much and wastes tokens
-# cd () {
-#   builtin cd $@ && ls -aG
-# }
+cd () {
+  builtin cd $@ && ls -aG
+}
 
 # open vim
 v () {
