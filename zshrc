@@ -155,6 +155,15 @@ copy() {
   fi
 }
 
+# pwd: print the working directory as usual, and also copy it to the clipboard
+# (without a trailing newline). `builtin pwd` avoids recursing into this function.
+pwd() {
+  local dir
+  dir="$(builtin pwd "$@")" || return
+  print -r -- "$dir"
+  printf '%s' "$dir" | copy
+}
+
 # Make CTRL-Z background things and unbackground them.
 # from wincent https://github.com/wincent/wincent/commit/30b502d811fbf4ca058db3a6f006aaecab68f6b7
 # function fg-bg() {
