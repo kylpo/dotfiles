@@ -202,7 +202,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|`$()])rm([[:space:];&|]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); cmd=$(printf '%s' \"$cmd\" | sed -E 's/git[[:space:]]+rm([[:space:];&|]|$)/git \\1/g'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|`$()])rm([[:space:];&|]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
           }
         ]
       },
