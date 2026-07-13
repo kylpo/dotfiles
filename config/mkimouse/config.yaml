@@ -7,7 +7,7 @@
 # Changing false → true requires a restart.
 hot_reload: true
 
-show_menubar_icon: true
+show_menubar_icon: false
 
 # --- Cursor teleport (formerly MouseJump) -----------------------------------
 #
