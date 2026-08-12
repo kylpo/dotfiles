@@ -32,7 +32,6 @@
       "Skill",
       "Bash(cd /tmp/worktree-*)",
       "Read(//tmp/worktree-*/**)",
-      "Write(//tmp/worktree-*/**)",
       "Edit(//tmp/worktree-*/**)",
       "Bash(build)",
       "Bash(build:*)",
@@ -55,6 +54,8 @@
       "Bash(ui-test)",
       "Bash(ui-test:*)",
       "Bash(bump:*)",
+      "Bash(ticket:*)",
+      "Bash(forge:*)",
       "Bash(append-decision:*)",
       "Bash(supersede-decision:*)",
       "Bash(levers get:*)",
@@ -106,6 +107,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "hooks": {
     "Notification": [
       {
@@ -492,7 +494,6 @@
       }
     }
   },
-  "effortLevel": "max",
   "tui": "default",
   "autoMemoryEnabled": false,
   "verbose": true

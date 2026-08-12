@@ -26,6 +26,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General UI/UX
 ###############################################################################
 
+echo "Configuring General UI/UX..."
+
 # Dark theme
 # ... Disable auto-theme if set
 defaults delete NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically
@@ -34,13 +36,6 @@ defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
-
-# Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
-
-# Require password immediately after sleep or screen saver begins
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -56,8 +51,27 @@ defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextr
 defaults write com.apple.CrashReporter UseUNC 1
 
 ###############################################################################
+# Sleep, Screensaver, Shutdown
+###############################################################################
+
+echo "Sleep, Screensaver, Shutdown..."
+
+# Disable sleep when screen is locked (so `claude -p` continues to run overnight)
+sudo pmset -a sleep 0 disksleep 0
+
+# Disable Resume system-wide
+defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+###############################################################################
 # Sound
 ###############################################################################
+
+echo "Sound..."
+
 # System alert sound
 # Defaults sounds located in `/System/Library/Sounds/`; test with `afplay`
 # Basso         Blow          Bottle        Frog
