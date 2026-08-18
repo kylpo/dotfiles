@@ -103,9 +103,11 @@
       "Bash(git branch -a -v)",
       "Bash(git branch --list)",
       "Bash(git branch --all)",
-      "Bash(git branch --show-current)"
+      "Bash(git branch --show-current)",
+      "Bash(amend-decision:*)",
+      "Read(//Users/kylpo/github/decisions-dot-md/**)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "hooks": {
@@ -494,7 +496,13 @@
       }
     }
   },
+  "effortLevel": "xhigh",
   "tui": "default",
   "autoMemoryEnabled": false,
-  "verbose": true
+  "skipWorkflowUsageWarning": true,
+  "verbose": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
 }
