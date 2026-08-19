@@ -3,9 +3,20 @@
 # Claude Code custom statusline.
 # Reads the session JSON on stdin. Schema: https://code.claude.com/docs/en/statusline
 #
-# Renders two lines:
-#   * Opus 5 - xhigh - 1M - qa-dot-md (main*)
-#     280.1k tok (245.0k cached, 35.1k trip) - 5h 23% (2h10m) - 7d 41% (3d4h)
+# Renders one left-aligned line:
+#
+#   qa-dot-md (main*) - Opus 5 - xhigh - 1M - 280.1k tok (245.0k cached, 35.1k trip) - 5h 24% (2h9m) - 7d 41% (3d3h)
+#
+# Location leads at full brightness; everything after it is dimmed, so the eye
+# lands on the repo first. Only `cached` and `trip` keep a color, since those
+# are the two numbers worth reacting to.
+#
+# Deliberately NOT right-aligned to the terminal edge. Claude Code re-runs this
+# script on session start, new assistant messages, /compact, permission-mode
+# changes, vim-mode toggles, and a refreshInterval timer -- but NOT on terminal
+# resize. Any padding computed from COLUMNS therefore goes stale the moment the
+# window is resized, and the over-long line gets truncated, taking the
+# right-hand stats with it. A content-width line has nothing to go stale.
 #
 #   tok    = input-side tokens in the context window, i.e.
 #            input_tokens + cache_creation_input_tokens + cache_read_input_tokens.
@@ -32,8 +43,10 @@ input=$(cat)
 
 E=$'\033'
 BOLD="${E}[1m"; DIM="${E}[2m"; R="${E}[0m"
-CYAN="${E}[36m"; GREEN="${E}[32m"; YELLOW="${E}[33m"; RED="${E}[31m"
-BLUE="${E}[34m"; MAGENTA="${E}[35m"
+GREEN="${E}[32m"; YELLOW="${E}[33m"; MAGENTA="${E}[35m"
+# Emphasis here is the *absence* of dim: a bare reset returns the segment to the
+# terminal's own foreground at normal intensity, which stands out against the
+# surrounding dim without hardcoding a color that would wash out on a light theme.
 
 # Pull every JSON-derived field in one jq pass, joined by the ASCII unit
 # separator (0x1f) so empty fields survive `read` -- a tab would collapse them,
@@ -81,45 +94,46 @@ fields=$(printf '%s' "$input" | jq -j '
 
 IFS=$'\037' read -r model effort win tok cached trip fh_pct fh_rst sd_pct sd_rst dir <<< "$fields"
 
-# Green under 50%, yellow under 80%, red at or above.
-pct_color() {
-  if   [ "$1" -ge 80 ]; then printf '%s' "$RED"
-  elif [ "$1" -ge 50 ]; then printf '%s' "$YELLOW"
-  else                       printf '%s' "$GREEN"
-  fi
-}
-
-# --- line 1: identity -------------------------------------------------------
-line1="${BLUE}◆${R} ${BOLD}${model}${R}"
-[ -n "$effort" ] && line1="${line1} ${DIM}·${R} ${CYAN}${effort}${R}"
-[ -n "$win" ]    && line1="${line1} ${DIM}·${R} ${DIM}${win}${R}"
-
+# --- location: the one bright segment ---------------------------------------
+line=""
 if [ -n "$dir" ]; then
-  line1="${line1} ${DIM}·${R} $(basename "$dir")"
+  line="${BOLD}$(basename "$dir")${R}"
   if git -C "$dir" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     branch=$(git -C "$dir" branch --show-current 2>/dev/null)
     [ -z "$branch" ] && branch=$(git -C "$dir" rev-parse --short HEAD 2>/dev/null)
     if [ -n "$branch" ]; then
       [ -n "$(git -C "$dir" status --porcelain 2>/dev/null | head -n1)" ] && branch="${branch}*"
-      line1="${line1} ${MAGENTA}⎇ ${branch}${R}"
+      line="${line} ${MAGENTA}⎇ ${branch}${R}"
     fi
   fi
 fi
 
-# --- line 2: tokens + subscription usage ------------------------------------
-sep=" ${DIM}·${R} "
+# --- everything else, dimmed ------------------------------------------------
+# Each colored value closes with a full reset, so the surrounding dim has to be
+# re-opened after it rather than assumed to still be in effect.
+dim_seg() {
+  if [ -n "$line" ]; then line="${line}${DIM} · ${1}${R}"; else line="${DIM}${1}${R}"; fi
+}
+
+dim_seg "$model"
+[ -n "$effort" ] && dim_seg "$effort"
+[ -n "$win" ]    && dim_seg "$win"
+
 if [ -n "$tok" ]; then
-  line2="${BOLD}${tok} tok${R} ${DIM}(${R}${GREEN}${cached} cached${R}${DIM},${R} ${YELLOW}${trip} trip${R}${DIM})${R}"
+  dim_seg "${R}${tok} tok${DIM} (${R}${GREEN}${cached} cached${R}${DIM}, ${R}${YELLOW}${trip} trip${R}${DIM})"
 else
-  line2="${DIM}no API call yet${R}"
-fi
-if [ -n "$fh_pct" ]; then
-  line2="${line2}${sep}${DIM}5h${R} $(pct_color "$fh_pct")${fh_pct}%${R}"
-  [ -n "$fh_rst" ] && line2="${line2} ${DIM}(${fh_rst})${R}"
-fi
-if [ -n "$sd_pct" ]; then
-  line2="${line2}${sep}${DIM}7d${R} $(pct_color "$sd_pct")${sd_pct}%${R}"
-  [ -n "$sd_rst" ] && line2="${line2} ${DIM}(${sd_rst})${R}"
+  dim_seg "no API call yet"
 fi
 
-printf '%s\n  %s\n' "$line1" "$line2"
+if [ -n "$fh_pct" ]; then
+  seg="5h ${fh_pct}%"
+  [ -n "$fh_rst" ] && seg="${seg} (${fh_rst})"
+  dim_seg "$seg"
+fi
+if [ -n "$sd_pct" ]; then
+  seg="7d ${R}${sd_pct}%${DIM}"
+  [ -n "$sd_rst" ] && seg="${seg} (${sd_rst})"
+  dim_seg "$seg"
+fi
+
+printf '%s\n' "$line"
