@@ -266,7 +266,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)' && ! printf '%s' \"$cmd\" | grep -Eq '(<<|>|(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)[^|;]*\\|)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)' && ! printf '%s' \"$cmd\" | grep -Eq '(<<|>|(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)[^|;]*\\|)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To read part of a file from Bash, sed is NOT blocked: sed -n 1,40p FILE. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
           }
         ]
       },
@@ -478,6 +478,10 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": false,
     "claude-md-management@claude-plugins-official": false,
@@ -500,9 +504,5 @@
   "tui": "default",
   "autoMemoryEnabled": false,
   "skipWorkflowUsageWarning": true,
-  "verbose": true,
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  }
+  "verbose": true
 }
