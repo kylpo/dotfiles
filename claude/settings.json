@@ -501,8 +501,14 @@
     }
   },
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "xhigh"
+    }
+  },
   "tui": "default",
   "autoMemoryEnabled": false,
   "skipWorkflowUsageWarning": true,
-  "verbose": true
+  "verbose": true,
+  "agentPushNotifEnabled": true
 }
