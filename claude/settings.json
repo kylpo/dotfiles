@@ -18,6 +18,13 @@
       "Bash(trash:*)",
       "Bash(swift:*)",
       "Bash(wc:*)",
+      "Bash(sed -n:*)",
+      "Bash(printenv:*)",
+      "Bash(sort:*)",
+      "Bash(comm:*)",
+      "Bash(diff:*)",
+      "Bash(basename:*)",
+      "Bash(dirname:*)",
       "Bash(chmod +x:*)",
       "Bash(mkdir:*)",
       "Bash(cp:*)",
@@ -106,6 +113,9 @@
       "Bash(git branch --show-current)",
       "Bash(amend-decision:*)",
       "Read(//Users/kylpo/github/decisions-dot-md/**)"
+    ],
+    "deny": [
+      "AskUserQuestion"
     ],
     "defaultMode": "auto"
   },
