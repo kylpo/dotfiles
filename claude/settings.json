@@ -70,6 +70,7 @@
       "Bash(levers get:*)",
       "Bash(pipeline:*)",
       "Bash(qa:*)",
+      "Bash(decisions:*)",
       "Bash(run-jobs:*)",
       "Read(//Users/kylpo/github/tickets/**)",
       "Bash(gh run list:*)",
@@ -113,10 +114,6 @@
       "Bash(git branch --list)",
       "Bash(git branch --all)",
       "Bash(git branch --show-current)",
-      "Bash(append-decision:*)",
-      "Bash(supersede-decision:*)",
-      "Bash(amend-decision:*)",
-      "Bash(merge-decision:*)",
       "Read(//Users/kylpo/github/decisions-dot-md/**)"
     ],
     "deny": [
@@ -125,6 +122,9 @@
     "defaultMode": "auto"
   },
   "model": "opus[1m]",
+  "env": {
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
   "hooks": {
     "Notification": [
       {
@@ -513,6 +513,9 @@
       "effortLevel": "xhigh"
     },
     "claude-opus-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
       "effortLevel": "xhigh"
     }
   },

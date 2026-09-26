@@ -137,6 +137,7 @@ alias td='thunderdome'
 # /bin/bash (frozen at 3.2.57, no associative arrays, ${var,,}, mapfile, etc.).
 alias claude='SHELL="$(brew --prefix)/bin/bash" claude'
 
+alias c='claude'
 alias cm='claude --effort max'
 
 # cross-platform clipboard copy (reads from stdin)
