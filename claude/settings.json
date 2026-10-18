@@ -73,7 +73,6 @@
       "Bash(levers get:*)",
       "Bash(pipeline:*)",
       "Bash(qa:*)",
-      "Bash(decisions:*)",
       "Bash(run-jobs:*)",
       "Read(//Users/kylpo/github/tickets/**)",
       "Bash(gh run list:*)",
@@ -507,16 +506,16 @@
     }
   },
   "feedbackDrafts": "off",
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "modelSettings": {
     "claude-fable-5-1": {
       "effortLevel": "xhigh"
     },
-    "claude-opus-5": {
-      "effortLevel": "xhigh"
-    },
     "claude-opus-5-5": {
       "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
     }
   },
   "tui": "default",

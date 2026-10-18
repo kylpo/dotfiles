@@ -14,7 +14,7 @@ hotkeys:
   show: "ctrl+alt+v"        # full popover, lands on last-selected tab
   show_recent: ""           # Recent-only popover; "" = disabled
   show_saved: ""            # Saved-only popover; "" = disabled
-ui:                         # appearance theme (DEC-P014); defaults = docs/DESIGN.md
+ui:                         # appearance theme; defaults = docs/DESIGN.md
   accent_color: "FFD24A"    # colors are RRGGBB hex, optional leading "#"
   mask_flag_color: "FFB866"
   text_color: "FFFFFF"

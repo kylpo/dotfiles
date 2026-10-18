@@ -56,6 +56,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
-[merge "decision"]
-	name = DECISIONS.md record merge (decisions-dot-md)
-	driver = \"/Users/kylpo/.local/bin/decisions\" merge --driver %O %A %B %P
+[http]
+	postBuffer = 5242880

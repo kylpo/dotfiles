@@ -138,6 +138,8 @@ alias td='thunderdome'
 alias claude='SHELL="$(brew --prefix)/bin/bash" claude'
 
 alias c='claude'
+alias ch='claude --effort high'
+alias cx='claude --effort xhigh'
 alias cm='claude --effort max'
 
 # cross-platform clipboard copy (reads from stdin)
