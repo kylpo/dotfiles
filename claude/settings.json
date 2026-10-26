@@ -253,7 +253,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); cmd=$(printf '%s' \"$cmd\" | sed -E 's/git[[:space:]]+rm([[:space:];&|]|$)/git \\1/g'); if printf '%s' \"$cmd\" | grep -Eq '(^|[[:space:];&|`$()])rm([[:space:];&|]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[;&|(`]|(sudo|xargs|-exec)([[:space:]]+-[^[:space:]]+)*[[:space:]])[[:space:]]*rm([[:space:]]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `trash` instead of `rm` (sends to macOS Trash, recoverable). Note: `trash` only takes file paths — drop -rf and similar flags.\"}}'; fi"
           }
         ]
       },
@@ -271,16 +271,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)([[:space:]]|$)' && ! printf '%s' \"$cmd\" | grep -Eq '(<<|>|(^|;|&&|\\|\\|)[[:space:]]*(cat|head|tail)[^|;]*\\|)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use the Read tool instead of cat/head/tail. The Bash tool is reserved for shell-only operations. To read part of a file from Bash, sed is NOT blocked: sed -n 1,40p FILE. To filter output of another command, pipe into head/tail/sed/awk after a single | — that case is allowed.\"}}'; fi"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[^a-zA-Z0-9_/.-])\\.levers\\.yml([^a-zA-Z0-9_/.-]|$)' && ! printf '%s' \"$cmd\" | grep -qE '(^|[[:space:]])levers[[:space:]]+(get|merge-strictest|validate|audit|set|init|detect-packages|list-enums)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `levers get [<key>] --at <path>` (omit the key for the full merged view) to read the effective value. Reading .levers.yml directly skips inheritance resolution between root and package files.\"}}'; fi"
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if printf '%s' \"$cmd\" | grep -Eq '(^|[|;&(`[:space:]])(cat|less|more|head|tail|sed|awk|nl|fold|strings|od|xxd|grep|rg|yq|bat)[[:space:]][^|;&]*\\.levers\\.yml([^a-zA-Z0-9_/.-]|$)'; then printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use `levers get [<key>] --at <path>` (omit the key for the full merged view) to read the effective value. Reading .levers.yml directly skips inheritance resolution between root and package files.\"}}'; fi"
           }
         ]
       },

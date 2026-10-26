@@ -33,5 +33,6 @@ the cheapest path in the file; process spawns (`bash`, `jq`, `cat`, `grep`) domi
 
 7. Start every script with `#!/usr/bin/env bash` then `set -euo pipefail`.
 
-8. When you change a gate's regex, update its table-driven test in `../hook-tests/` and rerun it:
-   run `bash ../hook-tests/cat-head-tail-gate.test.sh`.
+8. When you change a gate's regex, update its table-driven test in `../hook-tests/` and rerun it
+   (e.g. `bash ../hook-tests/rm-gate.test.sh`). A test reads the hook command from
+   `../settings.json`; never copy the regex into the test.
