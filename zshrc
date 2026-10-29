@@ -142,6 +142,11 @@ alias ch='claude --effort high'
 alias cx='claude --effort xhigh'
 alias cm='claude --effort max'
 
+alias f='claude --model fable'
+alias fh='claude --model fable --effort high'
+alias fx='claude --model fable --effort xhigh'
+alias fm='claude --model fable --effort max'
+
 # cross-platform clipboard copy (reads from stdin)
 copy() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
